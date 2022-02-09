@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DataBase-System - Sunrise-shine的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Just do it!,第一章 数据库系统世界数据库的能力来自于已发展了数十年的知识和技术，这些知识和技术蕴藏在名为数据库管理系统(Database Management System) 的软件中。该软件也叫DBMS，或更,"> 
+    <meta name="author" content="Sunrise-shine"> 
+    <link rel="alternative" href="atom.xml" title="Sunrise-shine的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Sunrise-shine的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://Sunrise-shine.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">DataBase-System</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">DataBase-System</h1>
+        <div class="stuff">
+            <span>一月 06, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" rel="tag">数据库系统基础教程</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第一章-数据库系统世界"><a href="#第一章-数据库系统世界" class="headerlink" title="第一章 数据库系统世界"></a>第一章 数据库系统世界</h1><p>数据库的能力来自于已发展了数十年的知识和技术，这些知识和技术蕴藏在名为<strong>数据库管理系统(Database Management System)</strong> 的软件中。该软件也叫DBMS，或更通俗地称为“数据库系统”。</p>
+<h2 id="第二节-数据库管理系统概述"><a href="#第二节-数据库管理系统概述" class="headerlink" title="第二节 数据库管理系统概述"></a>第二节 数据库管理系统概述</h2><p>如图所示，是一个完整的DBMS结构，其中单线框表示系统构成，双线框表示内存中的数据结构，实线表示控制和数据流，虚线只表示数据流。</p>
+<p>首先，在顶部有两个命令源将命令发给DBMS：</p>
+<ol>
+<li>通常的用户和应用程序，发出查询数据或修改数据命令。</li>
+<li>数据库管理员(Administrator)，一个人或一批人，负责数据库结构或模式。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/06/drTh2xNimCMFBlg.png" alt="image-20220106211555051"></p>
+<h3 id="数据定义语言命令"><a href="#数据定义语言命令" class="headerlink" title="数据定义语言命令"></a>数据定义语言命令</h3><p><img src="https://s2.loli.net/2022/01/07/gQmTNBluVt7sIpr.png" alt="image-20220107003044094"></p>
+<h3 id="查询处理概述"><a href="#查询处理概述" class="headerlink" title="查询处理概述"></a>查询处理概述</h3><p>与DBMS交互最重要的工作使沿着图所示左边的路径。</p>
+<p>用户或应用程序使用数据库操作语言(DML)启动一些不影响数据库模式的操作，但是这些操作可能会影响数据库的内容，或者是从数据库中抽取数据。DML语言由两个独立的子系统处理。</p>
+<h4 id="查询处理"><a href="#查询处理" class="headerlink" title="查询处理"></a>查询处理</h4><p>查询通过查询编译器(query compiler)完成语法分析和优化。</p>
+<p>编译的结果使查询计划(query plan)或是由DBMS执行并获得查询结果的操作序列，它们将被送给执行引擎(execution engine)。执行引擎向资源管理器发出一系列获取小块数据的请求，典型的小块数据关系是记录或元组。</p>
+<p><strong>资源管理器知道数据文件(data file, 存放关系的条件)、数据文件的格式和记录大小以及索引文件(index file)等。</strong>这些信息对于快速从数据文件中找到响应数据元素是有用的。</p>
+<p>数据请求又被传送给缓冲区管理器(buffer manager)。缓冲区管理器的任务是从二级存取器(通常是磁盘，永久地保存数据)中获取数据送入主存缓冲区中。</p>
+<p>一般情况下，页或“磁盘块”是缓冲区和磁盘间的传送单位。</p>
+<p>为了从磁盘中得到数据，缓冲区管理器与存储器管理器进行通信。存储器管理器可能包含操作系统命令，但是最典型的是DBMS直接向磁盘控制器发命令。</p>
+<h4 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h4><p>查询或其他DML操作被组织成事务(transaction)。事务是必须原子性执行的单位，执行中的事务之间还必须相互隔离。任何一个查询或修改操作本身，就可以是一个事务。另外，事务的执行必须持久(durable)，也就是说任何已完成事务的作用必须被保持，即使是事务刚刚完成系统就失败时也应如此。是五处理器被分成两个主要部分：</p>
+<ol>
+<li>并发控制管理器(concurrency-control manager)或调度器(scheduler)，保证事务的原子性和独立性。</li>
+<li>日志(logging)和恢复管理器(recovery manager)，负责事务的持久性。</li>
+</ol>
+<h3 id="存储器和缓冲区管理器"><a href="#存储器和缓冲区管理器" class="headerlink" title="存储器和缓冲区管理器"></a>存储器和缓冲区管理器</h3><p>数据库数据平常存储在二级存储器中。计算机系统中的“二级存储器”一般指磁盘。可是，对数据的操作只能在主存中执行。存储器管理器( storage manager）的任务就是控制数据在磁盘上的位置存放和在磁盘与主存间的移动。</p>
+<p>在一个简单数据库系统中，存储器管理器可以就是操作系统下的文件系统。可是，为了提高效率，DBMS常常直接控制磁盘上的存储，至少是在某些环境下如此。存储器管理器保持跟踪磁盘上的文件位置，根据请求从缓冲区管理器中获取含有请求文件的一个或多个磁盘块。</p>
+<p><strong>缓冲区管理器负责把可用主存分割成缓冲区(buffer)</strong>，缓冲区是包含若干个页面的区域，其中可以传输磁盘块。于是，所有需要从磁盘中获取信息的DBMS组件，都或是直接或是通过执行引擎的方式，与缓冲区和缓冲区管理器交互。</p>
+<h4 id="各个组件可能需要的信息种类有"><a href="#各个组件可能需要的信息种类有" class="headerlink" title="各个组件可能需要的信息种类有:"></a>各个组件可能需要的信息种类有:</h4><ol>
+<li>数据：数据库本身的内容</li>
+<li>元数据：描述数据库结构及其约束的数据库模式</li>
+<li>日志记录：对数据库新近修改的信息，该信息支持数据库的持久性</li>
+<li>统计数据：由DBMS手机和存储的关于数据特征的数据。例如，数据库大小、数据库中的值、数据库中的各种关系和其他成分。</li>
+<li>索引：支持对数据库中数据有效存取的数据结构。</li>
+</ol>
+<h3 id="事务处理-1"><a href="#事务处理-1" class="headerlink" title="事务处理"></a>事务处理</h3><p>通常将一个或一组数据库操作组成一个事务。</p>
+<p>事务的执行满足原子性，并且与其他事务的执行互相隔离。另外，DBMS还要保证事务的持久性:已完成事务的工作永不丢失。</p>
+<p>事务管理器（(transaction manager）接收来自应用的事务命令( transaction command)，这些命令告诉事务管理器事务何时开始，何时结束，以及应用期望的信息（例如，某些应用可能不需要原子性)。</p>
+<p>事务处理器执行如下一些任务:</p>
+<ol>
+<li><p><strong>记日志(logging): </strong>为了保证持久性，数据库的每一个变化都单独地记录在磁盘上。</p>
+<p>日志管理器( tog manager）遵循一种设计原则，无论何时系统失败或“崩溃”，恢复管理器都能够通过检查日志中的修改记录，把数据库恢复到某个一致状态。</p>
+<p>日志管理器先把日志写人缓冲区，然后与缓冲区管理器协商以确保缓冲区在合适的时间被写入磁盘（磁盘数据可以在系统崩溃后幸存下来)。</p>
+</li>
+<li><p><strong>并发控制(concurrency control):事务必须独立执行。</strong></p>
+<p>但是在大多数系统中，很多事务都是同时在执行。因此，调度器（并发控制管理器）必须保证多个事务的单个动作是按某个次序在执行，按该次序执行的效果应该与系统一次只执行一个事务一样。</p>
+<p>典型的调度器是通过在数据库的某些片断上加锁（lock)的方式工作。锁将防止两个事务用不正确的交互方式对同一数据片段存取。如图1-1所示，锁通常保存在主存的锁表(lock table)中，调度器通过阻止执行引擎对已加锁的数据库内容的存取来影响查询和其他数据库操作。</p>
+</li>
+<li><p><strong>消除死锁（deadlock resolution): </strong>当事务通过调度器获取锁以竞争其所需的资源时，系统可能会陷人一种状态。</p>
+<p><strong>在该状态中，因为每个事务需要的资源都被另一个事务占有，所以没有一个事务能够继续执行。</strong></p>
+<p>此时，事务管理器有责任调解，并删除（“回滚”或“终止”)一个或多个事务，以便其他事物可以继续执行。<br><img src="https://s2.loli.net/2022/01/07/jZcvXrLtJOzDWFI.png" alt="image-20220107012544181"></p>
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E4%B8%96%E7%95%8C"><span class="toc-number">1.</span> <span class="toc-text">第一章 数据库系统世界</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%8A%82-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">第二节 数据库管理系统概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.1.</span> <span class="toc-text">数据定义语言命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.2.</span> <span class="toc-text">查询处理概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E5%A4%84%E7%90%86"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">查询处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">事务处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%92%8C%E7%BC%93%E5%86%B2%E5%8C%BA%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-number">1.1.3.</span> <span class="toc-text">存储器和缓冲区管理器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%84%E4%B8%AA%E7%BB%84%E4%BB%B6%E5%8F%AF%E8%83%BD%E9%9C%80%E8%A6%81%E7%9A%84%E4%BF%A1%E6%81%AF%E7%A7%8D%E7%B1%BB%E6%9C%89"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">各个组件可能需要的信息种类有:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86-1"><span class="toc-number">1.1.4.</span> <span class="toc-text">事务处理</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
