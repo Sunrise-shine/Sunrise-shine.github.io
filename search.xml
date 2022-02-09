@@ -1906,4 +1906,530 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
         <tag>代码历程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Spring-5</title>
+    <url>/2022/01/02/Spring-5/</url>
+    <content><![CDATA[<h1 id="Spring5-框架"><a href="#Spring5-框架" class="headerlink" title="Spring5 框架"></a>Spring5 框架</h1><h2 id="Spring-概念"><a href="#Spring-概念" class="headerlink" title="Spring 概念"></a>Spring 概念</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ol>
+<li>Spring 是轻量级的开源的JavaEE框架(bean生命周期)</li>
+<li>Spring可以解决企业应用开发的复杂性</li>
+<li>Spring有两个核心部分: IOC和Aop</li>
+</ol>
+<h2 id="IOC容器"><a href="#IOC容器" class="headerlink" title="IOC容器"></a>IOC容器</h2><h3 id="IOC基本概念"><a href="#IOC基本概念" class="headerlink" title="IOC基本概念"></a>IOC基本概念</h3><h4 id="什么是IOC"><a href="#什么是IOC" class="headerlink" title="什么是IOC"></a>什么是IOC</h4><p>控制反转，把对象创建和对象之间的调用过程，交给Spring进行管理</p>
+<p>使用目的：为了降低耦合度到最低。</p>
+<p>做入门案例就是IOC的一种实现。</p>
+<h3 id="IOC底层原理"><a href="#IOC底层原理" class="headerlink" title="IOC底层原理"></a>IOC底层原理</h3><ol>
+<li>xml解析、工厂模式、反射</li>
+<li>画图说明</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/18/s2huD6PySiATa7d.png" alt="image-20220118215648859"></p>
+<p>一种降低耦合度的方法：</p>
+<p><img src="https://s2.loli.net/2022/01/18/C7Uh3JMa1VXEAw9.png" alt="image-20220118220558909"></p>
+<h3 id="IOC过程："><a href="#IOC过程：" class="headerlink" title="IOC过程："></a>IOC过程：</h3><h4 id="第一步-xml配置文件，配置创建的对象"><a href="#第一步-xml配置文件，配置创建的对象" class="headerlink" title="第一步 xml配置文件，配置创建的对象"></a>第一步 xml配置文件，配置创建的对象</h4><bean id="dao" class="com.example.UserDao"></bean>
+
+<h4 id="第二步-有service类和dao类，创建工厂类"><a href="#第二步-有service类和dao类，创建工厂类" class="headerlink" title="第二步 有service类和dao类，创建工厂类"></a>第二步 有service类和dao类，创建工厂类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserFactory</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> UserDao <span class="title function_">getDao</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">classValue</span> <span class="operator">=</span> class属性值; <span class="comment">// 1. xml解析,com.example.UserDao</span></span><br><span class="line">        <span class="comment">// 2. 通过反射创建对象</span></span><br><span class="line">        <span class="type">Class</span> <span class="variable">clazz</span> <span class="operator">=</span> Class.forName(classValue); <span class="comment">// 获取类的Class对象</span></span><br><span class="line">        <span class="keyword">return</span> (UserDao)clazz.newInstance(); <span class="comment">// 创建对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进一步降低耦合度</p>
+<h3 id="IOC接口-BeanFactory"><a href="#IOC接口-BeanFactory" class="headerlink" title="IOC接口(BeanFactory)"></a>IOC接口(BeanFactory)</h3><ol>
+<li><p>IOC思想基于IOC容器完成，IOC容器底层就是对象工厂</p>
+</li>
+<li><p>Spring提供IOC容器两种实现方式(两个接口):</p>
+<ol>
+<li><h4 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory:"></a>BeanFactory:</h4><p>IOC容器基本实现，是Spring内部的使用接口，一般不提供开发人员使用</p>
+<p>==<strong>加载配置文件时，不会创建对象，在获取/使用对象时，才会创建对象。</strong>==</p>
+<p><img src="https://s2.loli.net/2022/01/19/4sZySd1oKvAmn7i.png" alt="image-20220119004715201"></p>
+</li>
+<li><h4 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext:"></a>ApplicationContext:</h4><p>BeanFactory接口的子接口，提供更多更强大的功能，一般由开发人员使用</p>
+<p><strong>==加载配置文件时，就会把在配置文件中的对象进行创建。==</strong>只要做了bean配置(有bean标签)</p>
+<p><img src="https://s2.loli.net/2022/01/19/QhRVEzCJqPykFAi.png" alt="image-20220119005217032"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="哪个好？"><a href="#哪个好？" class="headerlink" title="哪个好？"></a>哪个好？</h4><p>第一种虽然可以节约资源，因为用的时候才创建。但因为用的Spring框架，要结合web项目进行使用，即要使用tomcat将服务器启动，则把创建对象这种耗时耗资源的操作，都在项目启动时进行处理。服务器启动过程中，就去创建这个对象，而不是之后操作中才创建。</p>
+<h5 id="所以，一般使用第二种！"><a href="#所以，一般使用第二种！" class="headerlink" title="所以，一般使用第二种！"></a>所以，一般使用第二种！</h5><h4 id="ApplicationContext的实现类"><a href="#ApplicationContext的实现类" class="headerlink" title="ApplicationContext的实现类"></a>ApplicationContext的实现类</h4><p>两个主要的：</p>
+<p><img src="https://s2.loli.net/2022/01/19/81wFyGMP3BV4WOU.png" alt="image-20220119010458141"></p>
+<h5 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h5><p><strong>1中是加盘符(如E盘)的完整文件路径</strong></p>
+<p><strong>2中是文件在类中的路径(相当于相对路径)</strong></p>
+<h3 id="什么是Bean管理"><a href="#什么是Bean管理" class="headerlink" title="什么是Bean管理"></a>什么是Bean管理</h3><ol>
+<li><p>Bean管理指的是两个操作</p>
+</li>
+<li><p>Spring创建对象</p>
+</li>
+<li>Spring注入属性</li>
+</ol>
+<h4 id="Bean管理操作有两种方式"><a href="#Bean管理操作有两种方式" class="headerlink" title="Bean管理操作有两种方式"></a>Bean管理操作有两种方式</h4><ol>
+<li>基于xml配置文件方式实现</li>
+<li>基于注解方式实现</li>
+</ol>
+<h4 id="IOC操作Bean管理-基于xml"><a href="#IOC操作Bean管理-基于xml" class="headerlink" title="IOC操作Bean管理(基于xml)"></a>IOC操作Bean管理(基于xml)</h4><ol>
+<li><h5 id="基于xml方式创建对象"><a href="#基于xml方式创建对象" class="headerlink" title="基于xml方式创建对象"></a>基于xml方式创建对象</h5><ol>
+<li>在spring配置文件中，使用bean标签，标签里面添加对应属性，就可以实现对象创建</li>
+<li><p>在bean标签中，有很多属性</p>
+<ul>
+<li>id属性：给要获取的对象取的唯一标识</li>
+<li>class属性：类全路径(包名.类)</li>
+</ul>
+</li>
+<li><p>构建对象时，默认使用的是无参构造方法</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>如：</p>
+<p><img src="https://s2.loli.net/2022/01/28/pTfkvWKjF9aLJRY.png" alt="image-20220122003902640"></p>
+<ol>
+<li><h5 id="基于xml方式注入属性"><a href="#基于xml方式注入属性" class="headerlink" title="基于xml方式注入属性"></a>基于xml方式注入属性</h5><p>​    DI：依赖注入，就是注入属性(在创建对象的基础上，进行属性注入)</p>
+<ol>
+<li><p>第一种注入方式：使用set方法进行注入</p>
+<ol>
+<li>创建类：定义属性和对应的set方法</li>
+<li>在spring配置文件中配置文件创建，配置属性注入</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/98xAQVJtg3IMSdv.png" alt="image-20220123010021903"></p>
+</li>
+<li><p>第二种注入方式：使用有参构造进行注入</p>
+<ol>
+<li>创建类，定义属性，创建属性对应的有参构造方法</li>
+<li>在spring配置文件中，进行配置</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/JmbNAV1xwlKCyvi.png" alt="image-20220123005934953"></p>
+</li>
+</ol>
+</li>
+<li><h5 id="xml注入其他类型属性"><a href="#xml注入其他类型属性" class="headerlink" title="xml注入其他类型属性"></a>xml注入其他类型属性</h5><ol>
+<li><h6 id="注入属性—字面量：设置的固定的内容，如属性的值等。"><a href="#注入属性—字面量：设置的固定的内容，如属性的值等。" class="headerlink" title="注入属性—字面量：设置的固定的内容，如属性的值等。"></a>注入属性—字面量：设置的固定的内容，如属性的值等。</h6><ol>
+<li>null</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/Sgy4eP7LBfJlpNz.png" alt="image-20220123011606184"></p>
+<ol>
+<li>设置的属性值中包含特殊符号</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/gKelrsx61DImE4i.png" alt="image-20220123012202077"></p>
+</li>
+<li><h6 id="注入属性—外部bean-ref，即为注入外部bean的标志"><a href="#注入属性—外部bean-ref，即为注入外部bean的标志" class="headerlink" title="注入属性—外部bean (ref，即为注入外部bean的标志)"></a><strong>注入属性—外部bean (ref，即为注入外部bean的标志)</strong></h6><ol>
+<li>创建两个类service类和dao类</li>
+<li>在service调用dao里面的方法</li>
+<li>在spring配置文件中进行配置</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/F5JRBr8alThvkMn.png" alt="image-20220123015718866"></p>
+<p>结果：</p>
+<p><img src="https://s2.loli.net/2022/01/23/ewng6kGF4Sm1pVl.png" alt="image-20220123020139091"></p>
+</li>
+<li><h6 id="注入属性—内部bean和级联赋值"><a href="#注入属性—内部bean和级联赋值" class="headerlink" title="注入属性—内部bean和级联赋值"></a>注入属性—内部bean和级联赋值</h6><p><strong>内部bean：</strong></p>
+<ol>
+<li>选取1对多的关系：如，部门和员工</li>
+<li>表示1对多的关系</li>
+<li>在spring配置文件中进行配置</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/z1ImZonDvYBfSjH.png" alt="image-20220123184748289"></p>
+<p><strong>级联赋值：</strong>(给emp赋值的同时，给deptName赋值)</p>
+<p>给有关联的类的属性同时进行赋值</p>
+<p><strong>法1</strong></p>
+<p><img src="https://s2.loli.net/2022/01/23/LoQyAkdTpYqIjwg.png" alt="image-20220123192012953"></p>
+<p>即，通过外部bean实现属性注入，从而进行级联赋值。</p>
+<p><strong>法2</strong></p>
+<p><img src="https://s2.loli.net/2022/01/23/2Co6iT19ygu4prM.png" alt="image-20220123193506941"></p>
+</li>
+<li><h6 id="注入属性—集合类型"><a href="#注入属性—集合类型" class="headerlink" title="注入属性—集合类型"></a>注入属性—集合类型</h6><ol>
+<li>数组类型</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/W4Nsgnj7ZpOd1VD.png" alt="image-20220123211318723"></p>
+<ol>
+<li>list类型</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/OxIYSimJdCk67QN.png" alt="image-20220123211406730"></p>
+<ol>
+<li>map类型</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/8DFTL6gwMn4tpbA.png" alt="image-20220123211510255"></p>
+<ol>
+<li>set类型</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/23/SAfhra5Yb8duELU.png" alt="image-20220123211605712"></p>
+<h6 id="7-两个点："><a href="#7-两个点：" class="headerlink" title="7. 两个点："></a>7. 两个点：</h6><p><img src="https://s2.loli.net/2022/01/23/CUKPr67I58MNXoL.png" alt="image-20220123232903521"></p>
+<p><img src="https://s2.loli.net/2022/01/24/bcjpBuQ4d3hS7vP.png" alt="image-20220123232809036"></p>
+<p><strong>抽取出来，成为公共部分</strong></p>
+<p><img src="https://s2.loli.net/2022/01/23/E4XJQ35H2VKDZBp.png" alt="image-20220123233956654"></p>
+<p><img src="https://s2.loli.net/2022/01/23/qCKp6bVWUcuYhaO.png" alt="image-20220123233910031"></p>
+<p><img src="https://s2.loli.net/2022/01/23/gt3VoPYKT92D5MR.png" alt="image-20220123234546772"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="IOC操作Bean管理-FactoryBean"><a href="#IOC操作Bean管理-FactoryBean" class="headerlink" title="IOC操作Bean管理(FactoryBean)"></a>IOC操作Bean管理(FactoryBean)</h4><ol>
+<li><p>Spring有两种类型bean，一种普通bean，另一种工厂bean(FactoryBean)</p>
+</li>
+<li><p>普通bean：在配置文件中定义的bean类型就是返回的类型</p>
+</li>
+<li><p>工厂bean：在配置文件中定义的bean类型可以和返回的类型不一样</p>
+<ol>
+<li><p>第一步：创建类，让这个类作为工厂bean，实现接口FactoryBean</p>
+</li>
+<li><p><img src="https://s2.loli.net/2022/01/24/o9YFxJhQ3tGOg56.png" alt="image-20220124004258839"></p>
+</li>
+<li><p>第二步：实现接口里面的方法，在实现的方法中定义返回的bean类型</p>
+<p><img src="https://s2.loli.net/2022/01/24/c57daHVtYyPGfCz.png" alt="image-20220124004231461"></p>
+<h6 id="定义的返回类型是MyBean："><a href="#定义的返回类型是MyBean：" class="headerlink" title="定义的返回类型是MyBean："></a>定义的返回类型是MyBean：</h6><p><img src="https://s2.loli.net/2022/01/24/CKO29r6oQvNWjGY.png" alt="image-20220124004757107"></p>
+<h6 id="实际的返回类型是Book："><a href="#实际的返回类型是Book：" class="headerlink" title="实际的返回类型是Book："></a>实际的返回类型是Book：</h6><p><img src="https://s2.loli.net/2022/01/24/EKyx6NGDQwrmUI2.png" alt="image-20220124004417185"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="IOC操作Bean管理-Bean作用域"><a href="#IOC操作Bean管理-Bean作用域" class="headerlink" title="IOC操作Bean管理(Bean作用域)"></a>IOC操作Bean管理(Bean作用域)</h4><ol>
+<li>在spring里面，设置创建的bean实例是单实例还是多实例。</li>
+<li>在spring里面，默认情况下，bean是单实例对象。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/24/yJIFapERiM9wTbP.png" alt="image-20220124182142662"></p>
+<p>也就是说，虽然生成了两个实例，但指的是同一个对象空间，即地址相同。</p>
+<ol>
+<li><p>设置单实例还是多实例的方法</p>
+<ol>
+<li><p>在spring中，bean标签里面有scope属性进行设置</p>
+</li>
+<li><p>scope常用属性值：singleton和prototype</p>
+<ol>
+<li>singleton：默认值，表示是单实例对象</li>
+<li>prototype: 表示是多实例对象</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/24/LWXmsGUIl3afxw7.png" alt="image-20220124185403859"></p>
+<p>二者区别：</p>
+<pre><code>1. **设置为singleton，在加载spring配置文件时，就会默认进行创建单实例对象**
+2. **设置为prototype，在调用getBean方法时，才去创建多实例对象**
+</code></pre></li>
+</ol>
+</li>
+</ol>
+<h4 id="IOC操作Bean管理-Bean生命周期"><a href="#IOC操作Bean管理-Bean生命周期" class="headerlink" title="IOC操作Bean管理(Bean生命周期)"></a>IOC操作Bean管理(Bean生命周期)</h4><ol>
+<li><p>生命周期</p>
+<p>对象从创建到销毁的过程</p>
+</li>
+<li><p>bean生命周期</p>
+<ol>
+<li>通过构造器创建bean实例(无参数构造)</li>
+<li>为bean的属性设置值和对其他bean的引用(调用set方法)</li>
+<li>调用bean的初始化方法(需要进行配置)</li>
+<li>bean可以使用(获取到对象)</li>
+<li>当容器关闭时，调用bean的销毁方法(需要进行配置)</li>
+</ol>
+</li>
+<li><p>代码: </p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Orders</span>&#123;</span><br><span class="line">    <span class="comment">// 无参构造方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Orders</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;第一步 执行无参构造创建bean实例&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> String oname;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setOname</span><span class="params">(String oname)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.oname = oname;</span><br><span class="line">        System.out.println(<span class="string">&quot;第二步 调用set方法设置属性值&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建执行的初始化的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">initMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;第三步 执行初始化的方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建执行的销毁的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroyMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;第五步 执行销毁的方法&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;bean id=<span class="string">&quot;orders&quot;</span> class=<span class="string">&quot;com.test.spring5.bean.Orders&quot;</span> init-method=<span class="string">&quot;initMethod&quot;</span> destroy-method=<span class="string">&quot;destroyMethod&quot;</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;oname&quot;</span> value=<span class="string">&quot;手机&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testBean</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">ClassPathXmlApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> </span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;bean4.xml&quot;</span>);</span><br><span class="line">    <span class="type">Orders</span> <span class="variable">orders</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;orders&quot;</span>, Orders.class);</span><br><span class="line">    System.out.println(<span class="string">&quot;第四步 获取创建bean实例对象&quot;</span>);</span><br><span class="line">    context.close();</span><br><span class="line">    <span class="comment">/* 或</span></span><br><span class="line"><span class="comment">    ApplicationContext context = </span></span><br><span class="line"><span class="comment">    	new ClassPathXmlApplicationContxt(&quot;bean4.xml&quot;);</span></span><br><span class="line"><span class="comment">    (ClassPathXmlApplicationContext)context.close();</span></span><br><span class="line"><span class="comment">    因为ApplicationContext这个接口没有close方法，所以只能用实现该接口的类的close方法</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>bean的后置处理器，此时bean生命周期有七步：</p>
+<ol>
+<li>通过构造器创建bean实例(无参数构造)</li>
+<li>为bean的属性设置值和对其他bean的引用(调用set方法)</li>
+<li>把bean实例传递bean后置处理器的方法</li>
+<li>调用bean的初始化方法(需要进行配置)</li>
+<li>把bean实例传递bean后置处理器的方法</li>
+<li>bean可以使用(获取到对象)</li>
+<li>当容器关闭时，调用bean的销毁方法(需要进行配置)</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/25/ue9RpQPyAY1omWn.png" alt="image-20220125001452518"></p>
+<p>给其上所有的bean配置都加上后置处理器。</p>
+<p><img src="https://s2.loli.net/2022/01/28/8NUhvqbkLtI1XBa.png" alt="image-20220125001800193"></p>
+<p><img src="https://s2.loli.net/2022/01/25/hqonRZM74U82T9p.png" alt="image-20220125001607128"></p>
+</li>
+</ol>
+<h4 id="IOC操作Bean管理-xml自动装配"><a href="#IOC操作Bean管理-xml自动装配" class="headerlink" title="IOC操作Bean管理(xml自动装配)"></a>IOC操作Bean管理(xml自动装配)</h4><p>(该方法不常用，一般使用注解方式)</p>
+<ol>
+<li><h5 id="什么是自动装配"><a href="#什么是自动装配" class="headerlink" title="什么是自动装配"></a>什么是自动装配</h5><ol>
+<li>根据指定装配规则(属性名称或属性类型)，Spring自动将匹配的属性进行注入</li>
+</ol>
+</li>
+<li><h5 id="两种方法"><a href="#两种方法" class="headerlink" title="两种方法"></a>两种方法</h5><ol>
+<li><h5 id="byName：此时要求，注入的bean名和类中的属性的实例名一样"><a href="#byName：此时要求，注入的bean名和类中的属性的实例名一样" class="headerlink" title="byName：此时要求，注入的bean名和类中的属性的实例名一样"></a>byName：此时要求，注入的bean名和类中的属性的实例名一样</h5><p>即，此处的外部bean中id=”dept”，Emp类中要有一个Dept dept; 这样才可以装配成功</p>
+<p><img src="https://s2.loli.net/2022/01/25/KtQqgwumLMJnp5H.png" alt="image-20220125135601553"></p>
+</li>
+<li><h5 id="byType：此时要求，注入的bean，只能有一个Dept类型的"><a href="#byType：此时要求，注入的bean，只能有一个Dept类型的" class="headerlink" title="byType：此时要求，注入的bean，只能有一个Dept类型的"></a>byType：此时要求，注入的bean，只能有一个Dept类型的</h5><p>否则，不知道对应哪个。</p>
+<p><img src="https://s2.loli.net/2022/01/25/uNF9nmZrWvSaphB.png" alt="image-20220125140733132"></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="IOC操作Bean管理-外部属性文件"><a href="#IOC操作Bean管理-外部属性文件" class="headerlink" title="IOC操作Bean管理(外部属性文件)"></a>IOC操作Bean管理(外部属性文件)</h4><h5 id="将不变的定值部分提取出来，常用于数据库中配置"><a href="#将不变的定值部分提取出来，常用于数据库中配置" class="headerlink" title="将不变的定值部分提取出来，常用于数据库中配置"></a><strong>将不变的定值部分提取出来，常用于数据库中配置</strong></h5><h5 id="两种方式："><a href="#两种方式：" class="headerlink" title="两种方式："></a>两种方式：</h5><ol>
+<li><p>直接配置数据库信息</p>
+<ol>
+<li><p>配置druid连接池</p>
+</li>
+<li><p>引入druid连接池依赖jar包</p>
+<p><img src="https://s2.loli.net/2022/01/25/c8IMAxRjWLwQVqD.png" alt="image-20220125223504046"></p>
+<p><img src="https://s2.loli.net/2022/01/25/iuMGlxVDrb5c8kj.png" alt="image-20220125223719398"></p>
+</li>
+</ol>
+</li>
+<li><p>引入外部属性文件配置数据库连接池</p>
+<ol>
+<li><p>创建外部属性文件，.properties格式，写数据库信息</p>
+<p><img src="https://s2.loli.net/2022/01/25/RNCoVimge8Wx4sb.png" alt="image-20220125224447186"></p>
+</li>
+<li><p>把外部properties属性文件引入到spring配置文件中</p>
+<ol>
+<li><p>引入context命名空间</p>
+<p><img src="https://s2.loli.net/2022/01/25/eA57xk84TUygYtr.png" alt="image-20220125224703623"></p>
+<p>画横线的上边，所有的beans都改为context即可</p>
+</li>
+<li><p>在spring配置文件中，使用标签引入外部属性文件</p>
+<p><img src="https://s2.loli.net/2022/01/25/7US6JkdrCy3gvcZ.png" alt="image-20220125225142909"></p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="IOC操作Bean管理-基于注解"><a href="#IOC操作Bean管理-基于注解" class="headerlink" title="IOC操作Bean管理(基于注解)"></a>IOC操作Bean管理(基于注解)</h4><h5 id="注解的概念"><a href="#注解的概念" class="headerlink" title="注解的概念"></a>注解的概念</h5><ol>
+<li>注解是代码特殊标记，格式：@注解名称(属性名称=属性值，…)</li>
+<li>注解的位置：可以放在类上面、属性上面、方法上面</li>
+<li>使用注解的目的：简化xml配置</li>
+</ol>
+<h5 id="Spring针对bean管理中的创建对象的注解"><a href="#Spring针对bean管理中的创建对象的注解" class="headerlink" title="Spring针对bean管理中的创建对象的注解"></a>Spring针对bean管理中的创建对象的注解</h5><ol>
+<li>@Component(各种都可)</li>
+<li>@Service(Service层)</li>
+<li>@Controller(Web层)</li>
+<li>@Repository(Dao层)</li>
+</ol>
+<p>功能一样，都可以用来创建bean实例，但为了使代码整体结构明了，常用于不同的层中</p>
+<h5 id="基于注解方式实现对象创建"><a href="#基于注解方式实现对象创建" class="headerlink" title="基于注解方式实现对象创建"></a>基于注解方式实现对象创建</h5><ol>
+<li><p>引入依赖包</p>
+<p><img src="https://s2.loli.net/2022/01/27/lPhf37YjZtLqCN6.png" alt="image-20220127230046239"></p>
+</li>
+<li><p>开启组件扫描</p>
+</li>
+<li><p>过程</p>
+<p><img src="https://s2.loli.net/2022/01/26/TRegU3IoNQxsSHV.png" alt="image-20220126170012555"></p>
+<p><img src="https://s2.loli.net/2022/01/26/OvQacp6xbD25yWn.png" alt="image-20220126170249846"></p>
+</li>
+</ol>
+<p>首先加载配置文件bean1.xml，之后开始进行组件扫描，扫描给定的包中的文件，按照所给注解创建对象，再调用方法输出内容。</p>
+<h4 id="IOC操作Bean管理-组件扫描配置"><a href="#IOC操作Bean管理-组件扫描配置" class="headerlink" title="IOC操作Bean管理(组件扫描配置)"></a>IOC操作Bean管理(组件扫描配置)</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> &lt;!--这种情况下，会扫描所给包下的所有文件的所有注解--&gt;</span><br><span class="line">&lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">&quot;com.test.spring5&quot;</span>&gt;&lt;/context:component-scan&gt;</span><br><span class="line">    </span><br><span class="line"> &lt;!--示例<span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    use-<span class="keyword">default</span>-filters=<span class="string">&quot;false&quot;</span> 表示现在不使用默认filters，自己进行配置</span><br><span class="line">    context:include-filter,设置扫描哪些内容</span><br><span class="line">    也就是说，此时只扫描所给包下，所有的有Controller注解的类</span><br><span class="line"> --&gt;</span><br><span class="line">&lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">&quot;com.test.spring5&quot;</span> use-<span class="keyword">default</span>-filters=<span class="string">&quot;false&quot;</span>&gt;</span><br><span class="line">	&lt;context:include-filter type=<span class="string">&quot;annotation&quot;</span></span><br><span class="line">        					expression=<span class="string">&quot;org.springframework.stereotype.Controller&quot;</span>/&gt;    </span><br><span class="line">&lt;/context:component-scan&gt;</span><br><span class="line">    </span><br><span class="line">&lt;!--示例<span class="number">2</span></span><br><span class="line">    </span><br><span class="line">    context:exclude-filter, 设置不扫描哪些内容</span><br><span class="line">--&gt;</span><br><span class="line">&lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">&quot;com.test.spring5&quot;</span>&gt;</span><br><span class="line">    &lt;context:exclude-filter type=<span class="string">&quot;annotation&quot;</span></span><br><span class="line">        					expression-<span class="string">&quot;org.springframework.stereotype.Controller&quot;</span>/&gt;</span><br><span class="line">&lt;/context:component-scan&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="基于注解方式实现属性注入"><a href="#基于注解方式实现属性注入" class="headerlink" title="基于注解方式实现属性注入"></a>基于注解方式实现属性注入</h4><h5 id="AutoWired"><a href="#AutoWired" class="headerlink" title="@AutoWired"></a>@AutoWired</h5><h6 id="根据属性类型进行自动装配"><a href="#根据属性类型进行自动装配" class="headerlink" title="根据属性类型进行自动装配"></a>根据属性类型进行自动装配</h6><p><img src="https://s2.loli.net/2022/01/26/lKsOVnNEo21YXMG.png" alt="image-20220126190154264"></p>
+<p><img src="https://s2.loli.net/2022/01/26/cyiwDjpYNbxKPtm.png" alt="image-20220126190223331"></p>
+<p><strong>实现类 要有 创建对象 的注解</strong></p>
+<p><img src="https://s2.loli.net/2022/01/26/e5bzmya76si1qpc.png" alt="image-20220126190102415"></p>
+<h5 id="Qualifier"><a href="#Qualifier" class="headerlink" title="@Qualifier"></a>@Qualifier</h5><h6 id="根据属性名称进行注入"><a href="#根据属性名称进行注入" class="headerlink" title="根据属性名称进行注入"></a>根据属性名称进行注入</h6><p> 常常放在@AutoWired下面，二者一起使用(当一个接口有多个实现类时，通过实现类名称确定使用哪个)</p>
+<p>其值value要与实现类的创建注解中的value一致</p>
+<p><img src="https://s2.loli.net/2022/01/28/ciDAnByEufeVLSh.png" alt="image-20220126210553992"></p>
+<p><img src="https://s2.loli.net/2022/01/26/uMkRmvZlOb3Exr6.png" alt="image-20220126210420160"></p>
+<h5 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a>@Resource</h5><h6 id="可以根据类型注入，也可以根据名称注入"><a href="#可以根据类型注入，也可以根据名称注入" class="headerlink" title="可以根据类型注入，也可以根据名称注入"></a>可以根据类型注入，也可以根据名称注入</h6><p>根据类型注入时，直接@Resource即可</p>
+<p>根据名称注入：</p>
+<p><img src="https://s2.loli.net/2022/01/26/A7mdRxOcqfjSCLi.png" alt="image-20220126211243420"></p>
+<blockquote>
+<p>因为Resource实质上并不属于Spring，而是属于javax包，故而，Spring官方建议使用前两种。</p>
+</blockquote>
+<h5 id="Value"><a href="#Value" class="headerlink" title="@Value"></a>@Value</h5><h6 id="注入普通类型的属性值"><a href="#注入普通类型的属性值" class="headerlink" title="注入普通类型的属性值"></a>注入普通类型的属性值</h6><p><img src="https://s2.loli.net/2022/01/26/p5o2zIWXDc6PCSb.png" alt="image-20220126212117946"></p>
+<p><img src="https://s2.loli.net/2022/01/26/DPcTgbeuK7LBXQh.png" alt="image-20220126212143138"></p>
+<h4 id="IOC操作Bean管理-完全注解开发"><a href="#IOC操作Bean管理-完全注解开发" class="headerlink" title="IOC操作Bean管理(完全注解开发)"></a>IOC操作Bean管理(完全注解开发)</h4><h5 id="创建配置类，替代xml文件"><a href="#创建配置类，替代xml文件" class="headerlink" title="创建配置类，替代xml文件"></a>创建配置类，替代xml文件</h5><p>注意配置注解@Configuration和组件扫描注解@ComponentScan</p>
+<p><img src="https://s2.loli.net/2022/01/26/YNfmIMoj8viDxQ5.png" alt="image-20220126215512250"></p>
+<h5 id="创建测试类"><a href="#创建测试类" class="headerlink" title="创建测试类"></a>创建测试类</h5><p><img src="https://s2.loli.net/2022/01/26/iaI2TxNmkyFwQAH.png" alt="image-20220126215751386"></p>
+<h2 id="Aop"><a href="#Aop" class="headerlink" title="Aop"></a>Aop</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>面向切面(方面)编程</p>
+<ol>
+<li><p>利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率</p>
+</li>
+<li><p>即，不修改原本的源代码，在原有的主干功能的基础上，(通过增加模块的方式)增添新的功能</p>
+</li>
+<li><p>例子：</p>
+<p><img src="https://s2.loli.net/2022/01/26/VynzSlPpexdoKUG.png" alt="image-20220126221631626"></p>
+</li>
+</ol>
+<h3 id="AOP底层原理"><a href="#AOP底层原理" class="headerlink" title="AOP底层原理"></a>AOP底层原理</h3><h4 id="AOP底层使用动态代理"><a href="#AOP底层使用动态代理" class="headerlink" title="AOP底层使用动态代理"></a>AOP底层使用动态代理</h4><h5 id="有接口，使用JDK动态代理"><a href="#有接口，使用JDK动态代理" class="headerlink" title="有接口，使用JDK动态代理"></a>有接口，使用JDK动态代理</h5><p>创建接口的实现类代理对象，增强类的方法</p>
+<p><img src="https://s2.loli.net/2022/01/26/Zur8WcIRMFXGy3f.png" alt="image-20220126224949978"></p>
+<h5 id="无接口，使用CGLIB动态代理"><a href="#无接口，使用CGLIB动态代理" class="headerlink" title="无接口，使用CGLIB动态代理"></a>无接口，使用CGLIB动态代理</h5><p>   创建当前类的子类代理对象，增强类的方法</p>
+<p><img src="https://s2.loli.net/2022/01/27/QIh9i6l3tpAdv5U.png" alt="image-20220126225018496"></p>
+<h4 id="动态代理实现"><a href="#动态代理实现" class="headerlink" title="动态代理实现"></a>动态代理实现</h4><h5 id="Proxy类"><a href="#Proxy类" class="headerlink" title="Proxy类"></a>Proxy类</h5><h6 id="创建代理对象的方法"><a href="#创建代理对象的方法" class="headerlink" title="创建代理对象的方法"></a>创建代理对象的方法</h6><p><img src="https://s2.loli.net/2022/01/27/gM5ZpkOuAvnWqbG.png" alt="image-20220127160252028"></p>
+<p><img src="https://s2.loli.net/2022/01/27/6UrZuQHcXgLktaG.png" alt="image-20220127160608351"></p>
+<p>三个参数：</p>
+<ul>
+<li>类加载器</li>
+<li>增强方法所在的类，其实现的接口，支持多个接口</li>
+<li>实现InvocationHandler接口，创建代理对象，其中写增强的方法</li>
+</ul>
+<h5 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h5><ol>
+<li><p>创建接口和接口实现类</p>
+<p><img src="https://s2.loli.net/2022/01/27/u46MYRbWSfxOHFJ.png" alt="image-20220127191831981"></p>
+<p><img src="https://s2.loli.net/2022/01/27/uI6AHgsoXvRqSi1.png" alt="image-20220127191811419"></p>
+</li>
+<li><p>使用Proxy类创建接口的动态代理</p>
+<p>使用newProxyInstance( )方法创建代理类UserDao的实例时，第一个参数是当前类的加载器，第二个参数是待创建代理的接口的Class对象，第三个是 将原有方法进行增强的 代理对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JdkProxy</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建接口实现类代理对象</span></span><br><span class="line">        Class[] interfaces = &#123;UserDao.class&#125;;</span><br><span class="line">        <span class="type">UserDaoImpl</span> <span class="variable">userDao</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserDaoImpl</span>();</span><br><span class="line">        <span class="type">UserDao</span> <span class="variable">dao</span> <span class="operator">=</span> (UserDao)Proxy.newProxyInstance(JdkProxy.class.getClassLoader(), interfaces, <span class="keyword">new</span> <span class="title class_">UserDaoProxy</span>(userDao));</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> dao.add(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 执行下方invoke方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;result: &quot;</span> + res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 创建代理对象代码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/1/27 18:07:27</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserDaoProxy</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 有参构造传递 需要代理对象的类</span></span><br><span class="line">    <span class="comment">// 此处是为了类型的广泛兼容，将UserDao扩展为Object</span></span><br><span class="line">    <span class="comment">// 因为是在之前的方法的基础上进行增强，故而需要获取之前的方法，便于执行</span></span><br><span class="line">    <span class="keyword">private</span> Object obj;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserDaoProxy</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.obj = obj;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Desc // 进行方法增强</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@date</span> 2022/1/27 18:45</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> proxy</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> method</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> Object&#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;方法之前执行 &quot;</span> + method.getName());</span><br><span class="line">        <span class="comment">// 此处执行增强前的方法</span></span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> method.invoke(obj, args);</span><br><span class="line">        System.out.println(<span class="string">&quot;方法之后执行 &quot;</span> + obj);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/27/Jv5yNefrbEdSgPQ.png" alt="image-20220127200058512"></p>
+<h3 id="AOP术语"><a href="#AOP术语" class="headerlink" title="AOP术语"></a>AOP术语</h3><h4 id="连接点"><a href="#连接点" class="headerlink" title="连接点"></a>连接点</h4><p>类中可以被增强的方法</p>
+<h4 id="切入点"><a href="#切入点" class="headerlink" title="切入点"></a>切入点</h4><p>类中实际被增强的方法</p>
+<h4 id="通知-增强"><a href="#通知-增强" class="headerlink" title="通知(增强)"></a>通知(增强)</h4><p>增强(加)的逻辑部分</p>
+<h5 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h5><ul>
+<li>前置通知：方法之前 执行</li>
+<li>后置通知：方法之后 执行</li>
+<li>环绕通知：方法之前和之后都有执行，类似上面的代码</li>
+<li>异常通知：当方法抛出异常时 执行</li>
+<li>最终通知：类似于try/catch块中的finally部分，不管是否抛出异常都会执行，但二者不同</li>
+</ul>
+<h4 id="切面"><a href="#切面" class="headerlink" title="切面"></a>切面</h4><p>是动作，将通知应用到切入点的过程，比如将权限判断应用到登录中这一过程</p>
+<h3 id="AOP操作"><a href="#AOP操作" class="headerlink" title="AOP操作"></a>AOP操作</h3><p><strong>Spring框架一般都是基于AspectJ实现AOP操作</strong></p>
+<h4 id="AspectJ"><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h4><p>本来是一个独立的AOP框架，为了开发时方便，一般将其和Spring框架一起使用，进行AOP操作。</p>
+<h4 id="基于AspectJ实现AOP操作"><a href="#基于AspectJ实现AOP操作" class="headerlink" title="基于AspectJ实现AOP操作"></a>基于AspectJ实现AOP操作</h4><h5 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h5><p>基于xml配置文件实现</p>
+<p>基于注解方式实现(常用)</p>
+<h4 id="引入四个依赖包"><a href="#引入四个依赖包" class="headerlink" title="引入四个依赖包"></a>引入四个依赖包</h4><p><img src="https://s2.loli.net/2022/01/27/dFu94iEQP3IRl8b.png" alt="image-20220127225753665"></p>
+<h4 id="切入点表达式"><a href="#切入点表达式" class="headerlink" title="切入点表达式"></a>切入点表达式</h4><h5 id="标识-增强的是哪个类中的哪个方法"><a href="#标识-增强的是哪个类中的哪个方法" class="headerlink" title="标识 增强的是哪个类中的哪个方法"></a>标识 增强的是哪个类中的哪个方法</h5><h5 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h5><p>execution({权限修饰符}{返回类型}{类全路径}{方法名称}({参数列表}) )</p>
+<h5 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h5><ol>
+<li>对com.test.spring5.UserDao中的add方法进行增强</li>
+</ol>
+<p>execution(<em> com.test.spring5.UserDao.add(..)) // 其中</em>表示任一权限，返回类型省略</p>
+<ol>
+<li>对com.test.spring5.UserDao中的所有方法进行增强</li>
+</ol>
+<p>execution(<em> com.test.spring5.UserDao.</em>(..))</p>
+<ol>
+<li>对com.test.spring5中的所有类的所有方法进行增强</li>
+</ol>
+<p>execution(<em> com.test.spring5.</em>.*(..))</p>
+<h4 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h4><ol>
+<li><p>创建待增强类和增强类</p>
+<p><img src="https://s2.loli.net/2022/01/27/ftL7Z1r6mojARJ5.png" alt="image-20220127222936095"></p>
+</li>
+<li><p>引入context和aop命名空间，开启注解扫描</p>
+<p><img src="https://s2.loli.net/2022/01/27/N32FiG9kyPatj85.png" alt="image-20220127223052786"></p>
+</li>
+<li><p>用注解的方式@Component生成两个类的实例，并用@Aspect注解标记增强类</p>
+<p><img src="https://s2.loli.net/2022/01/27/oUV2Fv9HKlES3ck.png" alt="image-20220127223113029"></p>
+<p><img src="https://s2.loli.net/2022/01/27/QlyYEcHOxd5uaCg.png" alt="image-20220127223227676"></p>
+</li>
+<li><p>创建五种类型的通知，并用注解进行标记</p>
+<p>加什么注解，增强后的方法就有什么</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 前置通知</span></span><br><span class="line"><span class="meta">@Before(value = &quot;execution(* com.test.spring5.aopanno.User.add(..))&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;before...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最终通知</span></span><br><span class="line"><span class="meta">@After(value = &quot;execution(* com.test.spring5.aopanno.User.add(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">after</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;After...&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 后置/返回通知</span></span><br><span class="line"><span class="meta">@AfterReturning(value = &quot;execution(* com.test.spring5.aopanno.User.add(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterReturning</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;After returning...&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异常通知</span></span><br><span class="line"><span class="meta">@AfterThrowing(value = &quot;execution(* com.test.spring5.aopanno.User.add(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterThrow</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;After throwing...&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 环绕通知</span></span><br><span class="line"><span class="meta">@Around(value = &quot;execution(* com.test.spring5.aopanno.User.add(..))&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">around</span><span class="params">(ProceedingJoinPoint proceedingJoinPoint)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;Before enhancing...&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 调用未增强的方法</span></span><br><span class="line">    proceedingJoinPoint.proceed();</span><br><span class="line"></span><br><span class="line">    System.out.println(<span class="string">&quot;After enhancing...&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<p><img src="https://s2.loli.net/2022/01/27/TNPsru12XWwGRZ3.png" alt="image-20220127223659348"></p>
+</li>
+<li><p>结果</p>
+<p><img src="https://s2.loli.net/2022/01/27/m98c3SVvRnBJFtq.png" alt="image-20220127223625592"></p>
+<p>首先执行环绕通知的前部分，然后执行方法的前置通知，原方法执行后，执行环绕通知后半部分，接着是最终通知，而后是后置/返回通知。<strong>若抛出异常，则会执行异常通知，此时其后置通知不会再执行(抛出异常后，其下语句不再执行)，但最终通知执行。</strong></p>
+<p><img src="https://s2.loli.net/2022/01/27/QRHOAfT6PdlVSbD.png" alt="image-20220127224220929"></p>
+</li>
+</ol>
+<h4 id="另外两个"><a href="#另外两个" class="headerlink" title="另外两个"></a>另外两个</h4><h5 id="提取出相同的切入点"><a href="#提取出相同的切入点" class="headerlink" title="提取出相同的切入点"></a>提取出相同的切入点</h5><p>比如上边的五个通知，注解中的value是一样的，就可以放在一起。则将来修改时，只用修改一处，也更加方便。</p>
+<p>只需增加一个@Pointcut注解</p>
+<p><img src="https://s2.loli.net/2022/01/27/bkypg5FzvJB2jn7.png" alt="image-20220127224853590"></p>
+<h5 id="设置增强类的执行优先级"><a href="#设置增强类的执行优先级" class="headerlink" title="设置增强类的执行优先级"></a>设置增强类的执行优先级</h5><p>若一个类有多个增强类，那么可以设置各个增强类执行的优先级</p>
+<p>增加@Order(数字类型)：数字越小，优先级越高</p>
+<p><img src="https://s2.loli.net/2022/01/27/ihZAMfEstm1kv2w.png" alt="image-20220127225050893"></p>
+<h2 id="JDBCTemplate"><a href="#JDBCTemplate" class="headerlink" title="JDBCTemplate"></a>JDBCTemplate</h2><h3 id="JdbcTemplate概述"><a href="#JdbcTemplate概述" class="headerlink" title="JdbcTemplate概述"></a>JdbcTemplate概述</h3><p>Spring框架对JDBC进行封装，使用JdbcTemplate方便实现对数据库操作</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><h4 id="引入相关的依赖"><a href="#引入相关的依赖" class="headerlink" title="引入相关的依赖"></a>引入相关的依赖</h4><p><img src="https://s2.loli.net/2022/01/27/GbmpaTrwkJNQV3B.png" alt="image-20220127231141941"></p>
+<h4 id="配置数据库连接池"><a href="#配置数据库连接池" class="headerlink" title="配置数据库连接池"></a>配置数据库连接池</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!--配置数据库连接池--&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;dataSource&quot;</span> class=<span class="string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span></span><br><span class="line">      destroy-method=<span class="string">&quot;close&quot;</span>&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;driverClassName&quot;</span> value=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;url&quot;</span> value=<span class="string">&quot;jdbc:mysql://localhost:3306/db_database10&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;username&quot;</span> value=<span class="string">&quot;root&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;password&quot;</span> value=<span class="string">&quot;654321&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="配置JdbcTemplate对象，注入DataSource"><a href="#配置JdbcTemplate对象，注入DataSource" class="headerlink" title="配置JdbcTemplate对象，注入DataSource"></a>配置JdbcTemplate对象，注入DataSource</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!--JdbcTemplate对象--&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;jdbcTemplate&quot;</span> class=<span class="string">&quot;org.springframework.jdbc.core.JdbcTemplate&quot;</span>&gt;</span><br><span class="line">    &lt;!--注入DataSource--&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;dataSource&quot;</span> ref=<span class="string">&quot;dataSource&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="创建service类和dao类，在dao中注入jdbcTemplate对象"><a href="#创建service类和dao类，在dao中注入jdbcTemplate对象" class="headerlink" title="创建service类和dao类，在dao中注入jdbcTemplate对象"></a>创建service类和dao类，在dao中注入jdbcTemplate对象</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BookService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookDao bookDao;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BookDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">BookDao</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdcTemplate;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JdbcTemplate操作数据库-添加功能"><a href="#JdbcTemplate操作数据库-添加功能" class="headerlink" title="JdbcTemplate操作数据库(添加功能)"></a>JdbcTemplate操作数据库(添加功能)</h3><h4 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h4><p>创建用户类，以数据表tb_user中的属性值为实例域，并生成getter和setter方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String userId;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">private</span> String userStatus;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在类中新增方法"><a href="#在类中新增方法" class="headerlink" title="在类中新增方法"></a>在类中新增方法</h4><h5 id="UserService类中新增addUser方法"><a href="#UserService类中新增addUser方法" class="headerlink" title="UserService类中新增addUser方法"></a>UserService类中新增addUser方法</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        userDao.add(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="UserDao类中新增add方法"><a href="#UserDao类中新增add方法" class="headerlink" title="UserDao类中新增add方法"></a>UserDao类中新增add方法</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(User user)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="UserDaoImpl中实现add方法"><a href="#UserDaoImpl中实现add方法" class="headerlink" title="UserDaoImpl中实现add方法"></a>UserDaoImpl中实现add方法</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(User user)</span> &#123;</span><br><span class="line">		<span class="comment">// 主要使用JdbcTemplate中的update方法进行新增</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;INSERT INTO tb_user VALUES(?,?,?)&quot;</span>;</span><br><span class="line">        Object[] args = &#123; user.getUserId(), user.getUserName(), user.getUserStatus() &#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">addNumber</span> <span class="operator">=</span> jdbcTemplate.update(sql, args);</span><br><span class="line">        System.out.println(addNumber);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateUser</span><span class="params">(User user)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;UPDATE tb_user SET user_id=?, user_name=?, user_status=? WHERE user_id=?&quot;</span>;</span><br><span class="line">        Object[] args = &#123; user.getUserId(), user.getUserName(), user.getUserStatus(), user.getUserId() &#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> jdbcTemplate.update(sql, args);</span><br><span class="line"></span><br><span class="line">        System.out.println(update);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(String id)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;DELETE FROM tb_user WHERE user_id = ?&quot;</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">update</span> <span class="operator">=</span> jdbcTemplate.update(sql, id);</span><br><span class="line">        System.out.println(update);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">select</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT COUNT(*) FROM tb_user&quot;</span>;</span><br><span class="line">        <span class="comment">// 方法的第二个参数为返回值的类类型</span></span><br><span class="line">        <span class="type">Integer</span> <span class="variable">count</span> <span class="operator">=</span> jdbcTemplate.queryForObject(sql, Integer.class);</span><br><span class="line">        <span class="type">int</span> <span class="variable">count1</span> <span class="operator">=</span> count;</span><br><span class="line">        <span class="keyword">return</span> count1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserTest</span> &#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addTest</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">ApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;bean1.xml&quot;</span>);</span><br><span class="line">        <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;userService&quot;</span>, UserService.class);</span><br><span class="line">        <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">User</span>();</span><br><span class="line">        user.setUserId(<span class="string">&quot;002&quot;</span>);</span><br><span class="line">        user.setUserName(<span class="string">&quot;张四&quot;</span>);</span><br><span class="line">        user.setUserStatus(<span class="string">&quot;Student&quot;</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line"></span><br><span class="line">        userService.addUser(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/01/28/xB7mg9XWj5wq8ru.png" alt="image-20220128165149416"></p>
+<h3 id="JdbcTemplate操作数据库-查询返回对象"><a href="#JdbcTemplate操作数据库-查询返回对象" class="headerlink" title="JdbcTemplate操作数据库(查询返回对象)"></a>JdbcTemplate操作数据库(查询返回对象)</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p><code>T t = queryForObject(String sql, RowMapper&lt;T&gt; rowMapper, Object... args)</code></p>
+<h4 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h4><h5 id="第一个参数：sql语句"><a href="#第一个参数：sql语句" class="headerlink" title="第一个参数：sql语句"></a>第一个参数：sql语句</h5><h5 id="第二个参数：RowMapper接口"><a href="#第二个参数：RowMapper接口" class="headerlink" title="第二个参数：RowMapper接口"></a>第二个参数：RowMapper接口</h5><p>针对不同返回类型，使用这个接口的实现类完成对数据的封装。泛型具体化为 什么类型，返回时，数据就被封装为 什么类型。</p>
+<h5 id="第三个参数：占位符代表的值"><a href="#第三个参数：占位符代表的值" class="headerlink" title="第三个参数：占位符代表的值"></a>第三个参数：占位符代表的值</h5><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="https://s2.loli.net/2022/01/28/Ysbt1yTzgulfwVG.png" alt="image-20220128210514151"></p>
+<h3 id="查询返回集合"><a href="#查询返回集合" class="headerlink" title="查询返回集合"></a>查询返回集合</h3><h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><p><code>List&lt;T&gt; t = jdbcTemplate.query(sql, RowMapper&lt;T&gt; rowMapper, Object... obj)</code></p>
+<p>三个参数同上，最后一个参数可以没有。</p>
+<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> List&lt;User&gt; <span class="title function_">findAllUser</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT * FROM tb_user&quot;</span>;</span><br><span class="line">    <span class="comment">// 这个方法重要，返回的是集合</span></span><br><span class="line">    List&lt;User&gt; userList = jdbcTemplate.query(sql, <span class="keyword">new</span> <span class="title class_">BeanPropertyRowMapper</span>&lt;User&gt;(User.class));</span><br><span class="line">    <span class="keyword">return</span> userList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="批量增加"><a href="#批量增加" class="headerlink" title="批量增加"></a>批量增加</h3><h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p><code>int[] ints = jdbcTemplate.batchUpdate(sql, List&lt;Object&gt; batchArgs)</code> </p>
+<h4 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h4><h5 id="第一个参数：sql语句-1"><a href="#第一个参数：sql语句-1" class="headerlink" title="第一个参数：sql语句"></a>第一个参数：sql语句</h5><h5 id="第二个参数：List集合，添加多条记录"><a href="#第二个参数：List集合，添加多条记录" class="headerlink" title="第二个参数：List集合，添加多条记录"></a>第二个参数：List集合，添加多条记录</h5><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><p><img src="https://s2.loli.net/2022/01/28/hoScOvU8rME5x63.png" alt="image-20220128213901809"></p>
+<p><img src="https://s2.loli.net/2022/01/28/oE4M7xipeT1N5lK.png" alt="image-20220128214324252"></p>
+<h3 id="批量删除和修改"><a href="#批量删除和修改" class="headerlink" title="批量删除和修改"></a>批量删除和修改</h3><h4 id="方法一样。"><a href="#方法一样。" class="headerlink" title="方法一样。"></a>方法一样。</h4><h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><h5 id="修改和增加的参数差不多"><a href="#修改和增加的参数差不多" class="headerlink" title="修改和增加的参数差不多"></a>修改和增加的参数差不多</h5><h5 id="删除的参数如下："><a href="#删除的参数如下：" class="headerlink" title="删除的参数如下："></a>删除的参数如下：</h5><p><img src="https://s2.loli.net/2022/01/28/3ous86klgJNdOZr.png" alt="image-20220128215811316"></p>
+<h2 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h2><h3 id="事务基本概念"><a href="#事务基本概念" class="headerlink" title="事务基本概念"></a>事务基本概念</h3><p>事务是数据库操作的最基本单元，逻辑上，一组操作要么都成功，要么都失败。</p>
+<h3 id="事务的四个特性-ACID"><a href="#事务的四个特性-ACID" class="headerlink" title="事务的四个特性(ACID)"></a>事务的四个特性(ACID)</h3><ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>隔离性</li>
+<li>永久性</li>
+</ul>
+<h3 id="事务操作的环境"><a href="#事务操作的环境" class="headerlink" title="事务操作的环境"></a>事务操作的环境</h3><p><img src="C:/Users/LISHANSHAN/AppData/Roaming/Typora/typora-user-images/image-20220128221411247.png" alt="image-20220128221411247"></p>
+<h4 id="创建数据表，添加记录"><a href="#创建数据表，添加记录" class="headerlink" title="创建数据表，添加记录"></a>创建数据表，添加记录</h4><p><img src="https://s2.loli.net/2022/01/28/SjkdGthBaTyRw8r.png" alt="image-20220128222344884"></p>
+<h4 id="创建service，搭建dao，完成对象创建和注入"><a href="#创建service，搭建dao，完成对象创建和注入" class="headerlink" title="创建service，搭建dao，完成对象创建和注入"></a>创建service，搭建dao，完成对象创建和注入</h4><p>同之前一样</p>
+<h4 id="事务引入"><a href="#事务引入" class="headerlink" title="事务引入"></a>事务引入</h4><p><img src="https://s2.loli.net/2022/01/28/5KTNFwh6AXa49nS.png" alt="image-20220128224344901"></p>
+<h3 id="Spring中事务管理"><a href="#Spring中事务管理" class="headerlink" title="Spring中事务管理"></a>Spring中事务管理</h3><h4 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h4><p>事务添加到JavaEE三层结构里面Service层(业务逻辑层)</p>
+<h4 id="在Spring中进行事务管理操作"><a href="#在Spring中进行事务管理操作" class="headerlink" title="在Spring中进行事务管理操作"></a>在Spring中进行事务管理操作</h4><p><strong>有两种方式：编程式事务管理(不常用)和声明式事务管理(常用)</strong></p>
+<p>编程式即，将上述过程，全用代码实现，复杂且庞大，故而一般不使用</p>
+<p>声明式即，将上述过程，通过配置的方式，进行实现。</p>
+<h4 id="声明式事务管理"><a href="#声明式事务管理" class="headerlink" title="声明式事务管理"></a>声明式事务管理</h4><h5 id="基于注解方式-常用"><a href="#基于注解方式-常用" class="headerlink" title="基于注解方式(常用)"></a>基于注解方式(常用)</h5><h5 id="基于xml文件方式"><a href="#基于xml文件方式" class="headerlink" title="基于xml文件方式"></a>基于xml文件方式</h5><h4 id="底层使用AOP原理"><a href="#底层使用AOP原理" class="headerlink" title="底层使用AOP原理"></a>底层使用AOP原理</h4><h4 id="事务管理API"><a href="#事务管理API" class="headerlink" title="事务管理API"></a>事务管理API</h4><p>提供一个接口，其针对不同的框架，提供了不同的实现类</p>
+<p>使用JdbcTemplate(和Mybatis)时</p>
+<p><img src="https://s2.loli.net/2022/01/29/3MjaGenVJsqog6Z.png" alt="image-20220129134645032"></p>
+<h3 id="声明式事务管理：注解"><a href="#声明式事务管理：注解" class="headerlink" title="声明式事务管理：注解"></a>声明式事务管理：注解</h3><h4 id="配置事务管理器"><a href="#配置事务管理器" class="headerlink" title="配置事务管理器"></a>配置事务管理器</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!--创建事务管理器--&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;transactionManager&quot;</span> class=<span class="string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span>&gt;</span><br><span class="line">    &lt;!--注入数据源--&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;dataSource&quot;</span> ref=<span class="string">&quot;dataSource&quot;</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="开启事务注解"><a href="#开启事务注解" class="headerlink" title="开启事务注解"></a>开启事务注解</h4><h5 id="引入名称空间tx"><a href="#引入名称空间tx" class="headerlink" title="引入名称空间tx"></a>引入名称空间tx</h5><p><img src="https://s2.loli.net/2022/01/29/4eMxkqtn72JjPiy.png" alt="image-20220129143603753"></p>
+<h5 id="开启事务注解-1"><a href="#开启事务注解-1" class="headerlink" title="开启事务注解"></a>开启事务注解</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;tx:annotation-driven transaction-manager=<span class="string">&quot;transactionManager&quot;</span>&gt;&lt;/tx:annotation-driven&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="在service类-或类中方法-上添加事务注解"><a href="#在service类-或类中方法-上添加事务注解" class="headerlink" title="在service类(或类中方法)上添加事务注解"></a>在service类(或类中方法)上添加事务注解</h5><p><img src="https://s2.loli.net/2022/01/29/i9OvuRpnSEFdgW2.png" alt="image-20220129162034905"></p>
+<p>可以在类上加该注解，也可以在方法上加。</p>
+<p>在类上加时，表示整个类中所有的方法，都具有事务属性</p>
+<p>在方法上加，只表示这个方法，是事务，具有事务属性。</p>
+<h4 id="管理事务的参数配置"><a href="#管理事务的参数配置" class="headerlink" title="管理事务的参数配置"></a>管理事务的参数配置</h4><p>在service类上面添加注解@Transactional，在这个注解里面可以配置事务相关参数</p>
+<h5 id="propagation：事务传播行为"><a href="#propagation：事务传播行为" class="headerlink" title="propagation：事务传播行为"></a>propagation：事务传播行为</h5><p>多个事务方法之间进行调用，这个过程中，事务是如何管理的。(就是，有事务方法调用没有事务方法，没有事务方法调用有事务方法，或者两个有事务方法之间调用之类的。)</p>
+<p>事务方法：对数据库表中数据进行变化的操作(查询行为就不是，因为数据未变化)</p>
+<h6 id="Spring框架事务传播行为有7种："><a href="#Spring框架事务传播行为有7种：" class="headerlink" title="Spring框架事务传播行为有7种："></a>Spring框架事务传播行为有7种：</h6><p>常用的两个：</p>
+<p>REQUIRED: 如果调用方法本身有事务，被调用方法使用当前方法里面的事务；如果调用方法本身没有事务，被调用方法，创建新的事务。(默认是这个)</p>
+<p>REQUIRED_NEW：不管调用方法本身有没有事务，被调用方法，都创建新的事务。</p>
+<p>@Transactional(propagation=REQUIRED_NEW)</p>
+<h5 id="isolation：事务隔离级别"><a href="#isolation：事务隔离级别" class="headerlink" title="isolation：事务隔离级别"></a>isolation：事务隔离级别</h5><p>多事务操作之间不会产生影响。不考虑隔离性会产生很多问题。</p>
+<h6 id="三个读问题"><a href="#三个读问题" class="headerlink" title="三个读问题"></a>三个读问题</h6><h6 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h6><p>一个未提交事务读取到另一个未提交事务</p>
+<h6 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h6><p>一个未提交事务读取到另一个已提交事务修改的数据</p>
+<h6 id="虚-幻读"><a href="#虚-幻读" class="headerlink" title="虚/幻读"></a>虚/幻读</h6><p>一个未提交事务读取到另一个已提交事务增加的数据</p>
+<h6 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h6><p>通过设置隔离级别，解决以上三个问题。</p>
+<p>默认是REPEATABLE_READ。</p>
+<p><img src="C:/Users/LISHANSHAN/AppData/Roaming/Typora/typora-user-images/image-20220129235129910.png" alt="image-20220129235129910"></p>
+<h5 id="timeout：超时时间"><a href="#timeout：超时时间" class="headerlink" title="timeout：超时时间"></a>timeout：超时时间</h5><p>事务需要在一定时间内提交，超时则进行回滚。</p>
+<p>默认值是-1(即，不超时)，设置时间以秒为单位进行计算。</p>
+<h5 id="readOnly：是否只读"><a href="#readOnly：是否只读" class="headerlink" title="readOnly：是否只读"></a>readOnly：是否只读</h5><p>读：查询操作；写：添加、修改、删除操作</p>
+<p>默认值为false，即可以查询，也可以修改、删除、添加等</p>
+<p>设置为true时，即为只能查询。</p>
+<h5 id="rollbackFor：回滚"><a href="#rollbackFor：回滚" class="headerlink" title="rollbackFor：回滚"></a>rollbackFor：回滚</h5><p>设置出现哪些异常进行事务回滚</p>
+<h5 id="noRollbackFor：不回滚"><a href="#noRollbackFor：不回滚" class="headerlink" title="noRollbackFor：不回滚"></a>noRollbackFor：不回滚</h5><p>设置出现哪些异常不进行事务回滚</p>
+<h3 id="完全注解方式"><a href="#完全注解方式" class="headerlink" title="完全注解方式"></a>完全注解方式</h3><h4 id="建立一个配置类"><a href="#建立一个配置类" class="headerlink" title="建立一个配置类"></a>建立一个配置类</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc 配置类注解，组件扫描注解，开启事务注解</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan(basePackages =&quot;com.test.spring5&quot;)</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TxConfig</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Desc 创建一个druid连接池的对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/1/30 21:40</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> DruidDataSource&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DruidDataSource <span class="title function_">getDruidDataSource</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">DruidDataSource</span> <span class="variable">dataSource</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DruidDataSource</span>();</span><br><span class="line">        dataSource.setDriverClassName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line">        dataSource.setUrl(<span class="string">&quot;jdbc:mysql://localhost:3306/db_database10&quot;</span>);</span><br><span class="line">        dataSource.setUsername(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        dataSource.setPassword(<span class="string">&quot;654321&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dataSource;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc 创建JdbcTemplate对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/1/30 21:45</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> dataSource</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> JdbcTemplate&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> JdbcTemplate <span class="title function_">getJdbcTemplate</span><span class="params">(DataSource dataSource)</span> &#123;</span><br><span class="line">        <span class="comment">// 在IOC容器中，已经存在这样一个对象，到IOC容器中，根据类型获取对象</span></span><br><span class="line">        <span class="type">JdbcTemplate</span> <span class="variable">jdbcTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JdbcTemplate</span>();</span><br><span class="line">        jdbcTemplate.setDataSource(getDruidDataSource());</span><br><span class="line">        <span class="keyword">return</span> jdbcTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc 创建事务管理器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/1/30 21:49</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> dataSource</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> DataSourceTransactionManager&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> DataSourceTransactionManager <span class="title function_">getDataTransactionManager</span><span class="params">(DataSource dataSource)</span>&#123;</span><br><span class="line">        <span class="type">DataSourceTransactionManager</span> <span class="variable">transactionManager</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>();</span><br><span class="line">        transactionManager.setDataSource(dataSource);</span><br><span class="line">        <span class="keyword">return</span> transactionManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testAccount</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">ApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> </span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">AnnotationConfigApplicationContext</span>(TxConfig.class);</span><br><span class="line">    <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;userService&quot;</span>, UserService.class);</span><br><span class="line">    userService.accountMoney();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Spring5-新特性"><a href="#Spring5-新特性" class="headerlink" title="Spring5 新特性"></a>Spring5 新特性</h2><ol>
+<li>整个Spring5框架的代码基于Java8，运行时兼容JDK9，许多不建议使用的类和方法在代码库中删除。</li>
+<li><p>Spring5自带了通用的日志封装</p>
+<ol>
+<li><p>Spring5已经移除了Log4jConfigListener，官方建议使用Log4j2</p>
+</li>
+<li><p>Spring5框架整合Log4j2</p>
+<ol>
+<li><p>引入jar包</p>
+<p><img src="https://s2.loli.net/2022/01/31/yW4GiDsE5ISPOMZ.png" alt="image-20220131203938791"></p>
+</li>
+<li><p>创建log4j2.xml配置文件</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="line">&lt;!--日志级别以及优先级排序：OFF&gt;FATAL&gt;ERROR&gt;WARN&gt;INFO&gt;DEBUG&gt;TRACE&gt;ALL--&gt;</span><br><span class="line">&lt;!--越往右，优先级越高，显示的内容越多--&gt;</span><br><span class="line">&lt;!--Configuration后面的status用于设置log4j2自身内部的信息输出，可以不设置，当设置为trace时，可以看到其内部的各种详细输出--&gt;</span><br><span class="line">&lt;configuration status=<span class="string">&quot;INFO&quot;</span>&gt;</span><br><span class="line">    &lt;appenders&gt;</span><br><span class="line">        &lt;!--输出日志信息到控制台--&gt;</span><br><span class="line">        &lt;console name=<span class="string">&quot;Console&quot;</span> target=<span class="string">&quot;SYSTEM_OUT&quot;</span>&gt;</span><br><span class="line">            &lt;!--控制日志输出的格式--&gt;</span><br><span class="line">            &lt;PatternLayout pattern=<span class="string">&quot;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%t] %-5level %logger&#123;36&#125; - %msg%n&quot;</span>/&gt;</span><br><span class="line">        &lt;/console&gt;</span><br><span class="line">    &lt;/appenders&gt;</span><br><span class="line">    &lt;!--定义logger，只有定义了logger并引入的appender，appender才会生效--&gt;</span><br><span class="line">    &lt;loggers&gt;</span><br><span class="line">        &lt;!--指定项目的根日志，如果没有单独指定Logger，则会使用root作为默认的日志输出--&gt;</span><br><span class="line">        &lt;root level=<span class="string">&quot;info&quot;</span>&gt;</span><br><span class="line">            &lt;appender-ref ref=<span class="string">&quot;Console&quot;</span>/&gt;</span><br><span class="line">        &lt;/root&gt;</span><br><span class="line">    &lt;/loggers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="Nullable注解"><a href="#Nullable注解" class="headerlink" title="@Nullable注解"></a>@Nullable注解</h3><ol>
+<li><p>Spring5框架核心容器支持@Nullable注解</p>
+</li>
+<li><p>@Nullable注解可以使用在方法上面、属性上面、参数上面，表示方法返回可以为空，属性值可以为空，参数值可以为空。</p>
+</li>
+</ol>
+<h3 id="支持函数式风格GenericApplicationContext"><a href="#支持函数式风格GenericApplicationContext" class="headerlink" title="支持函数式风格GenericApplicationContext"></a>支持函数式风格GenericApplicationContext</h3><p>Spring5框架核心容器支持函数式风格。</p>
+<p>利用lamda表达式，将手动创建的对象，在spring中，做个注册</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="comment">// 函数式风格创建对象，交给Spring进行管理</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">GenericApplicationContextTest</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">// 1. 创建GenericApplicationContext对象</span></span><br><span class="line">	<span class="type">GenericApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GenericApplicationContext</span>();</span><br><span class="line">    <span class="comment">// 2. 调用context的方法对象注册</span></span><br><span class="line">    context.refresh();</span><br><span class="line">    context.registerBean(<span class="string">&quot;user1&quot;</span>, User.class,()-&gt;<span class="keyword">new</span> <span class="title class_">User</span>());</span><br><span class="line">    <span class="comment">// 3. 获取在Spring注册的对象</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> (User)context.getBean(<span class="string">&quot;user1&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    System.out.println(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="整合JUnit5"><a href="#整合JUnit5" class="headerlink" title="整合JUnit5"></a>整合JUnit5</h3><h4 id="整合JUnit4"><a href="#整合JUnit4" class="headerlink" title="整合JUnit4"></a>整合JUnit4</h4><p>先，引入依赖spring-test-5.2.6.RELEASE.jar和JUnit4的library</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RunWith(SpringJUnit4ClassRunner.class)</span></span><br><span class="line"><span class="meta">@ContextConfiguration(&quot;classpath:bean1.xml&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Junit4Test</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span> &#123;</span><br><span class="line">        userService.selectCount();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="整合JUnit5-1"><a href="#整合JUnit5-1" class="headerlink" title="整合JUnit5"></a>整合JUnit5</h4><ol>
+<li>引入JUnit的jar包</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/01/1EW3SpFRPk9NtaT.png" alt="image-20220201144000598"></p>
+<p><img src="https://s2.loli.net/2022/02/01/OVx864NISmwgZly.png" alt="image-20220201144107119"></p>
+<p>加上这个导入语句后，就可以选择引入</p>
+<ol>
+<li><p>注解</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@ExtendWith(SpringExtension.class)</span></span><br><span class="line"><span class="meta">@ContextConfiguration(&quot;classpath:bean1.xml&quot;)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>符合注解，替代两个注解</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringJUnitConfig(locations=&quot;classpath:bean1.xml&quot;)</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
 </search>
