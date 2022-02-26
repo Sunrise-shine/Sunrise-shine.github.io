@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The-core-of-Java - Sunrise-shine的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Just do it!,第四章 对象与类第一节 面向对象程序设计概述类类使构造对象的模板或蓝图。可以将类想象成制作小甜饼的切割机，将对象想象为小甜饼。由类构造对象的过程称为创建类的实例。
+封装(有时称为数据隐藏)是与对象有,"> 
+    <meta name="author" content="Sunrise-shine"> 
+    <link rel="alternative" href="atom.xml" title="Sunrise-shine的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Sunrise-shine的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://Sunrise-shine.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">The-core-of-Java</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">The-core-of-Java</h1>
+        <div class="stuff">
+            <span>一月 01, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%A0%B8%E5%BF%83%E5%8D%B7%E4%B8%80/" rel="tag">核心卷一</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="第四章-对象与类"><a href="#第四章-对象与类" class="headerlink" title="第四章 对象与类"></a>第四章 对象与类</h1><h2 id="第一节-面向对象程序设计概述"><a href="#第一节-面向对象程序设计概述" class="headerlink" title="第一节 面向对象程序设计概述"></a>第一节 面向对象程序设计概述</h2><h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类使构造对象的模板或蓝图。可以将类想象成制作小甜饼的切割机，将对象想象为小甜饼。由类构造对象的过程称为创建类的实例。</p>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><p>(有时称为数据隐藏)是与对象有关的一个重要概念。从形式上看，封装不过是将数据和行为组合在一个包里，并对对象的使用者隐藏了数据的实现方式。对象中的数据称为实例域，操纵数据的过程成为方法。对每个特定的类实例(对象)都有一组特定的实例域值。这些值的集合就是这个对象的当前状态。不管何时，只要向对象发送一个消息，他的状态就有可能发生改变。</p>
+<p><strong>实现封装的关键在于绝对不能让类中的方法直接地访问其他类的实例域。程序仅通过对象的方法与对象数据进行交互。</strong></p>
+<p>这意味着一个类可以全面地改变存储数据的方式，只要仍然使用同样的方法操作数据，其他对象就不会知道或介意所发生的变化。</p>
+<p>OOP的另一个原则会让用户自定义Java类变得轻而易举，这就是：可以通过扩展一个类来建立另一个新的类。事实上，在Java中，所有的类都源自于一个“超类”，他就是Object。</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><h4 id="对象的三个主要特性："><a href="#对象的三个主要特性：" class="headerlink" title="对象的三个主要特性："></a>对象的三个主要特性：</h4><ul>
+<li>对象的行为(behavior) —— 可以对对象施加哪些操作，或可以对对象施法哪些方法？</li>
+<li>对象的状态(state) —— 当施加那些方法时，对象如何响应？</li>
+<li>对象标识(identity) —— 如何辨别具有相同行为与状态的不同对象？</li>
+</ul>
+<p>同一个类的所有对象实例，由于支持相同的行为而具有家族式的相似性。对象的行为是用可调用的方法定义的。</p>
+<p>此外，每个对象都保存着描述当前特征的信息。这就是对象的装填。对象状态的改变必须通过调用方法实现(如果不经过方法调用就可以改变对象的状态，只能说明封装性遭到了破坏)。</p>
+<p>但是，对象的状态并不能完全描述一个对象。每个对象都有一个唯一的身份(identity)。也就是说，作为一个类的实例，每个对象的标识永远是不同的，状态常常也存在着差异。</p>
+<h3 id="类之间的关系"><a href="#类之间的关系" class="headerlink" title="类之间的关系"></a>类之间的关系</h3><p>在类之间，最常见的关系有</p>
+<ul>
+<li>依赖(“uses-a”)</li>
+<li>聚合(“has-a”)</li>
+<li>继承(“is-a”)</li>
+</ul>
+<h4 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h4><p>即”uses-a”关系，是一种最明显的、最常见的关系。例如，Order(订单)类使用Account(账户)类是因为Order对象需要访问Account对象查看信用状态。但是Item类不依赖于Account类，这是因为Item对象与客户账户无关。因此，如果一个类的方法操纵另一个类的对象，就说一个类依赖于另一个类。</p>
+<p>应该尽可能地将相互依赖的类减至最少。就是让类之间的耦合度最小。</p>
+<h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p>即”has-a”关系，是一种具体且易于理解的关系。例如，一个Order对象包含一些Item(商品)类。</p>
+<p>聚合关系意味着类A的对象包含类B的对象。</p>
+<blockquote>
+<p>有些方法学家，会更喜欢使用“关联”这个术语，而不喜欢聚合这个概念。</p>
+</blockquote>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>即“is-a”关系，是一种用于表示特殊与一般关系的。例如，RushOrder类由Order类继承而来。在具有特殊性的RushOrder类中包含了一些用于优先处理的特殊方法，以及一个计算运费的不同方法。</p>
+<h2 id="第二讲-使用预定义类"><a href="#第二讲-使用预定义类" class="headerlink" title="第二讲 使用预定义类"></a>第二讲 使用预定义类</h2><h3 id="更改器方法与访问器方法"><a href="#更改器方法与访问器方法" class="headerlink" title="更改器方法与访问器方法"></a>更改器方法与访问器方法</h3><p><code>LocalDate aThousandDaysLater = newYearsEve.plusDays(1000);</code></p>
+<p>这个调用之后newYearsEve会有什么变化？他会改为1000天之后的日期吗？事实上，并没有。plusDays方法会生成一个新的LocalDate对象，然后把这个新对象赋给aThousandDaysLater变量。原来的对象不做任何改动。也就是说plusDays方法没有更改调用这个方法的对象。</p>
+<p>则称，只访问对象而不修改对象的方法为<strong>访问器方法</strong>(accessor method)。</p>
+<p><strong>更改器方法</strong>(mutator method)调用后，对象的状态会发生改变。</p>
+<h2 id="第三讲-用户自定义类"><a href="#第三讲-用户自定义类" class="headerlink" title="第三讲 用户自定义类"></a>第三讲 用户自定义类</h2><h3 id="隐式参数与显式参数"><a href="#隐式参数与显式参数" class="headerlink" title="隐式参数与显式参数"></a>隐式参数与显式参数</h3><p>方法用于操作对象以及存取它们的实例域。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">raiseSalary</span> <span class="params">(<span class="type">double</span> byPercent)</span> &#123;</span><br><span class="line">	<span class="type">double</span> <span class="variable">raise</span> <span class="operator">=</span> salary * byPercent/ <span class="number">100</span>;</span><br><span class="line">    salary = raise;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个方法有两个参数。第一个参数称为隐式(implicit)参数，是出现在方法名前面Employee对象。第二个参数是位于方法名后面括号中的数值，这是一个显式(explicit)参数。(隐式参数也就是方法调用的目标或接收者)</p>
+<h3 id="封装的优点"><a href="#封装的优点" class="headerlink" title="封装的优点"></a>封装的优点</h3><p><code>public double getSalary() &#123;return salary;&#125;</code></p>
+<p>如上是典型的访问器方法。由于它们只返回实例域值，因此又称为域访问器。</p>
+<p>那将salary域标记为public，以此来取代独立的访问器方法呢？</p>
+<p>假如salary是一个只读域，那么一旦在构造器中设置完毕，就没有任何一个方法可以对它进行修改，这样来确保salary域不会受到外界的破坏。</p>
+<p>不过，虽然salary不是只读域，但是它只能用raiseSalary方法修改。特别是一旦这个域值出现了错误，只要调试这个方法就可以了。如果salary域是public的，破坏这个域值的捣乱者有可能会出没在任何地方。</p>
+<p>在有些时候，需要获得或设置实例域的值。因此，应该提供下面三项内容：</p>
+<ul>
+<li>一个私有的数据域；</li>
+<li>一个公有的域访问器方法；</li>
+<li>一个公有的域更改器方法。</li>
+</ul>
+<p>这样做要比提供一个简单的公有数据域复杂些。但是却有着下列明显的好处：</p>
+<p>首先，可以改变内部实现，除了该类的方法之外，不会影响其他代码。</p>
+<p>其次，更改器可以进行错误检查，防止一些不合理的赋值。</p>
+<h3 id="私有方法"><a href="#私有方法" class="headerlink" title="私有方法"></a>私有方法</h3><p>尽管大多数方法都被设计为公有的，但在某些特殊的情况下，也可能将它们设定为私有的。有时，可能希望将一个计算代码划分成若干独立的辅助方法。通常，这些辅助方法不应该成为公有方法的一部分，这是由于它们往往与当前的实现机制非常紧密，或者需要一个特别的协议以及一个特别的调用次序，最好将这样的方法设计为private的。</p>
+<p>对于私有方法，如果改用其它方法实现相应的操作，则不必保留原有方法。如果数据的表达方式发生了变化，这个方法可能就变得难以实现，或者不再需要。然而，只要方法是private，类的设计者就可以确认，<strong>它不会被外部的其他类操作调用，可以将其删除。</strong></p>
+<h3 id="final实例域"><a href="#final实例域" class="headerlink" title="final实例域"></a>final实例域</h3><p>可以将一个实例域定义为final，构建对象时，必须初始化这样的域。也就是说，必须在确保一个构造器执行之后，这个域的值被设置，并且在后面的操作中，不能够再对它进行修改。</p>
+<p>final修饰符大都应用于基本(primitive)类型域，或不可变(immutable)类的域(如果类中的每个方法都不会改变其对象，这种类就是不可变的类。)。</p>
+<p>如果final修饰的是类的话，也就表示，该引用变量不能再指向其他对象，但对象的值可以发生改变。</p>
+<h2 id="第四讲-静态域与静态方法"><a href="#第四讲-静态域与静态方法" class="headerlink" title="第四讲 静态域与静态方法"></a>第四讲 静态域与静态方法</h2><h3 id="静态域-类域"><a href="#静态域-类域" class="headerlink" title="静态域(类域)"></a>静态域(类域)</h3><p>如果将域定义为static，每个类中只有一个这样的域。它属于类，而不属于任何一个独立的对象。</p>
+<p>每个对象对于类的实例域都有自己的一份拷贝。如，100个对象，会有100个实例域，但只有1个静态域。</p>
+<h3 id="静态常量"><a href="#静态常量" class="headerlink" title="静态常量"></a>静态常量</h3><p>静态变量用的比较少，但静态常量却用的多。例如：</p>
+<p><img src="https://s2.loli.net/2022/01/03/A5zFJnPmtY7h64w.png" alt="image-20220103161658620"></p>
+<p>一般来说，由于任何对象都可以对公有域进行修改，所以，最好不要将域设计为public，但公有常量(final域)却没有关系，因为此时，不允许再赋其他值给它。</p>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p><strong>静态方法是一种不能向对象实施的方法</strong>。例如，Math类中的pow：<code>Math.pow(x,a)</code>，在运算时，不使用任何的Math对象。换句话说，没有隐式的参数。</p>
+<h3 id="使用静态方法"><a href="#使用静态方法" class="headerlink" title="使用静态方法"></a>使用静态方法</h3><p>在下面两种情况下使用静态方法：</p>
+<ul>
+<li>一个方法不需要访问对象状态，其所需的参数都是通过显示参数提供的</li>
+<li>一个方法只需要访问类的静态域</li>
+</ul>
+<h3 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h3><p>静态方法还有另一个用途，类似LocalDate和NumberFormat的类使用静态工厂方法(factory method)来构造对象。如下所示，生成不同风格的格式化对象：</p>
+<p><img src="https://s2.loli.net/2022/01/03/YHGeydBEaxTtRFn.png" alt="image-20220103163937139"></p>
+<p>为什么不使用构造器？</p>
+<ul>
+<li>无法命名构造器。构造器的名字必须和类名相同。但是，这里希望将得到的货币实例和百分比实例采用不同的名字。</li>
+<li>当使用构造器时，无法改变所构造的对象类型。而Factory方法将返回一个DecimalFormat类对象，这是NumberFormat的子类。</li>
+</ul>
+<h2 id="第五讲-方法参数"><a href="#第五讲-方法参数" class="headerlink" title="第五讲 方法参数"></a>第五讲 方法参数</h2><p>方法参数一共有两种类型：</p>
+<ul>
+<li>基本数据类型</li>
+<li>对象引用</li>
+</ul>
+<p>对于Java而言，总是采用按值调用。</p>
+<p>也就是说，一个方法不可能修改一个基本数据类型的参数。</p>
+<p><img src="https://s2.loli.net/2022/01/03/py5Tt4QFhe6kUr3.png" alt="image-20220103165356193"></p>
+<p>而对象引用作为参数就不同了。</p>
+<p><img src="https://s2.loli.net/2022/01/03/gh1LAIFiPGyxBTu.png" alt="image-20220103165431987"></p>
+<p>因为对象的空间是固定的，拷贝的是引用，二者同时引用同一个对象，即指向一个固定的堆空间。</p>
+<p>但要记住，Java程序设计语言总是采用<strong>按值调用</strong>，不是类似C++中的引用。也就是说，传递的不是地址！若是直接将两个对象引用作为参数进行交换操作，并不能实现对象指向的交换。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li>一个方法不能修改一个基本数据类型的参数(数值型或布尔型)</li>
+<li>一个方法可以改变一个对象参数的状态</li>
+<li>一个方法不能让对象参数引用一个新的对象</li>
+</ul>
+<h2 id="第六讲-对象构造"><a href="#第六讲-对象构造" class="headerlink" title="第六讲 对象构造"></a>第六讲 对象构造</h2><h3 id="显式域初始化"><a href="#显式域初始化" class="headerlink" title="显式域初始化"></a>显式域初始化</h3><p>通过重载类的构造器方法，可以采用多种形式设置类的实例域的初始状态。确保不管怎样调用构造器，每个实例域都可以被设置为一个有意义的初值，这是一种很好的设计习惯。</p>
+<h3 id="调用另一个构造器"><a href="#调用另一个构造器" class="headerlink" title="调用另一个构造器"></a>调用另一个构造器</h3><p>关键字this引用方法的隐式参数。不过这个关键字还有另一个含义。</p>
+<p>如果构造器的第一个语句形如this(…)，这个构造器将调用同一个类的另一个构造器。</p>
+<p><img src="https://s2.loli.net/2022/01/03/INWmxkURs9B2tCY.png" alt="image-20220103202413693"></p>
+<p>在调用这个方法时，该方法将去调用Employee(String, double)构造器。</p>
+<p>这种方式使用this关键字非常有用，这样对公共的构造器代码部分只编写一次即可。</p>
+<blockquote>
+<p>但C++中，一个构造器不能调用另一个构造器。</p>
+</blockquote>
+<h3 id="初始化块"><a href="#初始化块" class="headerlink" title="初始化块"></a>初始化块</h3><h4 id="初始化数据域的方法"><a href="#初始化数据域的方法" class="headerlink" title="初始化数据域的方法"></a>初始化数据域的方法</h4><ul>
+<li>在构造器中设置值</li>
+<li>在声明中赋值</li>
+<li>初始化块</li>
+</ul>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>在一个类的声明中，可以包含多个代码块。只要构造类的对象，这些块就会被执行。</p>
+<p><img src="https://s2.loli.net/2022/01/03/7qXQc8sgJHDrL2w.png" alt="image-20220103203502225"></p>
+<p>这种机制不是必需的，也不常见。通常会直接将初始化代码放在构造器中。</p>
+<p><img src="https://s2.loli.net/2022/01/03/vYbOosAtuxQDmaX.png" alt="image-20220103204013531"></p>
+<p>当然，应该精心地组织好初始化代码。</p>
+<h3 id="静态域初始化"><a href="#静态域初始化" class="headerlink" title="静态域初始化"></a>静态域初始化</h3><ul>
+<li>提供一个初始化值</li>
+</ul>
+<p><code>private static int nextId = 1;</code></p>
+<ul>
+<li>使用静态的初始化块</li>
+</ul>
+<p><img src="C:/Users/LISHANSHAN/AppData/Roaming/Typora/typora-user-images/image-20220104011743662.png" alt="image-20220104011743662"></p>
+<h3 id="对象析构与finalize方法"><a href="#对象析构与finalize方法" class="headerlink" title="对象析构与finalize方法"></a>对象析构与finalize方法</h3><p>在析构器中，最常见的操作是回收分配给对象的存储空间。由于Java有自动的垃圾回收器，不需要人工回收内存，所以Java不支持析构器。</p>
+<p>当然，某些对象使用了内存之外的其他资源，例如，文件或使用了系统资源的另一个对象的句柄。在这种情况下，当资源不再需要时，将其回收和再利用将显得十分重要。</p>
+<p>可以为类添加一个finalize方法。finalize方法将在垃圾回收器清除对象之前调用。在实际应用中，不要依赖于使用finalize方法回收任何短缺资源，这是因为很难直到这个方法什么时候才能够调用。</p>
+<p><strong>如果某个资源需要在使用完毕后立刻被关闭，那么就需要由人工来管理。对象用完时，可以应用一个close方法来完成相应的清理操作。</strong></p>
+<h2 id="第七讲-包"><a href="#第七讲-包" class="headerlink" title="第七讲 包"></a>第七讲 包</h2><h3 id="包的导入"><a href="#包的导入" class="headerlink" title="包的导入"></a>包的导入</h3><p>Java允许将包(package)将类组织起来。</p>
+<p>使用包的主要原因时去确保类名的唯一性。</p>
+<p>在包中定位类是编译器(compiler)的工作。类文件中的字节码肯定使用完整的包名来引用其他类。</p>
+<blockquote>
+<p>关于C++中import和#include弄混。</p>
+<p>实际上，这两者之间并没有共同之处。在C++中，必须使用#include将外部特性的声明加载进来，这是因为C++编译器无法查看任何文件的内部，除了正在编译的文件以及在头文件中明确包含的文件。Java编译器可以查看其他文件的内容，只要告诉它到哪里去查看就可以了。</p>
+<p>在C++中，与包机制类似的是命名空间(namespace)。在Java中。package与import语句类似于C++中的namespace和using指令。</p>
+</blockquote>
+<h3 id="包作用域"><a href="#包作用域" class="headerlink" title="包作用域"></a>包作用域</h3><p>前面已经接触过访问修饰符public和private。标记为public的部分可以被任意的类使用，标记为private的部分只能被定义它们的类使用。</p>
+<p><strong>如果没有指定public或private，这个部分(类、方法或变量)可以被同一个包的所有方法访问。</strong></p>
+<h3 id="类路径"><a href="#类路径" class="headerlink" title="类路径"></a>类路径</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1）把类放到一个目录中，例如/home/user/classdir。</p>
+<p>需要注意，这个目录是包树状结构的基目录。如果希望将com.horstmann.corejava.Employee类添加到其中，这个Employee.class类文件就必须位于子目录/home/user/classdir/com/horstmann/corejava中。</p>
+<p>2）将JAR文件放在一个目录中，例如：/home/user/archives。</p>
+<p>3）设置类路径（class path）。类路径是所有包含类文件的路径的集合。</p>
+<p>在UNIX环境中，类路径中的不同项目之间采用冒号（:)分隔：</p>
+<p><img src="C:/Users/LISHANSHAN/AppData/Roaming/Typora/typora-user-images/image-20220105154939555.png" alt="image-20220105154939555"></p>
+<p>在上述两种情况中，句点（.）表示当前目录。</p>
+<p>类路径包括：</p>
+<p>●  基目录/home/user/classdir或c:\classes；</p>
+<p>●  当前目录(.)；</p>
+<p>●  JAR文件/home/user/archives/archive.jar或c:\archives\archive.jar。</p>
+<h2 id="第九讲-文档注释"><a href="#第九讲-文档注释" class="headerlink" title="第九讲 文档注释"></a>第九讲 文档注释</h2><h3 id="1-方法注释"><a href="#1-方法注释" class="headerlink" title="1. 方法注释"></a>1. 方法注释</h3><p>每个方法注释必须放在所描述的方法之前。</p>
+<p>除了通用标记之外，还可以使用下面的标记：</p>
+<ul>
+<li>@param 变量描述</li>
+</ul>
+<p>这个标记将对当前方法的“param”(参数)部分参加一个条目。这个描述可以占据多行，并可以使用HTML标记。一个方法的所有的@param标记必须放在一起。</p>
+<ul>
+<li>@return 描述</li>
+</ul>
+<p>这个标记将对当前添加”return”(返回)部分。这个描述可以跨越多行，并可以使用HTML标记。</p>
+<ul>
+<li>@throws 类描述</li>
+</ul>
+<p>这个标记将添加一个注释，用于表示这个方法可能抛出异常。</p>
+<p><img src="https://s2.loli.net/2022/01/05/jDElf7oyhQ3ZTrv.png" alt="image-20220105160743393"></p>
+<p><img src="https://s2.loli.net/2022/01/05/we6qAjmNELdGviu.png" alt="image-20220105161216316"></p>
+<p><img src="C:/Users/LISHANSHAN/AppData/Roaming/Typora/typora-user-images/image-20220105161131526.png" alt="image-20220105161131526"></p>
+<h3 id="2-域注释"><a href="#2-域注释" class="headerlink" title="2. 域注释"></a>2. 域注释</h3><p><img src="https://s2.loli.net/2022/01/05/dGbf7SkvEDAqYpJ.png" alt="image-20220105161654770"></p>
+<h3 id="3-通用注释"><a href="#3-通用注释" class="headerlink" title="3. 通用注释"></a>3. 通用注释</h3><ul>
+<li>@author 姓名</li>
+</ul>
+<p>这个标记将产生一个”author”(作者)条目。可以使用多个@author标记，每个@author标记对应一个作者。</p>
+<ul>
+<li>@version 文本</li>
+</ul>
+<p>这个标记将产生一个“version”(版本)条目。这里的文本可以是对当前版本的任何描述。</p>
+<h4 id="4-下面的标记可以用于所有的文档注释"><a href="#4-下面的标记可以用于所有的文档注释" class="headerlink" title="4. 下面的标记可以用于所有的文档注释"></a>4. 下面的标记可以用于所有的文档注释</h4><ul>
+<li>@since 文本</li>
+</ul>
+<p>这个标记将产生一个“since”(始于)条目。这里的text可以是对引入特性的版本描述。例如，@since version 1.7.1。</p>
+<ul>
+<li>@deprecated文本</li>
+</ul>
+<p>这个标记将对类、方法或变量天机一个不再使用的注释。文本中给出了取代的建议。</p>
+<p><img src="https://s2.loli.net/2022/01/05/kG4KaUy9HYEJdMR.png" alt="image-20220105162315965"></p>
+<p><img src="https://s2.loli.net/2022/01/05/X3oF6BbLTYkrGgQ.png" alt="image-20220105162409646"></p>
+<h2 id="类设计的技巧"><a href="#类设计的技巧" class="headerlink" title="类设计的技巧"></a>类设计的技巧</h2><h3 id="1-一定要保证数据私有"><a href="#1-一定要保证数据私有" class="headerlink" title="1. 一定要保证数据私有"></a>1. 一定要保证数据私有</h3><p>这是最重要的！</p>
+<p><strong>绝对不要破坏封装性。有时候，需要编写一个访问器方法或更改器方法，但是最好还是保持实例域的私有性。</strong></p>
+<p>很多惨痛的经验告诉我们，数据的表示形式很可能会改变，但他们的使用方式却不会经常发生变化。</p>
+<p>当数据保持私有时，他们的表示形式的变化不会对类的使用者产生影响，即使出现bug也易于检测。</p>
+<h3 id="2-一定要对数据初始化"><a href="#2-一定要对数据初始化" class="headerlink" title="2. 一定要对数据初始化"></a>2. 一定要对数据初始化</h3><p>Java不对局部变量进行初始化，但是会对对象的实力域进行初始化。最好不要依赖于系统的默认值，而是应该显式地初始化所有的数据。</p>
+<p>具体的初始化方式可以是提供默认值，也可以是在所有构造器中设置默认值。</p>
+<h3 id="3-不要在类中使用过多的基本类型"><a href="#3-不要在类中使用过多的基本类型" class="headerlink" title="3. 不要在类中使用过多的基本类型"></a>3. 不要在类中使用过多的基本类型</h3><p>就是说，用其他的类代替多个相关的基本类型的使用。</p>
+<p>这样会使类更加易于理解且易于修改。</p>
+<p><img src="https://s2.loli.net/2022/01/05/J4oiebVBCzvHKFk.png" alt="image-20220105163502555"></p>
+<h3 id="4-不是所有的域都需要独立的域访问器和域更改器"><a href="#4-不是所有的域都需要独立的域访问器和域更改器" class="headerlink" title="4. 不是所有的域都需要独立的域访问器和域更改器"></a>4. 不是所有的域都需要独立的域访问器和域更改器</h3><p>或许，需要获得或设置雇员的薪金。而一旦构造了雇员对象，就应该禁止更改雇佣日期，并且在对象中，常常包含一些不希望别人获得或设置的实例域。</p>
+<h3 id="5-将职责过多的类进行分解"><a href="#5-将职责过多的类进行分解" class="headerlink" title="5. 将职责过多的类进行分解"></a>5. 将职责过多的类进行分解</h3><p>这样说似乎有点含糊不清。</p>
+<p>但是，如果明显地可以将一个复杂的类分解成两个更为简单的类，就应该将其分解。</p>
+<h3 id="6-类名和方法名要能够体现它们的职责"><a href="#6-类名和方法名要能够体现它们的职责" class="headerlink" title="6. 类名和方法名要能够体现它们的职责"></a>6. 类名和方法名要能够体现它们的职责</h3><p>与变量应该有一个能够反映其含义的名字一样，类也能如此。</p>
+<p>命名类名的良好习惯是采用一个名词(Order)、前面有形容词修饰的名词(RushOrder)或动名词(有“-ing”后缀)修饰名词(例如，BillingAddress)。</p>
+<p>对于方法来说，习惯是访问器方法用小写get开头(getSalary)，更改器方法用小写的set开头(setSalary)。</p>
+<h3 id="7-优先使用不可变的类"><a href="#7-优先使用不可变的类" class="headerlink" title="7. 优先使用不可变的类"></a>7. 优先使用不可变的类</h3><p>LocalDate类以及java.time包中的其他类是不可变的——没有方法能修改对象的状态。类似plusDays的方法并不是更改对象，而是返回状态已修改的新对象。</p>
+<p>更改对象的问题在于，如果多个线程试图同时更新一个对象，就会发生并发更改。</p>
+<p>其结果是不可预料的。如果类是不可变的，就可以安全地在多个线程间共享其对象。</p>
+<p>因此，要尽可能让类是不可变的，这是一个很好的想法。对于表示值的类，如一个字符串或一个时间点，这尤其容易。计算会生成新值，而不是更新原来的值。</p>
+<p>当然，并不是所有类都应当是不可变的。如果员工加薪时让raiseSalary方法返回一个新的Employee对象，这会很奇怪。</p>
+<h1 id="第五章-继承"><a href="#第五章-继承" class="headerlink" title="第五章 继承"></a>第五章 继承</h1><h2 id="第一讲-类、超类和子类"><a href="#第一讲-类、超类和子类" class="headerlink" title="第一讲  类、超类和子类"></a>第一讲  类、超类和子类</h2><p>关键字extends表明正在构造的新类派生于一个已存在的类。</p>
+<p><img src="https://s2.loli.net/2022/01/06/w4toM6dX5z7RUcm.png" alt="image-20220106213143904"></p>
+<p>然而，这个方法并不能运行。这是因为Manager类的getSalary方法不能直接地访问超类的私有域。也就是说，尽管每个Manager对象都拥有一个名为salary的域，但在Manager类的getSalary方法中并不能够直接地访问salary域。只有Employee类的方法才能够访问私有部分。如果Manager类的方法一定要访问私有域，就必须借助于公有的接口，Employee类的公有方法getSalary正是这样一个接口。</p>
+<p>这里需要指出：我们希望调用超类Employee的getSalary方法，而不是当前类的这个方法。为此，可以使用特定的关键字super解决这个问题：</p>
+<p><img src="https://s2.loli.net/2022/01/06/qjSvxMA6JmKkXZi.png" alt="image-20220106213904248"></p>
+<blockquote>
+<h3 id="对比："><a href="#对比：" class="headerlink" title="对比："></a>对比：</h3><p>有些人认为super与this引用是类似的概念，实际上：</p>
+<p><strong>super并不是一个对象的引用，不能将super赋给另一个对象变量，它只是一个指示编译器调用超类方法的特殊关键字。</strong></p>
+<p>this两个用途：</p>
+<ul>
+<li>引用隐式参数</li>
+<li>调用该类的其他的构造器(第一条语句)</li>
+</ul>
+<p>super两个用途：</p>
+<ul>
+<li>调用超类的方法</li>
+<li>调用超类的构造器(第一条语句)</li>
+</ul>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/01/06/584HmLGXJPiYanW.png" alt="image-20220106214721586"></p>
+<p>当e引用Employee对象时，e.getSalary( )调用的是Employee类中的getSalary方法；当e引用Manager对象时，e.getSalary( )调用的是Manager类中的getSalary方法。</p>
+<p>虚拟机知道e实际引用的对象类型，因此能够正确地调用相应的方法。</p>
+<p>一个对象变量（例如，变量e）可以指示多种实际类型的现象被称为<strong>多态</strong>（polymorphism）。</p>
+<p>在运行时能够自动地选择调用哪个方法的现象称为<strong>动态绑定</strong>（dynamic binding）。</p>
+<h3 id="第五节-多态"><a href="#第五节-多态" class="headerlink" title="第五节 多态"></a>第五节 多态</h3><p>在Java程序设计语言里，<strong>对象变量是多态的</strong>。一个Employee变量既可以引用一个Employee类的对象，也可以引用一个Employee类的任何一个子类的对象，如Manager对象。</p>
+<p><img src="https://s2.loli.net/2022/01/06/GIFhMEeC9s247LB.png" alt="image-20220106215805539"></p>
+<p><img src="https://s2.loli.net/2022/01/06/yJeQb6hGTlD2sfV.png" alt="image-20220106215854899"></p>
+<p>因为，staff[0]声明的类型是Employee，而setBonus不是Employee类的方法。</p>
+<p><img src="https://s2.loli.net/2022/01/06/8ytxkeBmWQTjna1.png" alt="image-20220106220145915"></p>
+<p>在Java中，子类数组的引用可以转换成超类数组的引用，而不需要采用强制类型转换。</p>
+<p><img src="https://s2.loli.net/2022/01/06/GXA2CRPaQkOjech.png" alt="image-20220106220331459"></p>
+<p>使用new Manager[10]创建的数组是一个经理数组，如果试图存储一个Employee类型的引用就会引发ArrayStoreException异常。</p>
+<h3 id="第六节-理解方法调用"><a href="#第六节-理解方法调用" class="headerlink" title="第六节 理解方法调用"></a>第六节 理解方法调用</h3><p>弄清楚如何在对象上应用方法调用非常重要。</p>
+<p>下面假设要调用x.f(args)，隐式参数x声明为类C的一个对象。</p>
+<h4 id="1-下面是调用过程的详细描述："><a href="#1-下面是调用过程的详细描述：" class="headerlink" title="1. 下面是调用过程的详细描述："></a>1. 下面是调用过程的详细描述：</h4><p><strong>1）编译器查看对象的声明类型和方法名。</strong></p>
+<p>假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是：有可能存在多个名字为f，但参数类型不一样的方法。例如，可能存在方法f(int)和方法f(String)。编译器将会一一列举所有C类中名为f的方法和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。至此，编译器已获得所有可能被调用的候选方法。</p>
+<p><strong>2）接下来，编译器将查看调用方法时提供的参数类型。</strong></p>
+<p>如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程被称为重载解析（overloading resolution）。例如，对于调用x.f(“Hello”)来说，编译器将会挑选f(String)，而不是f(int)。由于允许类型转换（int可以转换成double, Manager可以转换成Employee，等等），所以这个过程可能很复杂。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。</p>
+<p>至此，编译器已获得需要调用的方法名字和参数类型。</p>
+<blockquote>
+<h4 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h4><p>前面曾经说过，<strong>方法的名字和参数列表称为方法的签名。</strong></p>
+<p>例如，f(int)和f(String)是两个具有相同名字，不同签名的方法。如果在子类中定义了一个与超类签名相同的方法，那么子类中的这个方法就覆盖了超类中的这个相同签名的方法。</p>
+<p>不过，返回类型不是签名的一部分，因此，在覆盖方法时，一定要保证返回类型的兼容性。</p>
+<p>允许子类将覆盖方法的返回类型定义为原返回类型的子类型</p>
+</blockquote>
+<p><strong>3）如果是private方法、static方法、final方法或者构造器，那么编译器将可以准确地知道应该调用哪个方法，我们将这种调用方式称为静态绑定（static binding）。</strong></p>
+<p>与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。在我们列举的示例中，编译器采用动态绑定的方式生成一条调用f (String)的指令。</p>
+<p><strong>4）当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实际类型最合适的那个类的方法。</strong></p>
+<p>假设x的实际类型是D，它是C类的子类。如果D类定义了方法f(String)，就直接调用它；否则，将在D类的超类中寻找f(String)，以此类推。</p>
+<h4 id="2-方法表"><a href="#2-方法表" class="headerlink" title="2. 方法表"></a>2. 方法表</h4><p>每次调用方法都要进行搜索，时间开销相当大。</p>
+<p>因此，虚拟机预先为每个类创建了一个<strong>方法表（method table）</strong>，其中列出了所有方法的签名和实际调用的方法。</p>
+<p>这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。</p>
+<p>在前面的例子中，虚拟机搜索D类的方法表，以便寻找与调用f(Sting)相匹配的方法。这个方法既有可能是D.f(String)，也有可能是X.f(String)，这里的X是D的超类。这里需要提醒一点，如果调用super.f(param)，编译器将对隐式参数超类的方法表进行搜索。</p>
+<p><img src="https://s2.loli.net/2022/01/06/vgGCnimSphPfyWJ.png" alt="image-20220106222122309"></p>
+<p>动态绑定有个非常重要的特性：</p>
+<p>无需对现存的代码进行修改，就可以对程序进行拓展。假设增加一个新类Executive，并且变量e有可能引用这个类的对象，我们不需要对包含调用e.getSalary()的代码进行重新编译。如果e恰好引用一个Executive类的对象，就会自动地调用Executive.getSalary()方法。</p>
+<h3 id="第八讲-强制类型转换"><a href="#第八讲-强制类型转换" class="headerlink" title="第八讲 强制类型转换"></a>第八讲 强制类型转换</h3><p><img src="https://s2.loli.net/2022/01/06/HyVSjae4CBIZvrg.png" alt="image-20220106222959327"></p>
+<h4 id="进行的唯一原因"><a href="#进行的唯一原因" class="headerlink" title="进行的唯一原因"></a>进行的唯一原因</h4><p>在暂时忽视对象的实际类型之后，使用对象的全部功能。</p>
+<p>例如，我们需要将数组中引用经理的元素复原成Manager类，以便能够访问新增加的所有变量。</p>
+<p><strong>将一个值存入变量时，编译器将检查是否允许该操作。</strong></p>
+<p><strong>将一个子类的引用赋给一个超类变量，编译器是允许的。但将一个超类的引用赋给一个子类变量，必须进行类型转换，这样才能够通过运行时的检查。</strong></p>
+<h4 id="因此"><a href="#因此" class="headerlink" title="因此"></a>因此</h4><p>应该养成这样一个良好的程序设计习惯：</p>
+<p>在进行类型转换之前，先查看一下是否能够成功地转换。这个过程简单地使用instanceof操作符就可以实现。</p>
+<p><img src="https://s2.loli.net/2022/01/06/P6xaWHNV2iBznck.png" alt="image-20220106223351872"></p>
+<p>在一般情况下，应当尽量少用强制类型转换和instanceof。</p>
+<h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>只能在继承层次内进行类型转换。</li>
+<li>再将超类转换成子类之前，应该使用instanceof进行检查。</li>
+</ul>
+<h3 id="第九节-抽象类"><a href="#第九节-抽象类" class="headerlink" title="第九节 抽象类"></a>第九节 抽象类</h3><p><img src="https://s2.loli.net/2022/01/06/n57lrmIu4kg2Q9C.png" alt="image-20220106223848993"></p>
+<p>在Person中，</p>
+<p><img src="https://s2.loli.net/2022/01/06/k9eO1AjQcEUxDNn.png" alt="image-20220106224101130"></p>
+<p><strong>许多程序员认为，在抽象类中不能包含具体方法。建议尽量将通用的域和方法（不管是否是抽象的）放在超类（不管是否是抽象类）中。</strong></p>
+<p>抽象方法充当着占位的角色，它们的具体实现在子类中。</p>
+<h4 id="1-扩展抽象类可以有两种选择。"><a href="#1-扩展抽象类可以有两种选择。" class="headerlink" title="1. 扩展抽象类可以有两种选择。"></a>1. 扩展抽象类可以有两种选择。</h4><ul>
+<li><p>一种是在抽象类中定义部分抽象类方法或不定义抽象类方法，这样就必须将子类也标记为抽象类；</p>
+</li>
+<li><p>另一种是定义全部的抽象方法，这样一来，子类就不是抽象的了。</p>
+</li>
+</ul>
+<p>例如，通过扩展抽象Person类，并实现getDescription方法来定义Student类。由于在Student类中不再含有抽象方法，所以不必将这个类声明为抽象的。类即使不含抽象方法，也可以将类声明为抽象类。</p>
+<h4 id="2-抽象类不能被实例化。"><a href="#2-抽象类不能被实例化。" class="headerlink" title="2. 抽象类不能被实例化。"></a>2. 抽象类不能被实例化。</h4><p>也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。</p>
+<p><strong>需要注意，可以定义一个抽象类的对象变量，但是它只能引用非抽象子类的对象。</strong>例如，</p>
+<p><img src="https://s2.loli.net/2022/01/06/pZyfraxLwRIiOUE.png" alt="image-20220106224627968"></p>
+<p>这里的p是一个抽象类Person的变量，Person引用了一个非抽象子类Student的实例。</p>
+<h3 id="Java用于控制可见性的4个访问修饰符："><a href="#Java用于控制可见性的4个访问修饰符：" class="headerlink" title="Java用于控制可见性的4个访问修饰符："></a>Java用于控制可见性的4个访问修饰符：</h3><ul>
+<li>仅对本类可见——private。</li>
+<li>对所有类可见——public。</li>
+<li>对本包和所有子类可见——protected。</li>
+<li>对本包可见——默认（很遗憾），不需要修饰符。</li>
+</ul>
+<h2 id="第二讲-Object：所有类的超类"><a href="#第二讲-Object：所有类的超类" class="headerlink" title="第二讲 Object：所有类的超类"></a>第二讲 Object：所有类的超类</h2><p>在Java中，只有基本类型不是对象。</p>
+<h3 id="第一节-equals-方法"><a href="#第一节-equals-方法" class="headerlink" title="第一节 equals 方法"></a>第一节 equals 方法</h3><p><img src="https://s2.loli.net/2022/01/17/zDTi9tMsyOCfbPg.png" alt="image-20220117213943571"></p>
+<blockquote>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><p><strong>为了防备name或hireDay可能为null的情况，需要使用Objects.equals方法。</strong></p>
+<p>如果两个参数都为null, Objects.equals(a, b)调用将返回true；如果其中一个参数为null，则返回false；否则，如果两个参数都不为null，则调用a.equals(b)。利用这个方法，Employee.equals方法的最后一条语句要改写为：</p>
+<p><img src="https://s2.loli.net/2022/01/17/VuKSeBdMj5lN2zc.png" alt="image-20220117225732398"></p>
+</blockquote>
+<p>在子类中定义equals方法时，首先调用超类的equals。如果检测失败，对象就不可能相等。如果超类中的域都相等，就需要比较子类中的实例域。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Manager</span> <span class="keyword">extends</span> <span class="title class_">Employee</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">equals</span><span class="params">(Object otherObject)</span> &#123;</span><br><span class="line">        <span class="comment">// super.equals checked that this and otherObject belong to the same class</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">super</span>.equals(otherObject))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">Manager</span> <span class="variable">other</span> <span class="operator">=</span> (Manager) otherObject;</span><br><span class="line">        <span class="type">return</span> <span class="variable">bonus</span> <span class="operator">=</span>= other.bonus;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java语言规范要求equals方法具有下列特性：</p>
+<ol>
+<li><strong>自反性</strong>：对于任何非空引用x,  x.equals(x)应该返回true。</li>
+<li><strong>对称性</strong>：对于任何引用x和y，当且仅当y.equals(x)返回true， x.equals(y)也应该返回true。</li>
+<li><strong>传递性</strong>：对于任何引用x、y和z，如果x.equals(y)返回true， y.equals(z)返回true， x.equals(z)也应该返回true。</li>
+<li><strong>一致性</strong>：如果x和y引用的对象没有发生变化，反复调用x.equals(y)应该返回同样的结果。</li>
+<li><strong>对于任意非空引用x， x.equals(null)应该返回false。</strong></li>
+</ol>
+<p><img src="https://s2.loli.net/2022/01/17/2pbVS14yPh8EQfC.png" alt="image-20220117232952358"></p>
+<h4 id="下面给出编写一个完美的equals方法的建议："><a href="#下面给出编写一个完美的equals方法的建议：" class="headerlink" title="下面给出编写一个完美的equals方法的建议："></a>下面给出编写一个完美的equals方法的建议：</h4><p>1）显式参数命名为otherObject，稍后需要将它转换成另一个叫做other的变量。</p>
+<p>2）检测this与otherObject是否引用同一个对象：</p>
+<p><code>if (this == otherObject) return true;</code></p>
+<p>这条语句只是一个优化。实际上，这是一种经常采用的形式。</p>
+<p><strong>因为计算这个等式要比一个一个地比较类中的域所付出的代价小得多。</strong></p>
+<p>3）检测otherObject是否为null，如果为null，返回false。这项检测是很必要的。</p>
+<p><code>if (otherObject == null) return false;</code></p>
+<p>4）比较this与otherObject是否属于同一类。如果equals的语义在每个子类中有所改变，就使用getClass检测：</p>
+<p><code>if (getClass() != otherObject.getClass()) return false;</code></p>
+<p>如果所有的子类都拥有统一的语义，就使用instanceof检测：</p>
+<p><code>if (!(otherObject instanceof ClassName)) return false;</code></p>
+<p>5）将otherObject转换为相应的类类型变量：</p>
+<p><code>ClassName other = (ClassName) otherObject</code></p>
+<p>6）现在开始对所有需要比较的域进行比较了。使用==比较基本类型域，使用equals比较对象域。如果所有的域都匹配，就返回true；否则返回false。</p>
+<p><code>return field1 == other.field1 &amp;&amp; Objects.equals(field2, other.fields) &amp;&amp; ...;</code></p>
+<p>如果在子类中重新定义equals，就要在其中包含调用super.equals(other)。</p>
+<blockquote>
+<p>对于数组类型的域，可以使用静态的Arrays.equals方法检测相应的数组元素是否相等。</p>
+</blockquote>
+<p><img src="https://s2.loli.net/2022/01/18/f19UtvBs7MEOdCH.png" alt="image-20220118001450380"></p>
+<h3 id="第二讲-hashcode方法"><a href="#第二讲-hashcode方法" class="headerlink" title="第二讲 hashcode方法"></a>第二讲 hashcode方法</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><p>散列码(hashcode)是由对象导出的一个整型值。散列码是没有规律的。如果x和y是两个不同的对象，x.hashCode( )与y.hashCode( )基本上不会相同。</p>
+<p><img src="https://s2.loli.net/2022/01/18/KBXh3gSZmtCG4Mx.png" alt="image-20220118003233455"></p>
+<p><img src="https://s2.loli.net/2022/01/18/rRsCczkHXWQvZ5d.png" alt="image-20220118003328447"></p>
+<h4 id="2-为什么要有hashCode"><a href="#2-为什么要有hashCode" class="headerlink" title="2. 为什么要有hashCode"></a>2. 为什么要有hashCode</h4><p>当你把对象加入HashSet时，HashSet会先计算对象的hashCode值来判断对象加入的位置，同时也会与其他已经加入的对象的hashCode值作比较，如果没有相符的hashCode，HashSet会假设对象没有重复出现。</p>
+<p>但是如果发现有相同hashCode值的对象，这是会调用equals( )方法来检查hashCode相等的对象是否真的相同。</p>
+<p>若两者相同，HashSet就不会让其加入成功，如果不同的话，就会重新散列到不同的位置。这样就减少了调用equals( )方法的次数，提高了执行速度。</p>
+<h4 id="3-equals-和hashCode"><a href="#3-equals-和hashCode" class="headerlink" title="3. equals( )和hashCode( )"></a>3. equals( )和hashCode( )</h4><p>其实，hashCode( )和equals( )都是用于比较两个对象是否相等。</p>
+<h5 id="1-同时提供"><a href="#1-同时提供" class="headerlink" title="1. 同时提供"></a>1. 同时提供</h5><p>因为在一些容器中(如HashMap、HashSet)中，有hashCode( )之后，判断元素是否在对应容器中的效率会更高。</p>
+<p>当然，如果获得的hashCode( )相同，会使用equals( )判断是否真的相同。</p>
+<p>同时，因为hashCode( )所使用的哈希算法，也许刚好会让多个对象传回相同的哈希值(越糟糕的哈希算法越容易碰撞，不过这也与数据值域分布放入特性有关)，这也导致了<strong>两个对象的hashCode值相等，并不代表两个对象就相等</strong>。</p>
+<h5 id="2-所以"><a href="#2-所以" class="headerlink" title="2. 所以"></a>2. 所以</h5><ol>
+<li>如果两个对象的hashCode值不相等，那么两个对象直接可以认为是不相等的。</li>
+<li>如果两个对象的hashCode值相等，那么两个对象也不一定相等(哈希碰撞)。</li>
+<li>如果两个对象的hashCode值相等且equals( )方法的返回值为true，则可以认为这两个对象相等。</li>
+</ol>
+<h5 id="3-重写equals-必须重写hashCode"><a href="#3-重写equals-必须重写hashCode" class="headerlink" title="3. 重写equals()必须重写hashCode()"></a>3. 重写equals()必须重写hashCode()</h5><p><strong>因为两个相等对象的hashCode值必须是相等的。也就是说，如果equals( )方法判断两个对象是相等的，那么这两个对象的hashCode值也要相等。</strong></p>
+<p>如果重写equals( )方法时，没有重写hashCode( )方法的话，就可能会导致equals方法判断是相等的两个对象，hashCode值却不相等。 </p>
+<h5 id="4-其他佐证"><a href="#4-其他佐证" class="headerlink" title="4. 其他佐证"></a>4. 其他佐证</h5><p><img src="https://s2.loli.net/2022/02/21/xz6jTLfG4s31B5R.png" alt="image-20220221235707389"></p>
+<p><img src="https://s2.loli.net/2022/02/21/jGTsLIKUr3Z2QN8.png" alt="image-20220221235746077"></p>
+<h4 id="4-重写hashCode方法"><a href="#4-重写hashCode方法" class="headerlink" title="4. 重写hashCode方法"></a>4. 重写hashCode方法</h4><p>hashCode方法应该返回一个整型数值(可以是负数)，并合理地组合实例域的散列码，以便能够让不同的对象产生散列码更加均匀。</p>
+<p>首先，最好使用null安全的Objects.hashCode。如果其参数为null，会返回0，否则返回对参数调用hashCode方法的结果。</p>
+<p>另外，对double类型的对象，调用静态方法Double.hashCode方法来避免创建Double对象：</p>
+<p><img src="https://s2.loli.net/2022/02/22/KMOxUAc7DV4uXbG.png" alt="image-20220222000820113"></p>
+<p>同时，需要组合多个散列值时，可以调用Objects.hash并提供多个参数。这个方法会对各个参数调用Objects.hashCode，并组合这些散列值。</p>
+<p><img src="https://s2.loli.net/2022/02/22/ln71gMSFscJN6Pv.png" alt="image-20220222000939436"></p>
+<h2 id="第三讲-泛型数组列表"><a href="#第三讲-泛型数组列表" class="headerlink" title="第三讲 泛型数组列表"></a>第三讲 泛型数组列表</h2><p>在Java中，允许在运行时确定数组的大小，但并不能在运行时动态更改数组。所以，ArrayList得以广泛应用。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">第四章 对象与类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">第一节 面向对象程序设计概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.1.1.</span> <span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">封装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.2.</span> <span class="toc-text">对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7%EF%BC%9A"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">对象的三个主要特性：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">1.1.3.</span> <span class="toc-text">类之间的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%9A%E5%90%88"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">聚合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">继承</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E4%BD%BF%E7%94%A8%E9%A2%84%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">第二讲 使用预定义类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E5%99%A8%E6%96%B9%E6%B3%95%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%99%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">更改器方法与访问器方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2-%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">第三讲 用户自定义类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E5%BC%8F%E5%8F%82%E6%95%B0%E4%B8%8E%E6%98%BE%E5%BC%8F%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">隐式参数与显式参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E8%A3%85%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">1.3.2.</span> <span class="toc-text">封装的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.3.</span> <span class="toc-text">私有方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#final%E5%AE%9E%E4%BE%8B%E5%9F%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text">final实例域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%AE%B2-%E9%9D%99%E6%80%81%E5%9F%9F%E4%B8%8E%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">第四讲 静态域与静态方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F-%E7%B1%BB%E5%9F%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">静态域(类域)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%B8%B8%E9%87%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">静态常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.3.</span> <span class="toc-text">静态方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.4.</span> <span class="toc-text">使用静态方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.5.</span> <span class="toc-text">工厂方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%AE%B2-%E6%96%B9%E6%B3%95%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">第五讲 方法参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.0.1.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E8%AE%B2-%E5%AF%B9%E8%B1%A1%E6%9E%84%E9%80%A0"><span class="toc-number">1.6.</span> <span class="toc-text">第六讲 对象构造</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E5%9F%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.6.1.</span> <span class="toc-text">显式域初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%8F%A6%E4%B8%80%E4%B8%AA%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.6.2.</span> <span class="toc-text">调用另一个构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9D%97"><span class="toc-number">1.6.3.</span> <span class="toc-text">初始化块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%B0%E6%8D%AE%E5%9F%9F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.3.1.</span> <span class="toc-text">初始化数据域的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.6.3.2.</span> <span class="toc-text">介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">1.6.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%9F%9F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.6.5.</span> <span class="toc-text">静态域初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%9E%90%E6%9E%84%E4%B8%8Efinalize%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.6.</span> <span class="toc-text">对象析构与finalize方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E8%AE%B2-%E5%8C%85"><span class="toc-number">1.7.</span> <span class="toc-text">第七讲 包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5"><span class="toc-number">1.7.1.</span> <span class="toc-text">包的导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.7.2.</span> <span class="toc-text">包作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E8%B7%AF%E5%BE%84"><span class="toc-number">1.7.3.</span> <span class="toc-text">类路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.7.3.1.</span> <span class="toc-text">步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E8%AE%B2-%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="toc-number">1.8.</span> <span class="toc-text">第九讲 文档注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A"><span class="toc-number">1.8.1.</span> <span class="toc-text">1. 方法注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%9F%E6%B3%A8%E9%87%8A"><span class="toc-number">1.8.2.</span> <span class="toc-text">2. 域注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%80%9A%E7%94%A8%E6%B3%A8%E9%87%8A"><span class="toc-number">1.8.3.</span> <span class="toc-text">3. 通用注释</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%A0%87%E8%AE%B0%E5%8F%AF%E4%BB%A5%E7%94%A8%E4%BA%8E%E6%89%80%E6%9C%89%E7%9A%84%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="toc-number">1.8.3.1.</span> <span class="toc-text">4. 下面的标记可以用于所有的文档注释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-number">1.9.</span> <span class="toc-text">类设计的技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%80%E5%AE%9A%E8%A6%81%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E7%A7%81%E6%9C%89"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. 一定要保证数据私有</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%80%E5%AE%9A%E8%A6%81%E5%AF%B9%E6%95%B0%E6%8D%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.9.2.</span> <span class="toc-text">2. 一定要对数据初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%8D%E8%A6%81%E5%9C%A8%E7%B1%BB%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%BF%87%E5%A4%9A%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.9.3.</span> <span class="toc-text">3. 不要在类中使用过多的基本类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%B8%8D%E6%98%AF%E6%89%80%E6%9C%89%E7%9A%84%E5%9F%9F%E9%83%BD%E9%9C%80%E8%A6%81%E7%8B%AC%E7%AB%8B%E7%9A%84%E5%9F%9F%E8%AE%BF%E9%97%AE%E5%99%A8%E5%92%8C%E5%9F%9F%E6%9B%B4%E6%94%B9%E5%99%A8"><span class="toc-number">1.9.4.</span> <span class="toc-text">4. 不是所有的域都需要独立的域访问器和域更改器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B0%86%E8%81%8C%E8%B4%A3%E8%BF%87%E5%A4%9A%E7%9A%84%E7%B1%BB%E8%BF%9B%E8%A1%8C%E5%88%86%E8%A7%A3"><span class="toc-number">1.9.5.</span> <span class="toc-text">5. 将职责过多的类进行分解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%B1%BB%E5%90%8D%E5%92%8C%E6%96%B9%E6%B3%95%E5%90%8D%E8%A6%81%E8%83%BD%E5%A4%9F%E4%BD%93%E7%8E%B0%E5%AE%83%E4%BB%AC%E7%9A%84%E8%81%8C%E8%B4%A3"><span class="toc-number">1.9.6.</span> <span class="toc-text">6. 类名和方法名要能够体现它们的职责</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84%E7%B1%BB"><span class="toc-number">1.9.7.</span> <span class="toc-text">7. 优先使用不可变的类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E7%BB%A7%E6%89%BF"><span class="toc-number">2.</span> <span class="toc-text">第五章 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2-%E7%B1%BB%E3%80%81%E8%B6%85%E7%B1%BB%E5%92%8C%E5%AD%90%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">第一讲  类、超类和子类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%EF%BC%9A"><span class="toc-number">2.1.1.</span> <span class="toc-text">对比：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E8%8A%82-%E5%A4%9A%E6%80%81"><span class="toc-number">2.1.2.</span> <span class="toc-text">第五节 多态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E8%8A%82-%E7%90%86%E8%A7%A3%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-number">2.1.3.</span> <span class="toc-text">第六节 理解方法调用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%8B%E9%9D%A2%E6%98%AF%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E8%AF%A6%E7%BB%86%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">1. 下面是调用过程的详细描述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%EF%BC%9A"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">注释：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%B9%E6%B3%95%E8%A1%A8"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">2. 方法表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E8%AE%B2-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.1.4.</span> <span class="toc-text">第八讲 强制类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E7%9A%84%E5%94%AF%E4%B8%80%E5%8E%9F%E5%9B%A0"><span class="toc-number">2.1.4.1.</span> <span class="toc-text">进行的唯一原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%A0%E6%AD%A4"><span class="toc-number">2.1.4.2.</span> <span class="toc-text">因此</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">2.1.5.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E8%8A%82-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.1.6.</span> <span class="toc-text">第九节 抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%89%A9%E5%B1%95%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%8F%AF%E4%BB%A5%E6%9C%89%E4%B8%A4%E7%A7%8D%E9%80%89%E6%8B%A9%E3%80%82"><span class="toc-number">2.1.6.1.</span> <span class="toc-text">1. 扩展抽象类可以有两种选择。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8D%E8%83%BD%E8%A2%AB%E5%AE%9E%E4%BE%8B%E5%8C%96%E3%80%82"><span class="toc-number">2.1.6.2.</span> <span class="toc-text">2. 抽象类不能被实例化。</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java%E7%94%A8%E4%BA%8E%E6%8E%A7%E5%88%B6%E5%8F%AF%E8%A7%81%E6%80%A7%E7%9A%844%E4%B8%AA%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%9A"><span class="toc-number">2.1.7.</span> <span class="toc-text">Java用于控制可见性的4个访问修饰符：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-Object%EF%BC%9A%E6%89%80%E6%9C%89%E7%B1%BB%E7%9A%84%E8%B6%85%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">第二讲 Object：所有类的超类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%8A%82-equals-%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.1.</span> <span class="toc-text">第一节 equals 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-number">2.2.2.</span> <span class="toc-text">注意：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E9%9D%A2%E7%BB%99%E5%87%BA%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E5%AE%8C%E7%BE%8E%E7%9A%84equals%E6%96%B9%E6%B3%95%E7%9A%84%E5%BB%BA%E8%AE%AE%EF%BC%9A"><span class="toc-number">2.2.2.1.</span> <span class="toc-text">下面给出编写一个完美的equals方法的建议：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-hashcode%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.3.</span> <span class="toc-text">第二讲 hashcode方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">1. 介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89hashCode"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">2. 为什么要有hashCode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-equals-%E5%92%8ChashCode"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">3. equals( )和hashCode( )</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%90%8C%E6%97%B6%E6%8F%90%E4%BE%9B"><span class="toc-number">2.2.3.3.1.</span> <span class="toc-text">1. 同时提供</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%89%80%E4%BB%A5"><span class="toc-number">2.2.3.3.2.</span> <span class="toc-text">2. 所以</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E9%87%8D%E5%86%99equals-%E5%BF%85%E9%A1%BB%E9%87%8D%E5%86%99hashCode"><span class="toc-number">2.2.3.3.3.</span> <span class="toc-text">3. 重写equals()必须重写hashCode()</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E4%BD%90%E8%AF%81"><span class="toc-number">2.2.3.3.4.</span> <span class="toc-text">4. 其他佐证</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%87%8D%E5%86%99hashCode%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.3.4.</span> <span class="toc-text">4. 重写hashCode方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2-%E6%B3%9B%E5%9E%8B%E6%95%B0%E7%BB%84%E5%88%97%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text">第三讲 泛型数组列表</span></a></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
