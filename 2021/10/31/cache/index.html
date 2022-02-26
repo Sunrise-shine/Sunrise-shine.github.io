@@ -76,8 +76,11 @@ r=tm/tc表示主存慢于cache的倍率，e=tc/ta表示访问效率</script><p>�
 </ul>
 <h3 id="5-主存与cache的地址映射"><a href="#5-主存与cache的地址映射" class="headerlink" title="5  主存与cache的地址映射"></a>5  主存与cache的地址映射</h3><p>cache的容量很小，它保存的内容只是主存内容的一个子集，且cache与主存的数据交换是以块为单位。</p>
 <p>地址映射即是应用某种方法把主存地址定位到cache中。地址映射的方式有<strong>全相联方式、直接映射方式和组相联方式三种。</strong></p>
-<h4 id="1-全相联方式"><a href="#1-全相联方式" class="headerlink" title="1. 全相联方式"></a>1. 全相联方式</h4><p>主存中的一个<strong>块的地址与块的内容</strong>一起存于cache的行中，其中<strong>块地址存于cache行的标记部分</strong>中，是由于此种方式，内存中的块可以映射到cache任意一行中。块的大小 = 行的大小。但注意，若以内存一块256字为例，则cache一行长度不仅保存了内存的地址，还有该地址对应的内容，即其实保存了521字的内容，但其可用大小应为256×行数。因为地址固定时，内容就固定了，没有可变性，故而不能是521×块数，没有那么多可用的。由于其电路设计复杂，更多用于小容量cache。<img src="https://s2.loli.net/2021/12/22/dmGe41p2RknPCAt.png" alt="image-20211031151344855"></p>
-<h4 id="2-直接映射方式"><a href="#2-直接映射方式" class="headerlink" title="2. 直接映射方式"></a>2. 直接映射方式</h4><p>这也是一种多对一的映射关系，但一个主存块只能拷贝到cache的一个特定行位置上去。cache的行号i和主存的块号j有如下函数关系：</p>
+<h4 id="1-全相联方式"><a href="#1-全相联方式" class="headerlink" title="1. 全相联方式"></a>1. 全相联方式</h4><p>主存中的一个<strong>块的地址与块的内容</strong>一起存于cache的行中，其中<strong>块地址存于cache行的标记部分</strong>中，是由于此种方式，<strong>内存中的块可以映射到cache任意一行中</strong>。块的大小 = 行的大小。</p>
+<p>但注意，若以内存一块256字为例，则cache一行长度不仅保存了内存的地址，还有该地址对应的内容，即其实保存了521字的内容，但其可用大小应为256×行数。因为地址固定时，内容就固定了，没有可变性，故而不能是521×块数，没有那么多可用的。</p>
+<p>由于其电路设计复杂，更多用于小容量cache。<img src="https://s2.loli.net/2021/12/22/dmGe41p2RknPCAt.png" alt="image-20211031151344855"></p>
+<h4 id="2-直接映射方式"><a href="#2-直接映射方式" class="headerlink" title="2. 直接映射方式"></a>2. 直接映射方式</h4><p>这也是一种多对一的映射关系，但一个主存块只能拷贝到cache的一个特定行位置上去。</p>
+<p>cache的行号i和主存的块号j有如下函数关系：</p>
 <script type="math/tex; mode=display">
 i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12/22/2AgZ6BmErHPQC1M.png" alt="image-20211031151518192"></p>
 <p>注意比较的顺序，另外由于几个内存块对应同一行，容易发生空间冲突。适合于大容量cache。</p>

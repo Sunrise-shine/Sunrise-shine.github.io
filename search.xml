@@ -361,7 +361,7 @@
     <url>/2021/12/22/Computer-Network/</url>
     <content><![CDATA[<h1 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h1><h5 id="计算机网络涉及通信与计算机两个领域，它的发展过程是计算机与通信融合的过程。"><a href="#计算机网络涉及通信与计算机两个领域，它的发展过程是计算机与通信融合的过程。" class="headerlink" title="计算机网络涉及通信与计算机两个领域，它的发展过程是计算机与通信融合的过程。"></a>计算机网络涉及通信与计算机两个领域，它的发展过程是计算机与通信融合的过程。</h5><h2 id="1-四个阶段"><a href="#1-四个阶段" class="headerlink" title="1. 四个阶段"></a>1. 四个阶段</h2><p>计算机网络的发展经历了四个阶段：</p>
 <ol>
-<li>第一阶段：<strong>面向终端</strong>的计算机网络(以单个计算机为中心的远程联机系统)，特点为连接。</li>
+<li>第一阶段：<strong>面向终端</strong>的计算机网络(以<strong>单个计算机为中心</strong>的<strong>远程联机系统</strong>)，特点为连接。</li>
 <li>第二阶段：<strong>互不兼容</strong>的计算机网络(多台计算机通过通信线路互联的计算机网络，完成了网络体系结构与协议的研究)(协议是计算机之间沟通的基本规则)(通过网关实现SNA和DNA之间的通信，适合异种网络规模较小的场合)</li>
 <li>第三阶段：<strong>标准的开放的</strong>计算机网络(具有统一的网络体系结构，遵循国际通信标准化协议的计算机网络，提出了开放系统互联参考模型与协议)</li>
 <li>第四阶段：Internet发展和普及阶段(计算机网络向互联、高速、智能化方向发展，获得广泛应用)</li>
@@ -376,14 +376,18 @@
 <h4 id="分层及介绍"><a href="#分层及介绍" class="headerlink" title="分层及介绍"></a>分层及介绍</h4><h5 id="第一层：物理层"><a href="#第一层：物理层" class="headerlink" title="第一层：物理层"></a>第一层：<strong>物理层</strong></h5><ul>
 <li>是整个OSI参考模型的最低层，提供物理连接。</li>
 <li>其功能是在物理媒体上<strong>透明地传输原始比特流(进行二进制传输)</strong></li>
+<li>接口标准：EIA-232、EIA/TIA RS-449等</li>
 </ul>
 <h5 id="第二层：数据链路层"><a href="#第二层：数据链路层" class="headerlink" title="第二层：数据链路层"></a>第二层：<strong>数据链路层</strong></h5><ul>
 <li>建立在物理传输能力的基础上，以<strong>帧为单位</strong>传输数据</li>
 <li>主要功能包括：成帧、差错控制、流量控制和传输管理等。主要考虑相邻节点之间的数据交换</li>
+<li>可用的协议：PPP，X.25，帧中继。</li>
+<li>工作在数据链路层上的交换机俗称“第二层交换机”。</li>
 </ul>
 <h5 id="第三层：网络层"><a href="#第三层：网络层" class="headerlink" title="第三层：网络层"></a>第三层：<strong>网络层</strong></h5><ul>
 <li>通过网络连接交换运输层实体发出的数据，以<strong>分组</strong>为传送单位。</li>
 <li>主要功能：选择合适的路由，使发送站的传输层传下来的分组能够正确无误地按照地址找到目的站，并交付目的站的运输层，以及实现拥塞控制、网络互连等功能。</li>
+<li>协议有：IP、ARP、RARP等。</li>
 </ul>
 <h5 id="第四层：运输层-传输层"><a href="#第四层：运输层-传输层" class="headerlink" title="第四层：运输层(传输层)"></a>第四层：<strong>运输层(传输层)</strong></h5><ul>
 <li>在底层服务的基础上，提供一种通用的传输服务。</li>
@@ -411,11 +415,23 @@
 </blockquote>
 <h3 id="TCP-IP-参考模型"><a href="#TCP-IP-参考模型" class="headerlink" title="TCP/IP 参考模型"></a>TCP/IP 参考模型</h3><p><strong>1977~1979年，ARPANET推出TCP/IP体系结构和协议(传输控制协议/网际协议为代表的协议栈)</strong>。</p>
 <p><img src="https://s2.loli.net/2021/12/22/s1fY2Eqt8jU7p5x.png" alt="image-20211222170621802"></p>
-<h2 id="4-计算机网络的分类"><a href="#4-计算机网络的分类" class="headerlink" title="4. 计算机网络的分类"></a>4. 计算机网络的分类</h2><h3 id="按地理位置分"><a href="#按地理位置分" class="headerlink" title="按地理位置分"></a>按地理位置分</h3><ul>
-<li>广域网</li>
-<li>城域网</li>
-<li>局域网</li>
-<li>个人区域网</li>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>协议：远程登录协议(TELNET)、文件传送协议(FTP)、简单邮件传送协议(SMTP)、域名服务器(DNS)、超文本传输协议(HTTP)等。</p>
+<h4 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h4><p>协议：TCP(面向连接的可靠的协议)、UDP(无连接的、不可靠的协议)</p>
+<h4 id="网际层"><a href="#网际层" class="headerlink" title="网际层"></a>网际层</h4><p>定义了正式的分组交换格式和协议，即IP协议。</p>
+<h4 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h4><p>功能就类似于OSI的物理层和数据链路层，但实际上TCP/IP协议并没有真正描述这一部分。</p>
+<h3 id="二者的对比"><a href="#二者的对比" class="headerlink" title="二者的对比"></a>二者的对比</h3><p><img src="https://s2.loli.net/2022/02/15/BOmxQ5HEI4ApYdJ.png" alt="image-20220215105935188"></p>
+<p>事实上，OSI参考模型和TCP/IP参考模型的原理和概念都是一样的，只是在定义上和细节处理上不同而已。</p>
+<p>第一、OSI参考模型精确地定义了三个主要概念：服务、协议和接口，与现代的面向对象程序设计思想非常吻合。而TCP/IP模型在这三个概念上却没有明确区分(不符合软件工程的思想)。</p>
+<p>第二、OSI参考模型产生在协议发明之前，没有偏向于任何特定的协议，通用性良好。TCP/IP模型实际上是对已有协议的描述，因此不会出现协议不能匹配模型的情况(不适合非TCP/IP模型的协议栈)。</p>
+<p>第三、OSI参考模型在网络层支持无连接和面向连接的通信，但在运输层仅有面向连接的通信，而TCP/IP模型认为可靠性是端到端的问题，因此它在网际层仅有一种无连接的通信模式，但在运输层支持无连接和面向连接两种模式。</p>
+<p>OSI参考模型缺乏市场与商业动力，结构复杂，实现周期长，运行效率低。</p>
+<p><img src="https://s2.loli.net/2022/02/15/NXTg2uRIZ8W3qac.png" alt="image-20220215111501221"></p>
+<h2 id="4-计算机网络的分类"><a href="#4-计算机网络的分类" class="headerlink" title="4. 计算机网络的分类"></a>4. 计算机网络的分类</h2><p>记得大致分了几类。</p>
+<h3 id="按地理位置分"><a href="#按地理位置分" class="headerlink" title="按地理位置分"></a>按地理位置分</h3><ul>
+<li>广域网(覆盖范围通常是几十到几千公里(一公里=一千米)的区域。)</li>
+<li>城域网(覆盖范围通常是10~100km。)</li>
+<li>局域网(覆盖范围通常是几十米到几千米)(最常用的是以太网)</li>
+<li>个人区域网(10米左右)</li>
 </ul>
 <h3 id="按网络拓扑结构分"><a href="#按网络拓扑结构分" class="headerlink" title="按网络拓扑结构分"></a>按网络拓扑结构分</h3><ul>
 <li>星型</li>
@@ -442,14 +458,32 @@
 <li><p>分组交换网络(报文较小，会增大目的地址量，降低效率)</p>
 </li>
 </ul>
-<h2 id="5-制定网络协议的组织"><a href="#5-制定网络协议的组织" class="headerlink" title="5. 制定网络协议的组织"></a>5. 制定网络协议的组织</h2><p>记几个常见的名称</p>
+<h2 id="5-制定网络协议的组织"><a href="#5-制定网络协议的组织" class="headerlink" title="5. 制定网络协议的组织"></a>5. 制定网络协议的组织</h2><h3 id="网络协议组成元素"><a href="#网络协议组成元素" class="headerlink" title="网络协议组成元素"></a>网络协议组成元素</h3><p>协议是一组控制数据通信的规则，明确规定所交换的数据格式和时序。</p>
+<p>网络协议包括3个要素：</p>
+<ul>
+<li>语法：传输数据的格式</li>
+<li>语义：规定了要完成的功能</li>
+<li>定时：规定了执行各种操作的条件、时序关系等。</li>
+</ul>
+<h3 id="网络协议举例"><a href="#网络协议举例" class="headerlink" title="网络协议举例"></a>网络协议举例</h3><p>记几个常见的名称</p>
 <p><img src="https://s2.loli.net/2021/12/22/BX6n83tPNiIUGph.png" alt="image-20211222171450997"></p>
+<p>Internet工程特别任务组（IETF）中的标准通常以<strong>RFC(请求评注,Request for Comments)</strong>文档的形式公布.</p>
 <h2 id="6-服务质量"><a href="#6-服务质量" class="headerlink" title="6. 服务质量"></a>6. 服务质量</h2><p><img src="https://s2.loli.net/2021/12/22/LE5Hq69c2ROuXJs.png" alt="image-20211222172217157"></p>
-<h4 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h4><h1 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h1><p><strong>物理层位于OSI参考模型的最低层，直接面向实际承担数据传输的物理介质</strong>(即信道)。它的功能是激活、维持和释放数据链路层实体之间进行比特传输的物理连接(就是，<strong>传输比特流</strong>)。</p>
+<h4 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h4><h2 id="7-相关"><a href="#7-相关" class="headerlink" title="7. 相关"></a>7. 相关</h2><ol>
+<li><p><strong>面向终端的远程联机系统</strong>是计算机和通信相结合的前驱。以单个<strong>计算机</strong>为中心。</p>
+</li>
+<li><p>在20世纪70年代，美国的<strong>ARPANET</strong>(具有代表性的，美国国防部)采用了“存储转发-分组交换”的原理，采用<strong>TCP/IP</strong>协议，成为了事实上的国际标准。</p>
+</li>
+<li><strong>1984年</strong>，ISO颁布的OSI/RM(Open Systems Interconnection-Reference Model)参考模型。</li>
+<li>计算机网络的分类(按照哪个分为几类)</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/21/rF2twM3dSQNCilH.png" alt="image-20220221162306391"></p>
+<p><img src="https://s2.loli.net/2022/02/21/AOgc5Nr278dKX3k.png" alt="image-20220221163946294"></p>
+<h1 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h1><p><strong>物理层位于OSI参考模型的最低层，直接面向实际承担数据传输的物理介质</strong>(即信道)。它的功能是激活、维持和释放数据链路层实体之间进行比特传输的物理连接(就是，<strong>传输比特流</strong>)。</p>
 <h2 id="1-通信速率和信道容量"><a href="#1-通信速率和信道容量" class="headerlink" title="1. 通信速率和信道容量"></a>1. 通信速率和信道容量</h2><h3 id="1-传输速率"><a href="#1-传输速率" class="headerlink" title="1. 传输速率"></a>1. 传输速率</h3><p>数据传输速率是指每秒能传输的二进制信息位数，单位为“位/秒”，记作“b/s”。表示为：</p>
 <script type="math/tex; mode=display">
 S=\frac{1}{T} \times log_2M(b/s)</script><h3 id="2-信号传输速率（码元速率、调制速率、波特率"><a href="#2-信号传输速率（码元速率、调制速率、波特率" class="headerlink" title="2. 信号传输速率（码元速率、调制速率、波特率)"></a>2. 信号传输速率（码元速率、调制速率、波特率)</h3><p>一个数字脉冲也称为一个码元，M为一个码元所取的有效离散值个数，也成为调制电平数，M一般取2的整数次方值。若一个码元能取M种离散值，则该码元便能携带 $log_2 M$位二进制信息。</p>
-<p>表示单位时间内通过信道传输的码元个数，也就是信号经调制后的传输速率(每秒信号变几次)，单位为baud(波特)。若信号码元的宽度为T(信号的持续时间s)，则码元速率定义为</p>
+<p>表示单位时间内通过信道传输的码元个数，也就是<strong>信号经调制后的传输速率(每秒信号变几次)</strong>，单位为baud(波特)。若信号码元的宽度为T(信号的持续时间s)，则码元速率定义为</p>
 <script type="math/tex; mode=display">
 B=\frac{1}{T} (baud)</script><p><strong>调制速率和数据传输速率</strong>的对应关系为：</p>
 <script type="math/tex; mode=display">
@@ -474,8 +508,10 @@ P_e = \frac{N_e}{N}</script><h3 id="例题"><a href="#例题" class="headerlink"
 </ul>
 <h4 id="光缆"><a href="#光缆" class="headerlink" title="光缆"></a>光缆</h4><ul>
 <li>多模（550米/1000M/模块成本低）</li>
-<li>单模（1000米/1000M/模块成本高）</li>
+<li>单模（1000米/1000M/模块成本高）单模光纤传输频带宽、容量大，传输距离长，需要用激光源</li>
 </ul>
+<p>单模光纤的性能要优于多模光纤，它的传输损耗较小。</p>
+<p>光纤纤芯质地脆，机械强度低。</p>
 <h3 id="3-无线的方式"><a href="#3-无线的方式" class="headerlink" title="3. 无线的方式"></a>3. 无线的方式</h3><ul>
 <li>无线局域网（2.4GHz/5GHz）</li>
 <li>微波天线与卫星通信</li>
@@ -491,10 +527,10 @@ P_e = \frac{N_e}{N}</script><h3 id="例题"><a href="#例题" class="headerlink"
 <li>多进制调制</li>
 </ol>
 <h3 id="2-脉冲编码调制技术-PCM"><a href="#2-脉冲编码调制技术-PCM" class="headerlink" title="2. 脉冲编码调制技术(PCM)"></a>2. 脉冲编码调制技术(PCM)</h3><p><strong>PCM基于奈奎斯特采样定理：如果在规定的时间间隔内，以有效信号f(t)最高频率的2倍或2倍以上的速率对该信号进行采样，则这些采样值包含了无混叠而又便于分离的全部原始信息。</strong></p>
-<h3 id="3-数字信号的编码技术"><a href="#3-数字信号的编码技术" class="headerlink" title="3. 数字信号的编码技术"></a>3. 数字信号的编码技术</h3><h4 id="1-不归零编码"><a href="#1-不归零编码" class="headerlink" title="1. 不归零编码"></a>1. 不归零编码</h4><h4 id="2-曼彻斯特码"><a href="#2-曼彻斯特码" class="headerlink" title="2. 曼彻斯特码"></a>2. 曼彻斯特码</h4><h5 id="编码格式"><a href="#编码格式" class="headerlink" title="编码格式"></a>编码格式</h5><p>一种双相码</p>
+<h3 id="3-数字信号的编码技术"><a href="#3-数字信号的编码技术" class="headerlink" title="3. 数字信号的编码技术"></a>3. 数字信号的编码技术</h3><h4 id="1-不归零编码"><a href="#1-不归零编码" class="headerlink" title="1. 不归零编码"></a>1. 不归零编码</h4><h4 id="2-曼彻斯特码"><a href="#2-曼彻斯特码" class="headerlink" title="2. 曼彻斯特码"></a>2. 曼彻斯特码</h4><h5 id="以太网是使用曼彻斯特编码的。"><a href="#以太网是使用曼彻斯特编码的。" class="headerlink" title="以太网是使用曼彻斯特编码的。"></a>以太网是使用曼彻斯特编码的。</h5><h5 id="编码格式"><a href="#编码格式" class="headerlink" title="编码格式"></a>编码格式</h5><p>一种双相码</p>
 <p><strong>用高电平到低电平的转换边表示1，用低电平到高电平的转换边表示0。(高到低为1；低到高为0)</strong></p>
-<h4 id="3-差分曼彻斯特码"><a href="#3-差分曼彻斯特码" class="headerlink" title="3. 差分曼彻斯特码"></a>3. 差分曼彻斯特码</h4><h5 id="编码格式-1"><a href="#编码格式-1" class="headerlink" title="编码格式"></a>编码格式</h5><p>一种双相码</p>
-<p>数据表示为在每一位开始处是否有电平转换：<strong>有电平转换表示0，无电平转换表示1，在信号中间强制转换(翻转)。(1不变，0变化，中间强制变化(以避免出现连续的高电平、低电平))</strong></p>
+<h4 id="3-差分曼彻斯特码"><a href="#3-差分曼彻斯特码" class="headerlink" title="3. 差分曼彻斯特码"></a>3. 差分曼彻斯特码</h4><h5 id="用在令牌环网中"><a href="#用在令牌环网中" class="headerlink" title="用在令牌环网中"></a>用在令牌环网中</h5><h5 id="编码格式-1"><a href="#编码格式-1" class="headerlink" title="编码格式"></a>编码格式</h5><p>一种双相码</p>
+<p>数据表示为在每一位开始处是否有电平转换：<strong>有电平转换表示0，无电平转换表示1(进来啥还是啥)，在信号中间强制转换(翻转)。(1不变，0变化，中间强制变化(以避免出现连续的高电平、低电平))</strong></p>
 <p><img src="https://s2.loli.net/2021/12/27/sNz9wp76Ourfqng.png" alt="image-20211227173107104"></p>
 <p>差分曼彻斯特编码比曼彻斯特编码的变化要小，因此更适合于传输高速的信息。</p>
 <h4 id="4-其他编码"><a href="#4-其他编码" class="headerlink" title="4. 其他编码"></a>4. 其他编码</h4><ul>
@@ -503,49 +539,410 @@ P_e = \frac{N_e}{N}</script><h3 id="例题"><a href="#例题" class="headerlink"
 <li><p>光纤的8B/10B</p>
 </li>
 </ul>
-<h2 id="4-信道复用技术"><a href="#4-信道复用技术" class="headerlink" title="4. 信道复用技术"></a>4. 信道复用技术</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为了有效地利用数据传输系统，人们希望通过同时携带多个信号来高效率地使用传输介质，这成为多路复用。多路复用连接器连接许多低速线路，并将它们各自所需的传输容量组合在一起后，在一条速度较高的线路上传输。</p>
+<h2 id="4-信道复用技术"><a href="#4-信道复用技术" class="headerlink" title="4. 信道复用技术"></a>4. 信道复用技术</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>为了有效地利用数据传输系统，人们希望通过同时携带多个信号来高效率地使用传输介质，这称为多路复用(MUX)。多路复用连接器连接许多低速线路，并将它们各自所需的传输容量组合在一起后，在一条速度较高的线路上传输。</p>
 <h3 id="技术"><a href="#技术" class="headerlink" title="技术"></a>技术</h3><ul>
-<li><p>频分多路复用</p>
-</li>
-<li><p>时分多路复用</p>
-</li>
-<li><p>波分多路复用</p>
-</li>
-<li><p>码分多路复用</p>
-</li>
+<li>频分多路复用</li>
+<li>时分多路复用</li>
+<li>波分多路复用</li>
+<li>码分多路复用</li>
 </ul>
-<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><h5 id="相邻主机-广播域内主机-之间的通信"><a href="#相邻主机-广播域内主机-之间的通信" class="headerlink" title="相邻主机(广播域内主机)之间的通信"></a>相邻主机(广播域内主机)之间的通信</h5><h2 id="1-差错检测"><a href="#1-差错检测" class="headerlink" title="1. 差错检测"></a>1. 差错检测</h2><h3 id="1-奇偶校验码"><a href="#1-奇偶校验码" class="headerlink" title="1. 奇偶校验码"></a>1. 奇偶校验码</h3><ul>
-<li><p>水平/垂直效验码：检错码</p>
+<h2 id="5-相关"><a href="#5-相关" class="headerlink" title="5. 相关"></a>5. 相关</h2><ol>
+<li>DTE：Data Terminal Equipment，数据终端设备</li>
+<li>DCE：Data Communication Equipment，数据通信设备。</li>
+<li>一个完整的数据通信系统一般可以划分为三大部分，即<strong>源系统(或发送方)、传输系统和目的系统(或接收方)</strong>。</li>
+<li>中继器将接收到的信号<strong>放大整形</strong>，以此来克服数字信号的衰减和畸变。</li>
+<li>通信有两种基本方式，即<strong>串行和并行</strong>。</li>
+<li>串行数据通信的方向性结构有3种，即<strong>单工(只有在一个方向的通信而没有反方向的交互)、半双工和全双工</strong>。</li>
+<li>如果安装正确，在非常短的距离（通常是100米左右）上，5类UTP的传输速率至少可以达到<strong>100Mbps</strong>.</li>
+<li>屏蔽双绞线的每一对线都有一个铝箔屏蔽层，四对线合在一起还有一个<strong>公共的金属编织屏蔽层</strong>。</li>
+<li>一般粗缆最多可以通过<strong>4个中继器</strong>使得网络范围达到2500m。</li>
+<li>细缆每段最长<strong>185m</strong>。</li>
+<li>无线传输是指在自由空间(地球上大气的性质也类似于自由空间)中进行电磁波的传输，其传输方法包括：微波传输、无线电传输、红外传输和<strong>激光传输</strong>。</li>
+<li>卫星通信是一种特殊的<strong>微波</strong>通信。</li>
+<li>无线电频率分为<strong>非管制和管制</strong>的两部分。</li>
+<li>信号数字化的转换过程包括：<strong>采样、量化和编码</strong>三个步骤。</li>
+<li><strong>信道容量</strong>表示一个信道传输数据的能力，即<strong>单位时间内可能传送的最大比特数，单位为bps</strong>。</li>
+<li><img src="https://s2.loli.net/2022/02/21/hSWHc2puTFnC6tX.png" alt="image-20220221172417686"></li>
+</ol>
+<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><h5 id="相邻主机-同一个广播域内的主机-如一个教室-之间的通信"><a href="#相邻主机-同一个广播域内的主机-如一个教室-之间的通信" class="headerlink" title="相邻主机(同一个广播域内的主机(如一个教室))之间的通信"></a>相邻主机(同一个广播域内的主机(如一个教室))之间的通信</h5><p>数据链路层的作用是加强物理层传输原始位流的功能，并将物理层提供的可能出错的物理连接改造成逻辑上无差错的数据链路。</p>
+<p><strong>数据链路层的主要功能是向网络层提供透明的和可靠的数据传输服务。</strong></p>
+<h2 id="0-数据链路层的功能"><a href="#0-数据链路层的功能" class="headerlink" title="0.数据链路层的功能"></a>0.数据链路层的功能</h2><h3 id="1-链路管理"><a href="#1-链路管理" class="headerlink" title="1. 链路管理"></a>1. 链路管理</h3><p>当网络中的两个结点要进行通信时，发送方必须确知接收方是处在准备接受数据的状态。为此，通信双方必须要先交换一些必要的信息，建立链路连接，同时在传输数据时要维持数据链路，在传输完毕是要释放数据链路。</p>
+<p>数据链路的建立、维持和释放称为<strong>链路管理</strong>，它主要用于面向连接的服务。</p>
+<h3 id="2-帧同步"><a href="#2-帧同步" class="headerlink" title="2. 帧同步"></a>2. 帧同步</h3><p>帧同步，即帧的组织结构应当使接收方能从接收到的位流中准确地识别一个帧的开始和结束。</p>
+<h3 id="3-流量控制"><a href="#3-流量控制" class="headerlink" title="3. 流量控制"></a>3. 流量控制</h3><p>为了防止接收方缓存能力不足而造成数据的丢失，发送方发送数据的速率必须让接收方来控制。</p>
+<p>流量控制实际上就是，限制发送方的数据流量，使其发送速率不致超过接收方的接受能力。</p>
+<h3 id="4-差错控制"><a href="#4-差错控制" class="headerlink" title="4. 差错控制"></a>4. 差错控制</h3><p>用以使发送方确定接收方是否正确地接收到了由它发送的数据的方法称为差错控制。</p>
+<p>通信系统必须具备发现(即检测)差错的能力，并采取措施加以纠正，使差错控制在尽可能小的范围内。</p>
+<p>帧传输中出现的错误包括帧错和位错。</p>
+<p>位错是指帧在传输过程中某些位出现差错，通常采用奇偶校验、循环冗余校验等方法发现位错。</p>
+<p>对于帧错主要采用自动重传请求方式来重传出错的帧。</p>
+<h3 id="5-透明传输"><a href="#5-透明传输" class="headerlink" title="5. 透明传输"></a>5. 透明传输</h3><p>透明传输是指因数据组合的随机性，它可能和某个控制信息完全一样而被接收方误解，必须有措施使接收方不至于将这样的数据当作某种控制信息。</p>
+<h3 id="6-寻址"><a href="#6-寻址" class="headerlink" title="6. 寻址"></a>6. 寻址</h3><p>必须保证每一帧能正确地送达目的地，同时又要使接收方知道该帧是由哪个机器发送的。</p>
+<h2 id="1-差错检测"><a href="#1-差错检测" class="headerlink" title="1. 差错检测"></a>1. 差错检测</h2><h3 id="1-奇偶校验码"><a href="#1-奇偶校验码" class="headerlink" title="1. 奇偶校验码"></a>1. 奇偶校验码</h3><p>常在计算机内部使用，因为干扰发生的概率小</p>
+<ul>
+<li><p>水平/垂直校验码：检错码</p>
 </li>
-<li><p>水平垂直校验码：纠错码</p>
+<li><p>水平垂直校验码：纠错码(成本较高)</p>
 </li>
 </ul>
 <h3 id="2-循环冗余码-CRC必考"><a href="#2-循环冗余码-CRC必考" class="headerlink" title="2. 循环冗余码(CRC必考)"></a>2. 循环冗余码(CRC必考)</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><p>任何一个由二进制数位串组成的代码，都可以唯一地与一个只含有0和1两个系数的多项式建立一一对应的关系。例如，代码1010111对应的多项式是 $X^6 + X^4+ X^2+X^1+1$。</p>
-<p>在发送方编码和接收方校验时，都可以利用事先约定的多项式$G(X)$来得到CRC码，k位待发送信息位对应于一个k-1次多项式$K(X)$，r位冗余位对应于一个r-1次多项式R(X)，由k位信息位后面加上r次冗余位组成的$n=k+r$位码字则对应于一个$n-1$次多项式$T(X)=X^rK(X)+R(X)$。</p>
-<p>仍以$K(X)=X^6+X^4+X^3+1(信息位为1011001)(待发送信息)$为例，若$G(X)=X^4+X^3+1(事先约定)(11001)$，则$r=4$，$X^4K(X)=X^{10}+X^8+X^7+X^4(10110010000)$.由模2除法求余式$R(X)$的过程如图所示。</p>
+<h5 id="各多项式含义"><a href="#各多项式含义" class="headerlink" title="各多项式含义"></a>各多项式含义</h5><p>在发送方编码和接收方校验时，都可以利用事先约定的多项式$G(X)$来得到CRC码。</p>
+<p>k位待发送信息位对应于一个k-1次多项式$K(X)$</p>
+<p>r位冗余位对应于一个r-1次多项式$R(X)$</p>
+<p>由k位信息位后面加上r次冗余位组成的$n=k+r$位码字则对应于一个$n-1$次多项式$T(X)=X^rK(X)+R(X)$。</p>
+<p>由信息位产生冗余位的编码过程，就是已知$K(X)$求$R(X)$的过程。先找到一个特定的r次多项式$G(X)$，其最高次项$X^r$的系数恒为1，然后用$X^r \cdot K(X) $除以$G(X)$，得到的余式就是$R(X)$。</p>
+<h5 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h5><p>仍以$K(X)=X^6+X^4+X^3+1(信息位为1011001)(待发送信息)$为例，若$G(X)=X^4+X^3+1(事先约定)(11001)$，则$r=4$，$X^4K(X)=X^{10}+X^8+X^7+X^4(10110010000)$.由模2除法求余式$R(X)$的过程如图所示。</p>
 <p><img src="https://s2.loli.net/2022/01/10/Co9XIdpf1bv58Mq.png" alt="image-20220110151925039"></p>
 <p>最后得到的余数是1010，就是冗余位，对应于$R(X)=X^3+X$。由于$R(X)$是$X^rK(X)$除以$G(X)$的余式，那么必然满足：</p>
 <script type="math/tex; mode=display">
-X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法则，$R(X)+R(X)=0$，所以可将上式改记为</p>
+X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商式，根据模2运算法则，$R(X)+R(X)=0$，所以可将上式改记为</p>
 <script type="math/tex; mode=display">
 \frac{X^rK(X)+R(X)}{G(X)}=Q(X)</script><p>即，$\frac{T(X)}{G(X)}=Q(X)$</p>
-<p><strong>由此可见，信道上发送的码字多项式$T(X)=X^rK(X)+R(X)$，若传输过程无错，则接收方接收到的码字也对应于此多项式，也就是说接收到的码字多项式能被$G(X)$整除。因此，接收方的校验过程就是将接收到的码字多项式除以$G(X)$的过程，若余式为0，则认为传输无差错，若余式不为0，则传输有差错。</strong></p>
-<p><img src="https://s2.loli.net/2022/01/10/jLYbRSkWFs79EzH.png" alt="image-20220110162900726"></p>
+<h5 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h5><p><strong>由此可见，信道上发送的码字多项式$T(X)=X^rK(X)+R(X)$，若传输过程无错，则接收方接收到的码字也对应于此多项式，也就是说接收到的码字多项式能被$G(X)$整除。</strong></p>
+<p><strong>因此，接收方的校验过程就是将接收到的码字多项式除以$G(X)$(事先约定)的过程，若余式为0，则认为传输无差错，若余式不为0，则传输有差错。</strong></p>
+<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p><img src="https://s2.loli.net/2022/01/10/jLYbRSkWFs79EzH.png" alt="image-20220110162900726"></p>
 <p><img src="https://s2.loli.net/2022/01/10/4YrCuwzTZGfWOAj.png" alt="image-20220110162950640"></p>
 <p><img src="https://s2.loli.net/2022/01/10/wm59PKXcYJgb1I4.png" alt="image-20220110165636498"></p>
 <p>在第二个框那里增加0，是错的。</p>
-<h2 id="2-HDLC"><a href="#2-HDLC" class="headerlink" title="2. HDLC"></a>2. HDLC</h2><h3 id="0比特填充技术"><a href="#0比特填充技术" class="headerlink" title="0比特填充技术"></a>0比特填充技术</h3><h4 id="标志字段-F"><a href="#标志字段-F" class="headerlink" title="标志字段 F"></a>标志字段 F</h4><p>物理层向数据链路层交付的是所收到的一连串的位流，在一个帧的开头和结尾各放入一个字节的特殊标记“01111110”作为一个帧的边界，这个标记称为标志字段F(Flag)，共8位。</p>
+<h2 id="2-帧同步-1"><a href="#2-帧同步-1" class="headerlink" title="2. 帧同步"></a>2. 帧同步</h2><p><img src="https://s2.loli.net/2022/02/16/hm2Ojuwlz8T6VeJ.png" alt="image-20220216185539609"></p>
+<h3 id="0比特填充技术"><a href="#0比特填充技术" class="headerlink" title="0比特填充技术(*)"></a>0比特填充技术(*)</h3><h4 id="标志字段-F"><a href="#标志字段-F" class="headerlink" title="标志字段 F"></a>标志字段 F</h4><p>物理层向数据链路层交付的是所收到的一连串的位流，在一个帧的开头和结尾各放入一个字节的特殊标记： “01111110” 作为一个帧的边界，这个标记称为标志字段F(Flag)，共8位。</p>
 <p>在接收方，只要找到两个标志字段，那么在这两个标志字段之间的位流就是一个帧的信息。</p>
 <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>如果在两个标志字段之间的位流中，出现与标志字段F相同的比特模式时，就会被误认为是帧的边界，从而破坏帧的同步。</p>
 <h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>为避免这种情况，采用<strong>0比特填充技术</strong>，即发送方在比特流中一旦发现5个连续的1，就在其后填入一个0，从而保证在传输的比特流中不会出现F标志。</p>
 <blockquote>
-<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>在接收一个帧时，在F字段确定的帧的边界之间，若比特流有5个连续1，则将这5个连续1后的一个0删除，将比特流还原。这样，不管出现什么样的比特组合，都不会引起对帧边界的错误判断。</p>
+<h4 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h4><p>在接收一个帧时，在F字段确定的帧的边界之间，若比特流有5个连续1，则将这5个连续1后的一个0删除，将比特流还原。这样，不管出现什么样的比特组合，都不会引起对帧边界的错误判断。</p>
 <p><strong>具有这种特点的传输称为透明传输。</strong></p>
 </blockquote>
-<h2 id="3-停止等待协议"><a href="#3-停止等待协议" class="headerlink" title="3. 停止等待协议"></a>3. 停止等待协议</h2><h3 id="1-差错控制与流量控制"><a href="#1-差错控制与流量控制" class="headerlink" title="1. 差错控制与流量控制"></a>1. 差错控制与流量控制</h3><p>对数据传输进行差错控制和流量控制是数据链路层的关键功能。</p>
+<h2 id="3-停止等待协议"><a href="#3-停止等待协议" class="headerlink" title="3. 停止等待协议"></a>3. 停止等待协议</h2><h3 id="1-差错控制与流量控制"><a href="#1-差错控制与流量控制" class="headerlink" title="1. 差错控制与流量控制"></a>1. 差错控制与流量控制</h3><p><strong>对数据传输进行差错控制和流量控制是数据链路层的关键功能。</strong></p>
 <p>目前，进行差错控制和流量控制的基本策略是<strong>反馈机制</strong>，即发送方通过接收方反馈回来的能否继续接受或是否正确收到帧等信息来进行下一步的操作。</p>
-<p>差错控制的基本思想是：差错检测、接受确认和出错重传。</p>
-<p>流量控制的基本思想是：是接收方能够控制发送方发送帧的速率。</p>
+<h4 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h4><p><strong>差错控制的基本思想是：差错检测、接受确认和出错重传。</strong></p>
+<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p><strong>流量控制的基本思想是：是接收方能够控制发送方发送帧的速率。</strong></p>
+<p>由接收方控制发送方的速度，以避免发送方发送太快而接收方来不及接受的问题。</p>
+<h3 id="2-停止等待协议"><a href="#2-停止等待协议" class="headerlink" title="2. 停止等待协议"></a>2. 停止等待协议</h3><p>每发送一帧就停下来等待确认，若收到确认就发送下一帧。</p>
+<h3 id="3-实用的停止等待协议"><a href="#3-实用的停止等待协议" class="headerlink" title="3. 实用的停止等待协议"></a>3. 实用的停止等待协议</h3><h4 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h4><p>每发送一帧就停下来等待确认，</p>
+<p>若收到确认就发送下一帧。</p>
+<p>若在规定的时间内，没有收到确认帧，就重新发送这一帧。</p>
+<h5 id="另外"><a href="#另外" class="headerlink" title="另外"></a>另外</h5><p>此时确认帧不需要序号，因为只发送一帧数据，确认无需排序。</p>
+<p><strong>若收到重复分组，就丢弃，但同时也要发送确认帧。</strong></p>
+<h3 id="4-效率的计算"><a href="#4-效率的计算" class="headerlink" title="4. 效率的计算"></a>4. 效率的计算</h3><ol>
+<li><p>发送时延 = 帧长 / 发送速度</p>
+</li>
+<li><p>传播时延 = 距离 / 电磁波速度</p>
+</li>
+<li><p>总时延 = 发送时延 + 传播时延 + 确认发送时延 + 确认传播时延</p>
+<p> ​             = 发送时延 + 2 * 传播时延    </p>
+<p> (因为确认帧的帧长比较短，其发送时延很短，可以忽略不计；但距离和电磁波速度是一样的，故而是2倍。)</p>
+</li>
+<li><p>效率 = 发送时延 / 总时延</p>
+</li>
+<li><p>所以提高效率，可以通过增加发送时延。</p>
+</li>
+</ol>
+<h2 id="4-连续ARQ协议"><a href="#4-连续ARQ协议" class="headerlink" title="4. 连续ARQ协议"></a>4. 连续ARQ协议</h2><p>自动请求重发</p>
+<p>由于减少了等待时间，整个通信的吞吐量提高。</p>
+<p>发送维持一个发送窗口，接收方采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组位置的所有分组都已经正确地收到了。</p>
+<h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>每发送N帧就停下来等待确认；接收方按序接收。</p>
+<p>一次发送N帧，未收到回复就自动重发。</p>
+<p>在连续ARQ协议中，接收方只允许按序接收，当发送方发现未收到前面已发送出去的帧的确认信息，计时器已经超时或收到了否定应答信息，则不得不重发后N帧。因此，又叫后退N帧的滑动窗口协议。</p>
+<h3 id="发送窗口和接收窗口-滑动窗口"><a href="#发送窗口和接收窗口-滑动窗口" class="headerlink" title="发送窗口和接收窗口(滑动窗口)"></a>发送窗口和接收窗口(滑动窗口)</h3><h4 id="发送窗口"><a href="#发送窗口" class="headerlink" title="发送窗口"></a>发送窗口</h4><p>发出去还未收到确认的帧</p>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>若采用n位二进制编码来给出帧编号，则发送窗口最大只能是$2^n - 1$，即任何时候最多允许有$2^n - 1$个帧未被确认。例如，当n=3时，发送窗口长度为7。</p>
+<p>原因1：如果窗口长度为8，则每次发送都是0~7，那么接收窗口无法确认是新8帧还是旧8帧，而长度为7时，第一次发送0-6，第二次发送7-5，可以确认。</p>
+<p>原因2：发送窗口为12345670，收到确认帧1，无法确定是重发1，还是发送下一个1。</p>
+<h4 id="接收窗口"><a href="#接收窗口" class="headerlink" title="接收窗口"></a>接收窗口</h4><p>准备接受的帧</p>
+<h3 id="确认的序号"><a href="#确认的序号" class="headerlink" title="确认的序号"></a>确认的序号</h3><ul>
+<li>确认收到</li>
+<li>确认没有收到</li>
+<li>确认下一帧应该接收(收到后，回复准备接收n+1帧，减少回复次数，提高效率)</li>
+</ul>
+<h3 id="确认的方式"><a href="#确认的方式" class="headerlink" title="确认的方式"></a>确认的方式</h3><ul>
+<li>单独确认帧</li>
+<li>捎带确认帧(将确认帧放在反方向的数据帧里)</li>
+</ul>
+<p><strong>差错控制的基本思想是：差错检测、接受确认和出错重传。</strong></p>
+<h2 id="5-选择重传ARQ协议"><a href="#5-选择重传ARQ协议" class="headerlink" title="5. 选择重传ARQ协议"></a>5. 选择重传ARQ协议</h2><p>在连续ARQ协议中，接收窗口的长度为1，浪费了线路带宽。</p>
+<h3 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h3><p>每发送N帧，就停下等待确认，接收方不按序接收。</p>
+<h3 id="最大发送窗口"><a href="#最大发送窗口" class="headerlink" title="最大发送窗口"></a>最大发送窗口</h3><p><img src="https://s2.loli.net/2022/02/16/cUipqTFg8Db95EC.png" alt="image-20220216183618667"></p>
+<p><img src="https://s2.loli.net/2022/02/16/Eebqt1KNcXgBf5a.png" alt="image-20220216184018869"></p>
+<p><strong>所以，采用该协议时，窗口长度的最大值应为帧编号的一半。</strong></p>
+<h2 id="6-三种协议"><a href="#6-三种协议" class="headerlink" title="6. 三种协议(*)"></a>6. 三种协议(*)</h2><h3 id="都基于滑动窗口协议"><a href="#都基于滑动窗口协议" class="headerlink" title="都基于滑动窗口协议"></a>都基于滑动窗口协议</h3><h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p><img src="https://s2.loli.net/2022/02/16/WyEBZozvifrDqQK.png" alt="image-20220216184051632"></p>
+<p><img src="https://s2.loli.net/2022/02/16/KUDP8zqCTJYsA7E.png" alt="image-20220216185024281"></p>
+<h2 id="7-信道使用权分配"><a href="#7-信道使用权分配" class="headerlink" title="7. 信道使用权分配"></a>7. 信道使用权分配</h2><h3 id="频分"><a href="#频分" class="headerlink" title="频分"></a>频分</h3><p>由于网络通信存在突发性，故而在网络中不常用</p>
+<h4 id="电话线路"><a href="#电话线路" class="headerlink" title="电话线路"></a>电话线路</h4><p>电话线路的ADSL</p>
+<p>电话：4000Hz以下</p>
+<p>上网：4000Hz以上</p>
+<h3 id="时分"><a href="#时分" class="headerlink" title="时分"></a>时分</h3><h4 id="同步时分"><a href="#同步时分" class="headerlink" title="同步时分"></a>同步时分</h4><p>不适合网络传输的突发性，存在带宽的浪费</p>
+<h4 id="异步-统计-时分"><a href="#异步-统计-时分" class="headerlink" title="异步(统计)时分"></a>异步(统计)时分</h4><h5 id="令牌式"><a href="#令牌式" class="headerlink" title="令牌式"></a>令牌式</h5><p>对带宽有一定的浪费</p>
+<h5 id="竞争式"><a href="#竞争式" class="headerlink" title="竞争式"></a>竞争式</h5><p>浪费较小，且简单</p>
+<h5 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h5><p>负载重时，使用令牌式；</p>
+<p>负载轻时，使用竞争式。</p>
+<h4 id="载波侦听-冲突检测-CSMA-CD"><a href="#载波侦听-冲突检测-CSMA-CD" class="headerlink" title="载波侦听/冲突检测(CSMA/CD)"></a>载波侦听/冲突检测(CSMA/CD)</h4><p>以太网采用的介质访问控制方法就是后来成为IEEE802.3标准的载波侦听多路访问/冲突检测(CSMA/CD)技术。</p>
+<p>先多路访问，后侦听同时冲突检测。</p>
+<h5 id="1-冲突检测"><a href="#1-冲突检测" class="headerlink" title="1. 冲突检测"></a>1. 冲突检测</h5><h6 id="ALOHA"><a href="#ALOHA" class="headerlink" title="ALOHA"></a>ALOHA</h6><h6 id="1968年夏威夷大学无线广播网"><a href="#1968年夏威夷大学无线广播网" class="headerlink" title="1968年夏威夷大学无线广播网"></a>1968年夏威夷大学无线广播网</h6><p>是1968年由美国夏威夷大学开发的一个以<strong>无线广播</strong>方式工作的分组交换网。</p>
+<p>想发就发，边发边听</p>
+<p>网上的各站点在任何时刻只要需要，就可以自由地发送信息帧；信息帧发送完毕，然后侦听一段时间，如果在信息帧来回传播的最大延迟时间(两倍于两个间隔最大的站点之间传递信息的时间)再加上一小段固定时间内收到了确认，则说明传输成功；否则，传输站点重发信息帧。若多次重发都失败，则放弃发送该帧。</p>
+<p>信道利用率最大只有18%</p>
+<h6 id="分槽ALOHA"><a href="#分槽ALOHA" class="headerlink" title="分槽ALOHA"></a>分槽ALOHA</h6><p>整点时刻想发就发，边发边听</p>
+<p>分槽ALOHA协议将时间划分为等长的时槽，每个时槽的长度正好等于一个定长分组的传输时间，各站只能在时槽的起始时刻开始发送信息，因此那些冲突的帧完全重叠。</p>
+<p>信道利用率最大37%。</p>
+<h6 id="对比-1"><a href="#对比-1" class="headerlink" title="对比"></a>对比</h6><p><img src="https://s2.loli.net/2022/02/17/KipvxbmWqLCrXRh.png" alt="image-20220217135745945"></p>
+<h4 id="2-载波侦听"><a href="#2-载波侦听" class="headerlink" title="2. 载波侦听"></a>2. 载波侦听</h4><p>又称为“先听后说”。</p>
+<p>当一个站点要发送数据时，</p>
+<h6 id="1坚持CSMA协议"><a href="#1坚持CSMA协议" class="headerlink" title="1坚持CSMA协议"></a>1坚持CSMA协议</h6><p>首先侦听信道，如果信道空闲就立即发送数据。</p>
+<p>当侦听到信道忙时，继续坚持侦听信道，当侦听到信道空闲时，发送帧的概率为1，即立即发送数据。</p>
+<p>可以充分利用信道，但冲突的可能性也可能会增大</p>
+<h6 id="p坚持CSMA协议"><a href="#p坚持CSMA协议" class="headerlink" title="p坚持CSMA协议"></a>p坚持CSMA协议</h6><p>首先侦听信道，当侦听到信道忙时，仍然坚持听下去，直到信道空闲为止。</p>
+<p>当听到信道空闲时，以概率P发送数据，并在概率1-P延迟时间$\tau$(端到端的传输时延)后再重新侦听信道。</p>
+<h6 id="非坚持CSMA协议"><a href="#非坚持CSMA协议" class="headerlink" title="非坚持CSMA协议"></a>非坚持CSMA协议</h6><p>首先侦听信道，如果信道空闲就立即发送数据。</p>
+<p>一旦侦听到信道忙就不再坚持听下去，延迟一段随机时间后再重新侦听。</p>
+<ul>
+<li>1-持续</li>
+<li>p-持续</li>
+<li>非持续</li>
+</ul>
+<h5 id="3-CSMA-CD协议"><a href="#3-CSMA-CD协议" class="headerlink" title="3. CSMA/CD协议"></a>3. CSMA/CD协议</h5><p>“边听边说”</p>
+<p>即为了能及时发现冲突，采取边发送边侦听的方式，一旦侦听到冲突，冲突双方就立即停止发送。</p>
+<p>先听后发，边听边发，冲突停发，随即重发。</p>
+<p>也分为类似以上三种。</p>
+<h5 id="4-对比"><a href="#4-对比" class="headerlink" title="4. 对比"></a>4. 对比</h5><p><img src="https://s2.loli.net/2022/02/17/3tKkGr2JZsD4Ng7.png" alt="image-20220217140847613"></p>
+<ul>
+<li>CSMA/CD协议吞吐量的最大值最大。</li>
+<li>当G在相当大的范围内变化时，CSMA/CD协议的吞吐量S都比较接近其最大值，这说明该协议相较而言更稳定</li>
+<li>在轻负载时，各种协议的性能都差不多</li>
+</ul>
+<h2 id="8-寻址"><a href="#8-寻址" class="headerlink" title="8. 寻址"></a>8. 寻址</h2><h3 id="1-地址长度的确定-地址空间和传输效率"><a href="#1-地址长度的确定-地址空间和传输效率" class="headerlink" title="1. 地址长度的确定(地址空间和传输效率)"></a>1. 地址长度的确定(地址空间和传输效率)</h3><h3 id="2-以太网地址"><a href="#2-以太网地址" class="headerlink" title="2. 以太网地址"></a>2. 以太网地址</h3><p>如果该帧的目的地址和一个接受站点的LAN地址相配，则这个结点将从链路层帧中提取出网络层数据报，并将数据报传递给上层协议栈。</p>
+<p>LAN地址通常也称为物理地址、以太网地址或介质访问控制(MAC)地址</p>
+<h4 id="长度为48位-6字节"><a href="#长度为48位-6字节" class="headerlink" title="长度为48位/6字节(*)"></a>长度为48位/6字节(*)</h4><p>这6个字节的地址，通常用十六位进制数表示。</p>
+<p>是永久且唯一的。</p>
+<p>(硬件地址-MAC地址-网卡地址-物理地址)</p>
+<h2 id="9-面向无连接和不可靠的协议"><a href="#9-面向无连接和不可靠的协议" class="headerlink" title="9. 面向无连接和不可靠的协议"></a>9. 面向无连接和不可靠的协议</h2><p>融合了帧同步、差错检测、信道使用权分配、寻址</p>
+<h3 id="IEEE802-3"><a href="#IEEE802-3" class="headerlink" title="IEEE802.3"></a>IEEE802.3</h3><p>发送完，就不再进行冲突检测</p>
+<h4 id="以太网长度的限制-发送方检测到冲突"><a href="#以太网长度的限制-发送方检测到冲突" class="headerlink" title="以太网长度的限制(发送方检测到冲突)"></a>以太网长度的限制(发送方检测到冲突)</h4><ul>
+<li>发送数据包长度为信道长度的50%——失败</li>
+<li>发送数据包长度为信道长度的100%——失败</li>
+<li>发送数据包长度为信道长度的200%——成功</li>
+</ul>
+<h5 id="所以，发送时延-≥-2倍传播时延"><a href="#所以，发送时延-≥-2倍传播时延" class="headerlink" title="所以，发送时延 ≥ 2倍传播时延"></a>所以，发送时延 ≥ 2倍传播时延</h5><p>结合下方以太网和IEEE802.3</p>
+<h4 id="帧格式"><a href="#帧格式" class="headerlink" title="帧格式"></a>帧格式</h4><h3 id="IEE802-4-5"><a href="#IEE802-4-5" class="headerlink" title="IEE802.4/5"></a>IEE802.4/5</h3><h2 id="10-以太网技术"><a href="#10-以太网技术" class="headerlink" title="10. 以太网技术"></a>10. 以太网技术</h2><h5 id="以太网采用基带传输，并且使用曼彻斯特编码。"><a href="#以太网采用基带传输，并且使用曼彻斯特编码。" class="headerlink" title="以太网采用基带传输，并且使用曼彻斯特编码。"></a>以太网采用<strong>基带传输</strong>，并且使用<strong>曼彻斯特编码</strong>。</h5><p>10Base-T：以太网采用双绞线(对应于“T”)(多采用星型结构)，其传输速率为10Mb/s。</p>
+<h3 id="1-以太网与IEEE802-3"><a href="#1-以太网与IEEE802-3" class="headerlink" title="1. 以太网与IEEE802.3"></a>1. 以太网与IEEE802.3</h3><p><img src="https://s2.loli.net/2022/02/24/B7KFOfURxwhAITG.png" alt="image-20220224163759256"></p>
+<p>发送完，就不再进行冲突检测。</p>
+<ul>
+<li>前导：由7个字节的位串10101010，被接收站用来建立位同步。</li>
+<li>帧起始定界符：这个10101011的序列指明了帧本身的起始位置。</li>
+<li>目的地址(DA)和源地址(SA)：分别表示帧的接收节点与发送节点的硬件地址(MAC地址)。</li>
+<li>帧校验序列：32位的循环冗余码，校验范围从目的地址段到数据段的末尾。</li>
+</ul>
+<h3 id="2-以太网的地址"><a href="#2-以太网的地址" class="headerlink" title="2. 以太网的地址"></a>2. 以太网的地址</h3><p>LAN地址通常也称为物理地址、以太网地址或介质访问控制(MAC)地址</p>
+<h4 id="长度为48位-6字节-1"><a href="#长度为48位-6字节-1" class="headerlink" title="长度为48位/6字节(*)"></a>长度为48位/6字节(*)</h4><p>这6个字节的地址，通常用十六位进制数表示。</p>
+<p>是永久且唯一的。</p>
+<h2 id="13-无线网"><a href="#13-无线网" class="headerlink" title="13. 无线网"></a>13. 无线网</h2><h3 id="CSMA-CA"><a href="#CSMA-CA" class="headerlink" title="CSMA/CA"></a>CSMA/CA</h3><p>IEEE802.11 介质访问控制协议是一种可以避免冲突的载波侦听多路访问协议。</p>
+<h4 id="冲突避免"><a href="#冲突避免" class="headerlink" title="冲突避免"></a>冲突避免</h4><p>没有采用冲突检测机制，而是采用冲突避免机制。</p>
+<p>会带来问题，故而有如下：</p>
+<h4 id="信道预留机制"><a href="#信道预留机制" class="headerlink" title="信道预留机制"></a>信道预留机制</h4><p>采用信道预留机制。当发送方要发送一个帧时，它能够首先给接收方发送一个RTS(Request To Send)帧，指出数据分组和ACK分组的持续时间。收到RTS帧的接收方用一个CTS(Clear To Send)帧来响应，显式地指出允许发送方发送。</p>
+<h2 id="12-局域网互联"><a href="#12-局域网互联" class="headerlink" title="12. 局域网互联"></a>12. 局域网互联</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>在物理层进行局域网互联一般使用的是：</p>
+<ul>
+<li>中继器：同轴电缆</li>
+<li>集线器：双绞线</li>
+</ul>
+<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><h4 id="网桥"><a href="#网桥" class="headerlink" title="网桥"></a>网桥</h4><p>是一个局域网和另一个局域网之间建立连接的桥梁，扩展网络和通信手段。</p>
+<p>但网桥互联会带来广播风暴。网桥不阻挡网络中的广播消息，当网络规模较大时(几个网桥，多个以太网段)，有可能引起广播风暴，导致整个网络充满广播信息，直至完全瘫痪。</p>
+<h5 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h5><ol>
+<li>隔开冲突域</li>
+<li>按照目的地址转发</li>
+<li>连接不同的网络(令牌环网与以太网：微波网桥)</li>
+</ol>
+<ul>
+<li><p>隔开冲突域(隔不开广播域。)</p>
+</li>
+<li><p>可以分辨所上传数据的头部，而物理层设备不能分辨(都发)。</p>
+</li>
+<li><p>其内存在转发表，可以发送数据给特定的端口和主机。</p>
+</li>
+</ul>
+<h4 id="源路由网桥"><a href="#源路由网桥" class="headerlink" title="源路由网桥"></a>源路由网桥</h4><p>可以指定路径。</p>
+<p>路径的选择是由每个帧的发送者来完成的。</p>
+<h2 id="14-补充"><a href="#14-补充" class="headerlink" title="14. 补充"></a>14. 补充</h2><h3 id="面向连接的可靠的协议"><a href="#面向连接的可靠的协议" class="headerlink" title="面向连接的可靠的协议"></a>面向连接的可靠的协议</h3><p>HDLC：面向字节的协议(字节整数倍)</p>
+<p>PPP：面向位的协议</p>
+<h2 id="习题4"><a href="#习题4" class="headerlink" title="习题4"></a>习题4</h2><h3 id="基本技术"><a href="#基本技术" class="headerlink" title="基本技术"></a>基本技术</h3><p>局域网的特性主要是由三个技术因素决定：网络拓扑结构、传播介质和介质访问控制方法。</p>
+<h4 id="局域网拓扑结构"><a href="#局域网拓扑结构" class="headerlink" title="局域网拓扑结构"></a>局域网拓扑结构</h4><ul>
+<li>总线型拓扑结构</li>
+<li>环形拓扑结构</li>
+<li>星型拓扑结构</li>
+</ul>
+<h3 id="设置介质访问控制子层"><a href="#设置介质访问控制子层" class="headerlink" title="设置介质访问控制子层"></a>设置介质访问控制子层</h3><p>网络中链路主要包括两种类型，即点到点链路和广播链路。</p>
+<p>对于点到点链路，链路的两端各有一个单一的发送者和接收者，因此不考虑流量控制的影响，结点想要发送就可以发送。PPP和HDLC协议是比较常用的点到点链路上的数据链路层协议。</p>
+<p><strong>对于广播链路，多个发送和接收站点连接到同样的、单一的、共享的广播信道上，为了有效、公平、简单和分散地利用这种广播信道进行数据的传输，必须采用一些对传输介质访问的控制方法，这就是介质访问控制(MAC)协议提供的功能。</strong>以太网和无线局域网都是采用广播链路技术的例子。</p>
+<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>当有两个或两个以上站点在同一时刻发送信息时，总线上的信息便会混淆不清，无法辨认，造成发送失败。这种因信息在总线上重叠而出错的现象称为<strong>冲突</strong>。</p>
+<h4 id="在CSMA-CD上"><a href="#在CSMA-CD上" class="headerlink" title="在CSMA/CD上"></a>在CSMA/CD上</h4><p>它不是采用集中控制的方式解决用户发送信息的顺序，而是各站根据自己的需要随机地发送信息，通过竞争获得发送权。</p>
+<p><img src="https://s2.loli.net/2022/02/17/8CKWwmR5fZ1F3r9.png" alt="image-20220217195722590"></p>
+<p>标准的10Mb/s局域网的波特率(每秒信号变化多少次)：极限为20Mb/s</p>
+<h3 id="以太网特点"><a href="#以太网特点" class="headerlink" title="以太网特点"></a>以太网特点</h3><p>10吉比特以太网的帧格式与10Mb/s、100Mb/s和1Gb/s以太网的帧格式完全相同。</p>
+<h3 id="无线和有线的协议"><a href="#无线和有线的协议" class="headerlink" title="无线和有线的协议"></a>无线和有线的协议</h3><p>RTS：信道预约；CTS：信道检测</p>
+<p>有线：CSMA/CD：冲突检测</p>
+<p>无线：CSMA/CA：冲突避免(结点之间的冲突)</p>
+<h3 id="透明网桥与源路由网桥的比较"><a href="#透明网桥与源路由网桥的比较" class="headerlink" title="透明网桥与源路由网桥的比较"></a>透明网桥与源路由网桥的比较</h3><p>源路由网桥主要用于令牌环。透明网桥的缺点在于不能选择最佳路径，因而无法充分利用冗余的网桥来分担负载。但在一个规模不大的网络中，透明网桥的优点却很明显，所以目前市场上大多数网桥为透明网桥。源路由网桥要求主机参与选径，从理论上说，它可以选择最佳路径，因而可以充分利用冗余网桥来分担负载，但实现起来并不容易。</p>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><h3 id="考的可能性比较小"><a href="#考的可能性比较小" class="headerlink" title="考的可能性比较小"></a>考的可能性比较小</h3><ol>
+<li>HDLC定义<strong>三种类型的站、两种链路配置和三种传输方式</strong>。</li>
+<li>三种类型的站包括:主站、从站和复合站。</li>
+<li>两种链路配置包括非平衡配置和平衡配置。</li>
+<li>PPP协议有3个组成部分，即将IP数据报封装到<strong>串行链路的方法、链路控制协议、网络控制协议(Network Control Protocol，NCP)。</strong></li>
+<li>NCP（网络控制协议）给新接入的PC机分配一个临时的<strong>IP地址</strong> ，使PC机成为Internet上的一个主机，然后就可以开始进行数据的传输。</li>
+<li>用户使用拨号电话线接入Internet时，一般都是使用<strong>PPP</strong>协议。</li>
+<li>PPP不仅适用于拨号用户，而且适用于租用的<strong>路由器对路由器</strong>线路。</li>
+<li>采用普通电话线（PSTN网）作为PPP链路介质是一种廉价的常用方式。在这种方式中，通常通过<strong>RS-232</strong>标准异步串行线路传送IP/IPX包。</li>
+<li>数据链路层的服务：<img src="https://s2.loli.net/2022/02/22/wyeJrgXHkCMxqlP.png" alt="image-20220222202941409"></li>
+<li></li>
+</ol>
+<h3 id="考的可能性大"><a href="#考的可能性大" class="headerlink" title="考的可能性大"></a>考的可能性大</h3><ol>
+<li>通过通信信道后，接受的数据与发送的数据不一致的现象称为<strong>”传输差错“</strong>。</li>
+<li>目前，最常用的差错检测方法：<strong>差错检测编码</strong>。</li>
+<li>垂直奇偶校验方法能检测出每列中所有的<strong>奇数位</strong>错。</li>
+<li>水平垂直奇偶校验不仅可检错，还可用来<strong>纠正部分差错</strong>。</li>
+<li>在计算机网络和数据通信中，应用最广泛的检错码是<strong>循环冗余码</strong>。</li>
+<li>进行差错控制和流量控制的基本策略是<strong>反馈机制</strong>。</li>
+<li>当出现数据帧丢失时，超时重传可以解决问题。但是若确认帧丢失后，超时重传将使结点B收到两个同样的数据帧。要解决重复帧的问题，就必须使每一个数据帧带上<strong>不同的发送序号</strong>。</li>
+<li>停等协议在通信线路较长，传输速率较快的情况下将<strong>浪费大量带宽</strong>。</li>
+<li>数据链路控制规程分为面向字符和面向<strong>比特</strong>两类。</li>
+<li>基于滑动窗口的数据链路协议，可以连续发送数据帧，<strong>其可连续发送的信息帧的个数等于发送窗口W的大小</strong>。</li>
+<li>在连续ARQ协议中，接收方的窗口大小总是1，因此<strong>浪费了很多线路带宽</strong>。</li>
+<li><img src="https://s2.loli.net/2022/02/22/ziqKnGoxb5mI82O.png" alt="image-20220222191047454"></li>
+<li><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220222191120897.png" alt="image-20220222191120897"></li>
+<li><img src="https://s2.loli.net/2022/02/22/yOSeH8WYpjQnKr9.png" alt="image-20220222203206570"></li>
+<li><img src="https://s2.loli.net/2022/02/22/WfzduRrOZAQ25yK.png" alt="image-20220222203330201"></li>
+<li><img src="https://s2.loli.net/2022/02/22/3GBQnUr7D1Nvqjl.png" alt="image-20220222203417519"></li>
+<li>计算题：<img src="https://s2.loli.net/2022/02/22/Gi5UaHmFSYzqVQJ.png" alt="image-20220222204513809"></li>
+</ol>
+<h5 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h5><ol>
+<li>数据链路层划分为两个子层：<strong>逻辑链路控制(LLC)子层 和介质访问控制(MAC)子层。</strong></li>
+<li>LLC子层为上层用户提供3种类型的服务分别是无确认无连接服务、有连接服务、有确认无连接服务。</li>
+<li>网卡的功能主要包括：<strong>串行/并行转换、对数据进行缓存、实现以太网协议等。</strong></li>
+<li><img src="https://s2.loli.net/2022/02/24/hfbJItR8YUFGZKg.png" alt="image-20220224161811616"></li>
+<li><img src="https://s2.loli.net/2022/02/24/25klyQNR97TeUaJ.png" alt="image-20220224161534391"><img src="https://s2.loli.net/2022/02/24/JVHY8MRtGcUKeZo.png" alt="image-20220224161553329"></li>
+<li><img src="https://s2.loli.net/2022/02/24/WqZHkGzMotvPAXY.png" alt="image-20220224161457357"></li>
+<li>虽然CSMA协议比纯ALOHA协议和分槽ALOHA协议有效，但是它仍然存在一个明显的低效情况：<strong>一旦有两个帧发生冲突，则在这两个坏帧传输的时间内，其他站点都不能传输。</strong></li>
+<li>令牌环的管理包括：<strong>令牌环的初始建立、令牌环在丢失或出现故障时的初始状态恢复</strong>。</li>
+<li><strong>透明网桥</strong>又称为生成树网桥，基本功能有过滤、帧转发、地址学习和生成树算法。</li>
+<li>对突发性的数据传输，<strong>争用</strong>是常用的策略。在这种方式中，所有的工作站自由竞争发送机会。</li>
+<li>IEEE 802.4 是<strong>令牌总线</strong> MAC子层与物理层规范， IEEE 802.5 是<strong>令牌环</strong>MAC子层与物理层规范。</li>
+<li><img src="https://s2.loli.net/2022/02/24/LqPIgaJ8cVwOK1b.png" alt="image-20220224173149103"></li>
+</ol>
+<h1 id="第五章-广域网-虚电路"><a href="#第五章-广域网-虚电路" class="headerlink" title="第五章 广域网(虚电路)"></a>第五章 广域网(虚电路)</h1><h2 id="习题五"><a href="#习题五" class="headerlink" title="习题五"></a>习题五</h2><h3 id="1-数据通信技术"><a href="#1-数据通信技术" class="headerlink" title="1. 数据通信技术"></a>1. 数据通信技术</h3><h4 id="电路方式-实电路"><a href="#电路方式-实电路" class="headerlink" title="电路方式(实电路)"></a>电路方式(实电路)</h4><p>公用电话网(PSTN)、数字数据网(DDN)</p>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><p>信息传输 时延小、电路对用户是“透明”的、信息传送的吞吐量大。</p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>占用的带宽是 固定的 ，所以网络资源的利用率较低。</p>
+<h4 id="虚电路方式"><a href="#虚电路方式" class="headerlink" title="虚电路方式"></a>虚电路方式</h4><ul>
+<li>分组方式: X.25(不用的方式）</li>
+<li>帧方式：帧中继</li>
+<li>信元方式：ATM(由信元头和信元净荷组成，以信元为单位进行传送)</li>
+</ul>
+<h3 id="2-帧中继"><a href="#2-帧中继" class="headerlink" title="2. 帧中继"></a>2. 帧中继</h3><p>当帧中继交换机收到一个帧的头部时，只要一查出帧的目的地址就开始转发该帧。</p>
+<p>即中间层不进行差错检测，提高了帧的处理时间。</p>
+<p>适合处理大容量突发型数据业务。</p>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>采用虚电路方式，使用逻辑连接。</p>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p>帧中继采用两种拥塞控制方法，即丢弃策略和 拥塞避免 。</p>
+<h3 id="3-ATM"><a href="#3-ATM" class="headerlink" title="3. ATM"></a>3. ATM</h3><h4 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h4><p>异步传输模式(ATM)是建立在<strong>电路交换和分组交换</strong>的基础上的一种<strong>面向连接</strong>的快速分组交换技术。</p>
+<p>它采用<strong>固定长度是53字节</strong>的协议数据单元，这种定长分组称为<strong>信元</strong>。</p>
+<p>在ATM中，数据传输速率可达155Mb/s或622Mb/s。</p>
+<p>转发时延小，易于硬件实现。</p>
+<h4 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点(*)"></a>2. 特点(*)</h4><p>短信元：53字节</p>
+<p>固定信元：5字节(头部固定为5字节)+48字节(载荷长度固定)</p>
+<h4 id="4-信元结构-不考"><a href="#4-信元结构-不考" class="headerlink" title="4. 信元结构(不考)"></a>4. 信元结构(不考)</h4><p><img src="https://s2.loli.net/2022/02/25/i8IKRtHMVXEb1Dq.png" alt="image-20220225110859544"></p>
+<h4 id="5-虚拟连接"><a href="#5-虚拟连接" class="headerlink" title="5. 虚拟连接"></a>5. 虚拟连接</h4><p>分为两级：虚通道连接(VP)与虚通路连接(VC)。</p>
+<h5 id="二者关系"><a href="#二者关系" class="headerlink" title="二者关系"></a>二者关系</h5><p>一个虚通道包含有许多<strong>相同端点</strong>的虚通路。</p>
+<h1 id="第六章-网络层-数据报"><a href="#第六章-网络层-数据报" class="headerlink" title="第六章 网络层(数据报)"></a>第六章 网络层(数据报)</h1><h2 id="习题六"><a href="#习题六" class="headerlink" title="习题六"></a>习题六</h2><h3 id="1-网络互连的定义"><a href="#1-网络互连的定义" class="headerlink" title="1. 网络互连的定义"></a>1. 网络互连的定义</h3><ul>
+<li>将相同类型的网络或不同类型的网络及其产品连接在一起，组成地理覆盖范围更大、功能更强大的网络</li>
+<li>将大的网络拆分为几个子网，实现更为有效的网络管理等。</li>
+</ul>
+<h3 id="2-网络层的功能"><a href="#2-网络层的功能" class="headerlink" title="2. 网络层的功能"></a>2. 网络层的功能</h3><p>通过数据报服务，实现主机之间的通信</p>
+<h3 id="3-虚电路服务和数据报服务对比"><a href="#3-虚电路服务和数据报服务对比" class="headerlink" title="3. 虚电路服务和数据报服务对比"></a>3. 虚电路服务和数据报服务对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>虚电路</th>
+<th>数据报</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通信前先建立连接</td>
+<td>不建立连接</td>
+</tr>
+<tr>
+<td>虚电路号(局部性)</td>
+<td>目的地址(IP唯一，全局性)</td>
+</tr>
+<tr>
+<td>规定传输路径，顺序性</td>
+<td>无顺序性，无固定路径</td>
+</tr>
+<tr>
+<td>无法绕开故障点</td>
+<td>存在冗余线路时，有可能绕开故障点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="5-三级IP地址格式与划分思想"><a href="#5-三级IP地址格式与划分思想" class="headerlink" title="5. 三级IP地址格式与划分思想"></a>5. 三级IP地址格式与划分思想</h3><p><img src="https://s2.loli.net/2022/02/25/hq4AnST5pCHFVro.png" alt="image-20220225121149080"></p>
+<h3 id="6-物理地址与IP地址"><a href="#6-物理地址与IP地址" class="headerlink" title="6. 物理地址与IP地址"></a>6. 物理地址与IP地址</h3><p>物理地址48位，是平面型地址。地址解析原因：交换机根据全部的物理地址来确定转发的目的的地址。</p>
+<p>IP地址是层次性地址(IPv4: 32位；IPv6: 128位)。地址解析原因：路由器只根据网络号就可进行转发。</p>
+<h3 id="7-CIDR"><a href="#7-CIDR" class="headerlink" title="7. CIDR"></a>7. CIDR</h3><p>无分类域间路由选择</p>
+<p>CIDR不再按网络规模对地址进行分类，也不再划分子网，使用网络前缀来代替了网络号和子网号，IP地址里只包括网络前缀和主机号两部分。(取消了子网的概念，但是还使用掩码。)</p>
+<p>采用“斜线记法”，即在IP地址后面加上一个斜线”/“，然后写上网络前缀所占的比特数。</p>
+<p>如166.100.20.82/20：表示在这个32位的IP地址中，前20位是网络前缀，后12位是主机号。</p>
+<h3 id="8-主机数"><a href="#8-主机数" class="headerlink" title="8. 主机数"></a>8. 主机数</h3><p><img src="https://s2.loli.net/2022/02/25/28VFSgzNxGerpnL.png" alt="image-20220225124325419"></p>
+<h3 id="9-网络号和主机号"><a href="#9-网络号和主机号" class="headerlink" title="9. 网络号和主机号"></a>9. 网络号和主机号</h3><p><img src="https://s2.loli.net/2022/02/25/k1cxr3PG9gJRa7M.png" alt="image-20220225124418477"></p>
+<h3 id="10-IP地址分配规则"><a href="#10-IP地址分配规则" class="headerlink" title="10. IP地址分配规则"></a>10. IP地址分配规则</h3><p><img src="https://s2.loli.net/2022/02/25/1bIyfgJD26BR3Nh.png" alt="image-20220225124549534"></p>
+<h3 id="19-路由交换规则"><a href="#19-路由交换规则" class="headerlink" title="19. 路由交换规则"></a>19. 路由交换规则</h3><p>下一跳不同，选近路(A经B、D都可到C，则取近的)</p>
+<p>下一跳不同，距离相同，选原路(为维护网络稳定性)</p>
+<p>下一跳相同，选新路(A经B到C，原为3；现有A经B到C距离5，则最终A经B到C的距离取5)</p>
+<h3 id="20-自治系统"><a href="#20-自治系统" class="headerlink" title="20. 自治系统"></a>20. 自治系统</h3><h3 id="23-子网拆分"><a href="#23-子网拆分" class="headerlink" title="23. 子网拆分"></a>23. 子网拆分</h3><p>如图所示，一个路由器互联了3个局域网(LAN)。</p>
+<p><img src="https://s2.loli.net/2022/02/25/2irKzbGujpMUA9D.png" alt="image-20220225130106638"> </p>
+<p><img src="https://s2.loli.net/2022/02/25/Su8zGgOndLUlW73.png" alt="image-20220225130210588"></p>
+<p>此题没给各个网段的主机数目，考试时会给出主机数目。</p>
+<h4 id="IP地址分类"><a href="#IP地址分类" class="headerlink" title="IP地址分类"></a>IP地址分类</h4><p><img src="https://s2.loli.net/2022/02/25/Ib3oSPrwjd4nMVp.png" alt="image-20220225130356702"></p>
+<h3 id="24-IPv6特点"><a href="#24-IPv6特点" class="headerlink" title="24. IPv6特点"></a>24. IPv6特点</h3><p>简化头部，提高转发速度；长度扩大为128位，实现万物互联。</p>
+<ul>
+<li>IP地址长度扩大为128字节</li>
+<li>高速化<ul>
+<li>分组头部的长度固定</li>
+<li>不检查传输错误</li>
+<li>不需要每个路由器都进行分片处理</li>
+</ul>
+</li>
+<li>任意通信</li>
+<li>安全性功能</li>
+<li>流标记(flow label)</li>
+</ul>
+<h1 id="第九章-网络安全与网络管理"><a href="#第九章-网络安全与网络管理" class="headerlink" title="第九章 网络安全与网络管理"></a>第九章 网络安全与网络管理</h1><h2 id="加密与认证"><a href="#加密与认证" class="headerlink" title="加密与认证"></a>加密与认证</h2><h3 id="数据加密标准"><a href="#数据加密标准" class="headerlink" title="数据加密标准"></a>数据加密标准</h3><p><strong>数据加密标准</strong>(Data Encryption Standard, DES)是最典型(经典)的对称加密算法，它是由IBM公司提出。</p>
+<p>DES使用一个56位(二进制，$2^{56}$)的密钥和附加的8位奇偶校验位，产生长度为64位的分组。</p>
+<h2 id="公开密钥加密机制"><a href="#公开密钥加密机制" class="headerlink" title="公开密钥加密机制"></a>公开密钥加密机制</h2><p>每个发送者拥有两个密码，一个是任何人都可得到的公开密钥(公钥)，另一个是只有发送者本人知道的秘密密钥(私钥)。</p>
+<p><strong>RSA算法是最流行的公开密钥算法。</strong></p>
+<h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><ol>
+<li>加密密钥公开，解密密钥私有</li>
+<li>从公开密钥推出私有密钥是极其困难的</li>
+<li>绝大多数加密机制中，公钥与私钥可以互为加密解密密钥</li>
+<li>加密解密速度慢</li>
+</ol>
+<p>使用非对称的密钥传输对称的密钥，以提升速度。如果是全非对称的话，太慢。</p>
+<h2 id="数字签名技术"><a href="#数字签名技术" class="headerlink" title="数字签名技术"></a>数字签名技术</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>数字签名是一种基于密码的身份鉴别技术。</p>
+<p>在传统的书信或文件中，通过亲笔签名或印章来证明其真实性，而在计算机网络中，传送的报文通常使用数字签名的技术来模拟日常生活中的亲笔签名。</p>
+<h3 id="原理-5"><a href="#原理-5" class="headerlink" title="原理(*)"></a>原理(*)</h3><p>在使用公开密钥加密算法进行数字签名前，<strong>通常先使用单向散列函数(Hash Function，又称为哈希函数)对要签名的消息进行处理并生成消息摘要(Message Digest, MD)</strong>，然后对消息摘要进行签名。</p>
+<h2 id="电子邮件加密"><a href="#电子邮件加密" class="headerlink" title="电子邮件加密"></a>电子邮件加密</h2><h3 id="PGP安全协议"><a href="#PGP安全协议" class="headerlink" title="PGP安全协议"></a>PGP安全协议</h3><p>PGP（Pretty Good Privacy，PGP）是一种基于RSA密钥加密体制供大众使用的加密协议。它不仅能对用户的邮件加密，还能在邮件上进行数字签名，让收信人确信邮件未被第三方篡改，从而达到安全通信的目的。</p>
+<h2 id="防火墙技术"><a href="#防火墙技术" class="headerlink" title="防火墙技术"></a>防火墙技术</h2><p>防火墙(firewall)是把一个组织的内部网络与整个Internet隔离开的软件和硬件的组合，它允许一些数据分组通过，也禁止一些数据分组通过。</p>
+<h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><h3 id="ISO功能域"><a href="#ISO功能域" class="headerlink" title="ISO功能域"></a>ISO功能域</h3><p>ISO特别定义了网络管理的5个功能域：配置管理、故障管理、性能管理、安全管理和计费管理。</p>
+<h1 id="第十章-网络系统设计与配置"><a href="#第十章-网络系统设计与配置" class="headerlink" title="第十章 网络系统设计与配置"></a>第十章 网络系统设计与配置</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><h3 id="网络系统层次"><a href="#网络系统层次" class="headerlink" title="网络系统层次"></a>网络系统层次</h3><p>计算机网络系统分为三个层次，即核心层(Core Layer)、汇聚层(Distribution Layer)和访问层(Access Layer)。（网络拓扑结构）</p>
+<h2 id="2-局域网设计"><a href="#2-局域网设计" class="headerlink" title="2. 局域网设计"></a>2. 局域网设计</h2><h3 id="1-网络级联"><a href="#1-网络级联" class="headerlink" title="1. 网络级联"></a>1. 网络级联</h3><p>级联是指通过交换机的端口，以普通电缆将两个以上的交换机连接起来的拓展方式。</p>
+<p><img src="https://s2.loli.net/2022/02/22/LnZahxl32TwH71j.png" alt="image-20220222213205530"></p>
+<h3 id="2-交换机堆叠"><a href="#2-交换机堆叠" class="headerlink" title="2. 交换机堆叠"></a>2. 交换机堆叠</h3><p>堆叠是指若干交换机用特殊电缆通过特殊端口连接起来的拓展方式。</p>
+<p>堆叠有两种模式：菊花链和点对点。</p>
+<p><img src="https://s2.loli.net/2022/02/22/dmGvp8wFMqtbCIA.png" alt="image-20220222213447853"></p>
+<h3 id="端口-链路聚合"><a href="#端口-链路聚合" class="headerlink" title="端口/链路聚合"></a>端口/链路聚合</h3><p>端口/链路聚合(Port Trunk/L2 Trunk)是指将以太网交换机上多个物理端口汇聚成一个逻辑端口。</p>
+<h3 id="网络工作组划分"><a href="#网络工作组划分" class="headerlink" title="网络工作组划分"></a>网络工作组划分</h3><h4 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h4><p>虚拟局域网(VLAN)将局域网内的设备逻辑地(而不是物理地)划分成多个网段。</p>
+<h4 id="VLAN的分类方式"><a href="#VLAN的分类方式" class="headerlink" title="VLAN的分类方式"></a>VLAN的分类方式</h4><ul>
+<li>基于端口</li>
+<li>基于MAC</li>
+<li>基于网络层</li>
+<li>基于IP组播</li>
+</ul>
+<h3 id="大型路由交换网络"><a href="#大型路由交换网络" class="headerlink" title="大型路由交换网络"></a>大型路由交换网络</h3><p><strong>一次路由，多次交换 </strong></p>
 ]]></content>
       <tags>
         <tag>复习计算机网络啦！</tag>
@@ -554,34 +951,77 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
   <entry>
     <title>DataBase</title>
     <url>/2021/12/22/DataBase/</url>
-    <content><![CDATA[<h1 id="DataBase"><a href="#DataBase" class="headerlink" title="DataBase"></a>DataBase</h1><h2 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h2><h3 id="1-1-数据库系统概论"><a href="#1-1-数据库系统概论" class="headerlink" title="1.1 数据库系统概论"></a>1.1 数据库系统概论</h3><h4 id="4个基本概念"><a href="#4个基本概念" class="headerlink" title="4个基本概念"></a>4个基本概念</h4><ol>
-<li><h5 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h5></li>
-</ol>
-<p>是数据库中存储的基本对象。</p>
-<p><strong>描述事物的符号记录称为数据</strong>。</p>
+    <content><![CDATA[<h1 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h1><h2 id="1-1-数据库系统概论"><a href="#1-1-数据库系统概论" class="headerlink" title="1.1 数据库系统概论"></a>1.1 数据库系统概论</h2><h3 id="1-4个基本概念"><a href="#1-4个基本概念" class="headerlink" title="1. 4个基本概念"></a>1. 4个基本概念</h3><h4 id="1-数据"><a href="#1-数据" class="headerlink" title="1. 数据"></a>1. 数据</h4><p><strong>描述事物的符号记录称为数据</strong>。数据的种类有数字、文字、图形、图像、声音、正文等。</p>
 <p>数据的含义称为数据的语义，数据与其语义是不可分的。</p>
-<ol>
-<li><h5 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h5><p>数据库是<strong>长期储存</strong>在计算机内、<strong>有组织的</strong>、<strong>可共享的</strong>大量数据的集合。</p>
-<p>数据库的基本特征：</p>
-<ul>
+<h4 id="2-数据库"><a href="#2-数据库" class="headerlink" title="2. 数据库"></a>2. 数据库</h4><p>数据库是<strong>长期储存</strong>在计算机内、<strong>有组织的</strong>、<strong>可共享的</strong>大量数据的集合。</p>
+<h5 id="数据库的基本特征："><a href="#数据库的基本特征：" class="headerlink" title="数据库的基本特征："></a>数据库的基本特征：</h5><ul>
 <li>数据按一定的数据规模组织、描述和储存</li>
 <li>可为各种用户共享</li>
 <li>冗余度较小</li>
 <li>数据独立性较高</li>
 <li>易拓展</li>
 </ul>
-</li>
-<li><h5 id="数据库管理系统"><a href="#数据库管理系统" class="headerlink" title="数据库管理系统"></a>数据库管理系统</h5><ul>
-<li><p>位于用户与操作系统之间的一层数据管理软件</p>
-</li>
+<h4 id="3-数据库管理系统-DBMS"><a href="#3-数据库管理系统-DBMS" class="headerlink" title="3. 数据库管理系统(DBMS)"></a>3. 数据库管理系统(DBMS)</h4><ul>
+<li>位于用户与操作系统之间的一层数据管理软件</li>
 <li><p>是基础软件，是一个大型复杂的软件系统</p>
 </li>
-<li>可以科学地组织和存储数据、高效地获取和维护数据</li>
+<li><p>可以科学地组织和存储数据、高效地获取和维护数据</p>
+</li>
 </ul>
-</li>
-<li><h5 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h5><p>由数据库、数据库管理系统、应用程序、数据库管理员四部分构成。</p>
-</li>
+<h5 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h5><ul>
+<li>数据定义功能</li>
+<li>数据组织、存储和管理功能</li>
+<li>数据操纵功能</li>
+<li>数据库的事务管理和运行管理</li>
+<li>数据库的建立和维护功能</li>
+<li>其他功能，如不同数据库之间的互访和互操作功能等。</li>
+</ul>
+<h4 id="4-数据库系统"><a href="#4-数据库系统" class="headerlink" title="4. 数据库系统"></a>4. 数据库系统</h4><p>由数据库、数据库管理系统(及其应用开发工具)、应用程序、数据库管理员四部分构成。</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>数据结构化</li>
+<li>数据的共享性高，冗余度低，易扩充</li>
+<li>数据独立性高</li>
+<li>数据由DBMS统一管理和控制</li>
 </ol>
+<h3 id="2-数据模型"><a href="#2-数据模型" class="headerlink" title="2. 数据模型"></a>2. 数据模型</h3><p>数据模型通常是由数据结构、数据操作和完整性约束三部分组成。</p>
+<p>数据模型是数据库系统的基础。</p>
+<h4 id="三种数据模型"><a href="#三种数据模型" class="headerlink" title="三种数据模型"></a>三种数据模型</h4><p>数据库管理系统常见的数据模型有层次模型、网状模型和关系模型。</p>
+<h5 id="层次模型"><a href="#层次模型" class="headerlink" title="层次模型"></a>层次模型</h5><p>满足下面两个条件的基本层次联系的集合：</p>
+<ul>
+<li>有且只有一个结点没有双亲结点，这个结点称为根节点；</li>
+<li>根以外的其他结点有且只有一个双亲结点。</li>
+</ul>
+<h5 id="网状模型"><a href="#网状模型" class="headerlink" title="网状模型"></a>网状模型</h5><p>满足下面两个条件的基本层次联系的集合：</p>
+<ul>
+<li>允许一个以上的结点无双亲；</li>
+<li>一个结点可以有多于一个的双亲。 </li>
+</ul>
+<h3 id="3-三级模式结构"><a href="#3-三级模式结构" class="headerlink" title="3. 三级模式结构"></a>3. 三级模式结构</h3><p>数据库系统的三级模式结构由外模式、模式和内模式组成。</p>
+<h4 id="外模式"><a href="#外模式" class="headerlink" title="外模式"></a>外模式</h4><p>亦称子模式或用户模式，是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述，是数据库用户的数据视图。</p>
+<h4 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h4><p>亦称逻辑模式，是数据库全体数据的逻辑结构和特性的描述，是所有用户的公共数据视图。模式描述的是数据的全局逻辑结构。外模式通常是模式的子集。</p>
+<h4 id="内模式"><a href="#内模式" class="headerlink" title="内模式"></a>内模式</h4><p>亦称存储模式，是数据在数据库系统内部的表示，即对数据的物理结构和存储方式的描述。</p>
+<p>(内模式是数据库在物理存储方面的描述，定义所有的内部记录类型、 <strong>索引</strong> 和 <strong>文件</strong> 的组织方式，以及数据控制方面的细节。)</p>
+<h4 id="两级映像"><a href="#两级映像" class="headerlink" title="两级映像"></a>两级映像</h4><p>为了能够在内部实现这三个抽象层次的联系和转换，数据库系统在这三级模式之间提供了两级映像：外模式/模式映像和模式/内模式映像，保证了数据库系统中数据较高的逻辑独立性和物理独立性。</p>
+<h3 id="4-数据独立性"><a href="#4-数据独立性" class="headerlink" title="4. 数据独立性"></a>4. 数据独立性</h3><h4 id="数据的物理独立性"><a href="#数据的物理独立性" class="headerlink" title="数据的物理独立性"></a>数据的物理独立性</h4><p>当数据库的存储结构发生改变时，由数据库管理员对模式/内模式映像作相应改变，可以使模式保持不变，从而应用程序也不必改变，这就是数据与程序的物理独立性。</p>
+<h4 id="数据的逻辑独立性"><a href="#数据的逻辑独立性" class="headerlink" title="数据的逻辑独立性"></a>数据的逻辑独立性</h4><p>当数据的逻辑结构即模式改变时，由数据库管理员对各个外模式/模式的映像作相应改变，可以使外模式保持不变，从而应用程序不必修改，这就是数据与程序的逻辑独立性。</p>
+<h4 id="而"><a href="#而" class="headerlink" title="而"></a>而</h4><p>DBMS在三级模式之间提供的两级映像保证了数据库系统中的数据能够具有较高的逻辑独立性和物理独立性。</p>
+<h3 id="5-术语"><a href="#5-术语" class="headerlink" title="5. 术语"></a>5. 术语</h3><h4 id="实体中"><a href="#实体中" class="headerlink" title="实体中"></a>实体中</h4><p>实体：客观存在并可以相互区分的事物。</p>
+<p>实体型：用实体名及其属性名集合来抽象和刻画同类实体。</p>
+<p> 实体集：同型实体的集合。</p>
+<p> 实体之间的联系：包括实体(型)内部的联系(各属性之间的联系)和实体(型)之间的联系(不同实体集之间的联系)。有一对一、一对多、多对多。</p>
+<h4 id="关系模型中"><a href="#关系模型中" class="headerlink" title="关系模型中"></a>关系模型中</h4><p>关系模型是由关系数据结构、关系操作集合和关系完整性约束三部分组成。在用户观点下，关系模型中数据的逻辑结构是一张二维表，它由行和列组成。</p>
+<p>关系：一个关系对应通常说的是一张表。</p>
+<p>属性(关系模型中)：表中的一列即为一个属性。</p>
+<p>域：属性的取值范围。</p>
+<p>元组：表中的一行即为一个元组。</p>
+<p>码(关系模型中)：表中的某个属性组，可以唯一确定一个元组。</p>
+<p>分量：元组中的一个属性值。</p>
+<p>关系模式：对关系的描述，一般表示为关系名（属性1，属性2，··· ，属性n）</p>
+<h4 id="语言及其他"><a href="#语言及其他" class="headerlink" title="语言及其他"></a>语言及其他</h4><p>DDL：数据定义语言，用来定义数据库模式、外模式、内模式的语言。</p>
+<p>DML：数据操纵语言，用来对数据库中的数据进行查询、插入、删除和修改的语句。</p>
+<p>E-R模型是数据库的 <strong>概念模型</strong> 设计阶段的一个有力工具。</p>
+<p>E-R图中包括 <strong>实体</strong> 、<strong>属性</strong> 和联系三种基本图素。</p>
+<p>数据库中的文件组织方式是：顺序文件、索引文件、散列文件、倒排文件。</p>
 ]]></content>
       <tags>
         <tag>数据库...</tag>
@@ -1233,7 +1673,7 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
     <title>SpringMVC</title>
     <url>/2022/02/01/SpringMVC/</url>
     <content><![CDATA[<h1 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h1><p><img src="https://s2.loli.net/2022/02/01/rqs2WMkTnNxFtGp.png" alt="image-20220201160516467"></p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="MVC的定义"><a href="#MVC的定义" class="headerlink" title="MVC的定义"></a>MVC的定义</h2><p>MVC是一种软件架构的思想，将软件按照模型、视图、控制器来划分。</p>
+<h1 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h1><h2 id="MVC的定义"><a href="#MVC的定义" class="headerlink" title="MVC的定义"></a>MVC的定义</h2><p>MVC是一种软件架构的思想，将软件按照模型、视图、控制器来划分。</p>
 <h3 id="M"><a href="#M" class="headerlink" title="M"></a>M</h3><p>Model，模型层，指工程中的JavaBean，作用是处理数据。</p>
 <h4 id="JavaBean的两类"><a href="#JavaBean的两类" class="headerlink" title="JavaBean的两类"></a>JavaBean的两类</h4><p>一类是实体类Bean：专门存储业务数据的属性和实例域，如User类等</p>
 <p>一类是业务处理Bean：指Service或Dao对象，专门用于处理业务逻辑和数据访问</p>
@@ -1250,7 +1690,7 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
 <li>内部组件化程度高，可插拔式组件即插即用，想要什么功能配置相关组件即可</li>
 <li>性能显著</li>
 </ul>
-<h1 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h1><h2 id="1-创建maven工程"><a href="#1-创建maven工程" class="headerlink" title="1. 创建maven工程"></a>1. 创建maven工程</h2><p>pom.xml：</p>
+<h1 id="二、HelloWorld"><a href="#二、HelloWorld" class="headerlink" title="二、HelloWorld"></a>二、HelloWorld</h1><h2 id="1-创建maven工程"><a href="#1-创建maven工程" class="headerlink" title="1. 创建maven工程"></a>1. 创建maven工程</h2><p>pom.xml：</p>
 <ul>
 <li><p>打包方式</p>
 </li>
@@ -1283,7 +1723,7 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
 <li>在SpringMVC中配置前端控制器(和视图解析器)。</li>
 <li>建立前端控制器类和相关.html等文件</li>
 </ol>
-<h1 id="RequestMapping注解"><a href="#RequestMapping注解" class="headerlink" title="@RequestMapping注解"></a>@RequestMapping注解</h1><p>设置的属性越多，要匹配所需的条件越多，匹配得越精确。</p>
+<h1 id="三、-RequestMapping注解"><a href="#三、-RequestMapping注解" class="headerlink" title="三、@RequestMapping注解"></a>三、@RequestMapping注解</h1><p>设置的属性越多，要匹配所需的条件越多，匹配得越精确。</p>
 <h2 id="注解的功能"><a href="#注解的功能" class="headerlink" title="注解的功能"></a>注解的功能</h2><p>@RequestMapping注解的作用就是将请求和处理请求的控制器方法关联起来，建立映射关系，要保证请求对应的地址是唯一的(只能存在一个@RequestMapping(/target))</p>
 <p>SpringMVC接收到指定的请求，就会找到映射关系中对应的控制器方法来处理这个请求。</p>
 <h2 id="注解的位置"><a href="#注解的位置" class="headerlink" title="注解的位置"></a>注解的位置</h2><p>@RequestMapping标识一个类：设置映射请求的请求路径的初始信息</p>
@@ -1331,7 +1771,7 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
 <h2 id="SpringMVC支持路径中的占位符"><a href="#SpringMVC支持路径中的占位符" class="headerlink" title="SpringMVC支持路径中的占位符"></a>SpringMVC支持路径中的占位符</h2><h3 id="原始方式"><a href="#原始方式" class="headerlink" title="原始方式"></a>原始方式</h3><h4 id="deleteUser-id-1"><a href="#deleteUser-id-1" class="headerlink" title="/deleteUser?id=1"></a>/deleteUser?id=1</h4><h3 id="rest方式"><a href="#rest方式" class="headerlink" title="rest方式"></a>rest方式</h3><h4 id="deleteUser-1"><a href="#deleteUser-1" class="headerlink" title="/deleteUser/1"></a>/deleteUser/1</h4><p>SpringMVC路径中的占位符常用于restful风格中，当<strong>请求路径中将某些数据通过路径的方式</strong>传输到服务器中，就可以在相应的@RequestMapping注解的value属性中通过占位符(xxx)表示传输的数据，再通过@PathVariable注解，将占位符所表示的数据，赋值给控制方法的形参。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 发送请求的格式</span></span><br><span class="line">&lt;a th:href=<span class="string">&quot;@&#123;/a1/target/1/admin&#125;&quot;</span>&gt;访问路径占位符**时&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 控制器中的请求映射格式</span></span><br><span class="line"> <span class="meta">@RequestMapping(&quot;/a1/target/&#123;id&#125;/&#123;username&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">target</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span>Integer id, <span class="meta">@PathVariable(&quot;username&quot;)</span>String username)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;id: &quot;</span> + id + <span class="string">&quot; username: &quot;</span> + username);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;target&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2022/02/04/iDfhW1lpAoVa4BQ.png" alt="image-20220204230621610"></p>
-<h1 id="SpringMVC获取请求参数"><a href="#SpringMVC获取请求参数" class="headerlink" title="SpringMVC获取请求参数"></a>SpringMVC获取请求参数</h1><h2 id="通过ServletAPI获取-一般不用"><a href="#通过ServletAPI获取-一般不用" class="headerlink" title="通过ServletAPI获取(一般不用)"></a>通过ServletAPI获取(一般不用)</h2><p>因为SpringMVC中，已经封装了相关的ServletAPI的内容，并且提供了更为简洁的方式去调用，所以尽量不用原生的ServletAPI。</p>
+<h1 id="四、SpringMVC获取请求参数"><a href="#四、SpringMVC获取请求参数" class="headerlink" title="四、SpringMVC获取请求参数"></a>四、SpringMVC获取请求参数</h1><h2 id="通过ServletAPI获取-一般不用"><a href="#通过ServletAPI获取-一般不用" class="headerlink" title="通过ServletAPI获取(一般不用)"></a>通过ServletAPI获取(一般不用)</h2><p>因为SpringMVC中，已经封装了相关的ServletAPI的内容，并且提供了更为简洁的方式去调用，所以尽量不用原生的ServletAPI。</p>
 <p>将HttpServletRequest作为控制器方法的形参，此时HttpServletRequest类型的参数，表示封装了当前请求的请求报文的对象。</p>
 <p><img src="https://s2.loli.net/2022/02/05/vh9AY3Fa2TO1DwU.png" alt="image-20220205231831742"></p>
 <p>因为，DispatcherController会根据当前其所包含数据，自动为控制器方法(@RequestMapping注解的方法)的参数赋值。</p>
@@ -1380,7 +1820,7 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
 </li>
 </ol>
 </blockquote>
-<h1 id="域对象共享数据"><a href="#域对象共享数据" class="headerlink" title="域对象共享数据"></a>域对象共享数据</h1><h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>servletcontext(上下文对象)在整个应用范围内有效，也就是服务器开启到服务器关闭这段时间(只创建一次，与浏览器是否关闭无关)。</p>
+<h1 id="五、域对象共享数据"><a href="#五、域对象共享数据" class="headerlink" title="五、域对象共享数据"></a>五、域对象共享数据</h1><h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>servletcontext(上下文对象)在整个应用范围内有效，也就是服务器开启到服务器关闭这段时间(只创建一次，与浏览器是否关闭无关)。</p>
 <p>session在整个浏览器范围内有效，也就是浏览器开启和浏览器关闭这段时间(也就是其中数据与服务器是否关闭无关)。</p>
 <p>session中有钝化(服务器关闭，而浏览器未关闭，即会话仍在继续，那么这时，存储在session上的数据，会经过序列化，保存到磁盘上)和活化(浏览器仍未关闭，但服务器重新开启，将钝化过的内容，重新读取到session中)。</p>
 <p>只要JSESSIONID所依赖的这个Cookie存在，那么在当前会话中所创建的session，永远都是同一个。</p>
@@ -1406,11 +1846,387 @@ X^rK(X)=G(X)Q(X)+R(X)</script><p>式中，$Q(X)$为商式，根据模2运算法�
 <h2 id="向application域共享数据"><a href="#向application域共享数据" class="headerlink" title="向application域共享数据"></a>向application域共享数据</h2><p>整个工程中要共享的东西，才会放到application中，范围太大</p>
 <p>一般都用request和session。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testApplication&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testApplication</span><span class="params">(HttpSession session)</span> &#123;</span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">application</span> <span class="operator">=</span> session.getServletContext();</span><br><span class="line">    application.setAttribute(<span class="string">&quot;testApplicationScope&quot;</span>, <span class="string">&quot;Hello, application&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="SpringMVC的视图"><a href="#SpringMVC的视图" class="headerlink" title="SpringMVC的视图"></a>SpringMVC的视图</h1><p>SpringMVC中的视图是View接口，视图的作用是渲染数据，将模型Model中的数据展示给用户。</p>
-<p>SpringMVC视图的种类有很多，默认有转发视图和重定向视图。</p>
+<h1 id="六、SpringMVC的视图"><a href="#六、SpringMVC的视图" class="headerlink" title="六、SpringMVC的视图"></a>六、SpringMVC的视图</h1><p>SpringMVC中的视图是View接口，视图的作用是渲染数据，将模型Model中的数据展示给用户。</p>
+<p>SpringMVC视图的种类有很多，默认有转发视图InternalResourceView和重定向视图RedirectView。</p>
 <p>当工程引入jstl的以来，转发视图会自动转换为jstlView</p>
 <p>若使用的视图技术为Thymeleaf，在SpringMVC的配置文件中配置了Thymeleaf的视图解析器，由此视图解析器解析之后所得到的是ThymeleafView</p>
-<h2 id="ThymeleafView"><a href="#ThymeleafView" class="headerlink" title="ThymeleafView"></a>ThymeleafView</h2><p>当控制器方法中所设置的视图名称没有任何前缀时，此时的视图名称会被SpringMVC配置文件中所配置的视图解析器解析，视图名称拼接视图前缀和视图后缀所得到的最终路径，会通过转发的方式实现跳转。</p>
+<h2 id="1-ThymeleafView"><a href="#1-ThymeleafView" class="headerlink" title="1. ThymeleafView"></a>1. ThymeleafView</h2><p>当<strong>控制器方法中所设置的视图名称没有任何前缀时</strong>，此时的视图名称会被SpringMVC配置文件中所配置的Thymeleaf视图解析器解析，视图名称拼接视图前缀和视图后缀所得到的最终路径，会通过<strong>转发的方式</strong>实现跳转。</p>
+<p><img src="https://s2.loli.net/2022/02/14/C8cEGNuyWshHJpw.png" alt="image-20220214210804710"></p>
+<h2 id="2-转发视图-用的不是很多"><a href="#2-转发视图-用的不是很多" class="headerlink" title="2. 转发视图(用的不是很多)"></a>2. 转发视图(用的不是很多)</h2><p>SpringMVC中默认的转发视图时InternalResourceView。</p>
+<h3 id="情况："><a href="#情况：" class="headerlink" title="情况："></a>情况：</h3><p>当控制器方法中所设置的<strong>视图名称以”forward:”为前缀</strong>时，创建InternalResourceView视图，此时的视图名称不会被SpringMVC配置文件中的所配置的视图解析器解析，而是会将前缀”forward:”去掉，剩余部分作为最终路径通过<strong>转发的方式</strong>实现跳转。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p><img src="https://s2.loli.net/2022/02/14/fVYiyWm8usU6NnA.png" alt="image-20220214214405141"></p>
+<p><img src="https://s2.loli.net/2022/02/14/MnI9qFLlfKmspPX.png" alt="image-20220214214501985"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ViewController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/testThymeleafView&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testThymeleafView</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testForward</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">// 转发了一个请求，创建了两个请求</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;forward:/testThymeleafView&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips:"></a>tips:</h3><p>只能转发到一个请求，不能直接”forward:”到一个html页面(因为页面必须通过服务器访问，通过转发访问)。</p>
+<p>因为Thymeleaf本身就是转发的方式，所以说，这个转发视图用的不多。</p>
+<h2 id="3-重定向视图"><a href="#3-重定向视图" class="headerlink" title="3. 重定向视图"></a>3. 重定向视图</h2><p>SpringMVC中默认的重定向视图时RedirectView。</p>
+<h3 id="情况"><a href="#情况" class="headerlink" title="情况"></a>情况</h3><p>当控制器方法中所设置的视图名称以”redirect”为前缀时，创建RedirectView视图，此时视图的名称不会被SpringMVC配置文件中所配置的视图解析器解析，而是会将前缀”redirect”去掉，剩余部分作为最终路径通过<strong>重定向的方式</strong>实现跳转。</p>
+<h3 id="转发和重定向区别"><a href="#转发和重定向区别" class="headerlink" title="转发和重定向区别"></a>转发和重定向区别</h3><p>转发浏览器只发送一次请求(发生在服务器内部，只能访问内部的页面)，重定向发送两次请求(可以访问服务器外的页面)。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>页面都在WEB-INF下，而WEB-INF下的内容，重定向是无法访问的。再说了现在的页面，都要经过Thymeleaf解析，所以要通过转发去访问Thymeleaf视图，所以要重定向一个请求。</p>
+<p><img src="https://s2.loli.net/2022/02/14/ljSBqPiWKIbC7Gt.png" alt="image-20220214220417979"></p>
+<p><img src="https://s2.loli.net/2022/02/14/MnI9qFLlfKmspPX.png" alt="image-20220214214501985"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testRedirect&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testRedirect</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/testThymeleafView&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结果对比"><a href="#结果对比" class="headerlink" title="结果对比"></a>结果对比</h3><p><img src="https://s2.loli.net/2022/02/14/yHB8N3ezGEmfW7c.png" alt="image-20220214221223092"></p>
+<h4 id="转发时"><a href="#转发时" class="headerlink" title="转发时"></a>转发时</h4><p><img src="https://s2.loli.net/2022/02/14/kGmHx1worAKcFQR.png" alt="image-20220214220956997"></p>
+<h4 id="重定向时"><a href="#重定向时" class="headerlink" title="重定向时"></a>重定向时</h4><p><img src="https://s2.loli.net/2022/02/14/D8L4e2MHRk3mElG.png" alt="image-20220214221046150"> </p>
+<p>也就是说，虽然发送了一样的请求。</p>
+<p>但是转发和重定向，一个，地址栏的地址直接对应的是原请求，即/testForward；而另一个，地址栏的地址变化了，从/testRedirect跳转到了对应的/testThymeleafView。</p>
+<h2 id="4-视图控制器view-controller-注意"><a href="#4-视图控制器view-controller-注意" class="headerlink" title="4. 视图控制器view-controller(注意)"></a>4. 视图控制器view-controller(注意)</h2><p>当控制器方法中，仅仅用来实现页面跳转，即只需要设置各种视图名称时，可以将处理器方法使用view-controller标签进行表示。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line">    path：设置处理的请求地址</span><br><span class="line">    view-name：设置请求地址对应的视图名称</span><br><span class="line">--&gt;</span><br><span class="line">&lt;mvc:view-controller path=<span class="string">&quot;/testview&quot;</span> view-name=<span class="string">&quot;success&quot;</span>&gt;&lt;/mvc:view-controller&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="tips："><a href="#tips：" class="headerlink" title="tips："></a>tips：</h3><p>当Springmvc中设置任何一个view-controller时，<strong>控制器中的请求映射将全部失效</strong>。</p>
+<p>此时需要在SpringMVC的核心配置文件中设置开启mvc注解驱动的标签：</p>
+<p><code>&lt;mvc:annotation-driven /&gt;</code></p>
+<h1 id="七、RESTFul"><a href="#七、RESTFul" class="headerlink" title="七、RESTFul"></a>七、RESTFul</h1><p>REST： Representational State Transfer，表现层(视图+控制层)资源状态转移。</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>资源是一种看待服务器的方式，即，将服务器看作是由很多离散的资源组成。</p>
+<p>每个资源是服务器上一个可命名的抽象概念，它不仅仅代表服务器文件系统中的一个文件等具体的东西。</p>
+<p><strong>资源是以名词为核心来组织的。</strong></p>
+<p>首先关注的是名词，一个资源可以由一个或多个URI(统一资源定位符)来标识。URI既是资源的名称，也是资源在Web上的地址，对这个资源感兴趣的客户端应用，可以通过资源的URI与其进行交互。</p>
+<p>就，知道了要操作的资源是什么，为这个资源设置一个名词，则可以实现通过同一个请求路径实现不同的操作。</p>
+<h3 id="资源的表述"><a href="#资源的表述" class="headerlink" title="资源的表述"></a>资源的表述</h3><p>资源的表示是对于资源在某个特定时刻的状态的描述。可以在客户端-服务器之间转移(交换)。</p>
+<p>资源的表述可以有多种格式，如HTML/XML/JSON/纯文本/音频等。</p>
+<p>资源的表述格式可以通过协商机制来确定。请求-响应的表述通常使用不同的格式。</p>
+<h3 id="状态转移"><a href="#状态转移" class="headerlink" title="状态转移"></a>状态转移</h3><p>状态转移说的是，在客户端和服务器之间转移 (transfer)代表资源状态的 表述(向服务器发送请求，请求什么，服务器就返回什么资源)。通过转移和操作资源的表述(请求路径)，来间接实现操作资源的目的。</p>
+<h2 id="2-RESTFul的实现"><a href="#2-RESTFul的实现" class="headerlink" title="2. RESTFul的实现"></a>2. RESTFul的实现</h2><p>具体来说，就是HTTP协议里面，四个表示操作方式的动词：GET(查找)、POST(添加)、PUT(修改)、DELETE(删除)。</p>
+<p>REST风格提倡URL地址使用统一的风格设计，<strong>从前到后各个单词使用斜杠分开</strong>，<strong>不使用问号键值对方式携带请求参数</strong>，而是将要发送给服务器的数据作为URL地址的一部分，以保证整体风格的意志。</p>
+<p><img src="https://s2.loli.net/2022/02/15/ode2uAYIN8MZvET.png" alt="image-20220215234057710"></p>
+<h2 id="3-HiddenHttpMethodFilter"><a href="#3-HiddenHttpMethodFilter" class="headerlink" title="3. HiddenHttpMethodFilter"></a>3. HiddenHttpMethodFilter</h2><p>由于浏览器只支持发送get和post请求，那么如何发送put和delete请求呢？</p>
+<p>SpringMVC提供了HiddenHttpMethodFilter来将POST请求转换为DELETE和PUT请求。</p>
+<p>要有初始化、执行过滤(重要)、销毁生命周期三个方法。</p>
+<p><img src="https://s2.loli.net/2022/02/16/EFekI3uJUSP7gwc.png" alt="image-20220216211605226"></p>
+<p>当前过滤器要拦截的请求和响应</p>
+<p>获取当前请求的请求方式</p>
+<h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p><img src="https://s2.loli.net/2022/02/16/bgBsTR47icAuYIW.png" alt="image-20220216213429236"></p>
+<ul>
+<li>当前请求方式必须为post</li>
+<li>当前请求必须传输一个name为“_method”的参数</li>
+</ul>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p>这个过滤器和设置编码的CharacterEncodingFilter的顺序：</p>
+<p>一定是设置请求的编码的CharacterEncodingFilter在前边。在设置编码之前，不能获取任何请求参数。因为如果之前就获取了请求，那么之后对请求设置编码格式自然是无用的。</p>
+<h1 id="八、RESTFul案例"><a href="#八、RESTFul案例" class="headerlink" title="八、RESTFul案例"></a>八、RESTFul案例</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a>1. 准备工作</h2><p>和传统CRUD一样，实现对员工信息的增删改查</p>
+<h3 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h3><h4 id="1-配置pom-xml"><a href="#1-配置pom-xml" class="headerlink" title="1. 配置pom.xml"></a>1. 配置pom.xml</h4><p>引入依赖：<img src="https://s2.loli.net/2022/02/18/6yr8Ejm54sJBINd.png" alt="image-20220218203617354"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;modelVersion&gt;<span class="number">4.0</span><span class="number">.0</span>&lt;/modelVersion&gt;</span><br><span class="line">&lt;groupId&gt;com.test&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;springMVC-rest&lt;/artifactId&gt;</span><br><span class="line">&lt;packaging&gt;war&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;!-- SpringMVC --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;<span class="number">5.3</span><span class="number">.1</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 日志 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;<span class="number">1.2</span><span class="number">.3</span>&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- ServletAPI --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;<span class="number">3.1</span><span class="number">.0</span>&lt;/version&gt;</span><br><span class="line">        &lt;!-- 表示当前的服务器中已经提供了servlet-api，不会存在于整合后的war包中 --&gt;</span><br><span class="line">        &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Spring5和Thymeleaf整合包 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.thymeleaf&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;thymeleaf-spring5&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;<span class="number">3.0</span><span class="number">.12</span>.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-配置web-xml-1"><a href="#2-配置web-xml-1" class="headerlink" title="2. 配置web.xml"></a>2. 配置web.xml</h4><h5 id="1-CharacterEncodingFilter"><a href="#1-CharacterEncodingFilter" class="headerlink" title="1. CharacterEncodingFilter"></a>1. CharacterEncodingFilter</h5><p>确定请求和响应的编码格式为UTF-8</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;</span><br><span class="line">    &lt;!-- 根据源码确定的 --&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;encoding&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;UTF-<span class="number">8</span>&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;forceRequestEncoding&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;<span class="literal">true</span>&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;param-name&gt;forceResponseEncoding&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;<span class="literal">true</span>&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">&lt;/filter&gt;</span><br><span class="line">&lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;<span class="comment">/*&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">&lt;/filter-mapping&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="2-HiddenHttpMethodFilter"><a href="#2-HiddenHttpMethodFilter" class="headerlink" title="2. HiddenHttpMethodFilter"></a>2. HiddenHttpMethodFilter</h5><p>确定DELETE和PUT两个请求方式可以得到处理</p>
+<p>由于请求方式和参数是请求同名的情况下，确定对应的请求处理方式的依据。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">  &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;</span><br><span class="line">  &lt;filter-class&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;/filter-class&gt;</span><br><span class="line">&lt;/filter&gt;</span><br><span class="line">  &lt;filter-mapping&gt;</span><br><span class="line">      &lt;filter-name&gt;HiddenHttpMethodFilter&lt;/filter-name&gt;</span><br><span class="line">      &lt;url-pattern&gt;<span class="comment">/*&lt;/url-pattern&gt;</span></span><br><span class="line"><span class="comment">  &lt;/filter-mapping&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="3-DispatcherServlet"><a href="#3-DispatcherServlet" class="headerlink" title="3. DispatcherServlet"></a>3. DispatcherServlet</h5><p>配置前端控制器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">        &lt;!-- 设置使得SpringMVC的配置文件放置在工程中的resources文件夹下 --&gt;</span><br><span class="line">        &lt;param-name&gt;ContextConfigLocation&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;classpath:springMVC.xml&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">    &lt;load-on-startup&gt;<span class="number">1</span>&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;DispatcherServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="3-建立控制器类xxController-java"><a href="#3-建立控制器类xxController-java" class="headerlink" title="3. 建立控制器类xxController.java"></a>3. 建立控制器类xxController.java</h4><p>用注解@Controller标识创建该控制器对象</p>
+<h4 id="4-配置springMVC-xml"><a href="#4-配置springMVC-xml" class="headerlink" title="4. 配置springMVC.xml"></a>4. 配置springMVC.xml</h4><h5 id="1-注解扫描"><a href="#1-注解扫描" class="headerlink" title="1. 注解扫描"></a>1. 注解扫描</h5><h5 id="2-配置视图解析器"><a href="#2-配置视图解析器" class="headerlink" title="2. 配置视图解析器"></a>2. 配置视图解析器</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;context:component-scan base-<span class="keyword">package</span>=<span class="string">&quot;com.test&quot;</span>&gt;&lt;/context:component-scan&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 配置视图解析器 --&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;viewResolver&quot;</span> class=<span class="string">&quot;org.thymeleaf.spring5.view.ThymeleafViewResolver&quot;</span>&gt;</span><br><span class="line">    &lt;!-- 视图解析的优先级 --&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;order&quot;</span> value=<span class="string">&quot;1&quot;</span>/&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;characterEncoding&quot;</span> value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;templateEngine&quot;</span>&gt;</span><br><span class="line">        &lt;bean class=<span class="string">&quot;org.thymeleaf.spring5.SpringTemplateEngine&quot;</span>&gt;</span><br><span class="line">            &lt;property name=<span class="string">&quot;templateResolver&quot;</span>&gt;</span><br><span class="line">                &lt;!-- 解析策略 --&gt;</span><br><span class="line">                &lt;bean class=<span class="string">&quot;org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver&quot;</span>&gt;</span><br><span class="line">                    &lt;!-- 视图前缀 --&gt;</span><br><span class="line">                    &lt;property name=<span class="string">&quot;prefix&quot;</span> value=<span class="string">&quot;/WEB-INF/templates/&quot;</span>/&gt;</span><br><span class="line">                    &lt;!-- 视图后缀 --&gt;</span><br><span class="line">                    &lt;property name=<span class="string">&quot;suffix&quot;</span> value=<span class="string">&quot;.html&quot;</span>/&gt;</span><br><span class="line">                    &lt;property name=<span class="string">&quot;templateMode&quot;</span> value=<span class="string">&quot;HTML5&quot;</span>/&gt;</span><br><span class="line">                    &lt;property name=<span class="string">&quot;characterEncoding&quot;</span> value=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span><br><span class="line">                &lt;/bean&gt;</span><br><span class="line">            &lt;/property&gt;</span><br><span class="line">        &lt;/bean&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="2-准备实体类"><a href="#2-准备实体类" class="headerlink" title="2. 准备实体类"></a>2. 准备实体类</h3><h4 id="1-bean包"><a href="#1-bean包" class="headerlink" title="1. bean包"></a>1. bean包</h4><p>放置实体类(属性、无参构造、有参构造、toString()、getXX()、setXX())</p>
+<h4 id="2-Dao包"><a href="#2-Dao包" class="headerlink" title="2. Dao包"></a>2. Dao包</h4><p>代表持久化层、数据访问层，操作数据库的各种方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmployeeDao</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;Integer, Employee&gt; employees = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        employees = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Integer, Employee&gt;();</span><br><span class="line"></span><br><span class="line">        employees.put(<span class="number">1001</span>, <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="number">1001</span>, <span class="string">&quot;E-AA&quot;</span>, <span class="string">&quot;aa@163.com&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        employees.put(<span class="number">1002</span>, <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="number">1002</span>, <span class="string">&quot;E-BB&quot;</span>, <span class="string">&quot;bb@163.com&quot;</span>, <span class="number">1</span>));</span><br><span class="line">        employees.put(<span class="number">1003</span>, <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="number">1003</span>, <span class="string">&quot;E-CC&quot;</span>, <span class="string">&quot;cc@163.com&quot;</span>, <span class="number">0</span>));</span><br><span class="line">        employees.put(<span class="number">1004</span>, <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="number">1004</span>, <span class="string">&quot;E-DD&quot;</span>, <span class="string">&quot;dd@163.com&quot;</span>, <span class="number">0</span>));</span><br><span class="line">        employees.put(<span class="number">1005</span>, <span class="keyword">new</span> <span class="title class_">Employee</span>(<span class="number">1005</span>, <span class="string">&quot;E-EE&quot;</span>, <span class="string">&quot;ee@163.com&quot;</span>, <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Integer</span> <span class="variable">initId</span> <span class="operator">=</span> <span class="number">1006</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(Employee employee)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (employee.getId() == <span class="literal">null</span>) &#123;</span><br><span class="line">            employee.setId(initId++);</span><br><span class="line">        &#125;</span><br><span class="line">        employees.put(employee.getId(), employee);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Collection&lt;Employee&gt; <span class="title function_">getAll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> employees.values();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Employee <span class="title function_">get</span><span class="params">(Integer id)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> employees.get(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(Integer id)</span> &#123;</span><br><span class="line">        employees.remove(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-Controller包"><a href="#3-Controller包" class="headerlink" title="3. Controller包"></a>3. Controller包</h4><p>有关的控制器方法</p>
+<p>设置资源的名称为employee</p>
+<h2 id="2-功能清单"><a href="#2-功能清单" class="headerlink" title="2. 功能清单"></a>2. 功能清单</h2><p>根据请求方式来实现不同功能</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>URL地址</th>
+<th>请求方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>访问首页</td>
+<td>/</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>查询全部数据</td>
+<td>/employee</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>/employee/2</td>
+<td>DELETE</td>
+</tr>
+<tr>
+<td>跳转到添加数据页面</td>
+<td>/toAdd</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>执行保存</td>
+<td>/employee</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>跳转到更新数据页面</td>
+<td>/employee/3</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>执行更新</td>
+<td>/employee</td>
+<td>PUT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="3-查询所有员工"><a href="#3-查询所有员工" class="headerlink" title="3. 查询所有员工"></a>3. 查询所有员工</h2><p>请求方式为get。</p>
+<h3 id="操作：访问首页"><a href="#操作：访问首页" class="headerlink" title="操作：访问首页(*)"></a>操作：访问首页(*)</h3><h4 id="配置springMVC-xml"><a href="#配置springMVC-xml" class="headerlink" title="配置springMVC.xml"></a>配置springMVC.xml</h4><h5 id="1-视图控制器"><a href="#1-视图控制器" class="headerlink" title="1. 视图控制器"></a>1. 视图控制器</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!-- 配置视图控制器 --&gt;</span><br><span class="line">&lt;mvc:view-controller path=<span class="string">&quot;/&quot;</span> view-name=<span class="string">&quot;index&quot;</span>&gt;&lt;/mvc:view-controller&gt;</span><br><span class="line">&lt;mvc:view-controller path=<span class="string">&quot;/toAdd&quot;</span> view-name=<span class="string">&quot;employee_add&quot;</span>&gt;&lt;/mvc:view-controller&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="2-访问驱动器"><a href="#2-访问驱动器" class="headerlink" title="2. 访问驱动器"></a>2. 访问驱动器</h5><p>必须要配置，否则除了在视图控制器中声明的请求映射之外，别的在控制器中的请求映射，将无法被处理</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;mvc:annotation-driven /&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="3-html页面"><a href="#3-html页面" class="headerlink" title="3. html页面"></a>3. html页面</h5><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/employee&#125;&quot;</span>&gt;</span>查看员工信息<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-html页面"><a href="#1-html页面" class="headerlink" title="1. html页面"></a>1. html页面</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Employee Information<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">id</span>=<span class="string">&quot;dataTable&quot;</span> <span class="attr">style</span>=<span class="string">&quot;text-align: center&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span> <span class="attr">colspan</span>=<span class="string">&quot;5&quot;</span>&gt;</span>Employee Information<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>id<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>lastName<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>email<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>gender<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>options (<span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/toAdd&#125;&quot;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">a</span>&gt;</span>) <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 每次都要循环一行信息，在tr中使用th: 。又因为数据保存在请求域中，所以用$&#123; &#125;--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">&quot;employee : $&#123;employeeList&#125;&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 如果写在&lt;td&gt;$&#123; &#125;&lt;/td&gt;的话，会被当成文本输出，而不是被解析--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;employee.id&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;employee.lastName&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;employee.email&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;employee.gender&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 通过超链接来控制一个表单的提交方式，通过vue来处理为其绑定的事件， form表单才是最终的提交方式 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;deleteEmployee&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/employee/&#x27; + $&#123;employee.id&#125;&#125;&quot;</span>&gt;</span>delete<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/employee/&#x27;+$&#123;employee.id&#125;&#125;&quot;</span>&gt;</span>update<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">&quot;deleteForm&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;_method&quot;</span> <span class="attr">value</span>=<span class="string">&quot;delete&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">th:src</span>=<span class="string">&quot;@&#123;/static/js/vue.js&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> vue = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">el</span>:<span class="string">&quot;#dataTable&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">deleteEmployee</span>:<span class="keyword">function</span> (<span class="params">event</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 根据id获取表单元素</span></span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">var</span> deleteForm = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;deleteForm&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 将触发点击事件的超链接的href属性赋值给表单的action</span></span></span><br><span class="line"><span class="language-javascript">                    deleteForm.<span class="property">action</span> = event.<span class="property">target</span>.<span class="property">href</span>;</span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 提交表单</span></span></span><br><span class="line"><span class="language-javascript">                    deleteForm.<span class="title function_">submit</span>();</span></span><br><span class="line"><span class="language-javascript">                    <span class="comment">// 取消超链接的默认行为</span></span></span><br><span class="line"><span class="language-javascript">                    event.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;);</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-控制器"><a href="#2-控制器" class="headerlink" title="2. 控制器"></a>2. 控制器</h3><p>主要调用了getAll( )方法，将数据库中的数据读取。</p>
+<p>之后设置了构成ModelAndView的数据employeeList和(返回了)视图employee_list。</p>
+<p>此处的域对象是请求域，因为每次显示数据都需要重新进行查找，所以说这些数据只需在一次请求中有效即可。</p>
+<p>选取域对象，要选能实现预期功能的且范围最小的。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/employee&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getAllEmployees</span><span class="params">(Model model)</span>&#123;</span><br><span class="line">    Collection&lt;Employee&gt; employeeList = employeeDao.getAll();</span><br><span class="line">    <span class="comment">// 因为每次都需要重新查，只需在一次请求中有效即可，否则占空间</span></span><br><span class="line">    model.addAttribute(<span class="string">&quot;employeeList&quot;</span>, employeeList);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;employee_list&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-删除"><a href="#4-删除" class="headerlink" title="4. 删除"></a>4. 删除</h2><p>比较麻烦。</p>
+<p>请求方式为delete。</p>
+<h3 id="0-思路"><a href="#0-思路" class="headerlink" title="0. 思路"></a>0. 思路</h3><p>首先将delete的超链接绑定到一个表单提交的事件，通过设置表单的提交方式为post并配置参数_method，可以使用HiddenHttpMethodFilter过滤器，将其转换为delete请求方式。</p>
+<h3 id="1-设置表单"><a href="#1-设置表单" class="headerlink" title="1. 设置表单"></a>1. 设置表单</h3><ol>
+<li>提交方式为post</li>
+<li>设置_method参数的值为请求方式delete</li>
+</ol>
+<p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220218224140190.png" alt="image-20220218224140190"></p>
+<h3 id="2-vue设置超链接"><a href="#2-vue设置超链接" class="headerlink" title="2. vue设置超链接"></a>2. vue设置超链接</h3><p>因为在表格中，delete通常是以超链接的形式存在。但是要想发送并能处理这个DELETE请求方式，就必须要通过表单提交的方式(根据HiddenHttpFilter的源码可得)。</p>
+<p>所以，这里使用了vue，采取了将超链接绑定一个表单提交的事件的方式，之后通过在控制器中匹配请求名称和请求方式，执行相关的方法。</p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>首先根据id获取表单元素</p>
+<p>将待点击的超链接的href属性(event.target.href)赋值给表单的action</p>
+<p>提交表单.submit( )</p>
+<p>取消超链接的默认行为(preventDefaukt( ))。</p>
+<p>特别，注意取消超链接默认的点击后跳转行为，否则绑定不生效。</p>
+<p><img src="https://s2.loli.net/2022/02/18/oVyTPIF34m8WS7v.png" alt="image-20220218223510735"></p>
+<h3 id="3-设置请求格式"><a href="#3-设置请求格式" class="headerlink" title="3. 设置请求格式"></a>3. 设置请求格式</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>采用的发送请求的方式为：通过”/“将参数跟到地址后。</p>
+<p>所以要实现在超链接点击后，发送的请求中，要有对应的员工id。</p>
+<p><strong>使用Thymeleaf视图解析器的方式，通过增加可解析的参数表达式实现。</strong></p>
+<h4 id="错误方式"><a href="#错误方式" class="headerlink" title="错误方式"></a>错误方式</h4><p><img src="https://s2.loli.net/2022/02/17/q9Mnkg3FVoYmQi8.png" alt="image-20220217233308716"></p>
+<p><img src="https://s2.loli.net/2022/02/17/WAx37uF6CTotYN1.png" alt="image-20220217233359456"></p>
+<p><img src="https://s2.loli.net/2022/02/17/X7VEG1hQabJMnuT.png" alt="image-20220217233427223"></p>
+<p>这种写法是错误的，此时只将左右大括号进行了解析，而没有解析表达式(虽不知为何会如此)。</p>
+<h4 id="正确方式1："><a href="#正确方式1：" class="headerlink" title="正确方式1："></a>正确方式1：</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!-- 放在外边 --&gt;</span><br><span class="line">&lt;a th:href=<span class="string">&quot;@&#123;/employee/&#125; + $&#123;employee.id&#125;&quot;</span>&gt;delete&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="正确方式2："><a href="#正确方式2：" class="headerlink" title="正确方式2："></a>正确方式2：</h4><p>前边的会作为路径解析，后边的作为请求参数解析。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;!-- 放在里边 --&gt;</span><br><span class="line">&lt;a th:href=<span class="string">&quot;@&#123; &#x27;/employee/&#x27;+$&#123;employee.id&#125; &#125;&quot;</span>&gt;delete&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4-控制器"><a href="#4-控制器" class="headerlink" title="4. 控制器"></a>4. 控制器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/employee/&#123;id&#125;&quot;, method = RequestMethod.DELETE)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">deleteEmployee</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span> &#123;</span><br><span class="line">    <span class="comment">// 将占位符的值和当前形参进行绑定</span></span><br><span class="line">    employeeDao.delete(id);</span><br><span class="line">    <span class="comment">// 删除成功后，再展示数据，与原来的请求无关，故而采用重定向</span></span><br><span class="line">    <span class="comment">// 下面这样，类似于在地址栏重新输入地址，是get方式</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/employee&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-Tips"><a href="#5-Tips" class="headerlink" title="5. Tips"></a>5. Tips</h3><p>解决当时遇到的405 请求方式无法解析的问题。</p>
+<h4 id="1-打包"><a href="#1-打包" class="headerlink" title="1. 打包"></a>1. 打包</h4><p>借助vue.js，将超链接绑定一个表单提交事件的配置没有生效。</p>
+<p>因为是在工程运行打包之后，又增加的vue.js文件。所以在当前已经打包过的资源中，它不存在，需要重新打包。</p>
+<p>如下图所示：</p>
+<p><img src="https://s2.loli.net/2022/02/18/4ZqrSvm1z6wjIbD.png" alt="image-20220218225905824"></p>
+<h4 id="2-配置默认的servlet"><a href="#2-配置默认的servlet" class="headerlink" title="2. 配置默认的servlet"></a>2. 配置默认的servlet</h4><p>SpringMVC无法处理静态资源。</p>
+<p>所以在重新打包，保证新引入的vue.js文件在打好的war包中后，仍旧会报 404 not found 的问题。</p>
+<p>静态资源是要靠默认的servlet来处理的，故而需要在SpringMVC中新增配置，开放对静态资源的访问。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;mvc:<span class="keyword">default</span>-servlet-handler /&gt;</span><br></pre></td></tr></table></figure>
+<p>加上之后，所有的请求都会先被DispatcherServlet首先处理，如果找不到对应的请求映射，就会交给默认的servlet处理。</p>
+<p>如果默认的servlet可以处理，那就访问，找不到的话，就提示404。</p>
+<h5 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h5><p>当然，此时一定要加：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;mvc:annotation-driven /&gt;</span><br></pre></td></tr></table></figure>
+<p>如果不加的话，所有的请求都会被默认的servlet处理。</p>
+<h2 id="5-添加"><a href="#5-添加" class="headerlink" title="5. 添加"></a>5. 添加</h2><p>请求方式为post</p>
+<h3 id="0-思路-1"><a href="#0-思路-1" class="headerlink" title="0. 思路"></a>0. 思路</h3><p>先跳转到toAdd.html页面，将数据从表单中提交，之后通过在控制器中匹配请求名称和请求方式，执行相关的方法。</p>
+<h3 id="1-html页面-1"><a href="#1-html页面-1" class="headerlink" title="1. html页面"></a>1. html页面</h3><p><img src="https://s2.loli.net/2022/02/18/ztSKYaZBFbvHrgp.png" alt="image-20220218233019137"></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Add Employee<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/employee&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    lastName: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lastName&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    email: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    gender: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span>&gt;</span>male</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0&quot;</span>&gt;</span>female<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;add&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-控制器-1"><a href="#2-控制器-1" class="headerlink" title="2. 控制器"></a>2. 控制器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/employee&quot;, method = RequestMethod.POST)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">addEmployee</span><span class="params">(Employee employee)</span> &#123;</span><br><span class="line">    employeeDao.save(employee);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/employee&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-修改"><a href="#6-修改" class="headerlink" title="6. 修改"></a>6. 修改</h2><p>跟delete差不多，但是因为它有独立的页面，可以执行表单提交，所以不用将超链接绑定表单提交事件。</p>
+<p>请求方式为put。</p>
+<h3 id="0-思路-2"><a href="#0-思路-2" class="headerlink" title="0. 思路"></a>0. 思路</h3><p>首先点击add超链接，根据提交的请求名和请求方式(超链接默认的请求方式是get)，找到第一个控制器方法</p>
+<p>进入employee_update页面，回显信息，修改之后，提交信息，找到第二个控制器方法，显示当前所有员工。</p>
+<h3 id="1-html页面-2"><a href="#1-html页面-2" class="headerlink" title="1. html页面"></a>1. html页面</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/employee/&#x27;+$&#123;employee.id&#125;&#125;&quot;</span>&gt;</span>update<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span> <span class="attr">xmlns:th</span>=<span class="string">&quot;http://www.thymeleaf.org&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Update Employee<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/employee&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;_method&quot;</span> <span class="attr">value</span>=<span class="string">&quot;put&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;id&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;employee.id&#125;&quot;</span>&gt;</span></span><br><span class="line">    lastName: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;lastName&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;employee.lastName&#125;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    email: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;employee.email&#125;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    gender: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> <span class="attr">th:field</span>=<span class="string">&quot;$&#123;employee.gender&#125;&quot;</span>&gt;</span>male</span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;gender&quot;</span> <span class="attr">value</span>=<span class="string">&quot;0&quot;</span> <span class="attr">th:field</span>=<span class="string">&quot;$&#123;employee.gender&#125;&quot;</span>&gt;</span>female<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;update&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-控制器方法"><a href="#2-控制器方法" class="headerlink" title="2. 控制器方法"></a>2. 控制器方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/employee/&#123;id&#125;&quot;, method = RequestMethod.GET)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getEmployeeById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id, Model model)</span> &#123;</span><br><span class="line">    <span class="type">Employee</span> <span class="variable">employee</span> <span class="operator">=</span> employeeDao.get(id);</span><br><span class="line">    model.addAttribute(<span class="string">&quot;employee&quot;</span>, employee);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;employee_update&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/employee&quot;, method = RequestMethod.PUT)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">updateEmployee</span><span class="params">(Employee employee)</span> &#123;</span><br><span class="line">        employeeDao.save(employee);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/employee&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>所有工程的web.xml文件在Tomcat的conf文件夹中。</p>
+<p>若自己工程配置的web.xml，与所有工程的不同(产生冲突)，以就近为准，选择自己的。</p>
+<h1 id="九、-HttpMessageConverter"><a href="#九、-HttpMessageConverter" class="headerlink" title="九、 HttpMessageConverter"></a>九、 HttpMessageConverter</h1><p>HttpMessageConverter，报文信息转换器，将请求报文转换为Java对象(要通过Java接收报文)，或将Java对象转换为响应报文(服务器用的是Java语言，但浏览器只能接收响应报文)。</p>
+<p>提供了两个注解和两个类型</p>
+<p>@RequestBody(将请求报文中的请求体转化为Java对象)</p>
+<p><strong>@ResponseBody</strong>(将Java对象转换为响应体)</p>
+<p>RequestEntity(请求实体，可以用来接收整个请求报文，既可以用来接受请求头，还能接收请求体)</p>
+<p><strong>ResponseEntity</strong>(将Java数据转化为响应报文)。</p>
+<p>两个请求用的少，因为请求就可以随便获取。</p>
+<p>黑体的两个响应用的多，因为将Java转换为响应报文，用起来会很方便。</p>
+<h2 id="1-RequestBody"><a href="#1-RequestBody" class="headerlink" title="1. @RequestBody"></a>1. @RequestBody</h2><p>@RequestBody可以获取请求体，需要在控制器方式设置一个形参，使用@RequestBody进行标识，当前请求的请求体就会为当前注解所标识的形参赋值。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/testRequestBody&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">    用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testRequestBody&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testRequestBody</span><span class="params">(<span class="meta">@RequestBody</span> String requestBody)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;requestBody: &quot;</span> + requestBody);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220219163030353.png" alt="image-20220219163030353"></p>
+<h2 id="2-RequestEntity"><a href="#2-RequestEntity" class="headerlink" title="2. RequestEntity"></a>2. RequestEntity</h2><p>RequestEntity封装请求报文的一种类型，需要在控制器方法的形参中设置该类型的形参，当前请求的请求报文就会赋值给该形参，可以通过getHeaders( )获取请求头信息，通过getBody( )获取请求体信息。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testRequestEntity&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testRequestEntity</span><span class="params">(RequestEntity&lt;String&gt; requestEntity)</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;requestHeader: &quot;</span> + requestEntity.getHeaders());</span><br><span class="line">    System.out.println(<span class="string">&quot;requestBody: &quot;</span> + requestEntity.getBody());</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/02/19/V3SJZAkdEe45aFb.png" alt="image-20220219170728090"></p>
+<h2 id="3-ResponseBody"><a href="#3-ResponseBody" class="headerlink" title="3. @ResponseBody"></a>3. @ResponseBody</h2><p>@RequestBody用于标识一个控制器方法，可以将该方法的返回值直接作为响应报文的响应体响应到浏览器。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testResponseBody&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testResponseBody</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>若不加注解，则返回的是视图名称；</p>
+<p>加上注解之后，返回的是响应体的内容success。</p>
+<p><img src="https://s2.loli.net/2022/02/19/nvm8gT4BW37z1US.png" alt="image-20220219172826712"></p>
+<h2 id="4-SpringMVC处理Json"><a href="#4-SpringMVC处理Json" class="headerlink" title="4. SpringMVC处理Json"></a>4. SpringMVC处理Json</h2><p>到目前为止都只能return一个(字符串)文本内容，因为浏览器只能接收服务器传过来的字符串内容，它不认识Java对象，也不知道服务器用的什么语言。这是因为Http协议为服务器和浏览器之间制定了一个统一的通信规范，跟浏览器和服务器语言无关，只要按照要求传输请求报文和响应报文就可以实现通信，故而这也导致浏览器并不清楚服务器的处理方式。</p>
+<p>此时，如果传输对象(例如user)的话，会：</p>
+<p><img src="https://s2.loli.net/2022/02/19/kuEdqOGUeigb8LQ.png" alt="image-20220219214430230"></p>
+<p>为了实现顺利传输，使用json。</p>
+<p>JSON是一种数据交互格式。</p>
+<h3 id="1-引入jackson依赖"><a href="#1-引入jackson依赖" class="headerlink" title="1. 引入jackson依赖"></a>1. 引入jackson依赖</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;<span class="number">2.12</span><span class="number">.5</span>&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/02/19/Dxa8i2qvmybwGlH.png" alt="image-20220219214859189"></p>
+<p>此时user对象转换为json时，转换的是json对象(最外层是{ }，数组(最外层是[ ]))。</p>
+<h3 id="2-开启mvc的注解驱动"><a href="#2-开启mvc的注解驱动" class="headerlink" title="2. 开启mvc的注解驱动"></a>2. 开启mvc的注解驱动</h3><p>在SpringMVC的核心配置文件中开启mvc的注解驱动，此时在HandlerAdaptor中会自动装配一个消息转换器：MappingJacksonHttpMessageConverter，可以将响应到浏览器的Java对象转换为Json格式的字符串。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;mvc:annotation-driven /&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-ResponseBody注解"><a href="#3-ResponseBody注解" class="headerlink" title="3. @ResponseBody注解"></a>3. @ResponseBody注解</h3><h3 id="4-Java对象作为返回值"><a href="#4-Java对象作为返回值" class="headerlink" title="4. Java对象作为返回值"></a>4. Java对象作为返回值</h3><p>将Java对象直接作为控制器方法的返回值返回，就会自动转换为<strong>Json格式的字符串</strong></p>
+<p><img src="https://s2.loli.net/2022/02/19/sDKpjTU6SOZ7kJd.png" alt="image-20220219215721022"></p>
+<p>Json对象是放在{ }中，以键值对的方式存储；实体类、Map转换为Json之后，是Json对象。</p>
+<p>Json数组是放在[ ]中，存储的是一个一个数据。 List集合是Json数组。</p>
+<h2 id="5-SpringMVC处理Ajax"><a href="#5-SpringMVC处理Ajax" class="headerlink" title="5. SpringMVC处理Ajax"></a>5. SpringMVC处理Ajax</h2><p>Ajax本身就是页面不刷新，与服务器交互。所以现在在服务器中不能使用转发和重定向，只能响应浏览器数据。</p>
+<p>通过超链接绑定Ajax，但是超链接有默认行为，所以要使用vue来取消。</p>
+<p>服务器响应浏览器数据，就是在当前的方法上加上@ResponseBody，将返回的内容变成响应体。</p>
+<h3 id="1-发送请求的超链接"><a href="#1-发送请求的超链接" class="headerlink" title="1. 发送请求的超链接"></a>1. 发送请求的超链接</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;testAxios&quot;</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/testAxios&#125;&quot;</span>&gt;</span>SpringMVC处理ajax<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-通过vue和axios处理点击事件"><a href="#2-通过vue和axios处理点击事件" class="headerlink" title="2. 通过vue和axios处理点击事件"></a>2. 通过vue和axios处理点击事件</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">th:src</span>=<span class="string">&quot;@&#123;/static/js/vue.js&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">th:src</span>=<span class="string">&quot;@&#123;/static/js/axios.min.js&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">el</span>:<span class="string">&quot;#app&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">testAxios</span>:<span class="keyword">function</span> (<span class="params">event</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="title function_">axios</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">method</span>:<span class="string">&quot;post&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">url</span>:event.<span class="property">target</span>.<span class="property">href</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">params</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">                        <span class="attr">username</span>:<span class="string">&quot;admin&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                        <span class="attr">password</span>:<span class="string">&quot;123456&quot;</span></span></span><br><span class="line"><span class="language-javascript">                    &#125;</span></span><br><span class="line"><span class="language-javascript">                &#125;).<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="title function_">alert</span>(response.<span class="property">data</span>)</span></span><br><span class="line"><span class="language-javascript">                &#125;);</span></span><br><span class="line"><span class="language-javascript">                event.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">            &#125;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;)</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-控制器方法"><a href="#3-控制器方法" class="headerlink" title="3. 控制器方法"></a>3. 控制器方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testAxios&quot;)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testAxios</span><span class="params">(String username, String password)</span> &#123;</span><br><span class="line">    System.out.println(username +<span class="string">&quot;,&quot;</span>+password);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello, axios&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-RestController注解"><a href="#6-RestController注解" class="headerlink" title="6. @RestController注解(*)"></a>6. @RestController注解(*)</h2><p>@RestController注解是SpringMVC提供的一个复合注解，标识在控制器的类上，就相当于为类添加了@Controller注解，并且为其中的每一个方法增加了@RequestBody注解。</p>
+<h2 id="7-ResponseEntity"><a href="#7-ResponseEntity" class="headerlink" title="7. ResponseEntity"></a>7. ResponseEntity</h2><p>ResponseEntity用于控制器方法的返回值类型，该控制器方法的返回值就是相应到浏览器的响应报文。</p>
+<p>用于实现文件上传和下载。</p>
+<h1 id="十、文件的上传和下载"><a href="#十、文件的上传和下载" class="headerlink" title="十、文件的上传和下载"></a>十、文件的上传和下载</h1><h2 id="1-文件下载"><a href="#1-文件下载" class="headerlink" title="1. 文件下载"></a>1. 文件下载</h2><p>使用ResponseEntity实现下载文件的功能</p>
+<p>实现，自定义响应报文来响应浏览器</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>根据在工程中的相对路径，获取文件在服务器中的绝对路径</li>
+<li>创建输入流，将文件通放入输入流</li>
+<li>从输入流读文件进入字节数组</li>
+<li>将字节数组中的数据，作为响应报文的响应体</li>
+<li>创建响应头HttpHeaders()和响应状态码HttpStatus</li>
+<li>将以上三部分，放入后构造器方法，创建ResponseEntity对象</li>
+<li>关闭输入流</li>
+<li>返回ResponseEntity对象作为响应报文</li>
+</ol>
+<p>inputStream.available()； headers.add(“Content-Disposition”, “attachment;filename=cherry.jpg”);</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- file.html --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 从服务器将文件下载到客户端；将文件上传到服务器中--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/testDown&#125;&quot;</span>&gt;</span>下载cherry<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileUpAndDownController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/testDown&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> ResponseEntity&lt;<span class="type">byte</span>[]&gt; testResponseEntity(HttpSession session) <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// 获取ServletContext对象</span></span><br><span class="line">        <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> session.getServletContext();</span><br><span class="line">        <span class="comment">// getRealPath()获取服务器中的工程部署路径，从而获取服务器中文件的真实路径</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">realPath</span> <span class="operator">=</span> servletContext.getRealPath(<span class="string">&quot;/static/img/cherry.jpg&quot;</span>);</span><br><span class="line">        System.out.println(realPath);</span><br><span class="line">        <span class="comment">// 文件复制就是先读后写</span></span><br><span class="line">        <span class="comment">// 创建输入流</span></span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(realPath);</span><br><span class="line">        <span class="comment">// 获取字节数组，输入流所对应的文件的所有字节，假如文件里有100个字节，那就是available方法的值就是100。</span></span><br><span class="line">        <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[inputStream.available()];</span><br><span class="line">        <span class="comment">// 将流读到字节数组中</span></span><br><span class="line">        inputStream.read(bytes);</span><br><span class="line">        <span class="comment">// 将响应的内容byte数组(响应体)转化为ResponseEntity</span></span><br><span class="line">        <span class="comment">// 创建HttpHeaders对象设置响应头信息</span></span><br><span class="line">        MultiValueMap&lt;String, String&gt; headers = <span class="keyword">new</span> <span class="title class_">HttpHeaders</span>();</span><br><span class="line">        <span class="comment">// 设置要下载的方式(attachment:以附件的形式下载)和文件名称(整个语句，只能改文件名称)</span></span><br><span class="line">        headers.add(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;attachment;filename=cherry.jpg&quot;</span>);</span><br><span class="line">        <span class="comment">// 设置响应状态码为200</span></span><br><span class="line">        <span class="type">HttpStatus</span> <span class="variable">statusCode</span> <span class="operator">=</span> HttpStatus.OK;</span><br><span class="line">        <span class="comment">// 创建ResponseEntity对象</span></span><br><span class="line">        ResponseEntity&lt;<span class="type">byte</span>[]&gt; responseEntity = <span class="keyword">new</span> <span class="title class_">ResponseEntity</span>&lt;&gt;(bytes, headers, statusCode);</span><br><span class="line">        <span class="comment">// 关闭输入流</span></span><br><span class="line">        inputStream.close();</span><br><span class="line">        <span class="keyword">return</span> responseEntity;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-文件上传"><a href="#2-文件上传" class="headerlink" title="2. 文件上传"></a>2. 文件上传</h2><p>上传按照二进制方式，而不是name=value的映射方式。</p>
+<p>post和multi-…一个都不能少，否则会完成不了上传。</p>
+<p>显示一个按钮，点击后可以去选择文件。</p>
+<p>获取表单属性的name元素值。</p>
+<p>当前文件的名字</p>
+<p>覆盖的是文件里的内容，当两个文件同名，后者将前者文件里的内容进行了覆盖。</p>
+<p><img src="https://s2.loli.net/2022/02/21/hjz9eRDUJQKoY2E.png" alt="image-20220221001840497"></p>
+<h1 id="十一、拦截器"><a href="#十一、拦截器" class="headerlink" title="十一、拦截器"></a>十一、拦截器</h1><h1 id="十二、异常处理器"><a href="#十二、异常处理器" class="headerlink" title="十二、异常处理器"></a>十二、异常处理器</h1><h1 id="末章-补充信息"><a href="#末章-补充信息" class="headerlink" title="末章 补充信息"></a>末章 补充信息</h1><h2 id="1-ServletContext介绍"><a href="#1-ServletContext介绍" class="headerlink" title="1. ServletContext介绍"></a>1. ServletContext介绍</h2><h3 id="1-简介-1"><a href="#1-简介-1" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>ServletContext官方叫servlet上下文。</p>
+<p>服务器会为每一个工程创建一个对象，这个对象就是ServletContext对象。这个对象全局唯一，而且工程内部的所有servlet都共享这个对象。所以叫，<strong>全局应用程序共享对象</strong>。</p>
+<p><img src="https://s2.loli.net/2022/02/20/XrfVwxHI28oMdFO.png" alt="image-20220220123848890"></p>
+<h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2. 作用"></a>2. 作用</h3><ul>
+<li><p><strong>是一个域对象</strong></p>
+</li>
+<li><p>可以读取全局配置参数</p>
+</li>
+<li>可以搜索当前工程目录下面的资源文件</li>
+</ul>
+<h4 id="1-域对象"><a href="#1-域对象" class="headerlink" title="1. 域对象"></a>1. 域对象</h4><p>域对象是服务器在内存上创建的存储空间，用于在不同动态资源(servlet)之间传递与共享数据。</p>
+<h4 id="2-域对象方法"><a href="#2-域对象方法" class="headerlink" title="2. 域对象方法"></a>2. 域对象方法</h4><p>凡是域对象都有如下3个方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setAttribute(name, value);name为String类型，value是Object类型；</td>
+<td>向域对象中添加数据，以key-value形式</td>
+</tr>
+<tr>
+<td>getAttribute(name)；</td>
+<td>根据指定的key读取域对象中的数据</td>
+</tr>
+<tr>
+<td>removeAttribute(name);</td>
+<td>根据指定的key从域对象中删除数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="3-存储特点"><a href="#3-存储特点" class="headerlink" title="3. 存储特点"></a>3. 存储特点</h4><p>servletContext中的数据，全局共享，所有的动态资源都可以写入和获取</p>
+<p>服务器启动的时候创建，服务器关闭的时候销毁，因为这是全局应用程序对象，全局共享对象。</p>
+<h4 id="4-可以读取全局配置参数"><a href="#4-可以读取全局配置参数" class="headerlink" title="4. 可以读取全局配置参数"></a>4. 可以读取全局配置参数</h4><p>servletContext读取全局参数的核心方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getServletContext().getInitParameter(name);</td>
+<td>根据指定的参数名获取参数值</td>
+</tr>
+<tr>
+<td>getServletContext().getInitParameterNames();</td>
+<td>获取所有参数名称列表</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> <img src="https://s2.loli.net/2022/02/20/xKa1uY6ReSy3ft9.png" alt="image-20220220144024285"></p>
+<h4 id="5-搜索工程下资源文件"><a href="#5-搜索工程下资源文件" class="headerlink" title="5. 搜索工程下资源文件"></a>5. 搜索工程下资源文件</h4><p>path：相对路径</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getServletContext().getRealPath(path);</td>
+<td>根据相对路径获取服务器上资源的绝对路径</td>
+</tr>
+<tr>
+<td>getServletContext().getResourceAsStream(path);</td>
+<td>根据相对路径获取服务器上资源的输入字节流</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="6-获取当前工程名字"><a href="#6-获取当前工程名字" class="headerlink" title="6. 获取当前工程名字"></a>6. 获取当前工程名字</h4><p>getServletContext().getContextPath()：获取当前工程名字</p>
+<h2 id="2-Servlet三大域对象"><a href="#2-Servlet三大域对象" class="headerlink" title="2. Servlet三大域对象"></a>2. Servlet三大域对象</h2><p>域对象的作用：保存数据、获取数据、共享数据。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>对象名称</th>
+<th>对象的类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td>HttpServletRequest</td>
+</tr>
+<tr>
+<td>session</td>
+<td>HttpSession</td>
+</tr>
+<tr>
+<td>application</td>
+<td>ServletContext</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="1-request"><a href="#1-request" class="headerlink" title="1. request"></a>1. request</h3><p>创建：客户端向服务器发送一次请求，服务器就会创建request对象</p>
+<p>销毁：服务器对这次请求做出响应之后就会销毁request对象</p>
+<p>有效：仅在当前请求中有效</p>
+<p>方法：request.getParameter(); request.setAttribute()。</p>
+<h3 id="2-session"><a href="#2-session" class="headerlink" title="2. session"></a>2. session</h3><p>创建：服务器端第一次调用getSession()；(保存在服务器内存中)</p>
+<p>销毁：</p>
+<ul>
+<li>非正常关闭服务器(正常关闭session会序列化，再次启动session会被反序列化)</li>
+<li>session过期(Tomcat中为30分钟)</li>
+<li>手动调用session.invalidate();</li>
+</ul>
+<p>有效：从用户打开浏览器会话开始，直到关闭浏览器会话结束。一次会话只创建一个session对象。</p>
+<p>方法：(String) request.getSession().getAttribute(“imageMsg”); </p>
+<p>request.getSession().setAttribute(“user”, user)；</p>
+<h3 id="application"><a href="#application" class="headerlink" title="application"></a>application</h3><p>创建：服务器启动时，为每个web应用创建一个属于该项目的对象ServletContext类；</p>
+<p>销毁：服务器关闭或项目从服务器中移除的时候</p>
+<p>有效：此信息在整个服务器上被保留</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p><img src="https://s2.loli.net/2022/02/20/HAfMwiCgpSoX1nO.png" alt="image-20220220145904822"></p>
+<h3 id="附：pageContext-jsp"><a href="#附：pageContext-jsp" class="headerlink" title="附：pageContext(jsp)"></a>附：pageContext(jsp)</h3><p>对象类型：pageContext</p>
+<p>有效范围最小。</p>
+<p>当前页面有效，超过这个页面就不能使用。</p>
 ]]></content>
       <tags>
         <tag>SpringMVC</tag>
@@ -1441,8 +2257,11 @@ r=tm/tc表示主存慢于cache的倍率，e=tc/ta表示访问效率</script><p>�
 </ul>
 <h3 id="5-主存与cache的地址映射"><a href="#5-主存与cache的地址映射" class="headerlink" title="5  主存与cache的地址映射"></a>5  主存与cache的地址映射</h3><p>cache的容量很小，它保存的内容只是主存内容的一个子集，且cache与主存的数据交换是以块为单位。</p>
 <p>地址映射即是应用某种方法把主存地址定位到cache中。地址映射的方式有<strong>全相联方式、直接映射方式和组相联方式三种。</strong></p>
-<h4 id="1-全相联方式"><a href="#1-全相联方式" class="headerlink" title="1. 全相联方式"></a>1. 全相联方式</h4><p>主存中的一个<strong>块的地址与块的内容</strong>一起存于cache的行中，其中<strong>块地址存于cache行的标记部分</strong>中，是由于此种方式，内存中的块可以映射到cache任意一行中。块的大小 = 行的大小。但注意，若以内存一块256字为例，则cache一行长度不仅保存了内存的地址，还有该地址对应的内容，即其实保存了521字的内容，但其可用大小应为256×行数。因为地址固定时，内容就固定了，没有可变性，故而不能是521×块数，没有那么多可用的。由于其电路设计复杂，更多用于小容量cache。<img src="https://s2.loli.net/2021/12/22/dmGe41p2RknPCAt.png" alt="image-20211031151344855"></p>
-<h4 id="2-直接映射方式"><a href="#2-直接映射方式" class="headerlink" title="2. 直接映射方式"></a>2. 直接映射方式</h4><p>这也是一种多对一的映射关系，但一个主存块只能拷贝到cache的一个特定行位置上去。cache的行号i和主存的块号j有如下函数关系：</p>
+<h4 id="1-全相联方式"><a href="#1-全相联方式" class="headerlink" title="1. 全相联方式"></a>1. 全相联方式</h4><p>主存中的一个<strong>块的地址与块的内容</strong>一起存于cache的行中，其中<strong>块地址存于cache行的标记部分</strong>中，是由于此种方式，<strong>内存中的块可以映射到cache任意一行中</strong>。块的大小 = 行的大小。</p>
+<p>但注意，若以内存一块256字为例，则cache一行长度不仅保存了内存的地址，还有该地址对应的内容，即其实保存了521字的内容，但其可用大小应为256×行数。因为地址固定时，内容就固定了，没有可变性，故而不能是521×块数，没有那么多可用的。</p>
+<p>由于其电路设计复杂，更多用于小容量cache。<img src="https://s2.loli.net/2021/12/22/dmGe41p2RknPCAt.png" alt="image-20211031151344855"></p>
+<h4 id="2-直接映射方式"><a href="#2-直接映射方式" class="headerlink" title="2. 直接映射方式"></a>2. 直接映射方式</h4><p>这也是一种多对一的映射关系，但一个主存块只能拷贝到cache的一个特定行位置上去。</p>
+<p>cache的行号i和主存的块号j有如下函数关系：</p>
 <script type="math/tex; mode=display">
 i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12/22/2AgZ6BmErHPQC1M.png" alt="image-20211031151518192"></p>
 <p>注意比较的顺序，另外由于几个内存块对应同一行，容易发生空间冲突。适合于大容量cache。</p>
@@ -1613,7 +2432,7 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <p>●  基目录/home/user/classdir或c:\classes；</p>
 <p>●  当前目录(.)；</p>
 <p>●  JAR文件/home/user/archives/archive.jar或c:\archives\archive.jar。</p>
-<h2 id="第九讲-文档注释"><a href="#第九讲-文档注释" class="headerlink" title="第九讲 文档注释"></a>第九讲 文档注释</h2><h3 id="方法注释"><a href="#方法注释" class="headerlink" title="方法注释"></a>方法注释</h3><p>每个方法注释必须放在所描述的方法之前。</p>
+<h2 id="第九讲-文档注释"><a href="#第九讲-文档注释" class="headerlink" title="第九讲 文档注释"></a>第九讲 文档注释</h2><h3 id="1-方法注释"><a href="#1-方法注释" class="headerlink" title="1. 方法注释"></a>1. 方法注释</h3><p>每个方法注释必须放在所描述的方法之前。</p>
 <p>除了通用标记之外，还可以使用下面的标记：</p>
 <ul>
 <li>@param 变量描述</li>
@@ -1630,8 +2449,8 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <p><img src="https://s2.loli.net/2022/01/05/jDElf7oyhQ3ZTrv.png" alt="image-20220105160743393"></p>
 <p><img src="https://s2.loli.net/2022/01/05/we6qAjmNELdGviu.png" alt="image-20220105161216316"></p>
 <p><img src="C:/Users/LISHANSHAN/AppData/Roaming/Typora/typora-user-images/image-20220105161131526.png" alt="image-20220105161131526"></p>
-<h3 id="域注释"><a href="#域注释" class="headerlink" title="域注释"></a>域注释</h3><p><img src="https://s2.loli.net/2022/01/05/dGbf7SkvEDAqYpJ.png" alt="image-20220105161654770"></p>
-<h3 id="通用注释"><a href="#通用注释" class="headerlink" title="通用注释"></a>通用注释</h3><ul>
+<h3 id="2-域注释"><a href="#2-域注释" class="headerlink" title="2. 域注释"></a>2. 域注释</h3><p><img src="https://s2.loli.net/2022/01/05/dGbf7SkvEDAqYpJ.png" alt="image-20220105161654770"></p>
+<h3 id="3-通用注释"><a href="#3-通用注释" class="headerlink" title="3. 通用注释"></a>3. 通用注释</h3><ul>
 <li>@author 姓名</li>
 </ul>
 <p>这个标记将产生一个”author”(作者)条目。可以使用多个@author标记，每个@author标记对应一个作者。</p>
@@ -1639,7 +2458,7 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <li>@version 文本</li>
 </ul>
 <p>这个标记将产生一个“version”(版本)条目。这里的文本可以是对当前版本的任何描述。</p>
-<h4 id="下面的标记可以用于所有的文档注释"><a href="#下面的标记可以用于所有的文档注释" class="headerlink" title="下面的标记可以用于所有的文档注释"></a>下面的标记可以用于所有的文档注释</h4><ul>
+<h4 id="4-下面的标记可以用于所有的文档注释"><a href="#4-下面的标记可以用于所有的文档注释" class="headerlink" title="4. 下面的标记可以用于所有的文档注释"></a>4. 下面的标记可以用于所有的文档注释</h4><ul>
 <li>@since 文本</li>
 </ul>
 <p>这个标记将产生一个“since”(始于)条目。这里的text可以是对引入特性的版本描述。例如，@since version 1.7.1。</p>
@@ -1701,9 +2520,9 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <p>在Java中，子类数组的引用可以转换成超类数组的引用，而不需要采用强制类型转换。</p>
 <p><img src="https://s2.loli.net/2022/01/06/GXA2CRPaQkOjech.png" alt="image-20220106220331459"></p>
 <p>使用new Manager[10]创建的数组是一个经理数组，如果试图存储一个Employee类型的引用就会引发ArrayStoreException异常。</p>
-<h3 id="第六节-理解方法调用用"><a href="#第六节-理解方法调用用" class="headerlink" title="第六节 理解方法调用用"></a>第六节 理解方法调用用</h3><p>弄清楚如何在对象上应用方法调用非常重要。</p>
+<h3 id="第六节-理解方法调用"><a href="#第六节-理解方法调用" class="headerlink" title="第六节 理解方法调用"></a>第六节 理解方法调用</h3><p>弄清楚如何在对象上应用方法调用非常重要。</p>
 <p>下面假设要调用x.f(args)，隐式参数x声明为类C的一个对象。</p>
-<h4 id="下面是调用过程的详细描述："><a href="#下面是调用过程的详细描述：" class="headerlink" title="下面是调用过程的详细描述："></a>下面是调用过程的详细描述：</h4><p><strong>1）编译器查看对象的声明类型和方法名。</strong></p>
+<h4 id="1-下面是调用过程的详细描述："><a href="#1-下面是调用过程的详细描述：" class="headerlink" title="1. 下面是调用过程的详细描述："></a>1. 下面是调用过程的详细描述：</h4><p><strong>1）编译器查看对象的声明类型和方法名。</strong></p>
 <p>假设调用x.f(param)，且隐式参数x声明为C类的对象。需要注意的是：有可能存在多个名字为f，但参数类型不一样的方法。例如，可能存在方法f(int)和方法f(String)。编译器将会一一列举所有C类中名为f的方法和其超类中访问属性为public且名为f的方法（超类的私有方法不可访问）。至此，编译器已获得所有可能被调用的候选方法。</p>
 <p><strong>2）接下来，编译器将查看调用方法时提供的参数类型。</strong></p>
 <p>如果在所有名为f的方法中存在一个与提供的参数类型完全匹配，就选择这个方法。这个过程被称为重载解析（overloading resolution）。例如，对于调用x.f(“Hello”)来说，编译器将会挑选f(String)，而不是f(int)。由于允许类型转换（int可以转换成double, Manager可以转换成Employee，等等），所以这个过程可能很复杂。如果编译器没有找到与参数类型匹配的方法，或者发现经过类型转换后有多个方法与之匹配，就会报告一个错误。</p>
@@ -1718,7 +2537,7 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <p>与此对应的是，调用的方法依赖于隐式参数的实际类型，并且在运行时实现动态绑定。在我们列举的示例中，编译器采用动态绑定的方式生成一条调用f (String)的指令。</p>
 <p><strong>4）当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实际类型最合适的那个类的方法。</strong></p>
 <p>假设x的实际类型是D，它是C类的子类。如果D类定义了方法f(String)，就直接调用它；否则，将在D类的超类中寻找f(String)，以此类推。</p>
-<h4 id="方法表"><a href="#方法表" class="headerlink" title="方法表"></a>方法表</h4><p>每次调用方法都要进行搜索，时间开销相当大。</p>
+<h4 id="2-方法表"><a href="#2-方法表" class="headerlink" title="2. 方法表"></a>2. 方法表</h4><p>每次调用方法都要进行搜索，时间开销相当大。</p>
 <p>因此，虚拟机预先为每个类创建了一个<strong>方法表（method table）</strong>，其中列出了所有方法的签名和实际调用的方法。</p>
 <p>这样一来，在真正调用方法的时候，虚拟机仅查找这个表就行了。</p>
 <p>在前面的例子中，虚拟机搜索D类的方法表，以便寻找与调用f(Sting)相匹配的方法。这个方法既有可能是D.f(String)，也有可能是X.f(String)，这里的X是D的超类。这里需要提醒一点，如果调用super.f(param)，编译器将对隐式参数超类的方法表进行搜索。</p>
@@ -1743,14 +2562,14 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <p><img src="https://s2.loli.net/2022/01/06/k9eO1AjQcEUxDNn.png" alt="image-20220106224101130"></p>
 <p><strong>许多程序员认为，在抽象类中不能包含具体方法。建议尽量将通用的域和方法（不管是否是抽象的）放在超类（不管是否是抽象类）中。</strong></p>
 <p>抽象方法充当着占位的角色，它们的具体实现在子类中。</p>
-<h4 id="扩展抽象类可以有两种选择。"><a href="#扩展抽象类可以有两种选择。" class="headerlink" title="扩展抽象类可以有两种选择。"></a>扩展抽象类可以有两种选择。</h4><ul>
+<h4 id="1-扩展抽象类可以有两种选择。"><a href="#1-扩展抽象类可以有两种选择。" class="headerlink" title="1. 扩展抽象类可以有两种选择。"></a>1. 扩展抽象类可以有两种选择。</h4><ul>
 <li><p>一种是在抽象类中定义部分抽象类方法或不定义抽象类方法，这样就必须将子类也标记为抽象类；</p>
 </li>
 <li><p>另一种是定义全部的抽象方法，这样一来，子类就不是抽象的了。</p>
 </li>
 </ul>
 <p>例如，通过扩展抽象Person类，并实现getDescription方法来定义Student类。由于在Student类中不再含有抽象方法，所以不必将这个类声明为抽象的。类即使不含抽象方法，也可以将类声明为抽象类。</p>
-<h4 id="抽象类不能被实例化。"><a href="#抽象类不能被实例化。" class="headerlink" title="抽象类不能被实例化。"></a>抽象类不能被实例化。</h4><p>也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。</p>
+<h4 id="2-抽象类不能被实例化。"><a href="#2-抽象类不能被实例化。" class="headerlink" title="2. 抽象类不能被实例化。"></a>2. 抽象类不能被实例化。</h4><p>也就是说，如果将一个类声明为abstract，就不能创建这个类的对象。</p>
 <p><strong>需要注意，可以定义一个抽象类的对象变量，但是它只能引用非抽象子类的对象。</strong>例如，</p>
 <p><img src="https://s2.loli.net/2022/01/06/pZyfraxLwRIiOUE.png" alt="image-20220106224627968"></p>
 <p>这里的p是一个抽象类Person的变量，Person引用了一个非抽象子类Student的实例。</p>
@@ -1798,9 +2617,32 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 <p>对于数组类型的域，可以使用静态的Arrays.equals方法检测相应的数组元素是否相等。</p>
 </blockquote>
 <p><img src="https://s2.loli.net/2022/01/18/f19UtvBs7MEOdCH.png" alt="image-20220118001450380"></p>
-<h3 id="第二讲-hashcode方法"><a href="#第二讲-hashcode方法" class="headerlink" title="第二讲 hashcode方法"></a>第二讲 hashcode方法</h3><p>散列码(hashcode)是由对象导出的一个整型值。散列码是没有规律的。如果x和y是两个不同的对象，x.hashCode( )与y.hashCode( )基本上不会相同。</p>
+<h3 id="第二讲-hashcode方法"><a href="#第二讲-hashcode方法" class="headerlink" title="第二讲 hashcode方法"></a>第二讲 hashcode方法</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><p>散列码(hashcode)是由对象导出的一个整型值。散列码是没有规律的。如果x和y是两个不同的对象，x.hashCode( )与y.hashCode( )基本上不会相同。</p>
 <p><img src="https://s2.loli.net/2022/01/18/KBXh3gSZmtCG4Mx.png" alt="image-20220118003233455"></p>
 <p><img src="https://s2.loli.net/2022/01/18/rRsCczkHXWQvZ5d.png" alt="image-20220118003328447"></p>
+<h4 id="2-为什么要有hashCode"><a href="#2-为什么要有hashCode" class="headerlink" title="2. 为什么要有hashCode"></a>2. 为什么要有hashCode</h4><p>当你把对象加入HashSet时，HashSet会先计算对象的hashCode值来判断对象加入的位置，同时也会与其他已经加入的对象的hashCode值作比较，如果没有相符的hashCode，HashSet会假设对象没有重复出现。</p>
+<p>但是如果发现有相同hashCode值的对象，这是会调用equals( )方法来检查hashCode相等的对象是否真的相同。</p>
+<p>若两者相同，HashSet就不会让其加入成功，如果不同的话，就会重新散列到不同的位置。这样就减少了调用equals( )方法的次数，提高了执行速度。</p>
+<h4 id="3-equals-和hashCode"><a href="#3-equals-和hashCode" class="headerlink" title="3. equals( )和hashCode( )"></a>3. equals( )和hashCode( )</h4><p>其实，hashCode( )和equals( )都是用于比较两个对象是否相等。</p>
+<h5 id="1-同时提供"><a href="#1-同时提供" class="headerlink" title="1. 同时提供"></a>1. 同时提供</h5><p>因为在一些容器中(如HashMap、HashSet)中，有hashCode( )之后，判断元素是否在对应容器中的效率会更高。</p>
+<p>当然，如果获得的hashCode( )相同，会使用equals( )判断是否真的相同。</p>
+<p>同时，因为hashCode( )所使用的哈希算法，也许刚好会让多个对象传回相同的哈希值(越糟糕的哈希算法越容易碰撞，不过这也与数据值域分布放入特性有关)，这也导致了<strong>两个对象的hashCode值相等，并不代表两个对象就相等</strong>。</p>
+<h5 id="2-所以"><a href="#2-所以" class="headerlink" title="2. 所以"></a>2. 所以</h5><ol>
+<li>如果两个对象的hashCode值不相等，那么两个对象直接可以认为是不相等的。</li>
+<li>如果两个对象的hashCode值相等，那么两个对象也不一定相等(哈希碰撞)。</li>
+<li>如果两个对象的hashCode值相等且equals( )方法的返回值为true，则可以认为这两个对象相等。</li>
+</ol>
+<h5 id="3-重写equals-必须重写hashCode"><a href="#3-重写equals-必须重写hashCode" class="headerlink" title="3. 重写equals()必须重写hashCode()"></a>3. 重写equals()必须重写hashCode()</h5><p><strong>因为两个相等对象的hashCode值必须是相等的。也就是说，如果equals( )方法判断两个对象是相等的，那么这两个对象的hashCode值也要相等。</strong></p>
+<p>如果重写equals( )方法时，没有重写hashCode( )方法的话，就可能会导致equals方法判断是相等的两个对象，hashCode值却不相等。 </p>
+<h5 id="4-其他佐证"><a href="#4-其他佐证" class="headerlink" title="4. 其他佐证"></a>4. 其他佐证</h5><p><img src="https://s2.loli.net/2022/02/21/xz6jTLfG4s31B5R.png" alt="image-20220221235707389"></p>
+<p><img src="https://s2.loli.net/2022/02/21/jGTsLIKUr3Z2QN8.png" alt="image-20220221235746077"></p>
+<h4 id="4-重写hashCode方法"><a href="#4-重写hashCode方法" class="headerlink" title="4. 重写hashCode方法"></a>4. 重写hashCode方法</h4><p>hashCode方法应该返回一个整型数值(可以是负数)，并合理地组合实例域的散列码，以便能够让不同的对象产生散列码更加均匀。</p>
+<p>首先，最好使用null安全的Objects.hashCode。如果其参数为null，会返回0，否则返回对参数调用hashCode方法的结果。</p>
+<p>另外，对double类型的对象，调用静态方法Double.hashCode方法来避免创建Double对象：</p>
+<p><img src="https://s2.loli.net/2022/02/22/KMOxUAc7DV4uXbG.png" alt="image-20220222000820113"></p>
+<p>同时，需要组合多个散列值时，可以调用Objects.hash并提供多个参数。这个方法会对各个参数调用Objects.hashCode，并组合这些散列值。</p>
+<p><img src="https://s2.loli.net/2022/02/22/ln71gMSFscJN6Pv.png" alt="image-20220222000939436"></p>
+<h2 id="第三讲-泛型数组列表"><a href="#第三讲-泛型数组列表" class="headerlink" title="第三讲 泛型数组列表"></a>第三讲 泛型数组列表</h2><p>在Java中，允许在运行时确定数组的大小，但并不能在运行时动态更改数组。所以，ArrayList得以广泛应用。</p>
 ]]></content>
       <tags>
         <tag>核心卷一</tag>
@@ -2665,6 +3507,323 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 ]]></content>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Computer_Composition_Principle</title>
+    <url>/2022/02/14/Computer-Composition-Principle/</url>
+    <content><![CDATA[<h1 id="Chapter-1-计算机系统概述-≤5分"><a href="#Chapter-1-计算机系统概述-≤5分" class="headerlink" title="Chapter 1 计算机系统概述(≤5分)"></a>Chapter 1 计算机系统概述(≤5分)</h1><h2 id="1-计算机的分类"><a href="#1-计算机的分类" class="headerlink" title="1. 计算机的分类"></a>1. 计算机的分类</h2><ol>
+<li>电子计算机从总体上来说，分为两大类：电子模拟计算机和电子数字计算机。</li>
+<li>电子数字计算机进一步又分为专用计算机和通用计算机。</li>
+<li>通用计算机可分为：超级计算机、大型机、服务器、PC机、单片机和多核机六类，他们的区别在于体积、简易性、功率损耗、性能指标、数据存储容量、指令系统规模和机器价格。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/14/szBqT86LX3twZhF.png" alt="image-20220214143435926"></p>
+<h2 id="2-计算机的发展"><a href="#2-计算机的发展" class="headerlink" title="2. 计算机的发展"></a>2. 计算机的发展</h2><h3 id="计算机的性能指标"><a href="#计算机的性能指标" class="headerlink" title="计算机的性能指标"></a>计算机的性能指标</h3><p>主要是CPU性能指标、存储器性能指标和I/O吞吐率。</p>
+<h4 id="1-吞吐量"><a href="#1-吞吐量" class="headerlink" title="1. 吞吐量"></a>1. 吞吐量</h4><p>表征一台计算机在某一时间间隔内能够处理的信息量。</p>
+<h4 id="2-响应时间"><a href="#2-响应时间" class="headerlink" title="2. 响应时间"></a>2. 响应时间</h4><p>表征从输入有效到系统产生响应之间的时间度量，用时间单位来度量。</p>
+<h4 id="3-总线宽度"><a href="#3-总线宽度" class="headerlink" title="3. 总线宽度"></a>3. 总线宽度</h4><p>一般指CPU中运算器与存储器之间进行互连的内部总线<strong>二进制位数</strong>。</p>
+<h4 id="4-存储器容量"><a href="#4-存储器容量" class="headerlink" title="4. 存储器容量"></a>4. 存储器容量</h4><p>存储器中所有存储单元的总数目，通常用KB、MB、GB、TB来表示。</p>
+<h4 id="5-主频-时钟周期"><a href="#5-主频-时钟周期" class="headerlink" title="5. 主频/时钟周期"></a>5. 主频/时钟周期</h4><p>CPU的工作节拍受主时钟控制，主时钟不断产生固定频率的时钟，主时钟的频率(f)叫CPU的主频。</p>
+<p>主频的倒数称为CPU时钟周期(T)，$T=\frac{1}{f}$。</p>
+<h4 id="6-CPU执行时间"><a href="#6-CPU执行时间" class="headerlink" title="6. CPU执行时间"></a>6. CPU执行时间</h4><p>表示CPU执行一般程序所占的CPU时间，计算公式：</p>
+<script type="math/tex; mode=display">
+CPU执行时间=CPU时钟周期数×CPU时钟周期</script><h4 id="7-CPI"><a href="#7-CPI" class="headerlink" title="7. CPI"></a>7. CPI</h4><p>表示每条指令周期数，即执行一条指令所需的平局时钟周期数。计算公式：</p>
+<script type="math/tex; mode=display">
+CPI=执行某段程序所需的CPU周期数÷程序所包含的指令条数</script><h4 id="8-存储器带宽"><a href="#8-存储器带宽" class="headerlink" title="8. 存储器带宽"></a>8. 存储器带宽</h4><p>单位时间内从存储器读出的二进制信息量，一般用字节数/秒来表示。</p>
+<h4 id="9-处理器字长"><a href="#9-处理器字长" class="headerlink" title="9. 处理器字长"></a>9. 处理器字长</h4><p>指处理机运算器中一次能够完成二进制数运算的位数，如32位、64位。</p>
+<h2 id="3-计算机的硬件"><a href="#3-计算机的硬件" class="headerlink" title="3. 计算机的硬件"></a>3. 计算机的硬件</h2><h2 id="4-计算机的软件"><a href="#4-计算机的软件" class="headerlink" title="4. 计算机的软件"></a>4. 计算机的软件</h2><h2 id="5-计算机系统的层次结构"><a href="#5-计算机系统的层次结构" class="headerlink" title="5. 计算机系统的层次结构"></a>5. 计算机系统的层次结构</h2><ol>
+<li>计算机系统的层次结构从下至上可分为五级：<strong>微程序级、一般机器级、操作系统级、汇编语言级、高级语言级</strong>组成，每一级上都能进行程序设计，且得到下面各级的支持。</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/14/ojHdKUNcV4ifqng.png" alt="image-20220214150037411"></p>
+<h1 id="Chapter-2-运算方法和运算器-20分左右"><a href="#Chapter-2-运算方法和运算器-20分左右" class="headerlink" title="Chapter 2 运算方法和运算器(20分左右)"></a>Chapter 2 运算方法和运算器(20分左右)</h1><p>肯定有个计算题</p>
+<h2 id="1-数据与文字的表示方法"><a href="#1-数据与文字的表示方法" class="headerlink" title="1. 数据与文字的表示方法"></a>1. 数据与文字的表示方法</h2><p>计算机中常用的数据表示格式有两种：一是定点格式，二是浮点格式。</p>
+<h3 id="1-定点数的表示方法"><a href="#1-定点数的表示方法" class="headerlink" title="1. 定点数的表示方法"></a>1. 定点数的表示方法</h3><p>所谓定点格式，即约定机器中所有数据的小数点位置是固定不变的。</p>
+<h4 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h4><p>假设用一个n+1位字来表示一个定点数x，其中一位$x_n$用来表示数的符号，其余位数表示它的量值。则</p>
+<p><img src="https://s2.loli.net/2022/02/15/kMfs3KqAv8u19Yt.png" alt="image-20220215211440074"></p>
+<h5 id="纯小数"><a href="#纯小数" class="headerlink" title="纯小数"></a>纯小数</h5><p>如果数x表示的是纯小数，那么小数点位于$x<em>n和x</em>{n-1}$之间。当各位均为0时，数x的绝对值最小，即$|x|<em>{min}=0$；当各位均为1时，数x的绝对值最大，即$|x|</em>{max}=1-2^{-n}$。</p>
+<h5 id="纯整数"><a href="#纯整数" class="headerlink" title="纯整数"></a>纯整数</h5><p>如果数x表示的时纯整数，那么小数点位于最低位$x_0$的右边，此时数x的表示范围为$0≤|x|≤2^n-1$</p>
+<h3 id="2-浮点数的表示方法"><a href="#2-浮点数的表示方法" class="headerlink" title="2. 浮点数的表示方法"></a>2. 浮点数的表示方法</h3><h4 id="浮点表示法"><a href="#浮点表示法" class="headerlink" title="浮点表示法"></a>浮点表示法</h4><p>把一个数的有效数字和数的范围在计算机的一个存储单元中分别予以表示。</p>
+<p>这种把数的范围和精度分别表示的方法，相当于数的小数点位置随比例因子的不同而在一定范围内可以自由浮动，所以称作浮点表示法。</p>
+<p>任意一个二进制数N可以写成：$N=2^e*M$</p>
+<p>其中，<strong>M称为浮点数的尾数，是一个纯小数。</strong></p>
+<p><strong>e是比例因子的指数，称为浮点数的指数，是一个整数。</strong></p>
+<h4 id="在机器中"><a href="#在机器中" class="headerlink" title="在机器中"></a>在机器中</h4><p>表示一个浮点数时，</p>
+<p>一是要给出尾数，用定点小数形式表示。位数部分给出有效数字的位数，因为决定了浮点数的表示精度。</p>
+<p>二是要给出指数，用整数形式表示，常称为阶码，阶码指明小数点在数据中的位置，因而决定了浮点数的表示范围。</p>
+<p>计算机中，一个浮点数由阶码、尾数及其符号位组成。</p>
+<p><img src="https://s2.loli.net/2022/02/15/lQ9uog5xkcSvr42.png" alt="image-20220215220234364"></p>
+<h3 id="3-数的机器码表示"><a href="#3-数的机器码表示" class="headerlink" title="3. 数的机器码表示"></a>3. 数的机器码表示</h3><h4 id="1-原码表示法"><a href="#1-原码表示法" class="headerlink" title="1. 原码表示法"></a>1. 原码表示法</h4><p>若定点整数的源码形式为$x<em>n x</em>{n-1}…x_1 x_0 (x_n为符号位)$，则原码表示的定义是</p>
+<script type="math/tex; mode=display">
+[x]_原 = \begin{cases}
+x & 2^n＞x≥0 \\ 
+2^n - x = 2^n + |x| & 0≥x≥-2^n
+\end{cases} \\
+式中，[x]_原 是机器数，x是真值。</script><p>增加符号位作为最高位，其后加原数据绝对值。</p>
+<p>最大的缺点是加法运算复杂。</p>
+<p><img src="https://s2.loli.net/2022/02/16/Lxf5qSJim4Gc1TC.png" alt="image-20220216145144763"></p>
+<p><img src="https://s2.loli.net/2022/02/15/gEftjZVW2FniR8o.png" alt="image-20220215222231486"></p>
+<h5 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h5><p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220216145301928.png" alt="image-20220216145301928"></p>
+<p>其表示范围与原码一致，且0有两种表示方法。</p>
+<h4 id="2-补码表示法"><a href="#2-补码表示法" class="headerlink" title="2. 补码表示法"></a>2. 补码表示法</h4><p>正数补码等于原码</p>
+<p>负数补码在原码的基础上，符号位不变，其余位数取反加一。</p>
+<p>补码的拓展即为符号位的拓展，正数前补0，负数前补1.</p>
+<p>补码的取值范围-128-127。</p>
+<p><img src="https://s2.loli.net/2022/02/16/7mkTa4O25PA9xdv.png" alt="image-20220216145854118"></p>
+<h5 id="另外"><a href="#另外" class="headerlink" title="另外"></a>另外</h5><p><img src="https://s2.loli.net/2022/02/16/yv8A5dPc4N1nthX.png" alt="image-20220216150338907"></p>
+<h4 id="3-移码表示法"><a href="#3-移码表示法" class="headerlink" title="3. 移码表示法"></a>3. 移码表示法</h4><p>移码通常用来表示浮点数的阶码。</p>
+<p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220215223357232.png" alt="image-20220215223357232"></p>
+<h4 id="4-浮点数的机器表示"><a href="#4-浮点数的机器表示" class="headerlink" title="4. 浮点数的机器表示"></a>4. 浮点数的机器表示</h4><p>当前的计算机都采用统一的IEEE754标准中的格式表示浮点数。如下：</p>
+<h5 id="32位短浮点数："><a href="#32位短浮点数：" class="headerlink" title="32位短浮点数："></a>32位短浮点数：</h5><p><img src="https://s2.loli.net/2022/02/15/7TBCrlsdJjVxeyU.png" alt="image-20220215224328269"></p>
+<p>64位长浮点数</p>
+<p><img src="https://s2.loli.net/2022/02/15/al9TZi3uD6RWStI.png" alt="image-20220215224403466"></p>
+<h5 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h5><p>S是浮点数的符号位，占1位，安排在最高位，S=0表示正数，S=1表示负数；</p>
+<p>M是尾数，放在低位部分，占用23位/52位，小数点位置放在尾数域最左(最高)有效位的右边；</p>
+<p>E是阶码，占用8位/11位，阶符采用隐含的方式，即采用移码的方法来表示正负指数。此时，将浮点数的指数真值e变成阶码E时，应将指数e加上一个固定的偏置常数127，即E=e+127。</p>
+<h5 id="规格化表示"><a href="#规格化表示" class="headerlink" title="规格化表示"></a>规格化表示</h5><p>当尾数的值不为0时，尾数域的最高有效位应为1，这称为浮点数的规格化表示。</p>
+<p>在IEEE754标准中，一个规格化的32位浮点数x的真值表示为：</p>
+<script type="math/tex; mode=display">
+x = (-1)^S × (1.M)×2^{E-127} \quad e=E-127</script><p>其中，尾数域所表示的值是1.M。由于尾数域最左边(最高有效位)总是1，故这一位无需存储，而认为隐藏在小数点的左边。于是用23位的字段可以存储24位有效数。</p>
+<p><img src="https://s2.loli.net/2022/02/16/tdcgX5bT2U6eIZP.png" alt="image-20220216144706157"></p>
+<p><img src="https://s2.loli.net/2022/02/15/KHYbaiTJy5Aw62B.png" alt="image-20220215231236313"></p>
+<p><img src="https://s2.loli.net/2022/02/15/HayV5z3XrB7evwU.png" alt="image-20220215231312541"></p>
+<p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220215231414891.png" alt="image-20220215231414891"></p>
+<h3 id="5-校验码"><a href="#5-校验码" class="headerlink" title="5. 校验码"></a>5. 校验码</h3><p>在每个字上添加一些校验位，用来确定字中出现错误的位置。</p>
+<p>最简单且广泛应用的检错码是，采用<strong>一位校验码</strong>的奇校验或偶校验。</p>
+<h4 id="1-奇校验"><a href="#1-奇校验" class="headerlink" title="1. 奇校验"></a>1. 奇校验</h4><p>设$X=(x<em>0 x_1 … x</em>{n-1})$是一个n位字，则奇校验位$\overline C$定义为</p>
+<script type="math/tex; mode=display">
+\overline C = x_0 \bigoplus x_1 \bigoplus ... \bigoplus x_{n-1}</script><p>式中，$\bigoplus$表示按位加，表明只有当X中包含奇数个1时，才能使$\overline C = 1，即C=0$。</p>
+<h4 id="2-偶校验"><a href="#2-偶校验" class="headerlink" title="2. 偶校验"></a>2. 偶校验</h4><p>偶校验位C定义为</p>
+<script type="math/tex; mode=display">
+C = x_0 \bigoplus x_1 \bigoplus ... \bigoplus x_{n-1}</script><p>即X中包含偶数个1时，才使C=0。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>若A=41H，即0010 0001增加偶校验位后，为0010 0001 0。</p>
+<p><img src="https://s2.loli.net/2022/02/16/zXmiDflgtS4u1T6.png" alt="image-20220216140020946"></p>
+<h2 id="2-定点加法、减法运算"><a href="#2-定点加法、减法运算" class="headerlink" title="2. 定点加法、减法运算"></a>2. 定点加法、减法运算</h2><h3 id="常用公式："><a href="#常用公式：" class="headerlink" title="常用公式："></a>常用公式：</h3><p>补码加法：$[x]<em>补 + [y]</em>补 = [x+y]_补 \quad (mod \, 2^{n+1})$</p>
+<p>补码减法：$[x-y]<em>补 = [x]</em>补 - [y]<em>补 = [x]</em>补+[-y]_补$</p>
+<p>​                   $[-y]<em>补 = -[y]</em>补 \quad (mod \, 2_{n+1})$</p>
+<p>从$[y]<em>补求[-y]</em>补的方法是：对[y]_补连同符号位取反加1$。</p>
+<h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p><img src="https://s2.loli.net/2022/02/16/NSrs7CmWVylAojt.png" alt="image-20220216142608474"></p>
+<h3 id="溢出与检测方法"><a href="#溢出与检测方法" class="headerlink" title="溢出与检测方法"></a>溢出与检测方法</h3><h4 id="溢出概念"><a href="#溢出概念" class="headerlink" title="溢出概念"></a>溢出概念</h4><p>当两个正数相加，其值<strong>大于机器字长所能表示的最大正数</strong>，称为正溢；</p>
+<p>当两个负数相加，其值<strong>小于机器字长所能表示的最小负数</strong>，称为负溢。</p>
+<h4 id="检测方法"><a href="#检测方法" class="headerlink" title="检测方法"></a>检测方法</h4><h5 id="双符号位"><a href="#双符号位" class="headerlink" title="双符号位"></a>双符号位</h5><p>这称为“变形补码”。</p>
+<p>为了得到两数变形补码之和等于两数和的变形补码，必须：</p>
+<ol>
+<li>两个符号位都看作数码一样参加运算</li>
+<li>两数进行模$2_{n+2}$的加法，即最高位上产生进位要丢掉。</li>
+</ol>
+<p>采用变形补码后，任何正数，两个符号位都是”0”；任何负数，两个符号为都是”1”。</p>
+<p>若两数相加，其结果符号位出现”01”，表示正溢出(结果大于$2^n$)；出现”10”，表示负溢出(结果小于$-2^n$)。</p>
+<p>最高符号位永远表示结果的正确符号。</p>
+<p><img src="https://s2.loli.net/2022/02/16/DcKbAWxeBkmiS6h.png" alt="image-20220216143907684"></p>
+<h3 id="4-基本的二进制加法-减法器"><a href="#4-基本的二进制加法-减法器" class="headerlink" title="4. 基本的二进制加法/减法器"></a>4. 基本的二进制加法/减法器</h3><h4 id="全加器"><a href="#全加器" class="headerlink" title="全加器"></a>全加器</h4><p><img src="https://s2.loli.net/2022/02/16/Jm3B5DFwHl8WCpR.png" alt="image-20220216150729104"></p>
+<h2 id="3-定点乘法运算"><a href="#3-定点乘法运算" class="headerlink" title="3. 定点乘法运算"></a>3. 定点乘法运算</h2><h3 id="1-不带符号的阵列乘法器"><a href="#1-不带符号的阵列乘法器" class="headerlink" title="1. 不带符号的阵列乘法器"></a>1. 不带符号的阵列乘法器</h3><p>采用与门和全加器(fa)构成阵列乘法。</p>
+<h4 id="时间估算"><a href="#时间估算" class="headerlink" title="时间估算"></a>时间估算</h4><p><img src="https://s2.loli.net/2022/02/16/6FlX1poDRkTSu9j.png" alt="image-20220216152154058"></p>
+<h3 id="2-带符号的阵列乘法器"><a href="#2-带符号的阵列乘法器" class="headerlink" title="2. 带符号的阵列乘法器"></a>2. 带符号的阵列乘法器</h3><h4 id="图示"><a href="#图示" class="headerlink" title="图示"></a>图示</h4><p><img src="https://s2.loli.net/2022/02/16/6naZS5Dkqjcb8zu.png" alt="image-20220216151100556"></p>
+<p><img src="https://s2.loli.net/2022/02/16/ldHwSpa9nbWYx1D.png" alt="image-20220216153345959"></p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>在这种逻辑结构中，共使用了三个求补器。</p>
+<h5 id="两个算前求补器的作用"><a href="#两个算前求补器的作用" class="headerlink" title="两个算前求补器的作用"></a>两个算前求补器的作用</h5><p>将两个操作数A和B在被不带符号的乘法阵列(核心部件)相乘之前，先变成正整数。</p>
+<h5 id="算后求补器的作用"><a href="#算后求补器的作用" class="headerlink" title="算后求补器的作用"></a>算后求补器的作用</h5><p>当两个输入操作数的符号不一致时，把运算结果变换成带符号的数。</p>
+<h5 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h5><p>为了完成必需的求补和乘法运算，时间大约比原码阵列乘法增加1倍。</p>
+<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><p><img src="https://s2.loli.net/2022/02/16/ob1DpAYUqvLigJl.png" alt="image-20220216152236154"></p>
+<ol>
+<li>符号位要单独运算</li>
+<li>补码要转换为原码，再进行乘法，不方便</li>
+<li><img src="https://s2.loli.net/2022/02/16/hd2vBO1muQXaoV6.png" alt="image-20220216153257787"></li>
+</ol>
+<h3 id="3-直接补码阵列乘法器"><a href="#3-直接补码阵列乘法器" class="headerlink" title="3. 直接补码阵列乘法器"></a>3. 直接补码阵列乘法器</h3><p><img src="https://s2.loli.net/2022/02/16/Wol642bgEqwZtLG.png" alt="image-20220216152609536"></p>
+<h2 id="4-定点除法运算"><a href="#4-定点除法运算" class="headerlink" title="4. 定点除法运算"></a>4. 定点除法运算</h2><h3 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h3><p>机器不会心算，必须先作减法。</p>
+<p>若余数为正，才知道够减(商1)；若余数为负, 不够减(商0)。不够减时必须恢复原来的余数，以便再继续往下运算。这种方法称为<strong>恢复余数法。</strong>要恢复原来的余数，只要当前的余数加上除数即可。</p>
+<p>实际中常用<strong>加减交替法</strong>。其特点是运算过程中如出现不够减，则不必恢复余数，根据余数符号,可以继续往下运算，因此步数固定，控制简单。</p>
+<h3 id="加减交替法"><a href="#加减交替法" class="headerlink" title="加减交替法"></a>加减交替法</h3><p><strong>不用恢复余数。</strong></p>
+<p><strong>当余数为正时，商1，余数左移一位，减除数做2ri-|y|运算</strong></p>
+<p><strong>当余数为负时，商0，余数左移一位，加除数做2ri+|y| 运算</strong></p>
+<p>因为：$-y+y-\frac{1}{2}y = -y + \frac{1}{2}y$</p>
+<p><img src="https://s2.loli.net/2022/02/16/WSRwnZdvV4s8K5T.png" alt="image-20220216153321434"></p>
+<h3 id="例题-2"><a href="#例题-2" class="headerlink" title="例题"></a>例题</h3><p><img src="https://s2.loli.net/2022/02/24/G3Kbyhnm6A4xd9W.png" alt="image-20220224193547423"></p>
+<p><img src="https://s2.loli.net/2022/02/24/IoYjiUPKXaWnmDT.png" alt="image-20220224193915015"></p>
+<p>一般都是当商变为1时，根据商的长度，考虑是否到此为止(确定保留几位小数)。</p>
+<p>除法运算不加符号，等计算完毕后，再把符号补上。</p>
+<h2 id="5-定点运算器的组成"><a href="#5-定点运算器的组成" class="headerlink" title="5. 定点运算器的组成"></a>5. 定点运算器的组成</h2><p>计算机中的逻辑运算，主要是指逻辑非、逻辑加(逻辑或)、逻辑乘(逻辑与)、逻辑异(逻辑异或)四种基本操作。</p>
+<h3 id="多功能算数、逻辑运算单元-ALU"><a href="#多功能算数、逻辑运算单元-ALU" class="headerlink" title="多功能算数、逻辑运算单元(ALU)"></a>多功能算数、逻辑运算单元(ALU)</h3><p>多功能算术/逻辑运算单元(ALU)，它不仅具有多种算术运算和逻辑运算的功能，而且具有先行进位逻辑，从而能实现高速运算。</p>
+<p><img src="https://s2.loli.net/2022/02/24/oJrZO7l4BPUmxSh.png" alt="image-20220224201931968"></p>
+<p><img src="https://s2.loli.net/2022/02/24/f7v51F2IuhwDPoX.png" alt="image-20220224202048320"></p>
+<h5 id="组内先行，组间串行"><a href="#组内先行，组间串行" class="headerlink" title="组内先行，组间串行(*)"></a>组内先行，组间串行(*)</h5><h2 id="6-浮点运算方法"><a href="#6-浮点运算方法" class="headerlink" title="6. 浮点运算方法"></a>6. 浮点运算方法</h2><p>设有两个浮点数，分别为：</p>
+<p>$ x = 2^{E_x} \cdot M_x$</p>
+<p>$ y = 2^{E_y} \cdot M_y$</p>
+<p>其中，$E_x 和 E_y分别为数x和y的阶码，M_y和M_x分别是y和x的尾数。$</p>
+<p>则，两浮点数进行加法和减法的运算规则是</p>
+<script type="math/tex; mode=display">
+z=x \pm y = (M_x 2^{E_x-E_y} \pm M_y)2^{E_y}</script><h3 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1. 步骤"></a>1. 步骤</h3><h4 id="0操作数检查"><a href="#0操作数检查" class="headerlink" title="0操作数检查"></a>0操作数检查</h4><p>检查是否有一个操作数为0。</p>
+<h4 id="比较阶码大小并完成对阶"><a href="#比较阶码大小并完成对阶" class="headerlink" title="比较阶码大小并完成对阶"></a>比较阶码大小并完成对阶</h4><p>对阶时，小阶向大阶看齐，即小阶的尾数向右移位(相当于小数点左移)</p>
+<h4 id="尾数进行加或减运算"><a href="#尾数进行加或减运算" class="headerlink" title="尾数进行加或减运算"></a>尾数进行加或减运算</h4><h4 id="操作数规格化并进行舍入处理"><a href="#操作数规格化并进行舍入处理" class="headerlink" title="操作数规格化并进行舍入处理"></a>操作数规格化并进行舍入处理</h4><h4 id="尾数处理"><a href="#尾数处理" class="headerlink" title="尾数处理"></a>尾数处理</h4><p><img src="https://s2.loli.net/2022/02/24/CrmpNQ7GkxoDiMd.png" alt="image-20220224202407215"></p>
+<h5 id="舍入处理法"><a href="#舍入处理法" class="headerlink" title="舍入处理法"></a>舍入处理法</h5><ul>
+<li>舍去的数中，有1，那保留的最低位就是1</li>
+<li>舍去的数中，最高位是1，那么保留的最低位就是1</li>
+</ul>
+<h4 id="另外-1"><a href="#另外-1" class="headerlink" title="另外"></a>另外</h4><p><strong>浮点数的溢出，在于阶码溢出。</strong></p>
+<h3 id="2-例题"><a href="#2-例题" class="headerlink" title="2. 例题"></a>2. 例题</h3><p>设数的阶码3位，尾数6位，用浮点运算方法：</p>
+<p><img src="https://s2.loli.net/2022/02/24/r6odCAghiRlGnmy.png" alt="image-20220224200340588"> </p>
+<p>设数的阶码3位，尾数6位，用浮点运算方法：</p>
+<p><img src="https://s2.loli.net/2022/02/24/GVZ1X3uiyS2DL8A.png" alt="image-20220224200813157"></p>
+<h3 id="3-流水线运算器"><a href="#3-流水线运算器" class="headerlink" title="3. 流水线运算器"></a>3. 流水线运算器</h3><p>加速比 = 串行/并行(一定大于1)。</p>
+<p><img src="https://s2.loli.net/2022/02/24/kRBsQeVaEP6K2hq.png" alt="image-20220224202713285"></p>
+<h1 id="Chapter-3-存储系统-两个大题"><a href="#Chapter-3-存储系统-两个大题" class="headerlink" title="Chapter 3 存储系统(两个大题)"></a>Chapter 3 存储系统(两个大题)</h1><h2 id="1-存储器概述"><a href="#1-存储器概述" class="headerlink" title="1. 存储器概述"></a>1. 存储器概述</h2><h3 id="三级存储系统"><a href="#三级存储系统" class="headerlink" title="三级存储系统"></a>三级存储系统</h3><p>cache、主存、外存储器。</p>
+<p>前两个合起来即为二级存储系统：内存、外存。</p>
+<h3 id="存储器的分类"><a href="#存储器的分类" class="headerlink" title="存储器的分类"></a>存储器的分类</h3><h4 id="读写功能"><a href="#读写功能" class="headerlink" title="读写功能"></a>读写功能</h4><p>只能读出不能写入：ROM(只读存储器)</p>
+<p>既能读出也能写入：RAM(随机存取存储器)</p>
+<h4 id="信息易失性"><a href="#信息易失性" class="headerlink" title="信息易失性"></a>信息易失性</h4><p>断电后信息消失的存储器：易失性存储器(RAM)</p>
+<p>断电后仍能保存信息的存储器：非易失性存储器(ROM)</p>
+<p>磁性材料做成的存储器是非易失性存储器。</p>
+<h3 id="存储器的技术指标"><a href="#存储器的技术指标" class="headerlink" title="存储器的技术指标"></a>存储器的技术指标</h3><h4 id="1-存储容量"><a href="#1-存储容量" class="headerlink" title="1. 存储容量"></a>1. 存储容量</h4><p>存储容量指一个存储器中可存储的信息比特数。</p>
+<p>可表示为：存储字数(存储单元数)×存储字长(每单元的比特数)。</p>
+<h4 id="2-存取时间"><a href="#2-存取时间" class="headerlink" title="2. 存取时间"></a>2. 存取时间</h4><p>又称存储器访问时间，是从存储器接收到读/写命令开始，到信息被读出或写入完成所需的时间。</p>
+<h4 id="3-存储周期"><a href="#3-存储周期" class="headerlink" title="3. 存储周期"></a>3. 存储周期</h4><p>是在存储器连续读写过程中，一次完整的存取操作所需的时间，即CPU连续两次访问存储器的最小间隔时间。</p>
+<p>存储周期略大于存取时间。</p>
+<h2 id="2-静态随机存取存储器-必考"><a href="#2-静态随机存取存储器-必考" class="headerlink" title="2. 静态随机存取存储器(必考)"></a>2. 静态随机存取存储器(必考)</h2><p>SRAM的优点是存取速度快，但存储密度和容量不如DRAM大。</p>
+<h3 id="1-基本的SRAM逻辑结构"><a href="#1-基本的SRAM逻辑结构" class="headerlink" title="1. 基本的SRAM逻辑结构"></a>1. 基本的SRAM逻辑结构</h3><p><img src="https://s2.loli.net/2022/02/24/xwq5lBe3aCPdykR.png" alt="image-20220224204804844"></p>
+<h3 id="2-SRAM的读-写时序"><a href="#2-SRAM的读-写时序" class="headerlink" title="2. SRAM的读/写时序"></a>2. SRAM的读/写时序</h3><h4 id="读周期"><a href="#读周期" class="headerlink" title="读周期"></a>读周期</h4><p>地址线先有效，以便进行地址译码，选中存储单元。$\overline {CS}和\overline{OE}$有效。</p>
+<p>这是$t_{RC}$</p>
+<p><img src="https://s2.loli.net/2022/02/24/oeg7NKVEyFxZjPw.png" alt="image-20220224205711890"></p>
+<h4 id="写周期"><a href="#写周期" class="headerlink" title="写周期"></a>写周期</h4><p>地址线先有效，接着片选信号$\overline{CS}$有效，写命令$\overline{WE}$有效。此时数据总线上必须置 待写入数据。</p>
+<p>写入时，地址线不能总变。</p>
+<p><img src="https://s2.loli.net/2022/02/24/Fsw3kKND2yifraj.png" alt="image-20220224205809217"></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>为了控制方便，常取$t<em>{RC} = t</em>{WC}$,通常称为存取周期。</p>
+<h3 id="3-存储器容量的扩充"><a href="#3-存储器容量的扩充" class="headerlink" title="3. 存储器容量的扩充"></a>3. 存储器容量的扩充</h3><h4 id="1-位拓展"><a href="#1-位拓展" class="headerlink" title="1. 位拓展"></a>1. 位拓展</h4><p>拓展数据线。</p>
+<h4 id="2-字拓展"><a href="#2-字拓展" class="headerlink" title="2. 字拓展"></a>2. 字拓展</h4><p>拓展地址线。</p>
+<h4 id="3-字位拓展"><a href="#3-字位拓展" class="headerlink" title="3. 字位拓展"></a>3. 字位拓展</h4><p>二者都拓展。</p>
+<h2 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h2><p>DRAM的存储元所需元件更少，所以存储密度更高。</p>
+<h3 id="DRAM的刷新策略"><a href="#DRAM的刷新策略" class="headerlink" title="DRAM的刷新策略"></a>DRAM的刷新策略</h3><p>DRAM存储位元是基于电容器上的电荷量存储信息的，DRAM的读操作是破坏性的，会使电容器上的电荷流失，因为读出后必须刷新(读被读出的数据，将其重新写入)。</p>
+<p>而未读写的存储元也要定期刷新，因为电荷量会逐渐泄露而减少。</p>
+<h2 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h2><h3 id="例题-3"><a href="#例题-3" class="headerlink" title="例题"></a>例题</h3><h4 id="题型1"><a href="#题型1" class="headerlink" title="题型1"></a>题型1</h4><p><img src="https://s2.loli.net/2022/02/25/ubRFgBvWiTq39ec.png" alt="image-20220225231927296"></p>
+<h4 id="题型2"><a href="#题型2" class="headerlink" title="题型2"></a>题型2</h4><p><img src="https://s2.loli.net/2022/02/25/mQ5ygktUGXr2Yow.png" alt="image-20220225231708983"></p>
+<p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220225231840941.png" alt="image-20220225231840941"></p>
+<p><img src="https://s2.loli.net/2022/02/26/CU6a24uVJKAdxnR.png" alt="image-20220226011505296"></p>
+<p><img src="https://s2.loli.net/2022/02/26/5sCmxlB4R8DkHjX.png" alt="image-20220226011553541"></p>
+<p><img src="https://s2.loli.net/2022/02/26/X2iRSm4VuqyaQK8.png" alt="image-20220226011705292"></p>
+<p><img src="https://s2.loli.net/2022/02/26/WFoVIeCaYdQxUjN.png" alt="image-20220226011729656"></p>
+<p><img src="https://s2.loli.net/2022/02/26/lqNuFiafBOXtb5k.png" alt="image-20220226011752472"></p>
+]]></content>
+      <tags>
+        <tag>计算机组成原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head_First_设计模式</title>
+    <url>/2022/02/22/Head-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Linux</title>
+    <url>/2022/02/14/Linux/</url>
+    <content><![CDATA[<h1 id="Content-Introduction"><a href="#Content-Introduction" class="headerlink" title="Content Introduction"></a>Content Introduction</h1><h2 id="vmtools"><a href="#vmtools" class="headerlink" title="vmtools"></a>vmtools</h2><p>在主机Windows和虚拟机Linux上进行文件共享所需的工具。</p>
+<p>对于共享的部分，若Windows在其中新建文件夹，Linux上可以看到；同时，Linux对文件进行修改，Windows也可以看到。</p>
+<p>即，Windows和Linux对文件都有读写的权限，并且都对修改可见。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ol>
+<li>虚拟机—&gt;安装/重新安装vmtools(若桌面存在CentOS 7.6的光盘映像，需要先删除)，之后桌面会出现vmtools的光盘映像。</li>
+<li>打开光盘映像，将其中的那个压缩包复制到主文件夹中的/opt中，之后解压</li>
+<li><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220214163517194.png" alt="image-20220214163517194"></li>
+</ol>
+<p>​        Tab键 可以补全文件名。</p>
+<ol>
+<li><p><img src="https://s2.loli.net/2022/02/14/NlkhROvnQUgWi1B.png" alt="image-20220214163726657"></p>
+<p> 一直按回车(Enter)即可。</p>
+</li>
+<li><p><img src="https://s2.loli.net/2022/02/14/73uglCqi19ZnkVh.png" alt="image-20220214163938458"></p>
+</li>
+</ol>
+<p>如图，成功。</p>
+<ol>
+<li><p><img src="https://s2.loli.net/2022/02/14/2BaFDIeRYsh3V1Z.png" alt="image-20220214164203664"></p>
+</li>
+<li><p>之后在D:\myshare(Windows)和主文件夹\其他位置\计算机\mnt\hgfs\myshare(Linux)中，双方任意一方进行增加、修改文件等操作的结果，双方都可见。</p>
+</li>
+</ol>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>但在实际开发中，一般远程登陆后，进行上传下载文件，不通过这种方式进行共享。</p>
+<h2 id="Linux目录结构-重要"><a href="#Linux目录结构-重要" class="headerlink" title="Linux目录结构(重要)"></a>Linux目录结构(重要)</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p><strong>Linux会把硬件映射成一个文件来管理。</strong></p>
+<ol>
+<li>Linux的文件系统是采用级层式的树状目录结构，在此结构中的最上层是根目录”/“，然后在此目录下再创建别的目录。</li>
+<li>规定了每个目录下存放的文件类型(如/bin下存常用命令等)。</li>
+<li><strong>在Linux世界里，一切皆文件。</strong></li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/14/F9d6KWpel8MHOzb.png" alt="image-20220214170022218"></p>
+<p><img src="https://s2.loli.net/2022/02/14/f7gNkTUv8CYZ15o.png" alt="image-20220214170142179"></p>
+<p><img src="https://s2.loli.net/2022/02/14/Mmp7T63CSWsV4fw.png" alt="image-20220214170244070"></p>
+<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><p><img src="https://s2.loli.net/2022/02/14/MdZyBbiCIKmz1rs.png" alt="image-20220214171223656"></p>
+<p><img src="https://s2.loli.net/2022/02/14/U4ysVScpb5zXmft.png" alt="image-20220214171437594"></p>
+<p><img src="https://s2.loli.net/2022/02/14/ylqvWwxmTgcAtNS.png" alt="image-20220214171313425"></p>
+<p><strong>/proc和/srv和/sys存放系统文件，如果乱动，极大可能会导致系统崩溃。</strong></p>
+<p><img src="https://s2.loli.net/2022/02/14/2hWHTMim3tKdGUz.png" alt="image-20220214172749215"></p>
+<p><img src="https://s2.loli.net/2022/02/14/l6OD2K7oQFiEIkB.png" alt="image-20220214172650483"></p>
+<h2 id="远程登录Linux"><a href="#远程登录Linux" class="headerlink" title="远程登录Linux"></a>远程登录Linux</h2><p>不在同一台主机上的登录行为.</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ol>
+<li>Linux服务器是开发小组共享</li>
+<li>正式上线的项目是运行在公网</li>
+<li>因此程序员需要远程登录到Linux进行项目管理或者开发</li>
+<li>简单的网络拓扑示意图</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/20/oDN1d3QuYSHXyAE.png" alt="image-20220220184654829"></p>
+<ol>
+<li>远程登录客户端有Xshell(远程登录)，Xftp(文件远程上传下载)等。</li>
+</ol>
+<h4 id="Xshell"><a href="#Xshell" class="headerlink" title="Xshell"></a>Xshell</h4><p><img src="https://s2.loli.net/2022/02/20/96wWaNZoYtFzu4j.png" alt="image-20220220182621199"></p>
+<p>输入reboot，可以控制Linux去重启。</p>
+<h4 id="Xftp"><a href="#Xftp" class="headerlink" title="Xftp"></a>Xftp</h4><p><img src="https://s2.loli.net/2022/02/20/S6HibfG2MyIrkCE.png" alt="image-20220220184936249"></p>
+<p><img src="https://s2.loli.net/2022/02/20/6xa2dzDHhGyQAgr.png" alt="image-20220220183955314"></p>
+<h2 id="vi和vim"><a href="#vi和vim" class="headerlink" title="vi和vim"></a>vi和vim</h2><h3 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>Linux会内置vi文本编辑器</p>
+<p>Vim具有程序编辑的能力，可以看作是vi的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。代码补完、编译及错误跳转等方便编程的功能丰富。</p>
+<h4 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h4><p>以vim打开一个档案就直接进入一般模式(这是默认的模式)。在这个模式中，可以使用按键来移动光标，可以使用删除字符和删除整行来处理档案内容，也可以复制粘贴。</p>
+<h4 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h4><p>可以增加文字进入档案。</p>
+<h4 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h4><p>可以完成读取、存盘、替换、离开vim，显示行号等操作。</p>
+<p>先输入esc，再输入”:“后，即可从插入模式进入命令行模式。</p>
+<p>那么，输入“:wq”：进入命令行模式，之后write写入，再quit退出。</p>
+<p><img src="https://s2.loli.net/2022/02/20/gv4cASRlLOTCy8n.png" alt="image-20220220210524212"></p>
+<p><img src="https://s2.loli.net/2022/02/20/WZEHlAGYpPomKVt.png" alt="image-20220220210603347"></p>
+<p>再次进入只需 vim Hello.java。</p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p><img src="https://s2.loli.net/2022/02/20/u3EeAhDqC1i4SW2.png" alt="image-20220220222642750"></p>
+<h4 id="常用的7个快捷键"><a href="#常用的7个快捷键" class="headerlink" title="常用的7个快捷键"></a>常用的7个快捷键</h4><p><img src="https://s2.loli.net/2022/02/20/1p6URexnwAgZTt8.png" alt="image-20220220225039845"></p>
+<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><p>若是想转而查找别的单词，输入”/“即可。</p>
+<p>找不到的话，会有提示信息：</p>
+<p><img src="https://s2.loli.net/2022/02/20/kwvJVs9gUMAcxjC.png" alt="image-20220220223825590"></p>
+<h5 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h5><p>nu：number</p>
+<p>效果图如下：(若想删除行号，输入”:set nonu”)</p>
+<p><img src="https://s2.loli.net/2022/02/20/J1mLkXNTyC7zSwQ.png" alt="image-20220220224009345"></p>
+<h4 id="tips："><a href="#tips：" class="headerlink" title="tips："></a>tips：</h4><h5 id="先退回一般模式"><a href="#先退回一般模式" class="headerlink" title="先退回一般模式"></a>先退回一般模式</h5><p><strong>注意部分快捷键是要退回一般模式后使用的！</strong></p>
+<p>在插入模式下，首先输入”:”，使得下方没有命令显示，只有”:”时，再按ESC退回到一般模式。</p>
+<h5 id="其他快捷键"><a href="#其他快捷键" class="headerlink" title="其他快捷键"></a>其他快捷键</h5><p>其他还有很多快捷键，但是没必要。实际开发项目时，还是先在熟悉的windows环境中将代码写好，然后上传到Linux中，但不可避免的，肯定也会有远程登录，然后修改代码等的情况，所以快捷键还是要掌握一些，比如列出的7种，一定要掌握的。</p>
+]]></content>
+      <tags>
+        <tag>看视频学Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>实战Java高并发</title>
+    <url>/2022/02/14/%E5%AE%9E%E6%88%98Java%E9%AB%98%E5%B9%B6%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="Chapter1-走入并向世界"><a href="#Chapter1-走入并向世界" class="headerlink" title="Chapter1 走入并向世界"></a>Chapter1 走入并向世界</h1><h2 id="1-一些概念"><a href="#1-一些概念" class="headerlink" title="1. 一些概念"></a>1. 一些概念</h2><h3 id="1-同步-Synchronous-和异步-Asynchronous"><a href="#1-同步-Synchronous-和异步-Asynchronous" class="headerlink" title="1. 同步(Synchronous)和异步(Asynchronous)"></a>1. 同步(Synchronous)和异步(Asynchronous)</h3><p>同步和异步通常用来形容一次方法的调用。</p>
+<h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><p>同步方法调用一旦开始，必须要等到方法调用结束返回后，才能继续后续的行为。(去现场买一个空调，要等商家调货，等买完之后回家，才能做别的事。)</p>
+<h4 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h4><p>异步方法调用一旦开始，方法调用就会立即返回，调用者就可以进行后续的操作。而异步方法通常会在另一个线程中“真实地”执行，如果需要返回结果，调用结束后，会通知调用者。(在网上买一个空调，付完钱，就可以去做别的事，而商家则回去设计空调到达的过程。等空调到了之后，去签收即可。)</p>
+<p><img src="https://s2.loli.net/2022/02/14/Zwo3rjEmqQFbRGB.png" alt="image-20220214225304471"></p>
+<h3 id="2-并发-Concurrency-和并行-Parallelism"><a href="#2-并发-Concurrency-和并行-Parallelism" class="headerlink" title="2. 并发(Concurrency)和并行(Parallelism)"></a>2. 并发(Concurrency)和并行(Parallelism)</h3><p>并发和并行是两个非常容易被混淆的概念。他们都可以表示两个或多个任务一起执行，但偏重点不同。</p>
+<h4 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h4><p>侧重于多个任务交替执行，而多个任务之间还有可能是串行的。</p>
+<h4 id="并行"><a href="#并行" class="headerlink" title="并行"></a>并行</h4><p>则是真正意义上的”同时执行”。</p>
+<p><img src="https://s2.loli.net/2022/02/14/ARdnbFXZYBPHs2r.png" alt="image-20220214225610517"></p>
+<p>严格意义上来说，并行的多个任务是真实的同时执行。</p>
+<p>而对于并发来说，这个过程只是交替的，一会儿运行任务A一会儿执行任务B，系统会不停地在两者间切换。但对于外部观察者来说，即使多个任务之间是串行并发的，也会造成多任务间是并行执行的错觉。</p>
+<blockquote>
+<p>由于并发的最终结果可能是和并行一眼的，因此，如果没有特别的需要，本书不会特别强调两者的区别。</p>
+</blockquote>
+<h3 id="3-临界区"><a href="#3-临界区" class="headerlink" title="3. 临界区"></a>3. 临界区</h3><p>临界区用来表示一种公共资源或者说是共享资源，可以被多个线程使用。</p>
+<p>但是每一次，只能有一个线程在使用它。一旦临界资源被占用，其他线程若想使用，只能等待。</p>
+<p>在并行程序中，临界区资源是保护的对象。</p>
+<h3 id="4-阻塞-Blocking-和非阻塞-Non-Blocking"><a href="#4-阻塞-Blocking-和非阻塞-Non-Blocking" class="headerlink" title="4. 阻塞(Blocking)和非阻塞(Non-Blocking)"></a>4. 阻塞(Blocking)和非阻塞(Non-Blocking)</h3><p>阻塞和非阻塞，通常用来形容多线程间的相互影响。</p>
+<h4 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h4><p>比如一个线程占用了临界区资源，那么其他所有需要这个资源的线程就必须在这个临界区中进行等待。等待会导致线程挂起，这种情况就是阻塞。此时，如果占用资源的线程一直不愿意释放资源，那么其他所有阻塞在这个临界区上的线程都不能工作。</p>
+<h4 id="非阻塞"><a href="#非阻塞" class="headerlink" title="非阻塞"></a>非阻塞</h4><p>其意思与上相反，它强调没有一个线程可以妨碍其他线程执行。所有的线程都会尝试不断前向执行。</p>
+<h3 id="5-死锁-Deadlock-、饥饿-Starvation-和活锁-Livelock"><a href="#5-死锁-Deadlock-、饥饿-Starvation-和活锁-Livelock" class="headerlink" title="5. 死锁(Deadlock)、饥饿(Starvation)和活锁(Livelock)"></a>5. 死锁(Deadlock)、饥饿(Starvation)和活锁(Livelock)</h3><p>死锁、饥饿和活锁都属于多线程的活跃性问题。</p>
+<h4 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h4><p>是一个很严重的，并且应该避免和时时小心的问题。</p>
+<p><img src="https://s2.loli.net/2022/02/14/2T9t3KHF7C6MuoW.png" alt="image-20220214230702973"></p>
+<h4 id="饥饿"><a href="#饥饿" class="headerlink" title="饥饿"></a>饥饿</h4><p>是指某一个或者多个线程因为种种原因无法获得所需要的资源，导致一直无法执行。比如它的线程优先级可能太低，而高优先级的线程不断抢占它需要的资源，导致低优先级线程无法工作。</p>
+<h4 id="活锁"><a href="#活锁" class="headerlink" title="活锁"></a>活锁</h4><p>如果线程的智力不够，且都秉承着“谦让”的原则，主动将资源释放给他人使用，那么就会出现资源不断在两个线程中跳动，而没有一个线程可以同时拿到所有资源而正常执行(两个人相互让路)。</p>
+<h2 id="2-并发级别"><a href="#2-并发级别" class="headerlink" title="2. 并发级别"></a>2. 并发级别</h2>]]></content>
+      <tags>
+        <tag>实战Java高并发程序设计</tag>
       </tags>
   </entry>
 </search>
