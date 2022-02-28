@@ -543,11 +543,6 @@ z=x \pm y = (M_x 2^{E_x-E_y} \pm M_y)2^{E_y}</script><h3 id="1-步骤"><a href="
 <h2 id="5-cache"><a href="#5-cache" class="headerlink" title="5. cache"></a>5. cache</h2><h3 id="例题-3"><a href="#例题-3" class="headerlink" title="例题"></a>例题</h3><h4 id="题型1"><a href="#题型1" class="headerlink" title="题型1"></a>题型1</h4><p><img src="https://s2.loli.net/2022/02/25/ubRFgBvWiTq39ec.png" alt="image-20220225231927296"></p>
 <h4 id="题型2"><a href="#题型2" class="headerlink" title="题型2"></a>题型2</h4><p><img src="https://s2.loli.net/2022/02/25/mQ5ygktUGXr2Yow.png" alt="image-20220225231708983"></p>
 <p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220225231840941.png" alt="image-20220225231840941"></p>
-<p><img src="https://s2.loli.net/2022/02/26/CU6a24uVJKAdxnR.png" alt="image-20220226011505296"></p>
-<p><img src="https://s2.loli.net/2022/02/26/5sCmxlB4R8DkHjX.png" alt="image-20220226011553541"></p>
-<p><img src="https://s2.loli.net/2022/02/26/X2iRSm4VuqyaQK8.png" alt="image-20220226011705292"></p>
-<p><img src="https://s2.loli.net/2022/02/26/WFoVIeCaYdQxUjN.png" alt="image-20220226011729656"></p>
-<p><img src="https://s2.loli.net/2022/02/26/lqNuFiafBOXtb5k.png" alt="image-20220226011752472"></p>
 <h2 id="6-虚拟存储器"><a href="#6-虚拟存储器" class="headerlink" title="6. 虚拟存储器"></a>6. 虚拟存储器</h2><p>用户在编制程序时，使用的地址为虚地址或逻辑地址，其对应的存储空间称为虚存空间，是程序员所看到的地址范围。</p>
 <p>而计算机物理内存的访问地址则称为实地址或物理地址，对应的存储空间称为物理存储空间或主存空间。程序进行虚地址到实地址转换的过程称为程序的再定位。</p>
 <h3 id="1-功能"><a href="#1-功能" class="headerlink" title="1. 功能"></a>1. 功能</h3><p><strong>虚拟存储器的一个重要用途是解决计算机中主存储器的容量问题，在不明显降低平均访问速度的前提下增加程序的访问空间。</strong></p>
@@ -568,12 +563,20 @@ z=x \pm y = (M_x 2^{E_x-E_y} \pm M_y)2^{E_y}</script><h3 id="1-步骤"><a href="
 <p>③物理页号与页内地址拼接即得物理地址。</p>
 <p><strong>如果，计算机只有一个基址寄存器，基号可不要，多道程序切换时，操作系统修改基址寄存器内容。</strong></p>
 <p><strong>可以看出，段页式虚拟存储系统由虚拟地址向主存地址的变换至少需要查两次表。</strong> </p>
-<h5 id="页面替换是由操作系统实现的。"><a href="#页面替换是由操作系统实现的。" class="headerlink" title="页面替换是由操作系统实现的。"></a>页面替换是由操作系统实现的。</h5><h1 id="Chapter-4-指令系统"><a href="#Chapter-4-指令系统" class="headerlink" title="Chapter 4 指令系统"></a>Chapter 4 指令系统</h1><h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><h3 id="隐含寻址"><a href="#隐含寻址" class="headerlink" title="隐含寻址"></a>隐含寻址</h3><h3 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h3><p>地址字段放的是操作数的值</p>
-<h3 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h3><p>地址字段放的是操作数在内存中的地址</p>
-<h3 id="间接寻址"><a href="#间接寻址" class="headerlink" title="间接寻址"></a>间接寻址</h3><p>地址字段放的是存放 操作数在内存中的地址 的内存地址</p>
-<h3 id="相对寻址"><a href="#相对寻址" class="headerlink" title="相对寻址"></a>相对寻址</h3><p>偏移量即为PC</p>
-<h3 id="基址寻址"><a href="#基址寻址" class="headerlink" title="基址寻址"></a>基址寻址</h3><p>被引用的基址寄存器中放的是操作数在内存中的起始地址，另一个地址字段放的是偏移量</p>
-<h3 id="变址寻址"><a href="#变址寻址" class="headerlink" title="变址寻址"></a>变址寻址</h3><p>被引用的寄存器中放的是偏移量，另一个地址字段放的是操作数在内存中的起始地址。</p>
+<h5 id="页面替换是由操作系统实现的。"><a href="#页面替换是由操作系统实现的。" class="headerlink" title="页面替换是由操作系统实现的。"></a>页面替换是由操作系统实现的。</h5><h1 id="Chapter-4-指令系统"><a href="#Chapter-4-指令系统" class="headerlink" title="Chapter 4 指令系统"></a>Chapter 4 指令系统</h1><h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><h3 id="隐含寻址"><a href="#隐含寻址" class="headerlink" title="隐含寻址"></a>隐含寻址</h3><p>指令中包含着操作数的地址，操作数在累加寄存器中</p>
+<h3 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h3><p>地址字段放的是操作数的值</p>
+<h4 id="操作数-A"><a href="#操作数-A" class="headerlink" title="操作数=A"></a>操作数=A</h4><h3 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h3><p>地址字段放的是操作数在内存中的地址</p>
+<h4 id="EA-A"><a href="#EA-A" class="headerlink" title="EA=A"></a>EA=A</h4><h3 id="间接寻址"><a href="#间接寻址" class="headerlink" title="间接寻址"></a>间接寻址</h3><p>地址字段放的是存放 操作数在内存中的地址 的内存地址</p>
+<h4 id="EA-A-1"><a href="#EA-A-1" class="headerlink" title="EA=(A)"></a>EA=(A)</h4><h3 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h3><p>操作数放在寄存器中，地址字段放的是寄存器的编号</p>
+<h4 id="EA-R"><a href="#EA-R" class="headerlink" title="EA=R"></a>EA=R</h4><h3 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h3><p>操作数地址放在寄存器中，地址字段放的是寄存器的编号</p>
+<h4 id="EA-R-1"><a href="#EA-R-1" class="headerlink" title="EA=(R)"></a>EA=(R)</h4><h3 id="相对寻址"><a href="#相对寻址" class="headerlink" title="相对寻址"></a>相对寻址</h3><p>偏移量即为PC</p>
+<h4 id="EA-A-PC"><a href="#EA-A-PC" class="headerlink" title="EA=A+(PC)"></a>EA=A+(PC)</h4><h3 id="基址寻址"><a href="#基址寻址" class="headerlink" title="基址寻址"></a>基址寻址</h3><p>被引用的基址寄存器中放的是操作数在内存中的起始地址，另一个地址字段放的是偏移量</p>
+<h4 id="EA-A-R"><a href="#EA-A-R" class="headerlink" title="EA=A+(R)"></a>EA=A+(R)</h4><h3 id="变址寻址"><a href="#变址寻址" class="headerlink" title="变址寻址"></a>变址寻址</h3><p>被引用的寄存器中放的是偏移量，另一个地址字段放的是操作数在内存中的起始地址。</p>
+<h4 id="EA-A-R-1"><a href="#EA-A-R-1" class="headerlink" title="EA=A+(R)"></a>EA=A+(R)</h4><h2 id="例题-4"><a href="#例题-4" class="headerlink" title="例题"></a>例题</h2><h3 id="1-定长设计出多少条指令"><a href="#1-定长设计出多少条指令" class="headerlink" title="1. 定长设计出多少条指令"></a>1. 定长设计出多少条指令</h3><p><img src="https://s2.loli.net/2022/02/26/CU6a24uVJKAdxnR.png" alt="image-20220226011505296"></p>
+<h3 id="2-变长设计出指令数目"><a href="#2-变长设计出指令数目" class="headerlink" title="2. 变长设计出指令数目"></a>2. 变长设计出指令数目</h3><h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><p>由于操作码的长度不固定，那么2地址指令给操作码分配的地址长度n，不可能在设计2地址指令时用完。也就是说，不可能会是$2^n$条2地址指令，因为还要留出一部分的二级制数字组合，存放1地址指令的前四位和0地址指令的前4位。此时，使用$2^n-m$，其中m为2地址指令的数目，可得当前剩余的n位的2进制组合的数目。</p>
+<p><img src="https://s2.loli.net/2022/02/26/5sCmxlB4R8DkHjX.png" alt="image-20220226011553541"></p>
+<h3 id="3-综合题"><a href="#3-综合题" class="headerlink" title="3. 综合题"></a>3. 综合题</h3><p><img src="https://s2.loli.net/2022/02/26/X2iRSm4VuqyaQK8.png" alt="image-20220226011705292"></p>
+<p><img src="https://s2.loli.net/2022/02/26/lqNuFiafBOXtb5k.png" alt="image-20220226011752472"></p>
 ]]></content>
       <tags>
         <tag>计算机组成原理</tag>
@@ -827,12 +830,12 @@ z=x \pm y = (M_x 2^{E_x-E_y} \pm M_y)2^{E_y}</script><h3 id="1-步骤"><a href="
 </ul>
 <h3 id="网络协议举例"><a href="#网络协议举例" class="headerlink" title="网络协议举例"></a>网络协议举例</h3><p>记几个常见的名称</p>
 <p><img src="https://s2.loli.net/2021/12/22/BX6n83tPNiIUGph.png" alt="image-20211222171450997"></p>
-<p>Internet工程特别任务组（IETF）中的标准通常以<strong>RFC(请求评注,Request for Comments)</strong>文档的形式公布.</p>
+<p>Internet工程特别任务组（IRTF）中的标准通常以<strong>RFC(请求评注,Request for Comments)</strong>文档的形式公布.</p>
 <h2 id="6-服务质量"><a href="#6-服务质量" class="headerlink" title="6. 服务质量"></a>6. 服务质量</h2><p><img src="https://s2.loli.net/2021/12/22/LE5Hq69c2ROuXJs.png" alt="image-20211222172217157"></p>
 <h4 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h4><h2 id="7-相关"><a href="#7-相关" class="headerlink" title="7. 相关"></a>7. 相关</h2><ol>
 <li><p><strong>面向终端的远程联机系统</strong>是计算机和通信相结合的前驱。以单个<strong>计算机</strong>为中心。</p>
 </li>
-<li><p>在20世纪70年代，美国的<strong>ARPANET</strong>(具有代表性的，美国国防部)采用了“存储转发-分组交换”的原理，采用<strong>TCP/IP</strong>协议，成为了事实上的国际标准。</p>
+<li><p>在20世纪70年代，美国的<strong>ARPANET</strong>(具有代表性的，美国国防部)采用了“存储转发-分组交换”的原理，采用<strong>TCP/IP</strong>协议，成为了事实上的国际标准。(Advanced Research Project Agency)</p>
 </li>
 <li><strong>1984年</strong>，ISO颁布的OSI/RM(Open Systems Interconnection-Reference Model)参考模型。</li>
 <li>计算机网络的分类(按照哪个分为几类)</li>
@@ -1207,7 +1210,14 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <h4 id="4-信元结构-不考"><a href="#4-信元结构-不考" class="headerlink" title="4. 信元结构(不考)"></a>4. 信元结构(不考)</h4><p><img src="https://s2.loli.net/2022/02/25/i8IKRtHMVXEb1Dq.png" alt="image-20220225110859544"></p>
 <h4 id="5-虚拟连接"><a href="#5-虚拟连接" class="headerlink" title="5. 虚拟连接"></a>5. 虚拟连接</h4><p>分为两级：虚通道连接(VP)与虚通路连接(VC)。</p>
 <h5 id="二者关系"><a href="#二者关系" class="headerlink" title="二者关系"></a>二者关系</h5><p>一个虚通道包含有许多<strong>相同端点</strong>的虚通路。</p>
-<h1 id="第六章-网络层-数据报"><a href="#第六章-网络层-数据报" class="headerlink" title="第六章 网络层(数据报)"></a>第六章 网络层(数据报)</h1><h2 id="习题六"><a href="#习题六" class="headerlink" title="习题六"></a>习题六</h2><h3 id="1-网络互连的定义"><a href="#1-网络互连的定义" class="headerlink" title="1. 网络互连的定义"></a>1. 网络互连的定义</h3><ul>
+<h1 id="第六章-网络层-数据报"><a href="#第六章-网络层-数据报" class="headerlink" title="第六章 网络层(数据报)"></a>第六章 网络层(数据报)</h1><h2 id="考的可能性大-1"><a href="#考的可能性大-1" class="headerlink" title="考的可能性大"></a>考的可能性大</h2><ol>
+<li>网络层的主要功能就是实现整个网络系统的连接，为运输层提供<strong>整个网络范围内两个终端用户之间数据传输的通路</strong>，实现两个端系统之间的数据透明传送。</li>
+<li>一般地，当中继系统是<strong>中继器或网桥</strong>时，一般不称为网络互连，因为这仅仅是把一个物理网络扩大了，它仍然是一个网络。</li>
+<li>路由器能够阻止从一个子网到另外一个子网的<strong>广播</strong>。</li>
+<li>路由器对于流经的任何分组都要检查分组的源IP地址与目的IP地址，然后根据<strong>路由表</strong>确定该分组流向。</li>
+<li></li>
+</ol>
+<h2 id="习题六"><a href="#习题六" class="headerlink" title="习题六"></a>习题六</h2><h3 id="1-网络互连的定义"><a href="#1-网络互连的定义" class="headerlink" title="1. 网络互连的定义"></a>1. 网络互连的定义</h3><ul>
 <li>将相同类型的网络或不同类型的网络及其产品连接在一起，组成地理覆盖范围更大、功能更强大的网络</li>
 <li>将大的网络拆分为几个子网，实现更为有效的网络管理等。</li>
 </ul>
@@ -1249,16 +1259,21 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p>如166.100.20.82/20：表示在这个32位的IP地址中，前20位是网络前缀，后12位是主机号。</p>
 <h3 id="8-主机数"><a href="#8-主机数" class="headerlink" title="8. 主机数"></a>8. 主机数</h3><p><img src="https://s2.loli.net/2022/02/25/28VFSgzNxGerpnL.png" alt="image-20220225124325419"></p>
 <h3 id="9-网络号和主机号"><a href="#9-网络号和主机号" class="headerlink" title="9. 网络号和主机号"></a>9. 网络号和主机号</h3><p><img src="https://s2.loli.net/2022/02/25/k1cxr3PG9gJRa7M.png" alt="image-20220225124418477"></p>
-<h3 id="10-IP地址分配规则"><a href="#10-IP地址分配规则" class="headerlink" title="10. IP地址分配规则"></a>10. IP地址分配规则</h3><p><img src="https://s2.loli.net/2022/02/25/1bIyfgJD26BR3Nh.png" alt="image-20220225124549534"></p>
+<h3 id="10-IP地址分配规则"><a href="#10-IP地址分配规则" class="headerlink" title="10. IP地址分配规则"></a>10. IP地址分配规则</h3><p><strong>主机号全0或全1称为直接广播地址，不能用。</strong></p>
+<p><img src="https://s2.loli.net/2022/02/25/1bIyfgJD26BR3Nh.png" alt="image-20220225124549534"></p>
+<p><img src="https://s2.loli.net/2022/02/27/oahdke85i72gjHL.png" alt="image-20220227194632169"></p>
 <h3 id="19-路由交换规则"><a href="#19-路由交换规则" class="headerlink" title="19. 路由交换规则"></a>19. 路由交换规则</h3><p>下一跳不同，选近路(A经B、D都可到C，则取近的)</p>
 <p>下一跳不同，距离相同，选原路(为维护网络稳定性)</p>
 <p>下一跳相同，选新路(A经B到C，原为3；现有A经B到C距离5，则最终A经B到C的距离取5)</p>
 <h3 id="20-自治系统"><a href="#20-自治系统" class="headerlink" title="20. 自治系统"></a>20. 自治系统</h3><h3 id="23-子网拆分"><a href="#23-子网拆分" class="headerlink" title="23. 子网拆分"></a>23. 子网拆分</h3><p>如图所示，一个路由器互联了3个局域网(LAN)。</p>
+<h4 id="子网掩码的求法"><a href="#子网掩码的求法" class="headerlink" title="子网掩码的求法"></a>子网掩码的求法</h4><p>网段中可容纳$2^n$个主机，对应的子网掩码中前$32-n$位就是1，后$n$位为0。将其换成十进制即可。</p>
+<p>子网掩码里有$n$个0，对应的就有$2^n$个主机。</p>
 <p><img src="https://s2.loli.net/2022/02/25/2irKzbGujpMUA9D.png" alt="image-20220225130106638"> </p>
 <p><img src="https://s2.loli.net/2022/02/25/Su8zGgOndLUlW73.png" alt="image-20220225130210588"></p>
 <p>此题没给各个网段的主机数目，考试时会给出主机数目。</p>
 <h4 id="IP地址分类"><a href="#IP地址分类" class="headerlink" title="IP地址分类"></a>IP地址分类</h4><p><img src="https://s2.loli.net/2022/02/25/Ib3oSPrwjd4nMVp.png" alt="image-20220225130356702"></p>
-<h3 id="24-IPv6特点"><a href="#24-IPv6特点" class="headerlink" title="24. IPv6特点"></a>24. IPv6特点</h3><p>简化头部，提高转发速度；长度扩大为128位，实现万物互联。</p>
+<h3 id="24-IPv6特点"><a href="#24-IPv6特点" class="headerlink" title="24. IPv6特点"></a>24. IPv6特点</h3><p>头部40字节</p>
+<p>简化头部，提高转发速度；长度扩大为128位，实现万物互联。</p>
 <ul>
 <li>IP地址长度扩大为128字节</li>
 <li>高速化<ul>
@@ -1281,9 +1296,31 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <h3 id="27-网络地址转换NAT"><a href="#27-网络地址转换NAT" class="headerlink" title="27. 网络地址转换NAT"></a>27. 网络地址转换NAT</h3><p>NAT(network address translation，网络地址转换)于1994年提出。</p>
 <p>但在专用网内部的一些主机本来已经分配到了本地IP地址(即仅在本专用网内使用的专用地址)，但现在又想和Internet上的主机通信(并不需要加密)时，可使用NAT方法。</p>
 <p>NAT不仅能解决IP地址不足的问题，还能有效地避免来自网络外部的攻击，隐藏并保护网络内部的计算机。</p>
+<h3 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>互联网控制协议</p>
+<p>ICMP是Internet中一个差错和控制报文协议，针对网络层的错误诊断、拥塞控制、路径控制和查询服务4大功能，ICMP提供相应的报文。</p>
+<p>ICMP主要用于拥塞控制和路径控制。</p>
+<p>ICMP报文封装在IP分组的数据区中发送的，因此并不能保证它的可靠性。</p>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><p>ICMP报文分成报文头和数据区两部分，其中报文头包含类型、代码与校验和三个字段。</p>
+<h4 id="报文类型"><a href="#报文类型" class="headerlink" title="报文类型"></a>报文类型</h4><p>0 ：回应应答</p>
+<p>3 ：目的站点不可达</p>
+<p>4 ：源抑制</p>
+<p>8 ：回应请求</p>
+<p>11 ： 分组超时(回复源主机，数据包死亡)</p>
+<h4 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h4><p>ping：请求主机发送了4个类型为8的回应请求，接收主机有义务回复4个类型为0的回应应答。 </p>
+<p>tracert：依靠 <strong>IP包的生存时间</strong> 确定，发送类型为11的反馈给发送主机。</p>
+<h4 id="拥塞控制-1"><a href="#拥塞控制-1" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p><strong>网络负载超过网络容量，产生拥塞，采用各种手段去避免和减轻拥塞，即为拥塞控制</strong></p>
+<p>轻拥塞，即为拥塞控制。</p>
+<p>发送 类型为4 的反馈给 发送主机。</p>
+<h3 id="RIP"><a href="#RIP" class="headerlink" title="RIP"></a>RIP</h3><p>最早的动态路由协议</p>
+<p>将路由表转发给相邻路由器。</p>
+<p>下一跳不同，选近路；</p>
+<p>下一跳相同，选新路。</p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>每30秒，就把路由器中的所有路由信息向所有的网络端口广播，进行刷新。</p>
+<p>路由超时时钟一般为90s，即如果一条路由在90s之内都没有刷新过，则RIP把路由项置为无效(把其量度值置为16).</p>
 <h1 id="第七章-运输层"><a href="#第七章-运输层" class="headerlink" title="第七章 运输层"></a>第七章 运输层</h1><h2 id="习题七"><a href="#习题七" class="headerlink" title="习题七"></a>习题七</h2><h3 id="1-运输层与网络层"><a href="#1-运输层与网络层" class="headerlink" title="1. 运输层与网络层"></a>1. 运输层与网络层</h3><p>网络层为运输层提供主机之间通信的服务，运输层使用网络层提供的服务。</p>
 <h3 id="2-运输层端口的作用"><a href="#2-运输层端口的作用" class="headerlink" title="2. 运输层端口的作用"></a>2. 运输层端口的作用</h3><p>用来标识应用层的进程，提供进程之间的寻址，保证数据包到达正确的应用层进程。</p>
-<h3 id="4-TCP提供的服务"><a href="#4-TCP提供的服务" class="headerlink" title="4. TCP提供的服务"></a>4. TCP提供的服务</h3><ol>
+<h3 id="4-TCP提供的服务"><a href="#4-TCP提供的服务" class="headerlink" title="4. TCP提供的服务"></a>4. TCP提供的服务</h3><p>TCP是一个面向连接的、可靠的、全双工的通信协议。</p>
+<ol>
 <li>进程之间的通信</li>
 <li>面向连接的，可保证数据的顺序性</li>
 <li>有确认的，可靠的</li>
@@ -1294,7 +1331,10 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p>SYN为同步标志：用来建立连接，让连接双方同步序列号。如果SYN=1且ACK=0，则表示该数据包为连接请求；</p>
 <p>如果SYN=1且ACK=1，则表示是接受链接。</p>
 <p>FIN为结束标志：表示发送方已经没有数据要求传输了，希望释放连接。</p>
-<h4 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h4><p><img src="https://s2.loli.net/2022/02/26/iOeMpwD2xV41fEQ.png" alt="image-20220226184448915"></p>
+<p>SEQ是数据包序号。</p>
+<p>ACKSEQ：准备接收的数据包序号。</p>
+<h4 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h4><p>SEQ是序号。</p>
+<p><img src="https://s2.loli.net/2022/02/26/iOeMpwD2xV41fEQ.png" alt="image-20220226184448915"></p>
 <h5 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h5><ol>
 <li><p>三次是因为将确认建立A-&gt;B和请求建立反向连接B-&gt;A的合在一起了。</p>
 </li>
@@ -1307,8 +1347,30 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <li>开环的解决方式：良好的设计来避免(虚电路：许可证法；TCP中慢启动)</li>
 <li>闭环的解决方式：通过网络的反馈来减少拥塞(网络层：源抑制报文，控制传输量)</li>
 </ol>
+<h4 id="TCP中的拥塞控制"><a href="#TCP中的拥塞控制" class="headerlink" title="TCP中的拥塞控制"></a>TCP中的拥塞控制</h4><p>在运输层，采用了慢启动、拥塞避免、快重传和快恢复四种算法。</p>
+<p>当TCP收到路由器发来的ICMP源抑制报文，或者发现连续的报文丢失现象或延迟过长而引起的超时重发，就认为发生了拥塞。</p>
+<h5 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h5><p>在慢启动的初级阶段，TCP发送方以很慢的速率开始发送，但是以指数级的速度快速增长其发送速率。</p>
+<h6 id="慢启动门限"><a href="#慢启动门限" class="headerlink" title="慢启动门限"></a>慢启动门限</h6><p>在TCP慢启动阶段，可以发送的报文数量按指数级增加，为了防止拥塞窗口的增长引起网络拥塞，还需要一个状态变量，即<strong>慢启动门限ssthresh</strong>。</p>
+<h4 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h4><p>拥塞窗口的大小以MSS为单位。<strong>慢启动门限ssthresh初始时等于8MSS。</strong></p>
+<p>注意到当发生丢包事件时，拥塞窗口值为12。于是门限值被设置为Cwnd×0.5=12×0.5=6MSS。</p>
+<p>拥塞窗口Cwnd重新设置为1，并开始执行慢启动算法。当Cwnd=6时，改为执行拥塞避免算法。</p>
+<h5 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h5><p>也就是说，当到达门限时，就进行缓慢线性增长，如果发生拥塞，那么就变为1，再设置门限(拥塞时的一半)。</p>
 <p><img src="https://s2.loli.net/2022/02/26/PL6VN21CaXUKyZj.png" alt="image-20220226191621666"></p>
+<h5 id="快速重传"><a href="#快速重传" class="headerlink" title="快速重传"></a>快速重传</h5><p>发送方只要一连收到3个重复的ACK即可判定有分组丢失了，就应立即重传丢失的报文段，而不必继续等待为丢失的那个报文所设置的重传计时器超时。</p>
+<h5 id="快速恢复"><a href="#快速恢复" class="headerlink" title="快速恢复"></a>快速恢复</h5><p>当发送方一连收到3个连续重复的ACK时，按“乘法减小”重新设置慢启动门限，与慢启动不同的是，Cwnd不是设置为1，而是设置为ssthresh(慢启动阈值)+3×MSS。</p>
+<h3 id="12-流量控制"><a href="#12-流量控制" class="headerlink" title="12. 流量控制"></a>12. 流量控制</h3><p>TCP采用<strong>大小可变的滑动窗口</strong>给应用进程提供流量控制服务。</p>
 <p><img src="https://s2.loli.net/2022/02/26/1AvmOCQrHx59yoB.png" alt="image-20220226191746994"></p>
+<p>第一次将窗口减小为2048字节，第二次又减小为0字节，即不允许发送方再发送。第三次增加为2048字节。</p>
+<h4 id="发送窗口Swnd-MIN-接收窗口，拥塞窗口-。"><a href="#发送窗口Swnd-MIN-接收窗口，拥塞窗口-。" class="headerlink" title="发送窗口Swnd = MIN[接收窗口，拥塞窗口]。"></a><strong>发送窗口Swnd = MIN[接收窗口，拥塞窗口]。</strong></h4><h3 id="13-UDP"><a href="#13-UDP" class="headerlink" title="13. UDP"></a>13. UDP</h3><p>UDP报文由头部和数据两个数据组成，占8个字节。</p>
+<p>头部为4个字节。</p>
+<p>用户数据报协议（UDP）只在IP协议的数据报服务之上增加了很少一点的功能，即</p>
+<p><strong>端口功能和差错检测功能</strong>。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>无需建立连接</li>
+<li>无连接状态管理</li>
+<li>报文头部开销小</li>
+<li>应用层能很好的控制要发送的数据和发送时间。</li>
+</ol>
 <h1 id="第八章-应用层"><a href="#第八章-应用层" class="headerlink" title="第八章 应用层"></a>第八章 应用层</h1><h2 id="习题八"><a href="#习题八" class="headerlink" title="习题八"></a>习题八</h2><h3 id="1-客户-服务器模型和P2P模型"><a href="#1-客户-服务器模型和P2P模型" class="headerlink" title="1. 客户/服务器模型和P2P模型"></a>1. 客户/服务器模型和P2P模型</h3><h4 id="在C-S模型中"><a href="#在C-S模型中" class="headerlink" title="在C/S模型中"></a>在C/S模型中</h4><ul>
 <li>服务器处于接受请求的状态</li>
 <li>客户机发出请求，并等待接收结果</li>
@@ -1317,10 +1379,11 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <h4 id="在P2P模型中"><a href="#在P2P模型中" class="headerlink" title="在P2P模型中"></a>在P2P模型中</h4><p>P2P的思想是整个网络中的传输内容不再被保存在中心服务器上，每个节点都同时具有下载、上传的功能，即每个结点既是服务器又是客户机。</p>
 <p>任意一对计算机称作对等方(Peer)，直接相互通信。</p>
 <p>每个结点既作为客户访问其他结点的资源，也作为服务器提供资源给其他结点访问。</p>
-<h3 id="2-域名转换"><a href="#2-域名转换" class="headerlink" title="2. 域名转换"></a>2. 域名转换</h3><ol>
+<h3 id="2-域名转换DNS"><a href="#2-域名转换DNS" class="headerlink" title="2. 域名转换DNS"></a>2. 域名转换DNS</h3><ol>
 <li>使用DNS，域名-&gt;IP(相互转换)</li>
 <li>客户机向本地域名服务器发起请求</li>
 <li>本地域名服务器和互联网上其他的域名服务器相互配合，将查询结果返回给客户机。</li>
+<li><img src="https://s2.loli.net/2022/02/27/vkcY74zwm9fnONI.png" alt="image-20220227195738711"></li>
 </ol>
 <h3 id="3-域名结构和功能"><a href="#3-域名结构和功能" class="headerlink" title="3. 域名结构和功能"></a>3. 域名结构和功能</h3><p><img src="https://s2.loli.net/2022/02/26/FGlDBjzUMq7c3bn.png" alt="image-20220226200011860"></p>
 <h3 id="6-HTML的作用"><a href="#6-HTML的作用" class="headerlink" title="6. HTML的作用"></a>6. HTML的作用</h3><p>HTML是WWW上用于创建超文本的基本语言，可以定义格式化的文本、色彩、图像与超文本链接等，主要用于web主页的创建与制作。</p>
@@ -1337,6 +1400,10 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <h3 id="9-电子邮件收发过程"><a href="#9-电子邮件收发过程" class="headerlink" title="9. 电子邮件收发过程"></a>9. 电子邮件收发过程</h3><p><img src="https://s2.loli.net/2022/02/26/oRPywGQ9HcCYesW.png" alt="image-20220226195839467"></p>
 <p><img src="https://s2.loli.net/2022/02/26/Ff2VMlmzPShTWCA.png" alt="image-20220226195909957"></p>
 <h3 id="10-DHCP定义"><a href="#10-DHCP定义" class="headerlink" title="10. DHCP定义"></a>10. DHCP定义</h3><p>动态主机配置协议(DHCP)负责IP地址的集中和动态分配管理。</p>
+<h3 id="11-URL与信息定位"><a href="#11-URL与信息定位" class="headerlink" title="11. URL与信息定位"></a>11. URL与信息定位</h3><p>URL用于定位信息资源所在的位置，描述了浏览器检索资源所用的协议，资源所在的计算机的主机名和资源的路径与文件名。</p>
+<h4 id="标准格式"><a href="#标准格式" class="headerlink" title="标准格式(*)"></a>标准格式(*)</h4><p>资源传递协议://存放资源的主机/资源路径与文件名</p>
+<p>如果要访问的不是80端口，要指明端口号，即在标准格式后加上    :端口号</p>
+<p>ftp://ftp.xaut.edu.cn</p>
 <h1 id="第九章-网络安全与网络管理"><a href="#第九章-网络安全与网络管理" class="headerlink" title="第九章 网络安全与网络管理"></a>第九章 网络安全与网络管理</h1><h2 id="加密与认证"><a href="#加密与认证" class="headerlink" title="加密与认证"></a>加密与认证</h2><h3 id="数据加密标准"><a href="#数据加密标准" class="headerlink" title="数据加密标准"></a>数据加密标准</h3><p><strong>数据加密标准</strong>(Data Encryption Standard, DES)是最典型(经典)的对称加密算法，它是由IBM公司提出。</p>
 <p>DES使用一个56位(二进制，$2^{56}$)的密钥和附加的8位奇偶校验位，产生长度为64位的分组。</p>
 <h2 id="公开密钥加密机制"><a href="#公开密钥加密机制" class="headerlink" title="公开密钥加密机制"></a>公开密钥加密机制</h2><p>每个发送者拥有两个密码，一个是任何人都可得到的公开密钥(公钥)，另一个是只有发送者本人知道的秘密密钥(私钥)。</p>
@@ -1348,7 +1415,7 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <li>加密解密速度慢</li>
 </ol>
 <p>使用非对称的密钥传输对称的密钥，以提升速度。如果是全非对称的话，太慢。</p>
-<h2 id="数字签名技术"><a href="#数字签名技术" class="headerlink" title="数字签名技术"></a>数字签名技术</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>数字签名是一种基于密码的身份鉴别技术。</p>
+<h2 id="数字签名技术"><a href="#数字签名技术" class="headerlink" title="数字签名技术"></a>数字签名技术</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>数字签名是一种基于密码的身份鉴别技术。</p>
 <p>在传统的书信或文件中，通过亲笔签名或印章来证明其真实性，而在计算机网络中，传送的报文通常使用数字签名的技术来模拟日常生活中的亲笔签名。</p>
 <h3 id="原理-5"><a href="#原理-5" class="headerlink" title="原理(*)"></a>原理(*)</h3><p>在使用公开密钥加密算法进行数字签名前，<strong>通常先使用单向散列函数(Hash Function，又称为哈希函数)对要签名的消息进行处理并生成消息摘要(Message Digest, MD)</strong>，然后对消息摘要进行签名。</p>
 <h2 id="电子邮件加密"><a href="#电子邮件加密" class="headerlink" title="电子邮件加密"></a>电子邮件加密</h2><h3 id="PGP安全协议"><a href="#PGP安全协议" class="headerlink" title="PGP安全协议"></a>PGP安全协议</h3><p>PGP（Pretty Good Privacy，PGP）是一种基于RSA密钥加密体制供大众使用的加密协议。它不仅能对用户的邮件加密，还能在邮件上进行数字签名，让收信人确信邮件未被第三方篡改，从而达到安全通信的目的。</p>
