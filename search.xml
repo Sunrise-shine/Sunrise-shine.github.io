@@ -1678,7 +1678,12 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
   <entry>
     <title>Head_First_设计模式</title>
     <url>/2022/02/22/Head-First-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="Chapter-1-设计模式入门"><a href="#Chapter-1-设计模式入门" class="headerlink" title="Chapter 1 设计模式入门"></a>Chapter 1 设计模式入门</h1><p>第一个设计原则</p>
+<p>找出应用中可能需要变化之处，把它们独立起来，不要和那些不需要变化的代码混在一起。</p>
+]]></content>
+      <tags>
+        <tag>Head First 设计模式</tag>
+      </tags>
   </entry>
   <entry>
     <title>Java Learing 2</title>
@@ -2169,12 +2174,12 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
       </tags>
   </entry>
   <entry>
-    <title>Linux</title>
+    <title></title>
     <url>/2022/02/14/Linux/</url>
-    <content><![CDATA[<h1 id="Content-Introduction"><a href="#Content-Introduction" class="headerlink" title="Content Introduction"></a>Content Introduction</h1><h2 id="vmtools"><a href="#vmtools" class="headerlink" title="vmtools"></a>vmtools</h2><p>在主机Windows和虚拟机Linux上进行文件共享所需的工具。</p>
+    <content><![CDATA[<h1 id="Content-Introduction"><a href="#Content-Introduction" class="headerlink" title="Content Introduction"></a>Content Introduction</h1><h2 id="1-vmtools"><a href="#1-vmtools" class="headerlink" title="1. vmtools"></a>1. vmtools</h2><p>在主机Windows和虚拟机Linux上进行文件共享所需的工具。</p>
 <p>对于共享的部分，若Windows在其中新建文件夹，Linux上可以看到；同时，Linux对文件进行修改，Windows也可以看到。</p>
 <p>即，Windows和Linux对文件都有读写的权限，并且都对修改可见。</p>
-<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><ol>
+<h3 id="1-过程"><a href="#1-过程" class="headerlink" title="1. 过程"></a>1. 过程</h3><ol>
 <li>虚拟机—&gt;安装/重新安装vmtools(若桌面存在CentOS 7.6的光盘映像，需要先删除)，之后桌面会出现vmtools的光盘映像。</li>
 <li>打开光盘映像，将其中的那个压缩包复制到主文件夹中的/opt中，之后解压</li>
 <li><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220214163517194.png" alt="image-20220214163517194"></li>
@@ -2194,8 +2199,8 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <li><p>之后在D:\myshare(Windows)和主文件夹\其他位置\计算机\mnt\hgfs\myshare(Linux)中，双方任意一方进行增加、修改文件等操作的结果，双方都可见。</p>
 </li>
 </ol>
-<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p>但在实际开发中，一般远程登陆后，进行上传下载文件，不通过这种方式进行共享。</p>
-<h2 id="Linux目录结构-重要"><a href="#Linux目录结构-重要" class="headerlink" title="Linux目录结构(重要)"></a>Linux目录结构(重要)</h2><h3 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h3><p><strong>Linux会把硬件映射成一个文件来管理。</strong></p>
+<h3 id="2-tips"><a href="#2-tips" class="headerlink" title="2. tips"></a>2. tips</h3><p>但在实际开发中，一般远程登陆后，进行上传下载文件，不通过这种方式进行共享。</p>
+<h2 id="3-Linux目录结构-重要"><a href="#3-Linux目录结构-重要" class="headerlink" title="3. Linux目录结构(重要)"></a>3. Linux目录结构(重要)</h2><h3 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p><strong>Linux会把硬件映射成一个文件来管理。</strong></p>
 <ol>
 <li>Linux的文件系统是采用级层式的树状目录结构，在此结构中的最上层是根目录”/“，然后在此目录下再创建别的目录。</li>
 <li>规定了每个目录下存放的文件类型(如/bin下存常用命令等)。</li>
@@ -2204,14 +2209,14 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p><img src="https://s2.loli.net/2022/02/14/F9d6KWpel8MHOzb.png" alt="image-20220214170022218"></p>
 <p><img src="https://s2.loli.net/2022/02/14/f7gNkTUv8CYZ15o.png" alt="image-20220214170142179"></p>
 <p><img src="https://s2.loli.net/2022/02/14/Mmp7T63CSWsV4fw.png" alt="image-20220214170244070"></p>
-<h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><p><img src="https://s2.loli.net/2022/02/14/MdZyBbiCIKmz1rs.png" alt="image-20220214171223656"></p>
+<h3 id="2-详解"><a href="#2-详解" class="headerlink" title="2. 详解"></a>2. 详解</h3><p><img src="https://s2.loli.net/2022/02/14/MdZyBbiCIKmz1rs.png" alt="image-20220214171223656"></p>
 <p><img src="https://s2.loli.net/2022/02/14/U4ysVScpb5zXmft.png" alt="image-20220214171437594"></p>
 <p><img src="https://s2.loli.net/2022/02/14/ylqvWwxmTgcAtNS.png" alt="image-20220214171313425"></p>
 <p><strong>/proc和/srv和/sys存放系统文件，如果乱动，极大可能会导致系统崩溃。</strong></p>
 <p><img src="https://s2.loli.net/2022/02/14/2hWHTMim3tKdGUz.png" alt="image-20220214172749215"></p>
 <p><img src="https://s2.loli.net/2022/02/14/l6OD2K7oQFiEIkB.png" alt="image-20220214172650483"></p>
-<h2 id="远程登录Linux"><a href="#远程登录Linux" class="headerlink" title="远程登录Linux"></a>远程登录Linux</h2><p>不在同一台主机上的登录行为.</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><ol>
+<h2 id="4-远程登录Linux"><a href="#4-远程登录Linux" class="headerlink" title="4. 远程登录Linux"></a>4. 远程登录Linux</h2><p>不在同一台主机上的登录行为.</p>
+<h3 id="1-原因"><a href="#1-原因" class="headerlink" title="1. 原因"></a>1. 原因</h3><ol>
 <li>Linux服务器是开发小组共享</li>
 <li>正式上线的项目是运行在公网</li>
 <li>因此程序员需要远程登录到Linux进行项目管理或者开发</li>
@@ -2221,35 +2226,49 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <ol>
 <li>远程登录客户端有Xshell(远程登录)，Xftp(文件远程上传下载)等。</li>
 </ol>
-<h4 id="Xshell"><a href="#Xshell" class="headerlink" title="Xshell"></a>Xshell</h4><p><img src="https://s2.loli.net/2022/02/20/96wWaNZoYtFzu4j.png" alt="image-20220220182621199"></p>
+<h4 id="2-Xshell"><a href="#2-Xshell" class="headerlink" title="2. Xshell"></a>2. Xshell</h4><p><img src="https://s2.loli.net/2022/02/20/96wWaNZoYtFzu4j.png" alt="image-20220220182621199"></p>
 <p>输入reboot，可以控制Linux去重启。</p>
-<h4 id="Xftp"><a href="#Xftp" class="headerlink" title="Xftp"></a>Xftp</h4><p><img src="https://s2.loli.net/2022/02/20/S6HibfG2MyIrkCE.png" alt="image-20220220184936249"></p>
+<h4 id="3-Xftp"><a href="#3-Xftp" class="headerlink" title="3. Xftp"></a>3. Xftp</h4><p><img src="https://s2.loli.net/2022/02/20/S6HibfG2MyIrkCE.png" alt="image-20220220184936249"></p>
 <p><img src="https://s2.loli.net/2022/02/20/6xa2dzDHhGyQAgr.png" alt="image-20220220183955314"></p>
-<h2 id="vi和vim"><a href="#vi和vim" class="headerlink" title="vi和vim"></a>vi和vim</h2><h3 id="基本介绍-1"><a href="#基本介绍-1" class="headerlink" title="基本介绍"></a>基本介绍</h3><p>Linux会内置vi文本编辑器</p>
+<h2 id="5-vi和vim"><a href="#5-vi和vim" class="headerlink" title="5. vi和vim"></a>5. vi和vim</h2><h3 id="1-基本介绍-1"><a href="#1-基本介绍-1" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p>Linux会内置vi文本编辑器</p>
 <p>Vim具有程序编辑的能力，可以看作是vi的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。代码补完、编译及错误跳转等方便编程的功能丰富。</p>
-<h4 id="正常模式"><a href="#正常模式" class="headerlink" title="正常模式"></a>正常模式</h4><p>以vim打开一个档案就直接进入一般模式(这是默认的模式)。在这个模式中，可以使用按键来移动光标，可以使用删除字符和删除整行来处理档案内容，也可以复制粘贴。</p>
-<h4 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h4><p>可以增加文字进入档案。</p>
-<h4 id="命令行模式"><a href="#命令行模式" class="headerlink" title="命令行模式"></a>命令行模式</h4><p>可以完成读取、存盘、替换、离开vim，显示行号等操作。</p>
+<h4 id="1-正常模式"><a href="#1-正常模式" class="headerlink" title="1. 正常模式"></a>1. 正常模式</h4><p>以vim打开一个档案就直接进入一般模式(这是默认的模式)。在这个模式中，可以使用按键来移动光标，可以使用删除字符和删除整行来处理档案内容，也可以复制粘贴。</p>
+<h4 id="2-插入模式"><a href="#2-插入模式" class="headerlink" title="2. 插入模式"></a>2. 插入模式</h4><p>可以增加文字进入档案。</p>
+<h4 id="3-命令行模式"><a href="#3-命令行模式" class="headerlink" title="3. 命令行模式"></a>3. 命令行模式</h4><p>可以完成读取、存盘、替换、离开vim，显示行号等操作。</p>
 <p>先输入esc，再输入”:“后，即可从插入模式进入命令行模式。</p>
 <p>那么，输入“:wq”：进入命令行模式，之后write写入，再quit退出。</p>
-<p><img src="https://s2.loli.net/2022/02/20/gv4cASRlLOTCy8n.png" alt="image-20220220210524212"></p>
-<p><img src="https://s2.loli.net/2022/02/20/WZEHlAGYpPomKVt.png" alt="image-20220220210603347"></p>
+<p><img src="https://s2.loli.net/2022/03/05/Y2tnZp5ICXJ4WBe.png" alt="image-20220305215742256"></p>
 <p>再次进入只需 vim Hello.java。</p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p><img src="https://s2.loli.net/2022/02/20/u3EeAhDqC1i4SW2.png" alt="image-20220220222642750"></p>
-<h4 id="常用的7个快捷键"><a href="#常用的7个快捷键" class="headerlink" title="常用的7个快捷键"></a>常用的7个快捷键</h4><p><img src="https://s2.loli.net/2022/02/20/1p6URexnwAgZTt8.png" alt="image-20220220225039845"></p>
+<h3 id="2-快捷键"><a href="#2-快捷键" class="headerlink" title="2. 快捷键"></a>2. 快捷键</h3><p><img src="https://s2.loli.net/2022/02/20/u3EeAhDqC1i4SW2.png" alt="image-20220220222642750"></p>
+<h4 id="1-常用的7个快捷键"><a href="#1-常用的7个快捷键" class="headerlink" title="1. 常用的7个快捷键"></a>1. 常用的7个快捷键</h4><p><img src="https://s2.loli.net/2022/02/20/1p6URexnwAgZTt8.png" alt="image-20220220225039845"></p>
 <h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><p>若是想转而查找别的单词，输入”/“即可。</p>
 <p>找不到的话，会有提示信息：</p>
 <p><img src="https://s2.loli.net/2022/02/20/kwvJVs9gUMAcxjC.png" alt="image-20220220223825590"></p>
 <h5 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h5><p>nu：number</p>
 <p>效果图如下：(若想删除行号，输入”:set nonu”)</p>
 <p><img src="https://s2.loli.net/2022/02/20/J1mLkXNTyC7zSwQ.png" alt="image-20220220224009345"></p>
-<h4 id="tips："><a href="#tips：" class="headerlink" title="tips："></a>tips：</h4><h5 id="先退回一般模式"><a href="#先退回一般模式" class="headerlink" title="先退回一般模式"></a>先退回一般模式</h5><p><strong>注意部分快捷键是要退回一般模式后使用的！</strong></p>
+<h4 id="2-tips："><a href="#2-tips：" class="headerlink" title="2. tips："></a>2. tips：</h4><h5 id="先退回一般模式"><a href="#先退回一般模式" class="headerlink" title="先退回一般模式"></a>先退回一般模式</h5><p><strong>注意部分快捷键是要退回一般模式后使用的！</strong></p>
 <p>在插入模式下，首先输入”:”，使得下方没有命令显示，只有”:”时，再按ESC退回到一般模式。</p>
 <h5 id="其他快捷键"><a href="#其他快捷键" class="headerlink" title="其他快捷键"></a>其他快捷键</h5><p>其他还有很多快捷键，但是没必要。实际开发项目时，还是先在熟悉的windows环境中将代码写好，然后上传到Linux中，但不可避免的，肯定也会有远程登录，然后修改代码等的情况，所以快捷键还是要掌握一些，比如列出的7种，一定要掌握的。</p>
+<h2 id="6-关机-amp-重启"><a href="#6-关机-amp-重启" class="headerlink" title="6. 关机&amp;重启"></a>6. 关机&amp;重启</h2><p>shutdown -h now : 立刻进行关机</p>
+<p>shutdown -h 1 ：给所有登录到该Linux的用户发送一个通知：1分钟后会关机</p>
+<p>shutdown -r now ：现在重启计算机(reboot)</p>
+<p>halt ：关机，作用和上边的一样</p>
+<p>reboot ：现在重启计算机</p>
+<p>sync ：把内存的数据同步到磁盘</p>
+<p>不管是重启还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中</p>
+<p>目前的shutdown/reboot/halt等命令均已经在关机前进行了sync，但所谓小心驶得万年船。</p>
+<h2 id="7-登录注销"><a href="#7-登录注销" class="headerlink" title="7. 登录注销"></a>7. 登录注销</h2><h3 id="1-基本介绍-2"><a href="#1-基本介绍-2" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><ol>
+<li><p>登录时尽量少用root账号登录(实际开发时少用)，因为它是系统管理员，最大的权限，避免操作失误，可以利用普通用户登录，登录后再用”su - 用户名”命令来切换称系统管理员身份。</p>
+</li>
+<li><p>在提示符下输入logout即可注销用户</p>
+</li>
+</ol>
+<h3 id="2-使用细节"><a href="#2-使用细节" class="headerlink" title="2. 使用细节"></a>2. 使用细节</h3><ol>
+<li>logout注销指令在图形运行级别(图形界面)无效，在运行级别 3下有效</li>
+<li></li>
+</ol>
 ]]></content>
-      <tags>
-        <tag>看视频学Linux</tag>
-      </tags>
   </entry>
   <entry>
     <title>Maven</title>
@@ -3210,7 +3229,7 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p>对于数组类型的域，可以使用静态的Arrays.equals方法检测相应的数组元素是否相等。</p>
 </blockquote>
 <p><img src="https://s2.loli.net/2022/01/18/f19UtvBs7MEOdCH.png" alt="image-20220118001450380"></p>
-<h3 id="第二讲-hashcode方法"><a href="#第二讲-hashcode方法" class="headerlink" title="第二讲 hashcode方法"></a>第二讲 hashcode方法</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><p>散列码(hashcode)是由对象导出的一个整型值。散列码是没有规律的。如果x和y是两个不同的对象，x.hashCode( )与y.hashCode( )基本上不会相同。</p>
+<h3 id="第二节-hashcode方法"><a href="#第二节-hashcode方法" class="headerlink" title="第二节 hashcode方法"></a>第二节 hashcode方法</h3><h4 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h4><p>散列码(hashcode)是由对象导出的一个整型值。散列码是没有规律的。如果x和y是两个不同的对象，x.hashCode( )与y.hashCode( )基本上不会相同。</p>
 <p><img src="https://s2.loli.net/2022/01/18/KBXh3gSZmtCG4Mx.png" alt="image-20220118003233455"></p>
 <p><img src="https://s2.loli.net/2022/01/18/rRsCczkHXWQvZ5d.png" alt="image-20220118003328447"></p>
 <h4 id="2-为什么要有hashCode"><a href="#2-为什么要有hashCode" class="headerlink" title="2. 为什么要有hashCode"></a>2. 为什么要有hashCode</h4><p>当你把对象加入HashSet时，HashSet会先计算对象的hashCode值来判断对象加入的位置，同时也会与其他已经加入的对象的hashCode值作比较，如果没有相符的hashCode，HashSet会假设对象没有重复出现。</p>
@@ -3236,6 +3255,63 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p>同时，需要组合多个散列值时，可以调用Objects.hash并提供多个参数。这个方法会对各个参数调用Objects.hashCode，并组合这些散列值。</p>
 <p><img src="https://s2.loli.net/2022/02/22/ln71gMSFscJN6Pv.png" alt="image-20220222000939436"></p>
 <h2 id="第三讲-泛型数组列表"><a href="#第三讲-泛型数组列表" class="headerlink" title="第三讲 泛型数组列表"></a>第三讲 泛型数组列表</h2><p>在Java中，允许在运行时确定数组的大小，但并不能在运行时动态更改数组。所以，ArrayList得以广泛应用。</p>
+<h3 id="引子-菱形语法"><a href="#引子-菱形语法" class="headerlink" title="引子 菱形语法"></a>引子 菱形语法</h3><p>ArrayList是个采用类型参数(type parameter)的泛型类(generic class)。为了指定数组列表保存的元素对象类型，需要用一堆尖括号将类名括起来加在后面。如：</p>
+<p><code>ArrayList&lt;Employee&gt; staff = new ArrayList&lt;&gt;(); // 省略了右边的类型参数</code></p>
+<p>这被称为菱形语法，因为空尖括号&lt;&gt;就像一个菱形。可以结合new操作符使用菱形语法。编译器会检查新值是什么。如果赋值给一个变量，或传递到某个方法，或者从这个方法返回，编译器会检查这个变量、参数或方法的泛型类型，然后将这个类型放在&lt;&gt;中。在这个例子中，new ArrayList&lt;&gt;()将赋至一个类型为ArrayList<Employee>的变量，所以泛型类型为Employee。</p>
+<h3 id="第一节-方法"><a href="#第一节-方法" class="headerlink" title="第一节 方法"></a>第一节 方法</h3><h4 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h4><p>在数组列表中，如果调用add并且内部数组已经满了，数组列表就将自动地创建一个更大的数组，并将所有的对象从较小的数组中拷贝到较大的数组中。</p>
+<h4 id="capacity-和-size"><a href="#capacity-和-size" class="headerlink" title="capacity 和 size"></a>capacity 和 size</h4><p>数组的大小和数组列表的容量有一个非常重要的区别。</p>
+<p>如果为数组分配100个元素的存储空间，数组就有100个空位置可以使用。</p>
+<p>而容量为100个元素的数组列表只是拥有保存100个元素的潜力。但是在最初，甚至完成了初始化构造之后，数组列表根本就不含有任何元素。</p>
+<p>一旦能够确认数组列表的长度不再变化，可以使用trimToSize的方法。这个方法将存储区域的大小调整为当前元素数量所需的存储空间变化。垃圾回收器将回收多余的空间。(此时再添加新元素就需要花时间再次移动存储块，所以应该再确认不会添加任何元素的情况下，再调用trimToSize。)</p>
+<h3 id="第二节-访问数组列表元素"><a href="#第二节-访问数组列表元素" class="headerlink" title="第二节 访问数组列表元素"></a>第二节 访问数组列表元素</h3><p>不能使用[ ]语法格式，只能使用set或get方法来实现访问或改变数组元素的操作。</p>
+<h5 id="set方法"><a href="#set方法" class="headerlink" title="set方法"></a>set方法</h5><p>只有i小于等于数组列表的大小时，才能使用 list.set(i, x) 方法。例如，下面这段代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ArrayList&lt;Employee&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(<span class="number">100</span>);</span><br><span class="line">list.set(<span class="number">0</span>, x); <span class="comment">//no element 0 yet</span></span><br></pre></td></tr></table></figure>
+<p>使用add方法添加元素，使用set方法只能改变已有元素的值，不能添加。</p>
+<h5 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h5><p><code>Employee a = staff.get(i);</code></p>
+<h5 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h5><p>可以先使用数组列表创建并添加元素，之后使用.toArray( )方法将其转化为数组。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Employee[] x = <span class="keyword">new</span> <span class="title class_">Employee</span>[list.size()];</span><br><span class="line">list.toArray(x);</span><br></pre></td></tr></table></figure>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">set</span><span class="params">(<span class="type">int</span> index, E object)</span>;</span><br><span class="line">E <span class="title function_">get</span><span class="params">(<span class="type">int</span> index)</span>;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> index, E object)</span>; <span class="comment">// 可以不用加index</span></span><br><span class="line">E <span class="title function_">remove</span><span class="params">(<span class="type">int</span> index)</span>; <span class="comment">// 删除一个元素，并将其后的元素向前移动，被删除的元素由返回值返回。</span></span><br></pre></td></tr></table></figure>
+<h3 id="第三节-类型化与原始数组列表的兼容性"><a href="#第三节-类型化与原始数组列表的兼容性" class="headerlink" title="第三节 类型化与原始数组列表的兼容性"></a>第三节 类型化与原始数组列表的兼容性</h3><p>与没有使用类型参数的遗留代码交互操作。</p>
+<ol>
+<li><p>可以将一个类型化的数组列表作为函数的参数赋值给原始的ArrayList对象，如：</p>
+<p> ArrayList<Employee> staff 可以作为参数赋值给ArrayList list，且不需要任何的类型转换。</p>
+</li>
+<li><p>但是将一个原始的ArrayList赋给一个类型化的ArrayList会得到一个警告信息。如</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"> <span class="keyword">public</span> ArrayList <span class="title function_">find</span><span class="params">(String query)</span> &#123;...&#125;</span><br><span class="line"></span><br><span class="line">ArrayList&lt;Employee&gt; list = find(query); <span class="comment">// yields warning</span></span><br><span class="line"><span class="comment">// 使用类型转化也无用</span></span><br><span class="line">ArrayList&lt;Employee&gt; list = (ArrayList&lt;Employee&gt;)find(query); <span class="comment">// 指出类型转换有误</span></span><br></pre></td></tr></table></figure>
+<p> 这就是Java中不尽如人意的参数化类型的限制所带来的结果。</p>
+<p> 鉴于兼容性的考虑，编译器在对类型转换进行检查之后，如果没有发现违反规则的现象，就将所有的类型化类数组列表转换成原始ArrayList对象。</p>
+<p> 即，在程序运行时，所有的数组列表都是一样的，没有虚拟机中的类型参数。</p>
+</li>
+</ol>
+<h2 id="第四讲-对象包装器与自动装箱"><a href="#第四讲-对象包装器与自动装箱" class="headerlink" title="第四讲 对象包装器与自动装箱"></a>第四讲 对象包装器与自动装箱</h2><p>&lt; &gt;中的类型参数不允许是基本类型。</p>
+<h3 id="自动装箱"><a href="#自动装箱" class="headerlink" title="自动装箱"></a>自动装箱</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">list.add(<span class="number">3</span>); <span class="comment">// 会自动将其变换成list.add(Integer.valueOf(3));</span></span><br></pre></td></tr></table></figure>
+<h3 id="自动拆箱"><a href="#自动拆箱" class="headerlink" title="自动拆箱"></a>自动拆箱</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> list.get(i); <span class="comment">// 自动变换成list.get(i).intValue();</span></span><br></pre></td></tr></table></figure>
+<h2 id="第五讲-参数数量可变的方法"><a href="#第五讲-参数数量可变的方法" class="headerlink" title="第五讲 参数数量可变的方法"></a>第五讲 参数数量可变的方法</h2><p>printf方法是这样定义的:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrintStream</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> PrintStream <span class="title function_">printf</span><span class="params">(String fmt, Object... args)</span> &#123; <span class="keyword">return</span> format(fmt, args); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的…是Java代码的一部分，表示可以接收任意数目的变量。</p>
+<p>其实，printf方法接收两个参数，一个是格式化字符串，一个是Object[ ]数组。</p>
+<p><strong>但是只允许其作为最后一个参数。</strong></p>
+<h2 id="第六讲-枚举类"><a href="#第六讲-枚举类" class="headerlink" title="第六讲 枚举类"></a>第六讲 枚举类</h2><p>举个例子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> enmu Size &#123; SMALL, MEDIUM, LARGE, EXTRA_LARGE &#125;;</span><br></pre></td></tr></table></figure>
+<p>这个声明定义的类型是一个类，它刚好有4个实例，在此尽量不要构造新对象。</p>
+<p>因此，在比较两个枚举类型的值时，永远不需要调用equels方法，而直接使用”==”即可。</p>
+<p>可以添加一些构造器、方法和域。构造器只是在构造枚举常量的时候被调用。</p>
+<p><img src="https://s2.loli.net/2022/03/06/zroXSF2fg3sjTp8.png" alt="image-20220306103631328"></p>
+<p>所有的枚举类型都是Enum类的子类。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Size.SMALL.toString() <span class="comment">// 返回&quot;SMALL&quot;</span></span><br><span class="line"><span class="type">Size</span> <span class="variable">s</span> <span class="operator">=</span> Eunm.valueOf(Size.class, <span class="string">&quot;SMALL&quot;</span>); <span class="comment">// 设置Size为Size.SMALL</span></span><br><span class="line"><span class="keyword">static</span> Enum <span class="title function_">valueOf</span><span class="params">(Class enumClass, String name)</span> <span class="comment">// 返回指定名字、给定类的枚举常量</span></span><br><span class="line">Size[] values = Size.values(); <span class="comment">// 返回包含全部枚举值的数组</span></span><br><span class="line">Size.SMALL.ordinal() <span class="comment">// 返回enum声明中枚举常量的位置，从0开始计数，返回0.</span></span><br></pre></td></tr></table></figure>
+<h2 id="第七讲-反射"><a href="#第七讲-反射" class="headerlink" title="第七讲 反射"></a>第七讲 反射</h2><h3 id="第0节-概述"><a href="#第0节-概述" class="headerlink" title="第0节 概述"></a>第0节 概述</h3><p>能够分析类能力的程序称为反射(reflective)。</p>
+<p>反射机制可以用来：</p>
+<ul>
+<li>在运行时分析类的能力</li>
+<li>在运行时查看对象</li>
+<li>实现通用的数组操作代码</li>
+<li>利用Method对象，类似C++中的函数指针</li>
+</ul>
+<h3 id="第一节-Class类"><a href="#第一节-Class类" class="headerlink" title="第一节 Class类"></a>第一节 Class类</h3><p>在程序运行期间，Java运行时系统始终为所有的对象维护一个被称为运行时的类型标识。</p>
+<p>这个信息跟踪着每个对象所属的类。虚拟机利用运行时类型信息选择相应的方法执行。</p>
+<p>可以通过专门的Java类访问这些信息。保存这些信息的类被称为Class。</p>
+<p><strong>一个Class对象将表示一个特定类的属性。</strong></p>
+<p>最常用的是getName方法，返回类的名字。</p>
 ]]></content>
       <tags>
         <tag>核心卷一</tag>
@@ -3653,7 +3729,7 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p>实现，自定义响应报文来响应浏览器</p>
 <h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ol>
 <li>根据在工程中的相对路径，获取文件在服务器中的绝对路径</li>
-<li>创建输入流，将文件通放入输入流</li>
+<li>创建输入流，将文件放入输入流</li>
 <li>从输入流读文件进入字节数组</li>
 <li>将字节数组中的数据，作为响应报文的响应体</li>
 <li>创建响应头HttpHeaders()和响应状态码HttpStatus</li>
@@ -3671,7 +3747,112 @@ X^rK(X)=G(X)(除式)Q(X)(商式)+R(X)(余式)</script><p>式中，$Q(X)$为商�
 <p>当前文件的名字</p>
 <p>覆盖的是文件里的内容，当两个文件同名，后者将前者文件里的内容进行了覆盖。</p>
 <p><img src="https://s2.loli.net/2022/02/21/hjz9eRDUJQKoY2E.png" alt="image-20220221001840497"></p>
-<h1 id="十一、拦截器"><a href="#十一、拦截器" class="headerlink" title="十一、拦截器"></a>十一、拦截器</h1><h1 id="十二、异常处理器"><a href="#十二、异常处理器" class="headerlink" title="十二、异常处理器"></a>十二、异常处理器</h1><h1 id="末章-补充信息"><a href="#末章-补充信息" class="headerlink" title="末章 补充信息"></a>末章 补充信息</h1><h2 id="1-ServletContext介绍"><a href="#1-ServletContext介绍" class="headerlink" title="1. ServletContext介绍"></a>1. ServletContext介绍</h2><h3 id="1-简介-1"><a href="#1-简介-1" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>ServletContext官方叫servlet上下文。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/testUp&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">testUp</span><span class="params">(MultipartFile photo, HttpSession session)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> session.getServletContext();</span><br><span class="line">    <span class="comment">// 放置上传文件的文件夹在服务器中的绝对路径</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">photoPath</span> <span class="operator">=</span> servletContext.getRealPath(<span class="string">&quot;photo&quot;</span>);</span><br><span class="line">    <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(photoPath);</span><br><span class="line">    <span class="keyword">if</span> (!file.exists()) &#123;</span><br><span class="line">        file.mkdirs();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> photo.getOriginalFilename();</span><br><span class="line">    <span class="comment">// 获取文件的后缀名，如.jpg</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">suffixName</span> <span class="operator">=</span> fileName.substring(fileName.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">    <span class="comment">// 随机生成一个文件名</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">uuid</span> <span class="operator">=</span> UUID.randomUUID().toString().replaceAll(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="comment">// 组转称一个带有后缀的真正文件名</span></span><br><span class="line">    fileName = uuid + suffixName;</span><br><span class="line">    <span class="comment">// 生成文件的绝对路径</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">finalPath</span> <span class="operator">=</span> photoPath + File.separator + fileName;</span><br><span class="line">    <span class="comment">// MultipartFile中封装的上传文件的方法</span></span><br><span class="line">    photo.transferTo(<span class="keyword">new</span> <span class="title class_">File</span>(finalPath));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;index&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="十一、拦截器"><a href="#十一、拦截器" class="headerlink" title="十一、拦截器"></a>十一、拦截器</h1><h2 id="1-拦截器的配置"><a href="#1-拦截器的配置" class="headerlink" title="1. 拦截器的配置"></a>1. 拦截器的配置</h2><p>SpringMVC中的拦截器用于拦截控制方法的执行。(Controller方法，也叫Handler方法，也就是处理器方法，</p>
+<p>SpringMVC中的拦截器需要实现HandlerInterceptor。</p>
+<p>SpringMVC的拦截器必须在SpringMVC的配置文件中进行配置：</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置拦截器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 当前的拦截器就是FirstInterceptor对象 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 对所有的请求进行拦截，使用ref bean也是如此 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;bean class=&quot;com.test.interceptors.FirstInterceptor&quot;&gt;&lt;/bean&gt; </span></span><br><span class="line"><span class="comment">		&lt;ref bean==&quot;firstInterceptor&quot;&gt;&lt;/ref&gt; </span></span><br><span class="line"><span class="comment">		拦截DispatcherServlet中配置的所有请求(因为如果没有控制器方法的话，拦不了)</span></span><br><span class="line"><span class="comment">	--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">			在拦截器中，/**表示的才是所有请求，/*表示的仅是上下文路径下的第一层目录，如/index之类的 </span></span><br><span class="line"><span class="comment">			排除了访问首页的请求</span></span><br><span class="line"><span class="comment">			设置拦截器为FirstInterceptor类的对象(FirstInterceptor要加注解，注册成为IOC容器中的对象)</span></span><br><span class="line"><span class="comment">		--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">&quot;/**&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mvc:exclude-mapping</span> <span class="attr">path</span>=<span class="string">&quot;/&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ref</span> <span class="attr">bean</span>=<span class="string">&quot;firstInterceptor&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ref</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	以上配置方法可以通过ref或bean标签设置拦截器，通过mvc:mapping设置需要拦截的请求，通过mvc:exclude-mapping设置需要排除的请求，即不需要拦截的请求</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+<p>doFilter：调用下一个过滤器，其实就是放行的意思。</p>
+<h2 id="2-拦截器的三个抽象方法"><a href="#2-拦截器的三个抽象方法" class="headerlink" title="2. 拦截器的三个抽象方法"></a>2. 拦截器的三个抽象方法</h2><p>SpringMVC中的拦截器有三个抽象方法：</p>
+<p>preHandler：控制器方法执行之前执行preHandler( )，其boolean类型的返回值表示是否拦截或放行，返回true为放行，即调用控制器方法；返回false表示拦截，即不调用控制器方法</p>
+<p>postHandler：控制器方法执行之后执行postHandler( )</p>
+<p>afterCompletion：处理完视图和模型数据，将模型填充完视图(就是将ModelAndView中的Model填充到View中之后)，即渲染完视图之后执行afterCompletion( )</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 注册成为IOC容器中的对象</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FirstInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;First Handler --&gt; preHandler&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;First Handler --&gt; postHandler&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;First Handler --&gt; afterCompletion&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/03/04/y6sGFKnoAuwiC5g.png" alt="image-20220304211303104"></p>
+<h3 id="3-多个拦截器的执行顺序"><a href="#3-多个拦截器的执行顺序" class="headerlink" title="3. 多个拦截器的执行顺序"></a>3. 多个拦截器的执行顺序</h3><h4 id="1-若每个拦截器的preHandle-都返回true"><a href="#1-若每个拦截器的preHandle-都返回true" class="headerlink" title="1. 若每个拦截器的preHandle()都返回true"></a>1. 若每个拦截器的preHandle()都返回true</h4><p>preHandler：按照配置的顺序执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="built_in">this</span>.interceptorList.size() - <span class="number">1</span>; i++)</span><br></pre></td></tr></table></figure>
+<p>postHandler和afterCompletion：按照配置的反序执行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="built_in">this</span>.interceptorList.size() - <span class="number">1</span>; i &gt;=<span class="number">0</span> ; i--)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="built_in">this</span>.interceptorIndex; i &gt;= <span class="number">0</span>; i--)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/03/05/fRGnkNeWdjrybtp.png" alt="image-20220305161717406"></p>
+<p><img src="https://s2.loli.net/2022/03/05/vKESaZ7xAf8ib9J.png" alt="image-20220305170713313"></p>
+<p><img src="https://s2.loli.net/2022/03/05/tEf9o2JpMOPWSs1.png" alt="image-20220305170926324"></p>
+<h4 id="2-若某个拦截器的preHandler-返回了false"><a href="#2-若某个拦截器的preHandler-返回了false" class="headerlink" title="2. 若某个拦截器的preHandler()返回了false"></a>2. 若某个拦截器的preHandler()返回了false</h4><p>preHandle( )返回false和它之前的拦截器的preHandle( )都会执行，postHandle( )都不执行，返回false的拦截器之前的拦截器的afterCompletion( )会执行。</p>
+<p><img src="https://s2.loli.net/2022/03/05/pD5AYMTGyLSO9HP.png" alt="image-20220305173638365"></p>
+<p>因为一旦preHandle返回了false，那么方法会直接return，即其下的所有语句都不会执行(包括postHandle( )和afterCompletion( ))。</p>
+<p><img src="https://s2.loli.net/2022/03/05/6OqsKRAnFB3l9uI.png" alt="image-20220305173800001"></p>
+<h1 id="十二、异常处理器"><a href="#十二、异常处理器" class="headerlink" title="十二、异常处理器"></a>十二、异常处理器</h1><h2 id="1-基于配置的异常处理"><a href="#1-基于配置的异常处理" class="headerlink" title="1. 基于配置的异常处理"></a>1. 基于配置的异常处理</h2><p>SpringMVC提供了一个处理控制器方法过程中所出现的异常的接口：HandlerExceptionResolver</p>
+<p>该接口的实现类有：DefaultHandlerExceptionResolver和SimpleMappingExceptionResolver(用于自定义异常处理)。</p>
+<p>使用方式：</p>
+<p>exceptionAttribute: 存储当前的异常信息，默认将其保存在当前请求域中，以value为该异常信息的键。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置异常处理器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.handler.SimpleMappingExceptionResolver&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;exceptionMappings&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">				properties的键表示处理器方法执行过程中出现的异常</span></span><br><span class="line"><span class="comment">				properties的值表示若出现指定异常时，设置一个新的视图名称，跳转到指定页面</span></span><br><span class="line"><span class="comment">			--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">&quot;java.lang.ArithmeticException&quot;</span>&gt;</span>error<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">		exceptionAttribute属性设置一个属性名，将出现的异常信息在请求域中进行共享。</span></span><br><span class="line"><span class="comment">		设置将异常信息共享在请求域中的键value，可以在请求域中获取异常信息</span></span><br><span class="line"><span class="comment"> 	--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;exceptionAttribute&quot;</span> <span class="attr">value</span>=<span class="string">&quot;ex&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2022/03/05/hK6PRFvd97aOzok.png" alt="image-20220305193514369"></p>
+<h2 id="2-基于注解的异常处理"><a href="#2-基于注解的异常处理" class="headerlink" title="2. 基于注解的异常处理"></a>2. 基于注解的异常处理</h2><p>此时就不需要在SpringMVC中进行配置了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 有将类标识为组件的功能</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(value=&#123;ArithmeticException.class, NullPointerException.class&#125;)</span></span><br><span class="line">    <span class="comment">// 这里的Exception指的是当前的出现异常，设置Model是为了将异常放到请求域中</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">testException</span><span class="params">(Exception ex, Model model)</span> &#123;</span><br><span class="line">        model.addAttribute(<span class="string">&quot;ex&quot;</span>, ex);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="十三、-注解配置SpringMVC"><a href="#十三、-注解配置SpringMVC" class="headerlink" title="十三、 注解配置SpringMVC"></a>十三、 注解配置SpringMVC</h1><p>使用配置类和注解代替web.xml和SpringMVC配置文件的功能</p>
+<h2 id="1-创建初始化类，代替web-xml"><a href="#1-创建初始化类，代替web-xml" class="headerlink" title="1. 创建初始化类，代替web.xml"></a>1. 创建初始化类，代替web.xml</h2><p>在Servlet3.0的环境中，容器会在类路径中查找实现Javax.servlet.ServletContainerInitializer接口的类，如果找到的话，就用它来配置servlet容器。</p>
+<p>Spring提供了这个接口的实现，名为SpringServletContainerInitializer，这个类反过来又会查找实现WebApplicationInitializer的类并将配置的任务交给它们来完成。</p>
+<p>当我们的类拓展了AbstractAnnotationConfigDispatcherServletInitializer(WebApplicationInitializer的一个基础实现)并将其部署到<strong>Servlet3.0容器</strong>的时候，容器会自动发现它，并用它来配置上下文。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebInit</span> <span class="keyword">extends</span> <span class="title class_">AbstractAnnotationConfigDispatcherServletInitializer</span> &#123;</span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 指定Spring的配置类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> Class&lt;?&gt;[]&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/5 21:12</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getRootConfigClasses() &#123;</span><br><span class="line">        <span class="comment">// 返回配置类</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;SpringConfig.class&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 指定SpringMVC的配置类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> Class&lt;?&gt;[]&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/5 21:13</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getServletConfigClasses() &#123;</span><br><span class="line">        <span class="comment">// 这个类要有</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;WebConfig.class&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Desc:指定DispatcherServlet的映射规则，即url-pattern</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> Class&lt;?&gt;[]&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/3/5 21:13</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> String[] getServletMappings() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;/&quot;</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Desc: 注册过滤器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> Filter[]&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/3/5 21:25</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Filter[] getServletFilters() &#123;</span><br><span class="line">        <span class="type">CharacterEncodingFilter</span> <span class="variable">characterEncodingFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CharacterEncodingFilter</span>();</span><br><span class="line">        characterEncodingFilter.setEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        characterEncodingFilter.setForceRequestEncoding(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">HiddenHttpMethodFilter</span> <span class="variable">hiddenHttpMethodFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HiddenHttpMethodFilter</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Filter</span>[]&#123;characterEncodingFilter, hiddenHttpMethodFilter&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置WebConfig类，代替SpringMVC-xml"><a href="#2-配置WebConfig类，代替SpringMVC-xml" class="headerlink" title="2. 配置WebConfig类，代替SpringMVC.xml"></a>2. 配置WebConfig类，代替SpringMVC.xml</h2><h3 id="视图解析器部分"><a href="#视图解析器部分" class="headerlink" title="视图解析器部分"></a>视图解析器部分</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span> WebConfig</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span> 代替SpringMVC的配置文件</span></span><br><span class="line"><span class="comment"> * 1. 扫描组件 2.视图解析器 3.view-controller 4.default-servlet-handler 5.mvc注解驱动</span></span><br><span class="line"><span class="comment"> * 6.文件上传解析器 7.异常处理 8.拦截器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/03/2022/3/5 21:19</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="comment">// 扫描组件</span></span><br><span class="line"><span class="meta">@ComponentScan</span></span><br><span class="line"><span class="comment">// mvc注解驱动</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Desc: 生成模板解析器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> org.thymeleaf.templateresolver.ITemplateResolver&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/3/5 21:42</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ITemplateResolver <span class="title function_">templateResolver</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">WebApplicationContext</span> <span class="variable">webApplicationContext</span> <span class="operator">=</span></span><br><span class="line">                ContextLoader.getCurrentWebApplicationContext();</span><br><span class="line">        <span class="type">ServletContextTemplateResolver</span> <span class="variable">templateResolver</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ServletContextTemplateResolver</span>(</span><br><span class="line">                        webApplicationContext.getServletContext());</span><br><span class="line">        templateResolver.setPrefix(<span class="string">&quot;/WEB-INF/templates/&quot;</span>);</span><br><span class="line">        templateResolver.setSuffix(<span class="string">&quot;.html&quot;</span>);</span><br><span class="line">        templateResolver.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        templateResolver.setTemplateMode(TemplateMode.HTML);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> templateResolver;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Desc: 生成模板引擎并为其注入模板解析器</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> templateResolver</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> SpringTemplateEngine&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/3/5 21:41</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SpringTemplateEngine <span class="title function_">templateEngine</span><span class="params">(ITemplateResolver templateResolver)</span> &#123;</span><br><span class="line">        <span class="type">SpringTemplateEngine</span> <span class="variable">templateEngine</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">SpringTemplateEngine</span>();</span><br><span class="line">        templateEngine.setTemplateResolver(templateResolver);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> templateEngine;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Desc: 生成视图解析器并将解析器注入模板引擎</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> templateEngine</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> ViewResolver&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@date</span> 2022/3/5 21:40</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ViewResolver <span class="title function_">viewResolver</span><span class="params">(SpringTemplateEngine templateEngine)</span> &#123;</span><br><span class="line">        <span class="type">ThymeleafViewResolver</span> <span class="variable">viewResolver</span> <span class="operator">=</span></span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">ThymeleafViewResolver</span>();</span><br><span class="line">        viewResolver.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        viewResolver.setTemplateEngine(templateEngine);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> viewResolver;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>整体的步骤可以根据之前配置的SpringMVC.xml文件中的视图解析器的配置得到。</p>
+<p>由其中代码可得：最外部的Thymeleaf视图解析器，其中按照内部bean的方式，配置了一个SpringTemplate-Engine的属性，而对于这个SpringTemplateEngine，其中又以内部bean的方式配置了一个ITemplateResolver的属性。则可得，想要完成这个视图解析器，需要一一将内部的属性给表示出来，并注册到IOC容器中，使属性成为一个可以给参数赋值的bean。</p>
+<h4 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h4><ol>
+<li>@Bean这个注解，加上之后，当前方法的返回值就是IOC的一个bean。</li>
+</ol>
+<p>​        当前创建的IOC容器，如果是Java工程，就是一个ApplicationContext，如果当前工程是一个web环境，就是WebApplicationContext。</p>
+<ol>
+<li><p>方法中的参数，都是通过自动装配的方式，进行赋值的，这就要求能够使用的参数，必须是当前Spring的IOC容器中已经拥有的bean，可以为该参数赋值的情况下。(当前方法中的参数，必须要符合自动装配的规则，否则会报错，提示could not autowire…)</p>
+</li>
+<li><p>通过set方法对内部属性进行赋值(自动装配，在Spring中，必须要有set方法，才能在配置文件中进行属性赋值)。</p>
+</li>
+</ol>
+<h3 id="剩余部分"><a href="#剩余部分" class="headerlink" title="剩余部分"></a>剩余部分</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 4. default-servlet-handler</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> configurer</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/7 20:33</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureDefaultServletHandling</span><span class="params">(DefaultServletHandlerConfigurer configurer)</span> &#123;</span><br><span class="line">    configurer.enable();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 8. 拦截器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> registry</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/7 20:38</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> &#123;</span><br><span class="line">    <span class="type">TestInterceptor</span> <span class="variable">testInterceptor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TestInterceptor</span>();</span><br><span class="line">    registry.addInterceptor(testInterceptor).addPathPatterns(<span class="string">&quot;/**&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 3. view-controller</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> registry</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/7 20:44</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> &#123;</span><br><span class="line">    registry.addViewController(<span class="string">&quot;/hello&quot;</span>).setViewName(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 6. 文件上传解析器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@link</span> MultipartResolver&#125;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/7 20:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> MultipartResolver <span class="title function_">multipartResolver</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">CommonsMultipartResolver</span> <span class="variable">commonsMultipartResolver</span> <span class="operator">=</span></span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">CommonsMultipartResolver</span>();</span><br><span class="line">    <span class="keyword">return</span> commonsMultipartResolver;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Desc: 7. 异常处理</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> resolvers</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LISHANSHAN</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/7 20:47</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureHandlerExceptionResolvers</span><span class="params">(List&lt;HandlerExceptionResolver&gt; resolvers)</span> &#123;</span><br><span class="line">    <span class="type">SimpleMappingExceptionResolver</span> <span class="variable">exceptionResolver</span> <span class="operator">=</span></span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">SimpleMappingExceptionResolver</span>();</span><br><span class="line">    <span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">    properties.setProperty(<span class="string">&quot;java.lang.ArithmeticException&quot;</span>, <span class="string">&quot;error&quot;</span>);</span><br><span class="line">    exceptionResolver.setExceptionMappings(properties);</span><br><span class="line">    exceptionResolver.setExceptionAttribute(<span class="string">&quot;exception&quot;</span>);</span><br><span class="line">    resolvers.add(exceptionResolver);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h4><p>大部分是通过实现接口WebMvcConfigurer提供的方法。</p>
+<p>其中的文件上传解析器，是根据SpringMVC.xml中的配置(只需一个bean标签即可)，自行构造一个Multipart-Resolver接口的实现类commonsMultipartResolver的对象后，将其通过@Bean注解注册到IOC容器中成为一个bean的。</p>
+<p>至于其他部分，直接根据待实现的方法，构造参数即可。需要注意的是异常处理的方法。</p>
+<h5 id="异常处理部分"><a href="#异常处理部分" class="headerlink" title="异常处理部分"></a>异常处理部分</h5><p>首先它的参数是一个List</p>
+<p>其次，这一部分在配置文件中，设置了props标签，所以需要在方法中设置properties这一属性。</p>
+<p>而后，由于properties操作属性集properties文件，该文件中存储的键和值都只能是字符串，所以说在操作属性集文件时，不能使用get和set方法，而要使用专门提供的setProperty( )方法。</p>
+<h1 id="十四、SpringMVC执行流程"><a href="#十四、SpringMVC执行流程" class="headerlink" title="十四、SpringMVC执行流程"></a>十四、SpringMVC执行流程</h1><h2 id="1-SpringMVC常用组件"><a href="#1-SpringMVC常用组件" class="headerlink" title="1. SpringMVC常用组件"></a>1. SpringMVC常用组件</h2><h3 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h3><p>前端控制器，不需要工程师开发，由框架提供。</p>
+<p>作用：统一处理请求和响应，是整个流程控制的中心，由他调用其他组件处理用户的请求。</p>
+<h3 id="HandlerMapping"><a href="#HandlerMapping" class="headerlink" title="HandlerMapping"></a>HandlerMapping</h3><p>处理器映射器，不需要工程师开发，由框架提供</p>
+<p>作用：根据请求的url、method等信息查找Handler，即控制器方法</p>
+<h3 id="Handler"><a href="#Handler" class="headerlink" title="Handler"></a>Handler</h3><p>处理器(控制器)，需要工程师开发</p>
+<p>作用：在DispatcherServlet的控制下，针对具体的用户请求进行处理</p>
+<h3 id="HandlerAdapter"><a href="#HandlerAdapter" class="headerlink" title="HandlerAdapter"></a>HandlerAdapter</h3><p>处理器适配器，不需要工程师开发，由框架提供</p>
+<p>作用：通过HandlerAdapter对处理器进行执行</p>
+<h3 id="ViewResolver"><a href="#ViewResolver" class="headerlink" title="ViewResolver"></a>ViewResolver</h3><p>视图解析器，不需要工程师开发，由框架提供</p>
+<p>作用：进行视图解析，得到相应的视图，如ThymeleafView、InternalResourceView、RedirectView</p>
+<h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><p>视图，需要进行页面设置</p>
+<p>作用：将模型数据通过页面展示给用户</p>
+<h2 id="2-DispatcherServlet初始化过程"><a href="#2-DispatcherServlet初始化过程" class="headerlink" title="2. DispatcherServlet初始化过程"></a>2. DispatcherServlet初始化过程</h2><p>本质上是一个Servlet，所以遵循Servlet的生命周期，所以宏观上是Servlet生命周期来进行调度。</p>
+<p><img src="https://s2.loli.net/2022/03/07/6sl8LdIiEZYab9v.png" alt="image-20220307215703655"></p>
+<p><img src="https://s2.loli.net/2022/03/07/VphscB7t1LewbrH.png" alt="image-20220307215730504"></p>
+<p>Spring的IOC容器为父容器，而SpringMVC的IOC为子容器</p>
+<p>FrameworkServlet创建WebApplicationContext后，需要刷新容器，即调用onRefresh(wac)方法(FrameworkServlet中，没有该方法的方法体)。此方法在DispatcherServlet中进行了重写，调用了InitStrategies(context)方法，即初始化策略，初始化DispatcherServlet的各个组件。</p>
+<p><img src="https://s2.loli.net/2022/03/07/H5UfF4STskA73tp.png" alt="image-20220307221416187"></p>
+<h2 id="3-DispatcherServlet调用组件处理请求"><a href="#3-DispatcherServlet调用组件处理请求" class="headerlink" title="3. DispatcherServlet调用组件处理请求"></a>3. DispatcherServlet调用组件处理请求</h2><h3 id="1-processRequest"><a href="#1-processRequest" class="headerlink" title="1. processRequest()"></a>1. processRequest()</h3><p>向下转型</p>
+<h2 id="4-SpringMVC的执行流程"><a href="#4-SpringMVC的执行流程" class="headerlink" title="4. SpringMVC的执行流程"></a>4. SpringMVC的执行流程</h2><ol>
+<li>用户向服务器发送请求，请求被SpringMVC前端控制器DispatcherServlet捕获。</li>
+<li>DispatcherServlet对请求URL进行解析，得到请求资源标识符(URI)，判断请求URI对应的映射：<ol>
+<li>不存在<ol>
+<li>再判断是否配置了mvc:default-servlet-handler</li>
+<li>如果没配置，则控制台报映射查找不到，客户端展示404错误</li>
+<li>如果有配置，则访问目标资源(一般为静态资源，如JS、CSS、HTML)，找不到的话，客户端也会展示404错误</li>
+</ol>
+</li>
+<li>存在则执行下面的流程<ol>
+<li>根据该URI，调用HandlerMapping获得该Handler配置的所有相关对象(控制器方法、拦截器集合、拦截器索引)，最后以HandlerExecutionChain执行链对象的形式返回。</li>
+<li>DispatcherServlet根据获得的Handler，选择一个合适的HandlerAdapter。</li>
+<li>如果成功获得，此时开始执行拦截器的preHandler方法</li>
+<li>提取Request中的模型数据，填充Handler入参，开始执行Handler(Controller)方法，处理请求。在填充Handler的入参过程中，根据配置，Spring将：<ol>
+<li>HttpMessageConveter：将请求消息(如Json、xml等数据)转换成一个对象，将对象转换成指定的响应信息</li>
+<li>数据转换：对请求消息进行数据转换，如String转换成Integer等</li>
+<li>数据格式化：对请求消息进行数据格式化，如将字符串转换成格式化数字或格式化日期等</li>
+<li>数据验证：验证数据的有效性(长度、格式)，验证结果存储到BindingResult或Error中</li>
+<li>Handler执行完成后，向DispatcherServlet返回一个ModelAndView对象</li>
+<li>此时将开始执行拦截器的postHandler()方法</li>
+<li>根据返回的ModelAndView(此时判断是否存在异常，若存在，则执行HandlerExceptionResolver进行异常处理)，选择合适的ViewResolver视图解析器进行视图解析，根据Model和View来渲染视图。</li>
+<li>渲染视图完毕，执行拦截器的afterCompletion()方法</li>
+<li>将渲染结果返回给客户端。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="末章-补充信息"><a href="#末章-补充信息" class="headerlink" title="末章 补充信息"></a>末章 补充信息</h1><h2 id="1-ServletContext介绍"><a href="#1-ServletContext介绍" class="headerlink" title="1. ServletContext介绍"></a>1. ServletContext介绍</h2><h3 id="1-简介-1"><a href="#1-简介-1" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>ServletContext官方叫servlet上下文。</p>
 <p>服务器会为每一个工程创建一个对象，这个对象就是ServletContext对象。这个对象全局唯一，而且工程内部的所有servlet都共享这个对象。所以叫，<strong>全局应用程序共享对象</strong>。</p>
 <p><img src="https://s2.loli.net/2022/02/20/XrfVwxHI28oMdFO.png" alt="image-20220220123848890"></p>
 <h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2. 作用"></a>2. 作用</h3><ul>
@@ -3986,6 +4167,64 @@ i=j (mod) m(m为cache的行数)</script><p><img src="https://s2.loli.net/2021/12
 ]]></content>
       <tags>
         <tag>Lesson 31 A lovable eccentric</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Insights</title>
+    <url>/2022/03/05/Insights/</url>
+    <content><![CDATA[<p>Chapter 1 </p>
+<p>经济学的原理告诉我们：所有理性的人都知道必须面对权衡取舍。但在权衡取舍的过程中，我们往往并不理性：我们会被一时的快感牵制，而忘记了真正有价值的事情。当快感消退后，又会重新陷入懊悔之中，我们会因为短暂的不良情绪而无法正常处理事务，但当我们情绪恢复后，又会觉得刚才思考的问题不过是杞人忧天。</p>
+<p>所谓专注法则，就是要如何摆脱在纠结和懊悔之间返回徘徊的方法。</p>
+<p>如果在你行动之前丝毫没有准则，就会凭借着一时兴起做出决定，就会在很多事情上犯下错误。只有把我的优势在哪里？我要如何最大化优势？目前的紧急任务是什么？我应该怎么做？这一一系列问题原则化，给出自己在不同情况下的行为模式，才能更好地掌控自己。</p>
+<h2 id="关于To-do-list"><a href="#关于To-do-list" class="headerlink" title="关于To do list"></a>关于To do list</h2><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><p>第一、列出应该做的任务，而不是所有需要做的任务</p>
+<p>必须要分清楚，什么任务是你真正应该做的，而什么任务时你需要做但是实际上并不会立刻就做的。</p>
+<p>第二、为任务规划时间，而不是随意地安排</p>
+<p>在正确的时间做正确的事。按照所需要的能力将任务分为四大类：体力、创造力、逻辑思维能力、记忆力，然后思考不同时间段最应该做的事情是什么。寻找自己在什么时间多做什么事情最高效的规律。</p>
+<p>第三、制定计划时要面向未来，但最重要的时间是接下来一个小时。</p>
+<p>规划较长期的任务是：不要规划的过于复杂，而要集中专注于一件大事。</p>
+<p>真正有意义的事，需要你在一段时间内坚持投入时间。</p>
+<p>当你决定这个月应该做什么的时候，一定要集中专注于一件大事，并且把它拆解开来，然后分配到每一天。</p>
+<p>但无论你在 To do list 中列出了什么，你都要记住最关键的时间永远是接下来的1小时。不要总是把任务一口气安排到最后，看上去井井有条但实际上永远拖延到最后1分钟，这并不是好的时间管理方式。</p>
+<p>最好的状态是，如果自己觉得这会儿不错，尽管并没有安排接下来的任务，也不要浪费接下来的1 个小时。每一个“接下来1小时”都是最重要的，这才是时间管理的精髓。</p>
+<h3 id="制作任务清单"><a href="#制作任务清单" class="headerlink" title="制作任务清单"></a>制作任务清单</h3><p>第一、每天一件令你有成就感的工作</p>
+<p>第二、留出过渡时间，列出备用任务</p>
+<p>把每天的任务都塞得足够满，恨不得再多做一些事——但真正执行起来的时候，结果往往不如人意。面对这种情况，你可以每天为自己预留出1~2个小时作为调整和过度。</p>
+<p><img src="https://s2.loli.net/2022/03/05/B9q2Sotwj8YE1ax.png" alt="image-20220305154024366"></p>
+<p>第三、把To do list当作自己的回顾日志</p>
+<ul>
+<li>自己今天完成了哪些任务？能不能回顾一下这些任务，加深一遍印象？</li>
+<li>有哪些未完成的计划？是自己的状态不佳，还是计划太难，应该要如何调整？</li>
+<li>有哪些事情是更值得做的，但是却因为做另一些不那么重要的事情，而被放弃了？应该如何调整？</li>
+</ul>
+<h3 id="柳比歇夫的时间记录法"><a href="#柳比歇夫的时间记录法" class="headerlink" title="柳比歇夫的时间记录法"></a>柳比歇夫的时间记录法</h3><p>如果你只是列出计划，但却不能完成计划，计划用时和实际用时相差甚远，就会导致执行计划时感到并没有太大的用处：“计划不如变化”，那还不如不列任务清单呢。</p>
+<p>把每天的有效工作时间和所做的事项记录下来。</p>
+<p><img src="https://s2.loli.net/2022/03/05/zaUV7Y2ET4spM9A.png" alt="image-20220305154610065"></p>
+<p>如果你想要实现真正地专注，我建议你试一试这种时间记录法。当你开始记录的时候，千万要知道这份记录不是为了做给别人看，也不是为了炫耀或者满足自己的虚荣心而做，而是切切实实地为掌控自己的时间而做，因此你需要自己监督自己，自己向自己汇报。</p>
+<p>记住，这种方法真正的要义在于：了解自己，精确地感知时间。</p>
+<h4 id="要义"><a href="#要义" class="headerlink" title="要义"></a>要义</h4><p>一、只记录纯粹工作时间</p>
+<p>它是指你真正集中精力、全神贯注工作的那段时间。</p>
+<p><img src="https://s2.loli.net/2022/03/05/IYjfGW67p9BlS2z.png" alt="image-20220305154827014"></p>
+<p>当你开始把纯粹工作时间从杂七杂八的事项中提取出来，你才能意识到自己有多少时间都被耗费在没有意义的事情上。</p>
+<p>这种情况在一开始可能是经常发生的，你需要有意识地去改变。例如事先规定和朋友讨论的时间，设置一个闹钟，防止长时间的瞎侃；搜集资料的时候，从一开始就尽量不点开一些无用的链接，以防自己的注意力被分散。</p>
+<p>他感受到，生命只有一次，不可复得，而且生命中的每一天也同样具有这种只有一次、不可复得的性质。</p>
+<p>二、可持续是你最应该考虑到的</p>
+<p>当你在做这件事情的时候，随时提醒一下自己初衷是什么：是切切实实地自我提升，通过更多时间的工作和学习来充实自己，同时更好地提升效率；而绝不是为了账面上的好看，瞎填些模棱两可的时间和工作记录来哄骗自己。</p>
+<p><strong>打破你的仪式感，这是第一步。</strong></p>
+<p><strong>最关键的事情，就是从现在开始着手，而不是仅仅停留在“理论上我知道应该这么做”。</strong></p>
+<p>接下来你要做的就是坚持下去。你可能有一万种理由坚持不下去，例如今天实在太累，例如已经忘记早上做了什么，例如今天没有带那个用于记录的小本子……我无法列举出所有可能令你终止的情况，但是无论是哪种情况，它其实对我们来说都只是一个借口而已。</p>
+<p>三、如何使用这份记录？</p>
+<p>时间记录的本身并不是目的，它只是为了对抗两件事：第一件事是我们总是不能清楚地知道我们应该做什么；第二件事是我们总是不能清楚地知道我们做过什么</p>
+<p>你可以把时间记录法看作是 To do list 的逆过程：To do list 是在事前对将要做的所有事情进行规划，而时间记录法则是对已做的事情进行总结。</p>
+<h3 id="番茄工作法"><a href="#番茄工作法" class="headerlink" title="番茄工作法"></a>番茄工作法</h3><p>实际上，番茄工作法的核心规则并不在于用什么软件来记录番茄，也不在于到底是“番茄”计时还是“土豆”计时，而在于这个工作法背后隐藏的关于时间的法则——那就是设定单位时间，以单位时间安排任务，提高对时间的敏感度。</p>
+<p>单位时间尺度是番茄工作法的核心：将所有任务都切分为一个一个的时间块，而不是笼统地进行一项任务。</p>
+<h3 id="四象限工作法"><a href="#四象限工作法" class="headerlink" title="四象限工作法"></a>四象限工作法</h3><p>将什么样的任务划分在这四个象限中的哪个位置，并不是固定的，而是根据你当时具体的情况决定的。这也就是说，四象限工作法的划分需要你随着时间更改。</p>
+<p>你可以每一个月都将自己近期的任务这样分一次类，做成一个表格，最好将这个表格记录下来。这样在你无所事事的时候更容易提醒自己：“哦，我还有书要看，而看书这项任务已经被标记为紧急，我必须完成。”</p>
+<p>有一些任务需要长时间投入，因此在这个过程中这项任务几乎都处于不紧急的状态；但当它变得紧急的时候，你才会意识到这项任务如此重要，但又无法在短时间内挽回，最终只能懊悔“我要是早一点开始就好了”。</p>
+<p>人们面临的最大困境之一就是短视。</p>
+<p>因为只能看到眼前一小段时间的利益，所以总是把紧急不重要的任务放在前面，当完成这些任务之后，便松了口气，觉得那些不紧急的任务，都可以一拖再拖，直到无法再拖下去为止，而运用四象限工作法正是要解决这个问题。</p>
+]]></content>
+      <tags>
+        <tag>读书整理</tag>
       </tags>
   </entry>
 </search>
