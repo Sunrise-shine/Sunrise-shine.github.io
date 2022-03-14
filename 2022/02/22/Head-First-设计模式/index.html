@@ -10,9 +10,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="Just do it!,Chapter 1 设计模式入门第一个设计原则
-找出应用中可能需要变化之处，把它们独立起来，不要和那些不需要变化的代码混在一起。
-"> 
+    <meta name="description" content="Just do it!,Chapter 1 设计模式入门建立可维护的OO系统，要诀就在于随时想到一同以后可能需要的变化以及应付变化的原则。
+第一个设计原则找出应用中可能需要变化之处，把它们独立起来，不要和那些不需要变化的代,"> 
     <meta name="author" content="Sunrise-shine"> 
     <link rel="alternative" href="atom.xml" title="Sunrise-shine的博客" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -56,8 +55,42 @@
 
         </div>
         <div class="content markdown">
-            <h1 id="Chapter-1-设计模式入门"><a href="#Chapter-1-设计模式入门" class="headerlink" title="Chapter 1 设计模式入门"></a>Chapter 1 设计模式入门</h1><p>第一个设计原则</p>
-<p>找出应用中可能需要变化之处，把它们独立起来，不要和那些不需要变化的代码混在一起。</p>
+            <h1 id="Chapter-1-设计模式入门"><a href="#Chapter-1-设计模式入门" class="headerlink" title="Chapter 1 设计模式入门"></a>Chapter 1 设计模式入门</h1><p>建立可维护的OO系统，要诀就在于随时想到一同以后可能需要的变化以及应付变化的原则。</p>
+<h3 id="第一个设计原则"><a href="#第一个设计原则" class="headerlink" title="第一个设计原则"></a>第一个设计原则</h3><p>找出应用中可能需要变化之处，把它们独立起来，不要和那些不需要变化的代码混在一起。</p>
+<h3 id="第二个设计原则"><a href="#第二个设计原则" class="headerlink" title="第二个设计原则"></a>第二个设计原则</h3><p>针对接口编程，而不是针对实现编程。</p>
+<p>行为是通过Duck超类的具体实现或继承某个接口的子类自行实现而来，即所谓针对实现编程。</p>
+<p>鸭子的子类将使用接口所表示的行为，便是一种意义上的针对接口编程。</p>
+<p>其实，针对接口，实际上是针对超类型编程，并不是直观意义上的Java interface类型。</p>
+<p>而针对接口编程，关键就在多态。利用多态，程序可以针对超类型编程，执行时会根据实际状况执行到真正的行为，而不会被绑死在超类型的行为上。”针对超类型编程”，可以更明确说成”变量的声明类型应该是超类型，通常是一个抽象类或者是一个接口，如此，只要是具体实现此超类型的类所产生的对象，都可以指定给这个变量。这也意味着，声明类时不用理会以后执行时的真正对象类型！”</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>针对实现编程：Dog d = new Dog(); d.bark();</p>
+<p>针对接口编程：Animal a = new Dog(); a.makeSound();</p>
+<p><img src="https://s2.loli.net/2022/03/12/qUXn9Y7HkoA35Sl.png" alt="image-20220312194627080" style="zoom:80%;" /></p>
+<p>在运行时，才指定具体的实现的对象。</p>
+<h4 id="动态设定行为"><a href="#动态设定行为" class="headerlink" title="动态设定行为"></a>动态设定行为</h4><p>可以通过”设定方法(setter method)”来在方法内部设定鸭子的行为。</p>
+<h3 id="第三个设计原则"><a href="#第三个设计原则" class="headerlink" title="第三个设计原则"></a>第三个设计原则</h3><p>多用组合，少用继承。</p>
+<p>不再把鸭子的行为说成是”一组行为”，而开始把行为想成是”一族算法”。再SimUDuck的设计中，算法代表鸭子能做的事。</p>
+<h4 id="“有一个”可能比”是一个”更好"><a href="#“有一个”可能比”是一个”更好" class="headerlink" title="“有一个”可能比”是一个”更好"></a>“有一个”可能比”是一个”更好</h4><p>每个鸭子都有一个FlyBehavior和一个QuarkBehavior，好将飞行和呱呱叫委托给它们代为处理。</p>
+<p>当你将两个类结合起来使用，如同本例一样，这就是组合。</p>
+<p>使用组合建立系统具有很大的弹性，不仅可将算法族封装成类，更可以在运行时动态地改变行为。</p>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>策略模式定义了算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</p>
+<p><img src="https://s2.loli.net/2022/03/12/VrCsmPQFBw32nMJ.png" alt="image-20220312200432241"></p>
+<p>模式不是代码，而是针对设计问题的通用解决方法。</p>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><h4 id="OO基础"><a href="#OO基础" class="headerlink" title="OO基础"></a>OO基础</h4><ul>
+<li>抽象</li>
+<li>封装</li>
+<li>多态</li>
+<li>继承</li>
+</ul>
+<h4 id="OO原则"><a href="#OO原则" class="headerlink" title="OO原则"></a>OO原则</h4><ul>
+<li>封装变化</li>
+<li>多用组合，少用继承</li>
+<li>针对接口编程，不针对实现编程</li>
+</ul>
+<h2 id="总结过程"><a href="#总结过程" class="headerlink" title="总结过程"></a>总结过程</h2><h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p>在原有系统的基础上，给鸭子增加会飞这一行为。</p>
+<p> <a href="E:\CS\鸭子行为.xmind">鸭子行为.xmind</a> </p>
+<h3 id="可选方案"><a href="#可选方案" class="headerlink" title="可选方案"></a>可选方案</h3><h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>在Duck类中，增加fly()方法，让每个子类都拥有飞行的行为，对于无法飞行的鸭子，可以重写该方法。</p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>每次都需要重写。即每次新增一个鸭子类型，都需要检查fly()和quark()方法，以确定是否需要重写，维护成本高。</p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>将飞行和呱呱叫单独放在一个接口里，让可以飞和叫的</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
@@ -93,7 +126,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Chapter 1 设计模式入门</span></a></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Chapter 1 设计模式入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.0.1.</span> <span class="toc-text">第一个设计原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.0.2.</span> <span class="toc-text">第二个设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%AE%BE%E5%AE%9A%E8%A1%8C%E4%B8%BA"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">动态设定行为</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E4%B8%AA%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">1.0.3.</span> <span class="toc-text">第三个设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%9C%E6%9C%89%E4%B8%80%E4%B8%AA%E2%80%9D%E5%8F%AF%E8%83%BD%E6%AF%94%E2%80%9D%E6%98%AF%E4%B8%80%E4%B8%AA%E2%80%9D%E6%9B%B4%E5%A5%BD"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">“有一个”可能比”是一个”更好</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">策略模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-number">1.1.1.</span> <span class="toc-text">tips</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OO%E5%9F%BA%E7%A1%80"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">OO基础</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OO%E5%8E%9F%E5%88%99"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">OO原则</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%BF%87%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">总结过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.1.</span> <span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%80%89%E6%96%B9%E6%A1%88"><span class="toc-number">1.2.2.</span> <span class="toc-text">可选方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.2.2.1.1.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">实现</span></a></li></ol></li></ol></li></ol></li></ol>	
         </div>
     
 </div>
