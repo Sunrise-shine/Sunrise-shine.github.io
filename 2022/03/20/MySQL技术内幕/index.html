@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MySQL技术内幕 - Sunrise-shine的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Just do it!,Preface从MySQl5.5版本开始，InnoDB是默认的表存储引擎。特点是行锁设计、支持MVCC、支持外键、提供一致性非锁定读、同时被设计用来最有效地利用以及使用内存和CPU。
+1. Inno,"> 
+    <meta name="author" content="Sunrise-shine"> 
+    <link rel="alternative" href="atom.xml" title="Sunrise-shine的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Sunrise-shine的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://Sunrise-shine.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">MySQL技术内幕</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">MySQL技术内幕</h1>
+        <div class="stuff">
+            <span>三月 20, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/InnoDB%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" rel="tag">InnoDB存储引擎</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>从MySQl5.5版本开始，InnoDB是默认的表存储引擎。特点是行锁设计、支持MVCC、支持外键、提供一致性非锁定读、同时被设计用来最有效地利用以及使用内存和CPU。</p>
+<h2 id="1-InnoDB体系架构"><a href="#1-InnoDB体系架构" class="headerlink" title="1. InnoDB体系架构"></a>1. InnoDB体系架构</h2><p><img src="https://s2.loli.net/2022/03/20/3H6OawNh1yCD5vg.png" alt="image-20220320145613996"></p>
+<p>InnoDB存储引擎有多个内存块，这些内存块组成了一个大的内存池。</p>
+<p>后台线程主要负责刷新内存池中的数据、将已修改的数据刷新到磁盘等等。</p>
+<h3 id="1-1后台线程"><a href="#1-1后台线程" class="headerlink" title="1.1后台线程"></a>1.1后台线程</h3><h4 id="Master-Thread"><a href="#Master-Thread" class="headerlink" title="Master Thread"></a>Master Thread</h4><p>最核心的一个线程，主要负责将缓冲池的数据异步刷新到磁盘，保证数据的一致性，包括脏页的刷新、合并插入缓冲、UNDO页的回收等。</p>
+<h4 id="IO-Thread"><a href="#IO-Thread" class="headerlink" title="IO Thread"></a>IO Thread</h4><p>在InnoDB中大量使用了异步IO来处理写IO请求，IO Thread主要负责这些IO请求的回调处理</p>
+<h4 id="Purge-Thread"><a href="#Purge-Thread" class="headerlink" title="Purge Thread"></a>Purge Thread</h4><p>事务被提交后，undo log可能不再需要，使用Purge Thread来回收已经使用并分配的undo页。可运行多个，以加快undo页的回收。</p>
+<h4 id="Page-Cleaner-Thread"><a href="#Page-Cleaner-Thread" class="headerlink" title="Page Cleaner Thread"></a>Page Cleaner Thread</h4><p>将脏页的刷新操作都放入该单独的线程中来完成，减轻Master Thread的工作及对于用户查询线程的阻塞。</p>
+<h2 id="1-2-内存"><a href="#1-2-内存" class="headerlink" title="1.2 内存"></a>1.2 内存</h2><p>InnoDB存储引擎是基于磁盘存储的，使用了缓冲池技术来提高数据库的整体性能。</p>
+<p>读取页时，首先将磁盘读到的页放在缓冲池中，下一次读取相同的页，先判断该页是否在缓冲池中。</p>
+<p>对于数据库中页的修改操作，首先修改在缓冲池中页，然后再以一定的频率刷新到磁盘，并不是每次页发生改变就刷新回磁盘。</p>
+<h3 id="1-数据页类型"><a href="#1-数据页类型" class="headerlink" title="1. 数据页类型"></a>1. 数据页类型</h3><p>索引页、数据页、undo页、插入缓冲、自适应哈希索引、InnoDB的锁信息、数据字典信息等，其中索引页和数据页占缓冲池的很大一部分。</p>
+<p>在InnoDB中，<strong>缓冲池的页大小默认为16KB</strong>。</p>
+<p><img src="https://s2.loli.net/2022/03/20/OzVt7hIZXREdmin.png" alt="image-20220320150901337"></p>
+<h3 id="2-Buffer-Pool"><a href="#2-Buffer-Pool" class="headerlink" title="2. Buffer Pool"></a>2. Buffer Pool</h3><p>Buffer Pool其实是一片连续的内存空间。所以，为了更好地管理被缓存的页，InnoDB为每个缓存页都创建了一些所谓的控制信息，包括该页所属的表空间编号、页号、页在Buffer Pool中的地址，一些所信息以及LSN信息等。</p>
+<p>每个缓存页对应的控制信息占用的内存大小是相同的，将其称为控制块。</p>
+<p>控制块和缓存页是一一对应的，都被存放在Buffer Pool中，其中控制块被存放到Buffer Pool的前边，缓存页被存放到Buffer Pool后边，所以：</p>
+<p><img src="https://s2.loli.net/2022/03/20/snmudBkgfVbPL9W.png" alt="image-20220320151615244"></p>
+<p>碎片是无法再分配的剩余的内存空间，最后内存中会有一点点的空间不足以容纳一对控制体和缓存页。</p>
+<h3 id="3-三大链表"><a href="#3-三大链表" class="headerlink" title="3. 三大链表"></a>3. 三大链表</h3><h4 id="Free-List"><a href="#Free-List" class="headerlink" title="Free List"></a>Free List</h4><p>最初启动MySQL服务器的时候，需要完成对Buffer Pool的初始化过程，就是分配Buffer Pool的内存空间，把它划分成若干对控制块和缓存页。</p>
+<p>但是此时并没有真实的磁盘页被缓存到Buffer Pool中（因为还没有用到），之后随着程序的运行，会不断的有磁盘上的页被缓存到Buffer Pool中，为了标识空闲的缓存页，将其包装为一个结点，放入Free链表中。</p>
+<p>刚完成初始化时的Buffer Pool中的Free List效果图：</p>
+<p><img src="https://s2.loli.net/2022/03/20/DhevUY5y7ixPnkp.png" alt="image-20220320152535381"></p>
+<h5 id="间接对应"><a href="#间接对应" class="headerlink" title="间接对应"></a>间接对应</h5><p>在每个Free链表的节点中都记录了某个缓存页控制块的地址，而每个缓存页控制块都记录着对应的缓存页地址，所以相当于每个Free链表节点都对应一个空闲的缓存页。</p>
+<p>每当需要从磁盘中加载一个页到Buffer Pool中时，就从Free链表中取出一个空闲的缓存页，并且把该页对应的控制块信息填上，然后把该缓存页对应的Free链表结点从链表中移除。</p>
+<h4 id="LRU-List"><a href="#LRU-List" class="headerlink" title="LRU List"></a>LRU List</h4><p>由于Buffer Pool的大小有限，所以要淘汰一些缓存页。</p>
+<p>淘汰机制：近期最少使用，即LRU。</p>
+<h5 id="1-简单LRU的缺陷"><a href="#1-简单LRU的缺陷" class="headerlink" title="1. 简单LRU的缺陷"></a>1. 简单LRU的缺陷</h5><ol>
+<li><p>进行全表扫描时，所有的数据也都会被全部塞入LRU链表，并且通通加载到Buffer Pool中，会迅速清空其他查询语句留下来的高频的数据页。也就是说，此时的Buffer Pool可能全是低频的数据页，大大降低缓存命中率。</p>
+</li>
+<li><p>InnoDB的预读机制。分为线性预读和随机预读。</p>
+<ol>
+<li>线性预读：当一个区中有连续56(默认值为56)个页面被加载到Buffer Pool中，会将该区所有的页面都加载到Buffer Pool。</li>
+<li><p>随机预读：当一个区中随机13(默认值为13)个页面被加载到Buffer Pool中，会将该区所有的页面都加载到Buffer Pool。随机预读默认是关闭，由变量innodb_random_read_ahead控制。</p>
+<p>也就是说，预读机制会预读一些额外的页到Buffer Pool中，就算这些页不是高频的页，也会被加入LRU链表，就会将链表末尾一些高频的页给淘汰掉，降低命中率。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="2-InnoDB的LRU"><a href="#2-InnoDB的LRU" class="headerlink" title="2. InnoDB的LRU"></a>2. InnoDB的LRU</h5><p>InnoDB将LRU链表分为了两个部分，也就是所谓的old区和young区。</p>
+<p>young区在链表的头部，存放经常被访问的数据页，即热数据，</p>
+<p>old区在链表的尾部，存放不经常被访问的数据页，即冷数据。</p>
+<p>两个部分的交汇区称为==midpoint==。</p>
+<p>midpoint由参数innodb_old_blocks_pct控制。</p>
+<p>两个区的比例：</p>
+<p><img src="https://s2.loli.net/2022/03/20/fotUPwL7JNxKA8h.png" alt="image-20220320222835302"></p>
+<p>这说明了old区的比例是37%，也就是冷数据大概占LRU链表的3/8，剩下的就是young区的热数据。</p>
+<h5 id="3-LRU链表图"><a href="#3-LRU链表图" class="headerlink" title="3. LRU链表图"></a>3. LRU链表图</h5><p><img src="https://s2.loli.net/2022/03/20/1q2RaDS7YdPATIh.png" alt="image-20220320223434117"></p>
+<p>一般生产的机器，内存比较大。会把innodb_old_blocks_pct值调低，防止热数据被刷出内存。</p>
+<h5 id="5-两区交换"><a href="#5-两区交换" class="headerlink" title="5. 两区交换"></a>5. 两区交换</h5><p>数据页第一次被加载进Buffer Pool时在old区头部。</p>
+<p>当这个数据页在old区，再次被访问到，会做判断如下：</p>
+<ul>
+<li>如果这个数据页在LRU链表中old区存在的时间<strong>超过了1秒，就把它移动到young区</strong></li>
+<li>这个存在时间由innodb_old_blocks_time控制，表示页读取到mid位置后需要等待多久才会被加入到LRU列表的热端，可以通过该参数保证热数据不轻易被刷出。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/03/20/ufMqlhcIDGWrpk8.png" alt="image-20220320224103298"></p>
+<h5 id="监控冷热数据"><a href="#监控冷热数据" class="headerlink" title="监控冷热数据"></a>监控冷热数据</h5><p><img src="C:\Users\LISHANSHAN\AppData\Roaming\Typora\typora-user-images\image-20220320224154519.png" alt="image-20220320224154519"></p>
+<ol>
+<li>数据页从冷到热，称为young；not young就是数据在没有成为热数据的情况下就被刷走的量(累计值)。</li>
+<li>non-youngs/s，这个数值如果较高，一般情况下就是系统存在严重的全表扫描，意味着很高的物理读。</li>
+<li>youngs/s，这个数值如果相对较高，最好增加一个innodb_old_blocks_time，降低innodb_old_blocks_pct，保护热数据。</li>
+</ol>
+<h4 id="FLUSH-List"><a href="#FLUSH-List" class="headerlink" title="FLUSH List"></a>FLUSH List</h4><p>用来储存脏页，凡是在LRU链表中被修改过的页都需要加入这个链表中，因为这个链表中的页都是需要被刷新到磁盘上的，所以也叫FLUSH链表。</p>
+<h5 id="脏页修改"><a href="#脏页修改" class="headerlink" title="脏页修改"></a>脏页修改</h5><p>脏页修改指的是此页被加载进Buffer Pool后第一次被修改，只有第一次被修改时才需要加入FLUSH链表。</p>
+<p>需要注意的是，脏页数据实际上还在LRU链表中，而FLUSH链表中的脏页记录只是通过指针指向LRU链表中的脏页，并且在FLUSH链表中的脏页是根据oldest_lsn（这个值表示这个页第一次被更改时的lsn号，对应值oldest_modification，每个页头部记录）进行排序刷新到磁盘的，值越小表示要最先被刷新，避免数据不一致。</p>
+<h5 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h5><p>脏页既存在于LRU列表中，也存在与Flush列表中。LRU列表用来管理缓冲池中页的可用性，Flush列表用来管理将页刷新回磁盘，二者互不影响。</p>
+<h4 id="4-三表关系"><a href="#4-三表关系" class="headerlink" title="4. 三表关系"></a>4. 三表关系</h4><p><img src="https://s2.loli.net/2022/03/20/q1WTchjuiYPbLQf.png" alt="image-20220320225028481"></p>
+<p>Free链表跟LRU链表的关系是相互流通的，页在这两个链表间来回置换。而FLUSH链表记录了脏页数据，也是通过指针指向了LRU链表，所以图中FLUSH链表被LRU链表包裹。</p>
+<h2 id="2-CheckPoint技术"><a href="#2-CheckPoint技术" class="headerlink" title="2. CheckPoint技术"></a>2. CheckPoint技术</h2><h3 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="1.1 特点"></a>1.1 特点</h3><ul>
+<li><p>缩短数据库恢复时间</p>
+</li>
+<li><p>缓冲池不够用时，将脏页刷新到磁盘</p>
+</li>
+</ul>
+<p>根据LRU算法，溢出最近最少使用的页，如果页为脏页，强制执行checkpoint，将脏页刷新回磁盘。</p>
+<ul>
+<li>重做日志不可用时，刷新脏页</li>
+</ul>
+<p>重做日志不可用，是指重做日志的这部分不可以被覆盖。</p>
+<p>原因：由于重做日志的设计是循环使用的。这部分对应的数据还未刷新到磁盘上。数据库恢复时，如果不需要这部分日志，即可被覆盖；如果需要，必须强制执行checkpoint，将缓冲池中的也至少刷新到当前重做日志的位置。</p>
+<h3 id="两种checkpoint"><a href="#两种checkpoint" class="headerlink" title="两种checkpoint"></a>两种checkpoint</h3><h4 id="Sharp-Checkpoint"><a href="#Sharp-Checkpoint" class="headerlink" title="Sharp Checkpoint"></a>Sharp Checkpoint</h4><p>发生在数据库关闭时，将所有的脏页都刷新回磁盘，这是默认的工作方式。</p>
+<p>innodb_fast_shutdown = 1。</p>
+<p>不适用于数据库运行时的刷新。</p>
+<h4 id="Fuzzy-Checkpoint"><a href="#Fuzzy-Checkpoint" class="headerlink" title="Fuzzy Checkpoint"></a>Fuzzy Checkpoint</h4><p>只刷新一部分脏页</p>
+<h5 id="MasterThread-Checkpoint"><a href="#MasterThread-Checkpoint" class="headerlink" title="MasterThread Checkpoint"></a>MasterThread Checkpoint</h5><p>异步刷新，每秒或每10秒从缓冲池脏页列表刷新一定比例的页会磁盘。异步刷新时，用户查询线程不受阻。</p>
+<h5 id="FLUSH-LRU-LIST-Checkpoint"><a href="#FLUSH-LRU-LIST-Checkpoint" class="headerlink" title="FLUSH_LRU_LIST Checkpoint"></a>FLUSH_LRU_LIST Checkpoint</h5><p>InnoDB存储引擎需要保证LRU列表中差不多有100个空闲页可供使用。用户查询线程会检查LRU列表是否有足够的空间操作。如果没有，根据LRU算法，溢出LRU列表尾端的页，<strong>如果这些页有脏页，需要进行checkpoint</strong>。因此叫：flush_lru_list</p>
+<h5 id="Async-Sync-Flush-Checkpoint"><a href="#Async-Sync-Flush-Checkpoint" class="headerlink" title="Async/Sync Flush Checkpoint"></a>Async/Sync Flush Checkpoint</h5><p>指重做日志不可用的情况，需要强制刷新页回磁盘，此时的页是脏页列表选取的。<br>这种情况是保证重做日志的可用性，就是，重做日志中可以循环覆盖的部分空间太少了，换种说法，就是极短时间内产生了大量的redo log。</p>
+<h5 id="Dirty-Page-too-much-Checkpoint"><a href="#Dirty-Page-too-much-Checkpoint" class="headerlink" title="Dirty Page too much Checkpoint"></a>Dirty Page too much Checkpoint</h5><p>脏页太多，强制checkpoint，保证缓冲池有足够可用的页。</p>
+<h1 id="Chapter-1-MySQL体系结构和存储引擎"><a href="#Chapter-1-MySQL体系结构和存储引擎" class="headerlink" title="Chapter 1 MySQL体系结构和存储引擎"></a>Chapter 1 MySQL体系结构和存储引擎</h1><h2 id="1-1-定义数据库和实例"><a href="#1-1-定义数据库和实例" class="headerlink" title="1.1 定义数据库和实例"></a>1.1 定义数据库和实例</h2><p>数据库：物理操作系统文件或其他形式文件类型的集合。</p>
+<p>实例：由后台线程以及一个共享内存区组成。共享内存可以被运行的后台线程所共享。数据库实例才是真正用于操作数据库文件的。</p>
+<p>应用程序只有通过数据库实例才能和数据库打交道。</p>
+<p>MySQL被设计为一个单进程多线程架构的数据库。</p>
+<p><strong>MySQL数据库实例在系统上的表现就是一个进程。</strong></p>
+<h2 id="1-2-MySQL体系结构"><a href="#1-2-MySQL体系结构" class="headerlink" title="1.2 MySQL体系结构"></a>1.2 MySQL体系结构</h2><p><img src="https://s2.loli.net/2022/03/21/6gG9HjI7dWlKZrk.png" alt="image-20220321173153974"></p>
+<p>MySQL组成部分</p>
+<ul>
+<li>连接池组件</li>
+<li>管理服务和工具组件</li>
+<li>SQL接口组件</li>
+<li>查询分析器组件</li>
+<li>优化器组件</li>
+<li>缓冲(cache)组件</li>
+<li>插件式存储引擎</li>
+<li>物理文件</li>
+</ul>
+<p>MySQL区别于其他数据库的最重要的一个特点就是<strong>其插件式的表存储引擎</strong>。</p>
+<p><strong>存储引擎是基于表的，而不是数据库。</strong></p>
+<h2 id="1-3-MySQL存储引擎"><a href="#1-3-MySQL存储引擎" class="headerlink" title="1.3 MySQL存储引擎"></a>1.3 MySQL存储引擎</h2><h1 id="Chapter-3-文件"><a href="#Chapter-3-文件" class="headerlink" title="Chapter 3 文件"></a>Chapter 3 文件</h1><p>分析构成MySQL数据库和InnoDB存储引擎表的各种类型文件。</p>
+<h2 id="3-1-参数文件"><a href="#3-1-参数文件" class="headerlink" title="3. 1 参数文件"></a>3. 1 参数文件</h2><p>参数文件是以文本文件的方式存储的。</p>
+<p>当MySQL实例启动时，数据库会先去读一个配置文件，用来寻找数据库的各种文件所在位置以及指定某些初始化参数，这些参数定义了某种内存有多大等。默认情况下，MySQL实例会按照一定顺序从指定位置读取。</p>
+<p>MySQL实例可以不需要参数文件，这时所有的参数值使用编译时和源代码中指定的默认值(Oracle实例在启动时没有参数文件无法装载)。</p>
+<p>但如果没有mysql架构记录了访问该实例的权限，所以如果没有mysql架构，启动会失效。</p>
+<h3 id="3-1-1-什么是参数"><a href="#3-1-1-什么是参数" class="headerlink" title="3.1.1 什么是参数"></a>3.1.1 什么是参数</h3><p>数据库参数，可以看作是键值对。</p>
+<p>如，innodb_buffer_pool_size = 1G，等号左侧为键，右侧1G为值。</p>
+<p>通过SHOW VARIABLES，可以查看数据库中所有参数。</p>
+<h3 id="3-1-2-参数类型"><a href="#3-1-2-参数类型" class="headerlink" title="3.1.2 参数类型"></a>3.1.2 参数类型</h3><p>MySQL数据库中参数分为两类：</p>
+<h4 id="动态参数"><a href="#动态参数" class="headerlink" title="动态参数"></a>动态参数</h4><p>动态参数意味着可以通过SET命令，在MySQL实例运行中更改。</p>
+<p>SET语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span></span><br><span class="line"><span class="operator">|</span> [<span class="keyword">global</span> <span class="operator">|</span> session] system_var_name <span class="operator">=</span> expr</span><br><span class="line"><span class="operator">|</span> [@<span class="variable">@global</span>. <span class="operator">|</span> @<span class="variable">@session</span>. <span class="operator">|</span> @@]system_var_name <span class="operator">=</span> expr</span><br></pre></td></tr></table></figure>
+<p>其中的global和session关键字，表明该参数的修改是基于当前会话还是整个实例的生命周期。</p>
+<p><img src="https://s2.loli.net/2022/03/29/zftEOHb4gB8Mkcn.png" alt="image-20220329002557667"></p>
+<p>对变量的全局值进行修改，在这次的实力生命周期内都有效，但MySQL实例本身并不会对参数文件进行修改。也就是说，下次MySQL启动时还是会读取参数文件。所以要根据需要，去修改参数文件。</p>
+<h4 id="静态参数"><a href="#静态参数" class="headerlink" title="静态参数"></a>静态参数</h4><p>静态参数说明在整个实例生命周期中都不得进行更改。</p>
+<p>如果对其修改，会报错。</p>
+<h2 id="3-2-日志文件"><a href="#3-2-日志文件" class="headerlink" title="3.2 日志文件"></a>3.2 日志文件</h2><p>日志文件记录了影响MySQL数据库的各种类型活动。</p>
+<h3 id="3-2-1-错误日志-error-log"><a href="#3-2-1-错误日志-error-log" class="headerlink" title="3.2.1 错误日志(error log)"></a>3.2.1 错误日志(error log)</h3><p>错误日志对MySQL的启动、运行、关闭过程进行了记录。该文件不仅记录了所有的错误信息，也记录了一些警告信息或正确的信息。</p>
+<p>MySQL遇到问题时，应该首先查看该文件以便定位问题。</p>
+<p>在默认情况下，错误日志的文件名为服务器的主机名，若主机名starg，则错误文件名为starg.err。</p>
+<h3 id="3-2-2-慢查询日志-slow-query-log"><a href="#3-2-2-慢查询日志-slow-query-log" class="headerlink" title="3.2.2 慢查询日志(slow query log)"></a>3.2.2 慢查询日志(slow query log)</h3><p>可以帮助定位可能存在问题的SQL语句，从而进行SQL语句层面的优化。</p>
+<h3 id="3-2-3-查询日志-log"><a href="#3-2-3-查询日志-log" class="headerlink" title="3.2.3 查询日志(log)"></a>3.2.3 查询日志(log)</h3><h3 id="3-2-4-二进制日志-binlog"><a href="#3-2-4-二进制日志-binlog" class="headerlink" title="3.2.4 二进制日志(binlog)"></a>3.2.4 二进制日志(binlog)</h3>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Preface"><span class="toc-number">1.</span> <span class="toc-text">Preface</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-InnoDB%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">1. InnoDB体系架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1%E5%90%8E%E5%8F%B0%E7%BA%BF%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1后台线程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Master-Thread"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">Master Thread</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IO-Thread"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">IO Thread</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Purge-Thread"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">Purge Thread</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Page-Cleaner-Thread"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">Page Cleaner Thread</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E5%86%85%E5%AD%98"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 内存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E9%A1%B5%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 数据页类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Buffer-Pool"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. Buffer Pool</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%89%E5%A4%A7%E9%93%BE%E8%A1%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">3. 三大链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Free-List"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Free List</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%B4%E6%8E%A5%E5%AF%B9%E5%BA%94"><span class="toc-number">1.2.3.1.1.</span> <span class="toc-text">间接对应</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#LRU-List"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">LRU List</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%AE%80%E5%8D%95LRU%E7%9A%84%E7%BC%BA%E9%99%B7"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">1. 简单LRU的缺陷</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-InnoDB%E7%9A%84LRU"><span class="toc-number">1.2.3.2.2.</span> <span class="toc-text">2. InnoDB的LRU</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-LRU%E9%93%BE%E8%A1%A8%E5%9B%BE"><span class="toc-number">1.2.3.2.3.</span> <span class="toc-text">3. LRU链表图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E4%B8%A4%E5%8C%BA%E4%BA%A4%E6%8D%A2"><span class="toc-number">1.2.3.2.4.</span> <span class="toc-text">5. 两区交换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E5%86%B7%E7%83%AD%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.3.2.5.</span> <span class="toc-text">监控冷热数据</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FLUSH-List"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">FLUSH List</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%84%8F%E9%A1%B5%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.3.3.1.</span> <span class="toc-text">脏页修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#tips"><span class="toc-number">1.2.3.3.2.</span> <span class="toc-text">tips</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E4%B8%89%E8%A1%A8%E5%85%B3%E7%B3%BB"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">4. 三表关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CheckPoint%E6%8A%80%E6%9C%AF"><span class="toc-number">1.3.</span> <span class="toc-text">2. CheckPoint技术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.1 特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8Dcheckpoint"><span class="toc-number">1.3.2.</span> <span class="toc-text">两种checkpoint</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sharp-Checkpoint"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">Sharp Checkpoint</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Fuzzy-Checkpoint"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">Fuzzy Checkpoint</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MasterThread-Checkpoint"><span class="toc-number">1.3.2.2.1.</span> <span class="toc-text">MasterThread Checkpoint</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FLUSH-LRU-LIST-Checkpoint"><span class="toc-number">1.3.2.2.2.</span> <span class="toc-text">FLUSH_LRU_LIST Checkpoint</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Async-Sync-Flush-Checkpoint"><span class="toc-number">1.3.2.2.3.</span> <span class="toc-text">Async&#x2F;Sync Flush Checkpoint</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Dirty-Page-too-much-Checkpoint"><span class="toc-number">1.3.2.2.4.</span> <span class="toc-text">Dirty Page too much Checkpoint</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-1-MySQL%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%92%8C%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">2.</span> <span class="toc-text">Chapter 1 MySQL体系结构和存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 定义数据库和实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-MySQL%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 MySQL体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-MySQL%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 MySQL存储引擎</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Chapter-3-%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">Chapter 3 文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%8F%82%E6%95%B0%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">3. 1 参数文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 什么是参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 参数类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.2.1.</span> <span class="toc-text">动态参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.2.2.</span> <span class="toc-text">静态参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 日志文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E9%94%99%E8%AF%AF%E6%97%A5%E5%BF%97-error-log"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1 错误日志(error log)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97-slow-query-log"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2 慢查询日志(slow query log)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E6%9F%A5%E8%AF%A2%E6%97%A5%E5%BF%97-log"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3 查询日志(log)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%97%A5%E5%BF%97-binlog"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4 二进制日志(binlog)</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
