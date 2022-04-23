@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Linux_HSP - Sunrise-shine的博客</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Just do it!,Content Introduction1. vmtools在主机Windows和虚拟机Linux上进行文件共享所需的工具。
+对于共享的部分，若Windows在其中新建文件夹，Linux上可以看到；,"> 
+    <meta name="author" content="Sunrise-shine"> 
+    <link rel="alternative" href="atom.xml" title="Sunrise-shine的博客" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Sunrise-shine的博客</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://Sunrise-shine.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Linux_HSP</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Linux_HSP</h1>
+        <div class="stuff">
+            <span>四月 15, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Linux%E5%85%A5%E9%97%A8/" rel="tag">Linux入门</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="Content-Introduction"><a href="#Content-Introduction" class="headerlink" title="Content Introduction"></a>Content Introduction</h1><h2 id="1-vmtools"><a href="#1-vmtools" class="headerlink" title="1. vmtools"></a>1. vmtools</h2><p>在主机Windows和虚拟机Linux上进行文件共享所需的工具。</p>
+<p>对于共享的部分，若Windows在其中新建文件夹，Linux上可以看到；同时，Linux对文件进行修改，Windows也可以看到。</p>
+<p>即，Windows和Linux对文件都有读写的权限，并且都对修改可见。</p>
+<h3 id="1-过程"><a href="#1-过程" class="headerlink" title="1. 过程"></a>1. 过程</h3><ol>
+<li>虚拟机—&gt;安装/重新安装vmtools(若桌面存在CentOS 7.6的光盘映像，需要先删除)，之后桌面会出现vmtools的光盘映像。</li>
+<li>打开光盘映像，将其中的那个压缩包复制到主文件夹中的/opt中，之后解压</li>
+<li><img src="https://s2.loli.net/2022/04/15/cLDbF7enZyXwtSm.png" alt="image-20220214163517194"></li>
+</ol>
+<p>​        Tab键 可以补全文件名。</p>
+<ol>
+<li><p><img src="https://s2.loli.net/2022/02/14/NlkhROvnQUgWi1B.png" alt="image-20220214163726657"></p>
+<p> 一直按回车(Enter)即可。</p>
+</li>
+<li><p><img src="https://s2.loli.net/2022/02/14/73uglCqi19ZnkVh.png" alt="image-20220214163938458"></p>
+</li>
+</ol>
+<p>如图，成功。</p>
+<ol>
+<li><p><img src="https://s2.loli.net/2022/02/14/2BaFDIeRYsh3V1Z.png" alt="image-20220214164203664"></p>
+</li>
+<li><p>之后在D:\myshare(Windows)和主文件夹\其他位置\计算机\mnt\hgfs\myshare(Linux)中，双方任意一方进行增加、修改文件等操作的结果，双方都可见。</p>
+</li>
+</ol>
+<h3 id="2-tips"><a href="#2-tips" class="headerlink" title="2. tips"></a>2. tips</h3><p>但在实际开发中，一般远程登陆后，进行上传下载文件，不通过这种方式进行共享。</p>
+<h2 id="3-Linux目录结构-重要"><a href="#3-Linux目录结构-重要" class="headerlink" title="3. Linux目录结构(重要)"></a>3. Linux目录结构(重要)</h2><h3 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p><strong>Linux会把硬件映射成一个文件来管理。</strong></p>
+<ol>
+<li>Linux的文件系统是采用级层式的树状目录结构，在此结构中的最上层是根目录”/“，然后在此目录下再创建别的目录。</li>
+<li>规定了每个目录下存放的文件类型(如/bin下存常用命令等)。</li>
+<li><strong>在Linux世界里，一切皆文件。</strong></li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/14/F9d6KWpel8MHOzb.png" alt="image-20220214170022218"></p>
+<p><img src="https://s2.loli.net/2022/02/14/f7gNkTUv8CYZ15o.png" alt="image-20220214170142179"></p>
+<p><img src="https://s2.loli.net/2022/02/14/Mmp7T63CSWsV4fw.png" alt="image-20220214170244070"></p>
+<h3 id="2-详解"><a href="#2-详解" class="headerlink" title="2. 详解"></a>2. 详解</h3><p><img src="https://s2.loli.net/2022/02/14/MdZyBbiCIKmz1rs.png" alt="image-20220214171223656"></p>
+<p><img src="https://s2.loli.net/2022/02/14/U4ysVScpb5zXmft.png" alt="image-20220214171437594"></p>
+<p><img src="https://s2.loli.net/2022/02/14/ylqvWwxmTgcAtNS.png" alt="image-20220214171313425"></p>
+<p><strong>/proc和/srv和/sys存放系统文件，如果乱动，极大可能会导致系统崩溃。</strong></p>
+<p><img src="https://s2.loli.net/2022/02/14/2hWHTMim3tKdGUz.png" alt="image-20220214172749215"></p>
+<p><img src="https://s2.loli.net/2022/02/14/l6OD2K7oQFiEIkB.png" alt="image-20220214172650483"></p>
+<h2 id="4-远程登录Linux"><a href="#4-远程登录Linux" class="headerlink" title="4. 远程登录Linux"></a>4. 远程登录Linux</h2><p>不在同一台主机上的登录行为.</p>
+<h3 id="1-原因"><a href="#1-原因" class="headerlink" title="1. 原因"></a>1. 原因</h3><ol>
+<li>Linux服务器是开发小组共享</li>
+<li>正式上线的项目是运行在公网</li>
+<li>因此程序员需要远程登录到Linux进行项目管理或者开发</li>
+<li>简单的网络拓扑示意图</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/20/oDN1d3QuYSHXyAE.png" alt="image-20220220184654829"></p>
+<ol>
+<li>远程登录客户端有Xshell(远程登录)，Xftp(文件远程上传下载)等。</li>
+</ol>
+<h4 id="2-Xshell"><a href="#2-Xshell" class="headerlink" title="2. Xshell"></a>2. Xshell</h4><p><img src="https://s2.loli.net/2022/02/20/96wWaNZoYtFzu4j.png" alt="image-20220220182621199"></p>
+<p>输入reboot，可以控制Linux去重启。</p>
+<h4 id="3-Xftp"><a href="#3-Xftp" class="headerlink" title="3. Xftp"></a>3. Xftp</h4><p><img src="https://s2.loli.net/2022/02/20/S6HibfG2MyIrkCE.png" alt="image-20220220184936249"></p>
+<p><img src="https://s2.loli.net/2022/02/20/6xa2dzDHhGyQAgr.png" alt="image-20220220183955314"></p>
+<h2 id="5-vi和vim"><a href="#5-vi和vim" class="headerlink" title="5. vi和vim"></a>5. vi和vim</h2><p>实际工作以XShell为主</p>
+<h3 id="1-基本介绍-1"><a href="#1-基本介绍-1" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p>Linux会内置vi文本编辑器</p>
+<p>Vim具有程序编辑的能力，可以看作是vi的增强版本，可以主动的以字体颜色辨别语法的正确性，方便程序设计。代码补完、编译及错误跳转等方便编程的功能丰富。</p>
+<h4 id="1-正常模式"><a href="#1-正常模式" class="headerlink" title="1. 正常模式"></a>1. 正常模式</h4><p>以vim打开一个档案就直接进入一般模式(这是默认的模式)。在这个模式中，可以使用按键来移动光标，可以使用删除字符和删除整行来处理档案内容，也可以复制粘贴。</p>
+<h4 id="2-插入模式"><a href="#2-插入模式" class="headerlink" title="2. 插入模式"></a>2. 插入模式</h4><p>可以增加文字进入档案。</p>
+<h4 id="3-命令行模式"><a href="#3-命令行模式" class="headerlink" title="3. 命令行模式"></a>3. 命令行模式</h4><p>可以完成读取、存盘、替换、离开vim，显示行号等操作。</p>
+<p><strong>先输入esc，表示退出，再输入”:“后，即可从插入模式进入命令行模式。</strong></p>
+<p>那么，输入“:wq”：进入命令行模式，之后write写入，再quit退出。</p>
+<p><img src="https://s2.loli.net/2022/03/05/Y2tnZp5ICXJ4WBe.png" alt="image-20220305215742256"></p>
+<p>再次进入只需 vim Hello.java。</p>
+<h3 id="2-快捷键"><a href="#2-快捷键" class="headerlink" title="2. 快捷键"></a>2. 快捷键</h3><p><img src="https://s2.loli.net/2022/02/20/u3EeAhDqC1i4SW2.png" alt="image-20220220222642750"></p>
+<h4 id="1-常用的7个快捷键"><a href="#1-常用的7个快捷键" class="headerlink" title="1. 常用的7个快捷键"></a>1. 常用的7个快捷键</h4><p>在一般模式下输入才是快捷键，在编辑模式输入就是插入字符。</p>
+<ol>
+<li>先yy再p，粘贴。</li>
+<li>/ 切换到命令模式，此时输入想要查找的关键字即可。即/a。</li>
+<li>直接输入: ，再直接输入set nu即可</li>
+<li></li>
+</ol>
+<p><img src="https://s2.loli.net/2022/02/20/1p6URexnwAgZTt8.png" alt="image-20220220225039845"></p>
+<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><p>若是想转而查找别的单词，输入”/“+其他关键字即可。</p>
+<p>找不到的话，会有提示信息：</p>
+<p><img src="https://s2.loli.net/2022/02/20/kwvJVs9gUMAcxjC.png" alt="image-20220220223825590"></p>
+<h5 id="设置行号"><a href="#设置行号" class="headerlink" title="设置行号"></a>设置行号</h5><p>nu：number</p>
+<p>效果图如下：(若想删除行号，输入”:set nonu”)</p>
+<p><img src="https://s2.loli.net/2022/02/20/J1mLkXNTyC7zSwQ.png" alt="image-20220220224009345"></p>
+<h4 id="2-tips："><a href="#2-tips：" class="headerlink" title="2. tips："></a>2. tips：</h4><h5 id="先退回一般模式"><a href="#先退回一般模式" class="headerlink" title="先退回一般模式"></a>先退回一般模式</h5><p><strong>注意部分快捷键是要退回一般模式后使用的！</strong></p>
+<p>在插入模式下，首先输入”:”，使得下方没有命令显示，只有”:”时，再按ESC退回到一般模式。</p>
+<h5 id="其他快捷键"><a href="#其他快捷键" class="headerlink" title="其他快捷键"></a>其他快捷键</h5><p>其他还有很多快捷键，但是没必要。实际开发大型项目时，还是先在熟悉的windows环境中将代码写好，然后上传到Linux中，但不可避免的，肯定也会有远程登录，然后修改代码等的情况，所以快捷键还是要掌握一些，比如列出的7种，一定要掌握的。</p>
+<h2 id="6-关机-amp-重启"><a href="#6-关机-amp-重启" class="headerlink" title="6. 关机&amp;重启"></a>6. 关机&amp;重启</h2><p>shutdown -h now : 立刻进行关机</p>
+<p>shutdown -h 1 ：给所有登录到该Linux的用户发送一个通知：1分钟后会关机</p>
+<p>shutdown -r now ：现在重启计算机(reboot)</p>
+<p>halt ：关机，作用和上边的一样</p>
+<p>reboot ：现在重启计算机</p>
+<p>sync ：把内存的数据同步到磁盘</p>
+<p><strong>不管是重启还是关闭系统，首先要运行sync命令，把内存中的数据写到磁盘中</strong></p>
+<p>目前的shutdown/reboot/halt等命令均已经在关机前进行了sync，但所谓小心驶得万年船。</p>
+<h2 id="7-登录注销"><a href="#7-登录注销" class="headerlink" title="7. 登录注销"></a>7. 登录注销</h2><h3 id="1-基本介绍-2"><a href="#1-基本介绍-2" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><ol>
+<li><p>登录时尽量少用root账号登录(实际开发时少用)，因为它是系统管理员，最大的权限，避免操作失误，可以利用普通用户登录，登录后再用”su - 用户名”(su -root)命令来切换称系统管理员身份。</p>
+</li>
+<li><p>在提示符下输入logout即可注销(将当前用户退出)</p>
+</li>
+</ol>
+<h3 id="2-使用细节"><a href="#2-使用细节" class="headerlink" title="2. 使用细节"></a>2. 使用细节</h3><ol>
+<li>logout注销指令在图形运行级别(图形界面)无效，在运行级别 3下有效</li>
+<li>从Phoenix进到root后，一次logout回退到Phoenix</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/04/15/sfxbgMePiOC9mRy.png" alt="image-20220415172002598"></p>
+<p>但之后，再在虚拟机中对Phoenix使用logout无用，并不会注销</p>
+<p><img src="https://s2.loli.net/2022/04/15/Jjz5h6NuU8GOH4W.png" alt="image-20220415172038456"></p>
+<h2 id="8-用户管理"><a href="#8-用户管理" class="headerlink" title="8. 用户管理"></a>8. 用户管理</h2><p>蓝色的是一个文件夹</p>
+<h3 id="1-基本介绍-3"><a href="#1-基本介绍-3" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p>Linux系统是一个多用户多任务的操作系统，任何一个要使用系统资源的用户，都必须先向系统管理员申请一个账号，然后以这个账号的身份进入系统</p>
+<h3 id="2-添加用户"><a href="#2-添加用户" class="headerlink" title="2. 添加用户"></a>2. 添加用户</h3><h4 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h4><p>useradd 用户名</p>
+<h4 id="2-应用案例"><a href="#2-应用案例" class="headerlink" title="2. 应用案例"></a>2. 应用案例</h4><p>创建一个用户milan，默认该用户的家目录位于 /home/milan。</p>
+<h4 id="3-细节说明"><a href="#3-细节说明" class="headerlink" title="3. 细节说明"></a>3. 细节说明</h4><ol>
+<li>当创建用户成功时，会自动地创建位于home下和用户名称一致的家目录，即/home/milan</li>
+<li>也可以通过useradd -d 指定目录 用户名 的方式，执行用户的家目录。</li>
+</ol>
+<h3 id="3-指定-修改密码"><a href="#3-指定-修改密码" class="headerlink" title="3. 指定/修改密码"></a>3. 指定/修改密码</h3><p>pwd：显示当前用户所在目录</p>
+<h3 id="4-删除用户"><a href="#4-删除用户" class="headerlink" title="4. 删除用户"></a>4. 删除用户</h3><h4 id="1-删除用户，保留家目录"><a href="#1-删除用户，保留家目录" class="headerlink" title="1. 删除用户，保留家目录"></a>1. 删除用户，保留家目录</h4><p>userdel milan</p>
+<h4 id="2-删除用户及家目录"><a href="#2-删除用户及家目录" class="headerlink" title="2. 删除用户及家目录"></a>2. 删除用户及家目录</h4><p>userdel -r king </p>
+<p>蓝色是文件</p>
+<p><img src="https://s2.loli.net/2022/04/15/tBZ9jygTJAoXPNf.png" alt="image-20220415190600826"></p>
+<p>该操作要慎重</p>
+<p>一般情况下，建议保留，家目录</p>
+<h3 id="5-切换用户"><a href="#5-切换用户" class="headerlink" title="5. 切换用户"></a>5. 切换用户</h3><p>su - 用户名</p>
+<p>从权限高的目录切换到权限低的用户无需输入密码，反之则需要输入密码。</p>
+<p><img src="https://s2.loli.net/2022/04/15/I2agcf3HD7PEzLd.png" alt="image-20220415190911802"></p>
+<h3 id="6-查看当前用户-登录用户"><a href="#6-查看当前用户-登录用户" class="headerlink" title="6. 查看当前用户/登录用户"></a>6. 查看当前用户/登录用户</h3><p>whoami</p>
+<p>显示的是第一次登录用户的信息</p>
+<p>如图所示，就算从root切换到phoenix，但 who am i 依旧显示的是root的信息。</p>
+<p><img src="https://s2.loli.net/2022/04/15/tRAilu86eHfWJ41.png" alt="image-20220415191335840"></p>
+<h3 id="7-用户组"><a href="#7-用户组" class="headerlink" title="7. 用户组"></a>7. 用户组</h3><h4 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h4><p>类似于角色，系统可以对有共性/权限的多个用户进行统一的管理</p>
+<h4 id="2-新增组"><a href="#2-新增组" class="headerlink" title="2. 新增组"></a>2. 新增组</h4><p>指令：groupadd 组名</p>
+<h4 id="3-删除组"><a href="#3-删除组" class="headerlink" title="3. 删除组"></a>3. 删除组</h4><p>指令：groupdel 组名</p>
+<p>如果在新增用户时，没有指定所在分组，那么会自动生成一个和用户名同名的组，并将该用户放入组中</p>
+<p><img src="https://s2.loli.net/2022/04/15/rXRFyYe4IL79aVN.png" alt="image-20220415192321658"></p>
+<h4 id="4-指定用户所在的组"><a href="#4-指定用户所在的组" class="headerlink" title="4. 指定用户所在的组"></a>4. 指定用户所在的组</h4><p>useradd -g 组名 用户名</p>
+<p><img src="https://s2.loli.net/2022/04/15/tmQRShGI8XlAJ3C.png" alt="image-20220415193058481"></p>
+<h4 id="5-修改用户组"><a href="#5-修改用户组" class="headerlink" title="5. 修改用户组"></a>5. 修改用户组</h4><p>usermod -g 组名 用户名</p>
+<p>前提是，该组要存在。</p>
+<p><img src="https://s2.loli.net/2022/04/15/gGQZPvYrN6BDbxS.png" alt="image-20220415193452289"></p>
+<h4 id="6-用户和组相关的文件"><a href="#6-用户和组相关的文件" class="headerlink" title="6. 用户和组相关的文件"></a>6. 用户和组相关的文件</h4><h5 id="etc-passwd"><a href="#etc-passwd" class="headerlink" title="/etc/passwd"></a>/etc/passwd</h5><p>用户的配置文件，记录用户的各种信息。</p>
+<p>每行含义：用户名：口令(密码不显示，是x)：用户标识号(uid)：组标识号(gid)：注释性描述：主目录：登录Shell</p>
+<h6 id="Shell？"><a href="#Shell？" class="headerlink" title="Shell？"></a>Shell？</h6><p><img src="https://s2.loli.net/2022/04/15/RnHmNPbGI8fzySX.png" alt="image-20220415194900802"></p>
+<p>bash：bashell</p>
+<p><img src="https://s2.loli.net/2022/04/15/Bt392sVWxzICNeP.png" alt="image-20220415195705150"></p>
+<h5 id="etc-shadow"><a href="#etc-shadow" class="headerlink" title="/etc/shadow"></a>/etc/shadow</h5><p>口令的配置文件</p>
+<p>每行：登录名：加密口令：最后一次修改时间：最小时间间隔：最大时间间隔：警告时间：不活动时间：失效时间：标志</p>
+<p>就第一个和第二个可见端倪，别的看不懂</p>
+<p><img src="https://s2.loli.net/2022/04/15/4PxE28kTSKqeRXG.png" alt="image-20220415195952714"></p>
+<p>！是因为没设密码</p>
+<h2 id="3-etc-group"><a href="#3-etc-group" class="headerlink" title="3## /etc/group"></a>3## /etc/group</h2><p>组group的配置文件，记录Linux包含的组的信息</p>
+<p>组名：口令：组标识号：组内用户列表</p>
+<p><img src="https://s2.loli.net/2022/04/15/54TqiQapYt6LyXc.png" alt="image-20220415200224876"></p>
+<h2 id="9-运行级别"><a href="#9-运行级别" class="headerlink" title="9. 运行级别"></a>9. 运行级别</h2><h3 id="1-指定用户级别"><a href="#1-指定用户级别" class="headerlink" title="1. 指定用户级别"></a>1. 指定用户级别</h3><h4 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h4><p>0：关机</p>
+<p>1：单用户(可以帮助找回丢失密码)</p>
+<p>2：多用户状态没有网络服务(用的少)</p>
+<p>3：多用户状态有网络服务(用的最多)</p>
+<p>4：系统未使用保留给用户(保留的，用的少)</p>
+<p>5：图形界面(用得多)</p>
+<p>6：系统重启(用得多)</p>
+<p>常用运行级别是3和5，也可以指定默认运行级别。</p>
+<h4 id="应用实例"><a href="#应用实例" class="headerlink" title="应用实例"></a>应用实例</h4><p>init [0123456]</p>
+<p>通过init来切换运行级别</p>
+<p>获取默认的运行级别:图形化界面，即级别5</p>
+<p><img src="https://s2.loli.net/2022/04/15/TFCdfipaUkmocV9.png" alt="image-20220415203016696"></p>
+<p>设置默认的运行级别</p>
+<p>systemctl set-default multi-user.target //切换到多用户有网络界面，即级别3</p>
+<p><strong>在工作中使用级别3！</strong></p>
+<h2 id="10-找回root密码"><a href="#10-找回root密码" class="headerlink" title="10. 找回root密码"></a>10. 找回root密码</h2><h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><p>如何找回root密码</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p><img src="https://s2.loli.net/2022/04/15/jM38n25AlmTXfLz.png" alt="image-20220415204510572"></p>
+<p><img src="https://s2.loli.net/2022/04/15/PnS62d1QGL5wzND.png" alt="image-20220415204535880"></p>
+<p><img src="https://s2.loli.net/2022/04/15/L7I2gXtKoqPAsOH.png" alt="image-20220415204559201"></p>
+<h2 id="11-帮助信息"><a href="#11-帮助信息" class="headerlink" title="11. 帮助信息"></a>11. 帮助信息</h2><h3 id="man指令"><a href="#man指令" class="headerlink" title="man指令"></a>man指令</h3><p>获得帮助信息</p>
+<p>man [指令或配置文件]，如man ls(按空格键文件会继续往下)</p>
+<p>选项可以组合使用，如：ls -la</p>
+<p>在Linux下，隐藏的文件是以 .开头的。</p>
+<p>退出输入 q 即可。</p>
+<h3 id="help指令"><a href="#help指令" class="headerlink" title="help指令"></a>help指令</h3><p>获得shell内置命令的帮助信息</p>
+<p>help 命令</p>
+<h3 id="百度"><a href="#百度" class="headerlink" title="百度"></a>百度</h3>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Content-Introduction"><span class="toc-number">1.</span> <span class="toc-text">Content Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-vmtools"><span class="toc-number">1.1.</span> <span class="toc-text">1. vmtools</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.1.</span> <span class="toc-text">1. 过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-tips"><span class="toc-number">1.1.2.</span> <span class="toc-text">2. tips</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84-%E9%87%8D%E8%A6%81"><span class="toc-number">1.2.</span> <span class="toc-text">3. Linux目录结构(重要)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95Linux"><span class="toc-number">1.3.</span> <span class="toc-text">4. 远程登录Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 原因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Xshell"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">2. Xshell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Xftp"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">3. Xftp</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-vi%E5%92%8Cvim"><span class="toc-number">1.4.</span> <span class="toc-text">5. vi和vim</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%AD%A3%E5%B8%B8%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">1. 正常模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%8F%92%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">2. 插入模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">3. 命令行模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B8%B8%E7%94%A8%E7%9A%847%E4%B8%AA%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">1. 常用的7个快捷键</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE"><span class="toc-number">1.4.2.1.1.</span> <span class="toc-text">查找</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A1%8C%E5%8F%B7"><span class="toc-number">1.4.2.1.2.</span> <span class="toc-text">设置行号</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-tips%EF%BC%9A"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">2. tips：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E9%80%80%E5%9B%9E%E4%B8%80%E8%88%AC%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.4.2.2.1.</span> <span class="toc-text">先退回一般模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.4.2.2.2.</span> <span class="toc-text">其他快捷键</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%B3%E6%9C%BA-amp-%E9%87%8D%E5%90%AF"><span class="toc-number">1.5.</span> <span class="toc-text">6. 关机&amp;重启</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%99%BB%E5%BD%95%E6%B3%A8%E9%94%80"><span class="toc-number">1.6.</span> <span class="toc-text">7. 登录注销</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-2"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E7%BB%86%E8%8A%82"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. 使用细节</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">1.7.</span> <span class="toc-text">8. 用户管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-3"><span class="toc-number">1.7.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-number">1.7.2.</span> <span class="toc-text">2. 添加用户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.7.2.1.</span> <span class="toc-text">1. 基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.7.2.2.</span> <span class="toc-text">2. 应用案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BB%86%E8%8A%82%E8%AF%B4%E6%98%8E"><span class="toc-number">1.7.2.3.</span> <span class="toc-text">3. 细节说明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%8C%87%E5%AE%9A-%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-number">1.7.3.</span> <span class="toc-text">3. 指定&#x2F;修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-number">1.7.4.</span> <span class="toc-text">4. 删除用户</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%EF%BC%8C%E4%BF%9D%E7%95%99%E5%AE%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">1.7.4.1.</span> <span class="toc-text">1. 删除用户，保留家目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7%E5%8F%8A%E5%AE%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">1.7.4.2.</span> <span class="toc-text">2. 删除用户及家目录</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="toc-number">1.7.5.</span> <span class="toc-text">5. 切换用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7-%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7"><span class="toc-number">1.7.6.</span> <span class="toc-text">6. 查看当前用户&#x2F;登录用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-number">1.7.7.</span> <span class="toc-text">7. 用户组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.7.7.1.</span> <span class="toc-text">1. 简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%B0%E5%A2%9E%E7%BB%84"><span class="toc-number">1.7.7.2.</span> <span class="toc-text">2. 新增组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%88%A0%E9%99%A4%E7%BB%84"><span class="toc-number">1.7.7.3.</span> <span class="toc-text">3. 删除组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E6%89%80%E5%9C%A8%E7%9A%84%E7%BB%84"><span class="toc-number">1.7.7.4.</span> <span class="toc-text">4. 指定用户所在的组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E7%BB%84"><span class="toc-number">1.7.7.5.</span> <span class="toc-text">5. 修改用户组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.7.7.6.</span> <span class="toc-text">6. 用户和组相关的文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#etc-passwd"><span class="toc-number">1.7.7.6.1.</span> <span class="toc-text">&#x2F;etc&#x2F;passwd</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Shell%EF%BC%9F"><span class="toc-number">1.7.7.6.1.1.</span> <span class="toc-text">Shell？</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#etc-shadow"><span class="toc-number">1.7.7.6.2.</span> <span class="toc-text">&#x2F;etc&#x2F;shadow</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-etc-group"><span class="toc-number">1.8.</span> <span class="toc-text">3## &#x2F;etc&#x2F;group</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E8%BF%90%E8%A1%8C%E7%BA%A7%E5%88%AB"><span class="toc-number">1.9.</span> <span class="toc-text">9. 运行级别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8C%87%E5%AE%9A%E7%94%A8%E6%88%B7%E7%BA%A7%E5%88%AB"><span class="toc-number">1.9.1.</span> <span class="toc-text">1. 指定用户级别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.9.1.1.</span> <span class="toc-text">基本介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.9.1.2.</span> <span class="toc-text">应用实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%89%BE%E5%9B%9Eroot%E5%AF%86%E7%A0%81"><span class="toc-number">1.10.</span> <span class="toc-text">10. 找回root密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.10.1.</span> <span class="toc-text">面试题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.10.2.</span> <span class="toc-text">步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="toc-number">1.11.</span> <span class="toc-text">11. 帮助信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#man%E6%8C%87%E4%BB%A4"><span class="toc-number">1.11.1.</span> <span class="toc-text">man指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#help%E6%8C%87%E4%BB%A4"><span class="toc-number">1.11.2.</span> <span class="toc-text">help指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6"><span class="toc-number">1.11.3.</span> <span class="toc-text">百度</span></a></li></ol></li></ol></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
